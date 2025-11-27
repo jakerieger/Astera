@@ -1,0 +1,44 @@
+project(NthEngine)
+
+include(FetchContent)
+
+FetchContent_Declare(
+        glfw
+        GIT_REPOSITORY https://github.com/glfw/glfw.git
+        GIT_TAG 3.4
+        GIT_SHALLOW TRUE
+)
+
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "Build GLFW docs")
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "Build GLFW tests")
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "Build GLFW examples")
+set(GLFW_INSTALL OFF CACHE BOOL "Generate GLFW installation target")
+
+add_compile_options(-Wno-unused-command-line-argument)
+
+FetchContent_Declare(
+        glm
+        GIT_REPOSITORY https://github.com/g-truc/glm.git
+        GIT_TAG 1.0.1
+        GIT_SHALLOW TRUE
+)
+
+set(GLM_BUILD_TESTS OFF CACHE BOOL "Build GLM tests")
+set(GLM_BUILD_INSTALL OFF CACHE BOOL "Install GLM")
+
+FetchContent_Declare(
+        spdlog
+        GIT_REPOSITORY https://github.com/gabime/spdlog.git
+        GIT_TAG v1.12.0
+        GIT_SHALLOW TRUE
+)
+
+set(SPDLOG_BUILD_TESTS OFF CACHE BOOL "Build spdlog tests")
+set(SPDLOG_BUILD_EXAMPLE OFF CACHE BOOL "Build spdlog examples")
+set(SPDLOG_INSTALL OFF CACHE BOOL "Install spdlog")
+
+FetchContent_MakeAvailable(
+        glfw
+        glm
+        spdlog
+)
