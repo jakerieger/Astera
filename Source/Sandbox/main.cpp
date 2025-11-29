@@ -8,7 +8,7 @@
 #include <InputCodes.hpp>
 #include <Log.hpp>
 
-namespace N {
+namespace Nth {
     class SandboxGame final : public Game {
     public:
         SandboxGame() : Game("Sandbox", 1280, 720) {}
@@ -34,9 +34,9 @@ namespace N {
 
         void OnDestroyed() override {}
     };
-}  // namespace N
+}  // namespace Nth
 
 int main() {
-    N::SandboxGame game;
+    Nth::SandboxGame game;
     game.Run();
 }

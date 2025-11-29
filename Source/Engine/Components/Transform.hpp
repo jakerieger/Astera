@@ -6,7 +6,7 @@
 
 #include "CommonPCH.hpp"
 
-namespace N {
+namespace Nth {
     struct Transform {
         Vec2 position;
         Vec2 rotation;

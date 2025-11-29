@@ -5,8 +5,9 @@
 #pragma once
 
 #include "CommonPCH.hpp"
+#include "Components/Transform.hpp"
 
-namespace N {
+namespace Nth {
     /// @brief Command to clear the framebuffer
     struct ClearCommand {
         Vec4 color {0.0f, 0.0f, 0.0f, 1.0f};
@@ -17,10 +18,8 @@ namespace N {
     /// @brief Command to draw a sprite/quad
     struct DrawSpriteCommand {
         u32 textureId {0};
-        Vec2 position {0.0f, 0.0f};
-        Vec2 size {1.0f, 1.0f};
+        Transform transform;
         Vec4 tintColor {1.0f, 1.0f, 1.0f, 1.0f};
-        Vec2 rotation {0.f, 0.f};
     };
 
     /// @brief Command to set the viewport
@@ -46,4 +45,4 @@ namespace N {
     /// @brief Variant type that can hold any command
     using RenderCommand =
       std::variant<ClearCommand, DrawSpriteCommand, SetViewportCommand, BindShaderCommand, SetUniformCommand>;
-}  // namespace N
+}  // namespace Nth

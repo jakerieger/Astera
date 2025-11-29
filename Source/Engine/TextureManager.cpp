@@ -7,7 +7,7 @@
 
 #include <stb_image.h>
 
-namespace N {
+namespace Nth {
     shared_ptr<TextureManager> TextureManager::sManager;
     unordered_map<string, TextureID> TextureManager::sCache;
 

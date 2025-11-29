@@ -7,7 +7,7 @@
 #include "CommonPCH.hpp"
 #include "CommandQueue.hpp"
 
-namespace N {
+namespace Nth {
     class RenderContext {
     public:
         RenderContext()  = default;

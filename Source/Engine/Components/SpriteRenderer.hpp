@@ -6,7 +6,7 @@
 
 #include "CommonPCH.hpp"
 
-namespace N {
+namespace Nth {
     struct SpriteRenderer {
         u32 textureId;
     };

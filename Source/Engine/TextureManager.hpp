@@ -6,7 +6,7 @@
 
 #include "CommonPCH.hpp"
 
-namespace N {
+namespace Nth {
     using TextureID = u32;
 
     class TextureManager {

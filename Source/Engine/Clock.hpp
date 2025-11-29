@@ -12,7 +12,7 @@
     #include <ctime>
 #endif
 
-namespace N {
+namespace Nth {
     class Clock {
     public:
         Clock();

@@ -4,8 +4,9 @@
 
 #include "RenderContext.hpp"
 #include "Log.hpp"
+#include "GLUtils.hpp"
 
-namespace N {
+namespace Nth {
     bool RenderContext::Initialize(u32 width, u32 height) {
         if (mInitialized) return true;
 
@@ -17,14 +18,14 @@ namespace N {
             return false;
         }
 
-        glViewport(0, 0, (s32)mWidth, (s32)mHeight);
+        GLCall(glViewport, 0, 0, (s32)mWidth, (s32)mHeight);
 
         // Enable depth testing (common OpenGL setup)
-        glEnable(GL_DEPTH_TEST);
+        GLCall(glEnable, GL_DEPTH_TEST);
 
         // Enable blending for transparency
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        GLCall(glEnable, GL_BLEND);
+        GLCall(glBlendFunc, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         mCommandQueue.Reserve(1000);
         mInitialized = true;
@@ -53,4 +54,4 @@ namespace N {
         mHeight = height;
         Submit(SetViewportCommand {0, 0, width, height});
     }
-}  // namespace N
+}  // namespace Nth

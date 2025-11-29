@@ -7,7 +7,7 @@
 #include "CommonPCH.hpp"
 #include "Command.hpp"
 
-namespace N {
+namespace Nth {
     /// @brief Command queue for batching and executing rendering commands
     class CommandQueue {
     public:

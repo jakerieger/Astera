@@ -4,7 +4,7 @@
 
 #include "Log.hpp"
 
-namespace N {
+namespace Nth {
     shared_ptr<spdlog::logger> Log::sLogger;
 
     void Log::Initialize() {

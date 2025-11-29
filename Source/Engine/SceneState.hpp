@@ -11,7 +11,7 @@
 
 #include <entt/entt.hpp>
 
-namespace N {
+namespace Nth {
     using Entity = entt::entity;
 
     template<typename T>
@@ -77,7 +77,7 @@ namespace N {
 
         N_ND size_t GetEntityCount() const {
             const auto iter = mRegistry.view<Transform>().each();
-            return CAST<size_t>(N::Distance(iter));
+            return CAST<size_t>(Nth::Distance(iter));
         }
 
     private:

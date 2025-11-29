@@ -4,7 +4,7 @@
 
 #include "Clock.hpp"
 
-namespace N {
+namespace Nth {
     Clock::Clock() {
 #ifdef N_ENGINE_PLATFORM_WINDOWS
         QueryPerformanceFrequency(&mFrequency);

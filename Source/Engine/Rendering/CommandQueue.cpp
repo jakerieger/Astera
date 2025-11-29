@@ -4,8 +4,9 @@
 
 #include "CommandQueue.hpp"
 #include "Log.hpp"
+#include "Rendering/GLUtils.hpp"
 
-namespace N {
+namespace Nth {
     void CommandQueue::ExecuteQueue() {
         CommandExecutor executor;
 
@@ -32,13 +33,13 @@ namespace N {
     void CommandExecutor::operator()(const ClearCommand& cmd) const {
         GLbitfield clearFlags = GL_COLOR_BUFFER_BIT;
 
-        glClearColor(cmd.color.r, cmd.color.g, cmd.color.b, cmd.color.a);
+        GLCall(glClearColor, cmd.color.r, cmd.color.g, cmd.color.b, cmd.color.a);
 
         if (cmd.clearDepth) { clearFlags |= GL_DEPTH_BUFFER_BIT; }
 
         if (cmd.clearStencil) { clearFlags |= GL_STENCIL_BUFFER_BIT; }
 
-        glClear(clearFlags);
+        GLCall(glClear, clearFlags);
     }
 
     void CommandExecutor::operator()(const DrawSpriteCommand& cmd) const {
@@ -48,15 +49,15 @@ namespace N {
     }
 
     void CommandExecutor::operator()(const SetViewportCommand& cmd) const {
-        glViewport(cmd.x, cmd.y, CAST<GLsizei>(cmd.width), CAST<GLsizei>(cmd.height));
+        GLCall(glViewport, cmd.x, cmd.y, CAST<GLsizei>(cmd.width), CAST<GLsizei>(cmd.height));
     }
 
     void CommandExecutor::operator()(const BindShaderCommand& cmd) const {
-        glUseProgram(cmd.programId);
+        GLCall(glUseProgram, cmd.programId);
     }
 
     void CommandExecutor::operator()(const SetUniformCommand& cmd) const {
-        glUseProgram(cmd.programId);
+        GLCall(glUseProgram, cmd.programId);
 
         const GLint location = glGetUniformLocation(cmd.programId, cmd.name.c_str());
         if (location == -1) {
@@ -70,19 +71,19 @@ namespace N {
               using T = std::decay_t<T0>;
 
               if constexpr (std::is_same_v<T, s32>) {
-                  glUniform1i(location, value);
+                  GLCall(glUniform1i, location, value);
               } else if constexpr (std::is_same_v<T, f32>) {
-                  glUniform1f(location, value);
+                  GLCall(glUniform1f, location, value);
               } else if constexpr (std::is_same_v<T, glm::vec2>) {
-                  glUniform2f(location, value.x, value.y);
+                  GLCall(glUniform2f, location, value.x, value.y);
               } else if constexpr (std::is_same_v<T, glm::vec3>) {
-                  glUniform3f(location, value.x, value.y, value.z);
+                  GLCall(glUniform3f, location, value.x, value.y, value.z);
               } else if constexpr (std::is_same_v<T, glm::vec4>) {
-                  glUniform4f(location, value.x, value.y, value.z, value.w);
+                  GLCall(glUniform4f, location, value.x, value.y, value.z, value.w);
               } else if constexpr (std::is_same_v<T, glm::mat4>) {
-                  glUniformMatrix4fv(location, 1, GL_FALSE, &value[0][0]);
+                  GLCall(glUniformMatrix4fv, location, 1, GL_FALSE, &value[0][0]);
               }
           },
           cmd.value);
     }
-}  // namespace N
+}  // namespace Nth

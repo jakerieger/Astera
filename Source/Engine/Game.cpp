@@ -6,8 +6,8 @@
 #include "Log.hpp"
 #include "TextureManager.hpp"
 
-namespace N {
-    using N::Log;
+namespace Nth {
+    using Nth::Log;
 
     void Game::Run() {
         mRunning = Initialize();
@@ -18,7 +18,9 @@ namespace N {
             while (mRunning && !glfwWindowShouldClose(mWindow)) {
                 mClock.Tick();
                 OnUpdate(mClock);
+
                 Render();
+
                 OnLateUpdate();
                 glfwPollEvents();
             }
@@ -169,4 +171,4 @@ namespace N {
         auto* game = CAST<Game*>(glfwGetWindowUserPointer(window));
         if (game) { game->OnMouseScroll(xoffset, yoffset); }
     }
-}  // namespace N
+}  // namespace Nth

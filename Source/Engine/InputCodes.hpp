@@ -6,7 +6,7 @@
 
 #include "CommonPCH.hpp"
 
-namespace N::Input {
+namespace Nth::Input {
     /// @brief Key code definitions for keyboard input
     namespace Keys {
         static constexpr u16 Space        = 32;

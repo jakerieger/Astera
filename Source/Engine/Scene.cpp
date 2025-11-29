@@ -4,4 +4,4 @@
 
 #include "Scene.hpp"
 
-namespace N {}  // namespace N
+namespace Nth {}  // namespace N

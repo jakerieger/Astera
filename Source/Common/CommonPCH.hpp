@@ -8,6 +8,7 @@
 #include <iterator>
 #include <ranges>
 #include <filesystem>
+#include <string_view>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -36,12 +37,15 @@
 
 #include "Macros.hpp"
 
+#include <source_location>
+
 #define CAST static_cast
 #define CCAST const_cast
 #define DCAST dynamic_cast
 #define RCAST reinterpret_cast
 
-namespace N {
+/// @brief Root namespace containting all Nth Engine code
+namespace Nth {
     using u8   = uint8_t;
     using u16  = uint16_t;
     using u32  = uint32_t;
@@ -111,4 +115,4 @@ namespace N {
     auto Distance(const Iterable& container) {
         return std::ranges::distance(container);
     }
-}  // namespace N
+}  // namespace Nth

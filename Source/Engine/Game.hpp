@@ -9,7 +9,7 @@
 #include "Scene.hpp"
 #include "Rendering/RenderContext.hpp"
 
-namespace N {
+namespace Nth {
     /// @brief Base class where all engine systems meet and execute. Owns the system window and handles communication
     /// between the OS, graphics API, and game client code (among many other things).
     class Game {
@@ -108,4 +108,4 @@ namespace N {
         // Client systems
         unique_ptr<Scene> mActiveScene;
     };
-}  // namespace N
+}  // namespace Nth

@@ -6,7 +6,7 @@
 
 #include "CommonPCH.hpp"
 
-namespace N {
+namespace Nth {
     class Log {
     public:
         static void Initialize();

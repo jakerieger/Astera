@@ -9,7 +9,7 @@
 #include "SceneState.hpp"
 #include "Rendering/RenderContext.hpp"
 
-namespace N {
+namespace Nth {
     class Scene {
     public:
         Scene()  = default;
@@ -36,11 +36,7 @@ namespace N {
         void Render(RenderContext& context) {
             const auto iter = mState.View<Transform, SpriteRenderer>().each();
             for (auto [entity, transform, sprite] : iter) {
-                context.Submit(DrawSpriteCommand {.textureId = sprite.textureId,
-                                                  .position  = transform.position,
-                                                  .rotation  = transform.rotation,
-                                                  .size      = transform.scale,
-                                                  .tintColor = {1, 1, 1, 1}});
+                context.Submit(DrawSpriteCommand {sprite.textureId, transform, {1, 1, 1, 1}});
             }
         }
 
@@ -51,4 +47,4 @@ namespace N {
     private:
         SceneState mState;
     };
-}  // namespace N
+}  // namespace Nth

@@ -4,4 +4,4 @@
 
 #include "SceneState.hpp"
 
-namespace N {}  // namespace N
+namespace Nth {}  // namespace N
