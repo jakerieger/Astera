@@ -9,9 +9,17 @@
 
 namespace Nth {
     class Shader {
+        friend class ShaderManager;
+
     public:
         Shader() = default;
         ~Shader();
+
+        Shader(const Shader& other);
+        Shader& operator=(const Shader& other);
+
+        Shader(Shader&& other) noexcept;
+        Shader& operator=(Shader&& other) noexcept;
 
         void FromFile(const fs::path& vertexFile, const fs::path& fragFile);
         void FromMemory(const char* vertexSource, const char* fragSource);
@@ -22,10 +30,15 @@ namespace Nth {
         template<typename T>
         void SetUniform(const char* name, T val) {}
 
+        N_ND GLuint GetProgramID() const {
+            return mProgram;
+        }
+
     private:
         GLuint mProgram {0};
 
         void CompileShaders(const char* vertexSource, const char* fragSource);
+        void Destroy();
     };
 
     template<>

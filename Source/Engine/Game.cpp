@@ -5,6 +5,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "TextureManager.hpp"
+#include "ShaderManager.hpp"
 
 namespace Nth {
     using Nth::Log;
@@ -106,6 +107,7 @@ namespace Nth {
         }
 
         TextureManager::Initialize();
+        ShaderManager::Initialize();
 
         Log::Info("Game", "Successfully initialized game instance");
 
@@ -114,6 +116,7 @@ namespace Nth {
 
     void Game::Shutdown() {
         TextureManager::Shutdown();
+        ShaderManager::Shutdown();
         mActiveScene.reset();
         mRenderContext.Shutdown();
         if (mWindow) glfwDestroyWindow(mWindow);

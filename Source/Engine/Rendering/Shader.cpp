@@ -5,8 +5,22 @@
 #include "Shader.hpp"
 
 namespace Nth {
-    Shader::~Shader() {
-        GLCall(glDeleteProgram, mProgram);
+    Shader::~Shader() = default;
+
+    Shader::Shader(const Shader& other) {
+        mProgram = other.mProgram;
+    }
+
+    Shader& Shader::operator=(const Shader& other) {
+        if (this != &other) { mProgram = other.mProgram; }
+        return *this;
+    }
+
+    Shader::Shader(Shader&& other) noexcept : mProgram(std::exchange(other.mProgram, 0)) {}
+
+    Shader& Shader::operator=(Shader&& other) noexcept {
+        if (this != &other) { mProgram = std::exchange(other.mProgram, 0); }
+        return *this;
     }
 
     void Shader::FromFile(const fs::path& vertexFile, const fs::path& fragFile) {
@@ -15,10 +29,16 @@ namespace Nth {
         const string vertexSource = IO::ReadString(vertexFile);
         const string fragSource   = IO::ReadString(fragFile);
 
+        N_ASSERT(!vertexSource.empty());
+        N_ASSERT(!fragSource.empty());
+
         CompileShaders(vertexSource.c_str(), fragSource.c_str());
     }
 
     void Shader::FromMemory(const char* vertexSource, const char* fragSource) {
+        N_ASSERT(strlen(vertexSource) > 0);
+        N_ASSERT(strlen(fragSource) > 0);
+
         CompileShaders(vertexSource, fragSource);
     }
 
@@ -40,7 +60,7 @@ namespace Nth {
         GLCall(glShaderSource, fragmentShader, 1, &fragSource, nullptr);
         GLCall(glCompileShader, fragmentShader);
 
-        mProgram = glCreateProgram();
+        mProgram = GLCall(glCreateProgram);
         GLCall(glAttachShader, mProgram, vertexShader);
         GLCall(glAttachShader, mProgram, fragmentShader);
         GLCall(glLinkProgram, mProgram);
@@ -48,5 +68,9 @@ namespace Nth {
 
         GLCall(glDeleteShader, vertexShader);
         GLCall(glDeleteShader, fragmentShader);
+    }
+
+    void Shader::Destroy() {
+        GLCall(glDeleteProgram, mProgram);
     }
 }  // namespace Nth

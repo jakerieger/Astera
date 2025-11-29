@@ -4,6 +4,7 @@
 
 #include "TextureManager.hpp"
 #include "Log.hpp"
+#include "Rendering/GLUtils.hpp"
 
 #include <stb_image.h>
 
@@ -20,7 +21,7 @@ namespace Nth {
         if (!sCache.empty()) {
             for (const auto& id : sCache | std::views::values) {
                 Log::Info("TextureManager", "Unloading texture id `{}`", id);
-                glDeleteTextures(1, &id);
+                GLCall(glDeleteTextures, 1, &id);
             }
         }
         sManager.reset();
@@ -44,14 +45,14 @@ namespace Nth {
         else if (channels == 3) format = GL_RGB;
         else if (channels == 4) format = GL_RGBA;
 
-        glBindTexture(GL_TEXTURE_2D, id);
-        glTexImage2D(GL_TEXTURE_2D, 0, CAST<int>(format), w, h, 0, format, GL_UNSIGNED_BYTE, data);
-        glGenerateMipmap(GL_TEXTURE_2D);
+        GLCall(glBindTexture, GL_TEXTURE_2D, id);
+        GLCall(glTexImage2D, GL_TEXTURE_2D, 0, CAST<int>(format), w, h, 0, format, GL_UNSIGNED_BYTE, data);
+        GLCall(glGenerateMipmap, GL_TEXTURE_2D);
 
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        GLCall(glTexParameteri, GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT);
+        GLCall(glTexParameteri, GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT);
+        GLCall(glTexParameteri, GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        GLCall(glTexParameteri, GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
         stbi_image_free(data);
 
@@ -65,4 +66,4 @@ namespace Nth {
         if (!sManager) Initialize();
         return sManager;
     }
-}  // namespace N
+}  // namespace Nth
