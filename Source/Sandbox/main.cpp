@@ -2,6 +2,8 @@
 // Created: 11/27/25.
 //
 
+#include "TextureManager.hpp"
+
 #include <Game.hpp>
 #include <InputCodes.hpp>
 #include <Log.hpp>
@@ -17,7 +19,14 @@ namespace N {
             if (keyCode == Input::Keys::F11) { ToggleFullscreen(); }
         }
 
-        void OnAwake() override {}
+        void OnAwake() override {
+            const auto spriteTex = TextureManager::Load("/home/jr/Code/NthEngine/Content/Sprites/ball.png");
+
+            auto& state       = GetActiveScene()->GetState();
+            const auto entity = state.CreateEntity();
+            auto& sprite      = state.AddComponent<SpriteRenderer>(entity);
+            sprite.textureId  = spriteTex;
+        }
 
         void OnUpdate(const Clock& clock) override {}
 

@@ -37,8 +37,15 @@ set(SPDLOG_BUILD_TESTS OFF CACHE BOOL "Build spdlog tests")
 set(SPDLOG_BUILD_EXAMPLE OFF CACHE BOOL "Build spdlog examples")
 set(SPDLOG_INSTALL OFF CACHE BOOL "Install spdlog")
 
+FetchContent_Declare(
+        entt
+        GIT_REPOSITORY https://github.com/skypjack/entt.git
+        GIT_TAG v3.16.0
+)
+
 FetchContent_MakeAvailable(
         glfw
         glm
         spdlog
+        entt
 )

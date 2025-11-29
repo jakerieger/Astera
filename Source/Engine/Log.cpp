@@ -5,36 +5,37 @@
 #include "Log.hpp"
 
 namespace N {
-    shared_ptr<spdlog::logger> Log::mLogger;
+    shared_ptr<spdlog::logger> Log::sLogger;
 
     void Log::Initialize() {
-        // Create console sink with color support
+        // Create a color console sink
         auto consoleSink = make_shared<spdlog::sinks::stdout_color_sink_mt>();
-        consoleSink->set_pattern("[%T] [%^%l%$] %n: %v");
 
-        // Create logger
-        mLogger = make_shared<spdlog::logger>("Engine", consoleSink);
-        mLogger->set_level(spdlog::level::trace);
-        mLogger->flush_on(spdlog::level::trace);
+        // Set the pattern: [HH:MM:SS] [level] message
+        consoleSink->set_pattern("[%T] [%^%l%$] %v");
 
-        // Register as default logger
-        spdlog::register_logger(mLogger);
-        spdlog::set_default_logger(mLogger);
+        // Create logger with the sink
+        sLogger = std::make_shared<spdlog::logger>("main", consoleSink);
+        sLogger->set_level(spdlog::level::trace);
+        sLogger->flush_on(spdlog::level::trace);
 
-        Info("Logging system initialized");
+        spdlog::register_logger(sLogger);
+        spdlog::set_default_logger(sLogger);
+
+        Info("Log", "Logging system initialized");
     }
 
     void Log::Shutdown() {
-        if (mLogger) {
-            Info("Shutting down logging system");
-            mLogger->flush();
+        if (sLogger) {
+            Info("Log", "Shutting down logging system");
+            sLogger->flush();
             spdlog::drop_all();
-            mLogger.reset();
+            sLogger.reset();
         }
     }
 
     shared_ptr<spdlog::logger> Log::GetLogger() {
-        if (!mLogger) { Initialize(); }
-        return mLogger;
+        if (!sLogger) { Initialize(); }
+        return sLogger;
     }
 }  // namespace N

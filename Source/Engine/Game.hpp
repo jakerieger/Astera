@@ -6,7 +6,8 @@
 
 #include "CommonPCH.hpp"
 #include "Clock.hpp"
-#include "RenderContext.hpp"
+#include "Scene.hpp"
+#include "Rendering/RenderContext.hpp"
 
 namespace N {
     /// @brief Base class where all engine systems meet and execute. Owns the system window and handles communication
@@ -18,8 +19,9 @@ namespace N {
 
         N_CLASS_PREVENT_MOVES_COPIES(Game)
 
-        Game() = default;
-        Game(string title, u32 width, u32 height) : mWidth(width), mHeight(height), mTitle(std::move(title)) {}
+        Game() : mActiveScene(make_unique<Scene>()) {}
+        Game(string title, u32 width, u32 height)
+            : mWidth(width), mHeight(height), mTitle(std::move(title)), mActiveScene(make_unique<Scene>()) {}
 
         virtual ~Game() = default;
 
@@ -42,10 +44,10 @@ namespace N {
         virtual void OnMouseScroll(f64 dX, f64 dY) {}
 
         // Lifecycle hooks
-        virtual void OnAwake() {}
-        virtual void OnUpdate(const Clock& clock) {}
-        virtual void OnLateUpdate() {}
-        virtual void OnDestroyed() {}
+        virtual void OnAwake();
+        virtual void OnUpdate(const Clock& clock);
+        virtual void OnLateUpdate();
+        virtual void OnDestroyed();
 
         // Getters
         void GetWindowSize(u32& outWidth, u32& outHeight) const {
@@ -73,12 +75,16 @@ namespace N {
             return mRenderContext;
         }
 
+        N_ND Scene* GetActiveScene() const {
+            return mActiveScene.get();
+        }
+
     protected:
         void Render();
 
     private:
         bool Initialize();
-        void Shutdown() const;
+        void Shutdown();
 
         // GLFW callbacks
         static void GLFWResizeCallback(GLFWwindow* window, s32 width, s32 height);
@@ -98,5 +104,8 @@ namespace N {
         // Internal systems
         Clock mClock;
         RenderContext mRenderContext;
+
+        // Client systems
+        unique_ptr<Scene> mActiveScene;
     };
 }  // namespace N

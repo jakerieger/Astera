@@ -4,6 +4,7 @@
 
 #include "Game.hpp"
 #include "Log.hpp"
+#include "TextureManager.hpp"
 
 namespace N {
     using N::Log;
@@ -48,9 +49,25 @@ namespace N {
         glfwSetWindowSize(mWindow, (s32)width, (s32)height);
     }
 
+    void Game::OnAwake() {
+        if (mActiveScene) mActiveScene->Awake();
+    }
+
+    void Game::OnUpdate(const Clock& clock) {
+        if (mActiveScene) mActiveScene->Update(clock);
+    }
+
+    void Game::OnLateUpdate() {
+        if (mActiveScene) mActiveScene->LateUpdate();
+    }
+
+    void Game::OnDestroyed() {
+        if (mActiveScene) mActiveScene->Destroyed();
+    }
+
     bool Game::Initialize() {
         if (!glfwInit()) {
-            Log::Critical("Failed to initialize GLFW");
+            Log::Critical("Game", "Failed to initialize GLFW");
             return false;
         }
 
@@ -64,7 +81,7 @@ namespace N {
         mWindow = glfwCreateWindow((s32)mWidth, (s32)mHeight, mTitle.c_str(), nullptr, nullptr);
         if (!mWindow) {
             glfwTerminate();
-            Log::Critical("Failed to create GLFW window");
+            Log::Critical("Game", "Failed to create GLFW window");
             return false;
         }
 
@@ -82,16 +99,20 @@ namespace N {
         if (!mRenderContext.Initialize(mWidth, mHeight)) {
             glfwDestroyWindow(mWindow);
             glfwTerminate();
-            Log::Critical("Failed to initialize render context");
+            Log::Critical("Game", "Failed to initialize render context");
             return false;
         }
 
-        Log::Info("Successfully initialized game instance");
+        TextureManager::Initialize();
+
+        Log::Info("Game", "Successfully initialized game instance");
 
         return true;
     }
 
-    void Game::Shutdown() const {
+    void Game::Shutdown() {
+        TextureManager::Shutdown();
+        mActiveScene.reset();
         mRenderContext.Shutdown();
         if (mWindow) glfwDestroyWindow(mWindow);
         glfwTerminate();
@@ -103,6 +124,7 @@ namespace N {
         mRenderContext.BeginFrame();
         {
             // Submit drawing commands here
+            if (mActiveScene) { mActiveScene->Render(mRenderContext); }
         }
         mRenderContext.EndFrame(mWindow);
     }

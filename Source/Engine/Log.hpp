@@ -13,37 +13,37 @@ namespace N {
         static void Shutdown();
 
         template<typename... Args>
-        static void Trace(const string& format, Args&&... args) {
-            GetLogger()->trace(fmt::runtime(format), std::forward<Args>(args)...);
+        static void Trace(const std::string& subsystem, fmt::format_string<Args...> fmt, Args&&... args) {
+            GetLogger()->trace("\033[1m{}\033[0m: {}", subsystem, fmt::format(fmt, std::forward<Args>(args)...));
         }
 
         template<typename... Args>
-        static void Debug(const string& format, Args&&... args) {
-            GetLogger()->debug(fmt::runtime(format), std::forward<Args>(args)...);
+        static void Debug(const std::string& subsystem, fmt::format_string<Args...> fmt, Args&&... args) {
+            GetLogger()->debug("\033[1m{}\033[0m: {}", subsystem, fmt::format(fmt, std::forward<Args>(args)...));
         }
 
         template<typename... Args>
-        static void Info(const string& format, Args&&... args) {
-            GetLogger()->info(fmt::runtime(format), std::forward<Args>(args)...);
+        static void Info(const std::string& subsystem, fmt::format_string<Args...> fmt, Args&&... args) {
+            GetLogger()->info("\033[1m{}\033[0m: {}", subsystem, fmt::format(fmt, std::forward<Args>(args)...));
         }
 
         template<typename... Args>
-        static void Warn(const string& format, Args&&... args) {
-            GetLogger()->warn(fmt::runtime(format), std::forward<Args>(args)...);
+        static void Warn(const std::string& subsystem, fmt::format_string<Args...> fmt, Args&&... args) {
+            GetLogger()->warn("\033[1m{}\033[0m: {}", subsystem, fmt::format(fmt, std::forward<Args>(args)...));
         }
 
         template<typename... Args>
-        static void Error(const string& format, Args&&... args) {
-            GetLogger()->error(fmt::runtime(format), std::forward<Args>(args)...);
+        static void Error(const std::string& subsystem, fmt::format_string<Args...> fmt, Args&&... args) {
+            GetLogger()->error("\033[1m{}\033[0m: {}", subsystem, fmt::format(fmt, std::forward<Args>(args)...));
         }
 
         template<typename... Args>
-        static void Critical(const string& format, Args&&... args) {
-            GetLogger()->critical(fmt::runtime(format), std::forward<Args>(args)...);
+        static void Critical(const std::string& subsystem, fmt::format_string<Args...> fmt, Args&&... args) {
+            GetLogger()->critical("\033[1m{}\033[0m: {}", subsystem, fmt::format(fmt, std::forward<Args>(args)...));
         }
 
     private:
         static shared_ptr<spdlog::logger> GetLogger();
-        static shared_ptr<spdlog::logger> mLogger;
+        static shared_ptr<spdlog::logger> sLogger;
     };
 }  // namespace N

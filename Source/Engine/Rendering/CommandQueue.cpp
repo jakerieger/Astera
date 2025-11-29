@@ -44,7 +44,7 @@ namespace N {
     void CommandExecutor::operator()(const DrawSpriteCommand& cmd) const {
         // TODO: Implement sprite rendering
         N_UNUSED(cmd);
-        throw N_NOT_IMPLEMENTED;
+        // throw N_NOT_IMPLEMENTED;
     }
 
     void CommandExecutor::operator()(const SetViewportCommand& cmd) const {
@@ -60,7 +60,7 @@ namespace N {
 
         const GLint location = glGetUniformLocation(cmd.programId, cmd.name.c_str());
         if (location == -1) {
-            Log::Warn("Uniform '{}' not found in shader program {}", cmd.name, cmd.programId);
+            Log::Warn("CommandQueue", "Uniform '{}' not found in shader program {}", cmd.name, cmd.programId);
             return;
         }
 

@@ -13,7 +13,7 @@ namespace N {
         mHeight = height;
 
         if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-            Log::Critical("Failed to load GLAD");
+            Log::Critical("RenderContext", "Failed to load GLAD");
             return false;
         }
 

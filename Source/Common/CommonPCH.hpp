@@ -5,6 +5,9 @@
 #pragma once
 
 #include <print>
+#include <iterator>
+#include <ranges>
+#include <filesystem>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -78,6 +81,8 @@ namespace N {
     using Mat4 = glm::mat4;
     using Quat = glm::quat;
 
+    namespace fs = std::filesystem;
+
     /// @brief Simple exception container for breaking in functions that haven't been implemented yet
     class NotImplemented final : public std::exception {
     public:
@@ -100,4 +105,10 @@ namespace N {
 #else
     #define N_NOT_IMPLEMENTED NotImplemented(__func__, __FILE__, __LINE__)
 #endif
+
+    /// @brief Returns the size of an iterable
+    template<std::ranges::view Iterable>
+    auto Distance(const Iterable& container) {
+        return std::ranges::distance(container);
+    }
 }  // namespace N

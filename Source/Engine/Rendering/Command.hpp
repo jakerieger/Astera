@@ -9,7 +9,7 @@
 namespace N {
     /// @brief Command to clear the framebuffer
     struct ClearCommand {
-        glm::vec4 color {0.0f, 0.0f, 0.0f, 1.0f};
+        Vec4 color {0.0f, 0.0f, 0.0f, 1.0f};
         bool clearDepth {true};
         bool clearStencil {false};
     };
@@ -17,10 +17,10 @@ namespace N {
     /// @brief Command to draw a sprite/quad
     struct DrawSpriteCommand {
         u32 textureId {0};
-        glm::vec2 position {0.0f, 0.0f};
-        glm::vec2 size {1.0f, 1.0f};
-        glm::vec4 tintColor {1.0f, 1.0f, 1.0f, 1.0f};
-        f32 rotation {0.0f};
+        Vec2 position {0.0f, 0.0f};
+        Vec2 size {1.0f, 1.0f};
+        Vec4 tintColor {1.0f, 1.0f, 1.0f, 1.0f};
+        Vec2 rotation {0.f, 0.f};
     };
 
     /// @brief Command to set the viewport
@@ -40,7 +40,7 @@ namespace N {
     struct SetUniformCommand {
         u32 programId {0};
         string name;
-        std::variant<s32, f32, glm::vec2, glm::vec3, glm::vec4, glm::mat4> value;
+        std::variant<s32, f32, Vec2, Vec3, Vec4, Mat4> value;
     };
 
     /// @brief Variant type that can hold any command

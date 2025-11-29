@@ -1,11 +1,17 @@
 project(NthEngine)
 
-file(GLOB ENGINE_SOURCES *.hpp *.cpp)
+file(GLOB ENGINE_SOURCES
+        *.hpp
+        *.cpp
+        **/*.hpp
+        **/*.cpp
+)
 
 add_library(NthEngine STATIC
         ../Common/CommonPCH.hpp
         ../Common/CommonPCH.cpp
         ../Vendor/glad.c
+        ../Vendor/stb_image.cpp
         ${ENGINE_SOURCES}
 )
 
@@ -20,12 +26,14 @@ set_source_files_properties(../Vendor/glad.c PROPERTIES
 target_include_directories(NthEngine PRIVATE
         ../Common
         ../Vendor
+        ../Engine
 )
 
 target_link_libraries(NthEngine PUBLIC
         glfw
         glm::glm
         spdlog::spdlog
+        EnTT::EnTT
 )
 
 if (UNIX AND NOT APPLE)
