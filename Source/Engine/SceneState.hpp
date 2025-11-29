@@ -5,9 +5,13 @@
 #pragma once
 
 #include "CommonPCH.hpp"
-#include "Components/SpriteRenderer.hpp"
-#include "Components/Transform.hpp"
 #include "Log.hpp"
+
+#pragma region Components
+#include "Components/Camera.hpp"
+#include "Components/Transform.hpp"
+#include "Components/SpriteRenderer.hpp"
+#pragma endregion
 
 #include <entt/entt.hpp>
 
@@ -15,7 +19,8 @@ namespace Nth {
     using Entity = entt::entity;
 
     template<typename T>
-    concept ValidComponent = std::is_same_v<T, SpriteRenderer> || std::is_same_v<T, Transform>;
+    concept ValidComponent =
+      std::is_same_v<T, Transform> || std::is_same_v<T, SpriteRenderer> || std::is_same_v<T, Camera>;
 
     class SceneState {
     public:
@@ -83,4 +88,4 @@ namespace Nth {
     private:
         entt::registry mRegistry {};
     };
-}  // namespace N
+}  // namespace Nth

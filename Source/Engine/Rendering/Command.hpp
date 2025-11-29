@@ -19,6 +19,7 @@ namespace Nth {
     struct DrawSpriteCommand {
         u32 textureId {0};
         Transform transform;
+        Vec2 screenDimensions;
         Vec4 tintColor {1.0f, 1.0f, 1.0f, 1.0f};
     };
 

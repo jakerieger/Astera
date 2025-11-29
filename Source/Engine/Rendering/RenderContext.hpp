@@ -33,6 +33,15 @@ namespace Nth {
             mCommandQueue.Enqueue(std::forward<T>(command));
         }
 
+        N_ND bool GetInitialized() const {
+            return mInitialized;
+        }
+
+        void GetViewportDimensions(u32& outWidth, u32& outHeight) const {
+            outWidth  = mWidth;
+            outHeight = mHeight;
+        }
+
     private:
         u32 mWidth {0};
         u32 mHeight {0};
@@ -40,4 +49,4 @@ namespace Nth {
 
         CommandQueue mCommandQueue;
     };
-}  // namespace N
+}  // namespace Nth

@@ -34,9 +34,13 @@ namespace Nth {
         }
 
         void Render(RenderContext& context) {
+            u32 screenWidth, screenHeight;
+            context.GetViewportDimensions(screenWidth, screenHeight);
+
             const auto iter = mState.View<Transform, SpriteRenderer>().each();
             for (auto [entity, transform, sprite] : iter) {
-                context.Submit(DrawSpriteCommand {sprite.textureId, transform, {1, 1, 1, 1}});
+                context.Submit(
+                  DrawSpriteCommand {sprite.textureId, transform, {screenWidth, screenHeight}, {1, 1, 1, 1}});
             }
         }
 

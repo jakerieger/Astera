@@ -4,6 +4,7 @@
 
 #include "CommandQueue.hpp"
 #include "Log.hpp"
+#include "ShaderManager.hpp"
 #include "Rendering/GLUtils.hpp"
 
 namespace Nth {
@@ -43,9 +44,12 @@ namespace Nth {
     }
 
     void CommandExecutor::operator()(const DrawSpriteCommand& cmd) const {
-        // TODO: Implement sprite rendering
-        N_UNUSED(cmd);
-        // throw N_NOT_IMPLEMENTED;
+        auto* spriteShader = ShaderManager::GetShader(Shaders::Sprite);
+        N_ASSERT(spriteShader);
+        spriteShader->Bind();
+        spriteShader->SetUniform<s32>("uSprite", (s32)cmd.textureId);
+
+        Mat4 model = cmd.transform.GetMatrix();
     }
 
     void CommandExecutor::operator()(const SetViewportCommand& cmd) const {
