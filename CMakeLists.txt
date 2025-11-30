@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# This is required on Debian in order to use C++23 features, even after upgrading Clang/GCC.
+# This is required on Debian in order to use C++23 features, even after upgrading Clang
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_compile_options(-stdlib=libc++)
     add_link_options(-stdlib=libc++)

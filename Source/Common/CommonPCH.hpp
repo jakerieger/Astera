@@ -15,6 +15,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <utility>
 
+#define SPDLOG_NO_FMT_STRING
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/fmt/fmt.h>
@@ -45,7 +46,7 @@
 #define DCAST dynamic_cast
 #define RCAST reinterpret_cast
 
-/// @brief Root namespace containting all Nth Engine code
+/// @brief Root namespace containing all Nth Engine code
 namespace Nth {
     using u8   = uint8_t;
     using u16  = uint16_t;
@@ -53,15 +54,15 @@ namespace Nth {
     using u64  = uint64_t;
     using uptr = uintptr_t;
 
-    using s8   = int8_t;
-    using s16  = int16_t;
-    using s32  = int32_t;
-    using s64  = int64_t;
-    using sptr = intptr_t;
+    using i8   = int8_t;
+    using i16  = int16_t;
+    using i32  = int32_t;
+    using i64  = int64_t;
+    using iptr = intptr_t;
 
-#if defined(__GNUC__) || defined(__clang__)
+#ifndef _MSC_VER
     using u128 = __uint128_t;
-    using s128 = __int128_t;
+    using i128 = __int128_t;
 #endif
 
     using f32 = float;
@@ -91,7 +92,7 @@ namespace Nth {
     /// @brief Simple exception container for breaking in functions that haven't been implemented yet
     class NotImplemented final : public std::exception {
     public:
-        explicit NotImplemented(const char* funcName, const char* fileName, s32 line) {
+        explicit NotImplemented(const char* funcName, const char* fileName, i32 line) {
             mMessage = std::format("\n`{}` is not implemented in {} ({})\n", funcName, fileName, line);
         }
 

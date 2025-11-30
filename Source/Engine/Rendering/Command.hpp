@@ -25,8 +25,8 @@ namespace Nth {
 
     /// @brief Command to set the viewport
     struct SetViewportCommand {
-        s32 x {0};
-        s32 y {0};
+        i32 x {0};
+        i32 y {0};
         u32 width {800};
         u32 height {600};
     };
@@ -40,7 +40,7 @@ namespace Nth {
     struct SetUniformCommand {
         u32 programId {0};
         string name;
-        std::variant<s32, f32, Vec2, Vec3, Vec4, Mat4> value;
+        std::variant<i32, f32, Vec2, Vec3, Vec4, Mat4> value;
     };
 
     /// @brief Variant type that can hold any command

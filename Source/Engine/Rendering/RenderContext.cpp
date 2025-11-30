@@ -18,7 +18,7 @@ namespace Nth {
             return false;
         }
 
-        GLCall(glViewport, 0, 0, (s32)mWidth, (s32)mHeight);
+        GLCall(glViewport, 0, 0, (i32)mWidth, (i32)mHeight);
 
         // Enable depth testing (common OpenGL setup)
         GLCall(glEnable, GL_DEPTH_TEST);

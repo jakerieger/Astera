@@ -7,6 +7,7 @@ add_executable(Sandbox
 )
 
 target_link_libraries(Sandbox PRIVATE NthEngine)
+
 target_include_directories(Sandbox PRIVATE
         ../Engine
         ../Common

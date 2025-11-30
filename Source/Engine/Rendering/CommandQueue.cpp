@@ -47,7 +47,7 @@ namespace Nth {
         auto* spriteShader = ShaderManager::GetShader(Shaders::Sprite);
         N_ASSERT(spriteShader);
         spriteShader->Bind();
-        spriteShader->SetUniform<s32>("uSprite", (s32)cmd.textureId);
+        spriteShader->SetUniform<i32>("uSprite", (i32)cmd.textureId);
 
         Mat4 model = cmd.transform.GetMatrix();
     }
@@ -74,7 +74,7 @@ namespace Nth {
           [location]<typename T0>(const T0& value) {
               using T = std::decay_t<T0>;
 
-              if constexpr (std::is_same_v<T, s32>) {
+              if constexpr (std::is_same_v<T, i32>) {
                   GLCall(glUniform1i, location, value);
               } else if constexpr (std::is_same_v<T, f32>) {
                   GLCall(glUniform1f, location, value);

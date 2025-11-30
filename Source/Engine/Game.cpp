@@ -49,7 +49,7 @@ namespace Nth {
     void Game::Resize(u32 width, u32 height) {
         mWidth  = width;
         mHeight = height;
-        glfwSetWindowSize(mWindow, (s32)width, (s32)height);
+        glfwSetWindowSize(mWindow, (i32)width, (i32)height);
     }
 
     void Game::OnAwake() {
@@ -81,7 +81,7 @@ namespace Nth {
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-        mWindow = glfwCreateWindow((s32)mWidth, (s32)mHeight, mTitle.c_str(), nullptr, nullptr);
+        mWindow = glfwCreateWindow((i32)mWidth, (i32)mHeight, mTitle.c_str(), nullptr, nullptr);
         if (!mWindow) {
             glfwTerminate();
             Log::Critical("Game", "Failed to create GLFW window");
@@ -134,7 +134,7 @@ namespace Nth {
         mRenderContext.EndFrame(mWindow);
     }
 
-    void Game::GLFWResizeCallback(GLFWwindow* window, s32 width, s32 height) {
+    void Game::GLFWResizeCallback(GLFWwindow* window, i32 width, i32 height) {
         auto* game = CAST<Game*>(glfwGetWindowUserPointer(window));
         if (game) {
             game->GetRenderContext().Resize(width, height);
@@ -142,7 +142,7 @@ namespace Nth {
         }
     }
 
-    void Game::GLFWKeyCallback(GLFWwindow* window, s32 key, s32 scancode, s32 action, s32 mods) {
+    void Game::GLFWKeyCallback(GLFWwindow* window, i32 key, i32 scancode, i32 action, i32 mods) {
         N_UNUSED(scancode);
         N_UNUSED(mods);
 
@@ -154,7 +154,7 @@ namespace Nth {
         }
     }
 
-    void Game::GLFWMouseButtonCallback(GLFWwindow* window, s32 button, s32 action, s32 mods) {
+    void Game::GLFWMouseButtonCallback(GLFWwindow* window, i32 button, i32 action, i32 mods) {
         N_UNUSED(mods);
 
         auto* game = CAST<Game*>(glfwGetWindowUserPointer(window));

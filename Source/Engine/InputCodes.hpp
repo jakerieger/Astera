@@ -140,17 +140,17 @@ namespace Nth::Input {
      * @brief Mouse button codes for mouse input
      */
     namespace MouseButtons {
-        static constexpr u16 Button1 = 0;
-        static constexpr u16 Button2 = 1;
-        static constexpr u16 Button3 = 2;
-        static constexpr u16 Button4 = 3;
-        static constexpr u16 Button5 = 4;
-        static constexpr u16 Button6 = 5;
-        static constexpr u16 Button7 = 6;
-        static constexpr u16 Button8 = 7;
-        static constexpr u16 Last    = Button8;
-        static constexpr u16 Left    = Button1;
-        static constexpr u16 Right   = Button2;
-        static constexpr u16 Middle  = Button3;
+        static constexpr u16 ButtonLeft = 0;
+        static constexpr u16 ButtonRight = 1;
+        static constexpr u16 ButtonMiddle = 2;
+        static constexpr u16 Macro4 = 3;
+        static constexpr u16 Macro5 = 4;
+        static constexpr u16 Macro6 = 5;
+        static constexpr u16 Macro7 = 6;
+        static constexpr u16 Macro8 = 7;
+        static constexpr u16 Last    = Macro8;
+        static constexpr u16 Left    = ButtonLeft;
+        static constexpr u16 Right   = ButtonRight;
+        static constexpr u16 Middle  = ButtonMiddle;
     }  // namespace MouseButtons
 }  // namespace N::Input

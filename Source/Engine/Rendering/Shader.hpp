@@ -48,7 +48,7 @@ namespace Nth {
     }
 
     template<>
-    inline void Shader::SetUniform(const char* name, s32 val) {
+    inline void Shader::SetUniform(const char* name, i32 val) {
         const auto location = GLCall(glGetUniformLocation, mProgram, name);
         GLCall(glUniform1i, location, static_cast<int>(val));
     }

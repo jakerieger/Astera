@@ -87,9 +87,9 @@ namespace Nth {
         void Shutdown();
 
         // GLFW callbacks
-        static void GLFWResizeCallback(GLFWwindow* window, s32 width, s32 height);
-        static void GLFWKeyCallback(GLFWwindow* window, s32 key, s32 scancode, s32 action, s32 mods);
-        static void GLFWMouseButtonCallback(GLFWwindow* window, s32 button, s32 action, s32 mods);
+        static void GLFWResizeCallback(GLFWwindow* window, i32 width, i32 height);
+        static void GLFWKeyCallback(GLFWwindow* window, i32 key, i32 scancode, i32 action, i32 mods);
+        static void GLFWMouseButtonCallback(GLFWwindow* window, i32 button, i32 action, i32 mods);
         static void GLFWMouseCursorCallback(GLFWwindow* window, f64 xpos, f64 ypos);
         static void GLFWMouseScrollCallback(GLFWwindow* window, f64 xoffset, f64 yoffset);
 
