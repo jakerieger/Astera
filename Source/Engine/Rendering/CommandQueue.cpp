@@ -3,6 +3,8 @@
 //
 
 #include "CommandQueue.hpp"
+
+#include "Geometry.hpp"
 #include "Log.hpp"
 #include "ShaderManager.hpp"
 #include "Rendering/GLUtils.hpp"
@@ -47,9 +49,23 @@ namespace Nth {
         auto* spriteShader = ShaderManager::GetShader(Shaders::Sprite);
         N_ASSERT(spriteShader);
         spriteShader->Bind();
-        spriteShader->SetUniform<i32>("uSprite", (i32)cmd.textureId);
 
-        Mat4 model = cmd.transform.GetMatrix();
+        // Bind the sprite texture
+        GLCall(glActiveTexture, GL_TEXTURE0);
+        GLCall(glBindTexture, GL_TEXTURE_2D, cmd.textureId);
+        spriteShader->SetUniform<i32>("uSprite", 0);
+
+        // Calculate MVP matrix
+        Mat4 model      = cmd.transform.GetMatrix();
+        Mat4 projection = glm::ortho(0.0f, cmd.screenDimensions.x, cmd.screenDimensions.y, 0.0f, -1.0f, 1.0f);
+        Mat4 mvp        = projection * model;
+        spriteShader->SetUniform<Mat4>("uMVP", mvp);
+
+        // Get or create the quad geometry (cached statically)
+        static auto quadGeometry = Geometry::CreateQuad(1.0f, 1.0f);
+
+        // Draw the sprite
+        quadGeometry->DrawIndexed();
     }
 
     void CommandExecutor::operator()(const SetViewportCommand& cmd) const {

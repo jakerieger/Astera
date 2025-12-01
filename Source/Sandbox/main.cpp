@@ -2,12 +2,12 @@
 // Created: 11/27/25.
 //
 
-#include "ShaderManager.hpp"
-#include "TextureManager.hpp"
-#include "Rendering/Shader.hpp"
-
 #include <Game.hpp>
 #include <InputCodes.hpp>
+#include <ShaderManager.hpp>
+#include <TextureManager.hpp>
+#include <Rendering/Shader.hpp>
+#include <Content.hpp>
 #include <Log.hpp>
 
 namespace Nth {
@@ -22,15 +22,18 @@ namespace Nth {
         }
 
         void OnAwake() override {
-            const auto spriteTex = TextureManager::Load("Content/Sprites/ball.png");
+            const auto spriteTex = TextureManager::Load(Content::GetContentPath("Sprites/ball.png"));
 
             auto& state       = GetActiveScene()->GetState();
             const auto entity = state.CreateEntity();
             auto& sprite      = state.AddComponent<SpriteRenderer>(entity);
             sprite.textureId  = spriteTex;
 
+            auto& transform = state.GetComponent<Transform>(entity);
+            transform.scale = {64, 64};
+
             auto* spriteShader = ShaderManager::GetShader(Shaders::Sprite);
-            N_ASSERT(spriteShader);
+            N_ASSERT(spriteShader);  // Quick check that the shader actually loaded
         }
 
         void OnUpdate(const Clock& clock) override {}

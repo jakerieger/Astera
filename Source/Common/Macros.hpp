@@ -425,3 +425,5 @@
     CLASS_NAME& operator=(CLASS_NAME&&) = delete;
 
 #define N_ND [[nodiscard]]
+
+#define N_DO_NOTHING ((void)0)

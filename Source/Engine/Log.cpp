@@ -16,8 +16,13 @@ namespace Nth {
 
         // Create logger with the sink
         sLogger = std::make_shared<spdlog::logger>("main", consoleSink);
+#ifndef NDEBUG
         sLogger->set_level(spdlog::level::trace);
         sLogger->flush_on(spdlog::level::trace);
+#else
+        sLogger->set_level(spdlog::level::info);
+        sLogger->flush_on(spdlog::level::info);
+#endif
 
         spdlog::register_logger(sLogger);
         spdlog::set_default_logger(sLogger);
@@ -38,4 +43,4 @@ namespace Nth {
         if (!sLogger) { Initialize(); }
         return sLogger;
     }
-}  // namespace N
+}  // namespace Nth

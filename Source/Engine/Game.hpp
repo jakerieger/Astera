@@ -79,6 +79,10 @@ namespace Nth {
             return mActiveScene.get();
         }
 
+        N_ND bool GetVsyncEnabled() const {
+            return mVsync;
+        }
+
     protected:
         void Render();
 
@@ -100,6 +104,7 @@ namespace Nth {
         string mTitle {};
         bool mRunning {false};
         bool mFullscreen {false};
+        bool mVsync {false};
 
         // Internal systems
         Clock mClock;

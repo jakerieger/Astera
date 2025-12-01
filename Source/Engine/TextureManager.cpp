@@ -14,13 +14,13 @@ namespace Nth {
 
     void TextureManager::Initialize() {
         sManager = make_shared<TextureManager>();
-        Log::Info("TextureManager", "Initialized TextureManager");
+        Log::Debug("TextureManager", "Initialized TextureManager");
     }
 
     void TextureManager::Shutdown() {
         if (!sCache.empty()) {
             for (const auto& id : sCache | std::views::values) {
-                Log::Info("TextureManager", "Unloading texture id `{}`", id);
+                Log::Debug("TextureManager", "Unloading texture id `{}`", id);
                 GLCall(glDeleteTextures, 1, &id);
             }
         }
@@ -57,7 +57,7 @@ namespace Nth {
         stbi_image_free(data);
 
         sCache[filename.string()] = id;
-        Log::Info("TextureManager", "Loaded texture `{}` with OpenGL id `{}`", filename.string().c_str(), id);
+        Log::Debug("TextureManager", "Loaded texture `{}` with OpenGL id `{}`", filename.string().c_str(), id);
 
         return id;
     }

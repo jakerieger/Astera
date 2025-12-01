@@ -97,7 +97,8 @@ namespace Nth {
         glfwSetCursorPosCallback(mWindow, GLFWMouseCursorCallback);
         glfwSetScrollCallback(mWindow, GLFWMouseScrollCallback);
 
-        glfwSwapInterval(1);  // Enable V-Sync
+        if (mVsync) glfwSwapInterval(1);
+        else glfwSwapInterval(0);
 
         if (!mRenderContext.Initialize(mWidth, mHeight)) {
             glfwDestroyWindow(mWindow);
@@ -109,7 +110,11 @@ namespace Nth {
         TextureManager::Initialize();
         ShaderManager::Initialize();
 
-        Log::Info("Game", "Successfully initialized game instance");
+        Log::Debug("Game",
+                   "Successfully initialized game instance:\n-- Dimensions: {}x{}\n-- V-Sync: {}",
+                   mWidth,
+                   mHeight,
+                   mVsync ? "On" : "Off");
 
         return true;
     }

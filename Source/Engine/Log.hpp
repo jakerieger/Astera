@@ -46,4 +46,4 @@ namespace Nth {
         static shared_ptr<spdlog::logger> GetLogger();
         static shared_ptr<spdlog::logger> sLogger;
     };
-}  // namespace N
+}  // namespace Nth

@@ -9,7 +9,7 @@
 
 namespace Nth {
     namespace Shaders {
-        inline const string Sprite = "sprite";
+        inline constexpr std::string_view Sprite = "sprite";
     }
 
     class ShaderManager {
@@ -17,7 +17,7 @@ namespace Nth {
         static void Initialize();
         static void Shutdown();
 
-        N_ND static Shader* GetShader(const string& name);
+        N_ND static Shader* GetShader(std::string_view name);
 
     private:
         static unordered_map<string, Shader> sCache;
