@@ -18,7 +18,7 @@ namespace Nth {
         Int2,
         Int3,
         Int4,
-        Bool,
+        Boolean,
     };
 
     /// @brief Describes a single vertex attribute (position, color, texcoord, etc.)
@@ -35,7 +35,7 @@ namespace Nth {
             switch (type) {
                 case AttributeType::Float:
                 case AttributeType::Int:
-                case AttributeType::Bool:
+                case AttributeType::Boolean:
                     return 1;
                 case AttributeType::Float2:
                 case AttributeType::Int2:
@@ -69,7 +69,7 @@ namespace Nth {
                     return sizeof(i32) * 3;
                 case AttributeType::Int4:
                     return sizeof(i32) * 4;
-                case AttributeType::Bool:
+                case AttributeType::Boolean:
                     return sizeof(bool);
             }
             return 0;
@@ -88,7 +88,7 @@ namespace Nth {
                 case AttributeType::Int3:
                 case AttributeType::Int4:
                     return GL_INT;
-                case AttributeType::Bool:
+                case AttributeType::Boolean:
                     return GL_BOOL;
             }
             return 0;
@@ -156,6 +156,8 @@ namespace Nth {
         N_ND GLuint GetID() const {
             return mArrayID;
         }
+
+        void Destroy();
 
     private:
         GLuint mArrayID {0};

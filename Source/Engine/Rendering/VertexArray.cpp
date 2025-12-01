@@ -11,7 +11,7 @@ namespace Nth {
     }
 
     VertexArray::~VertexArray() {
-        if (mArrayID != 0) { GLCall(glDeleteVertexArrays, 1, &mArrayID); }
+        Destroy();
     }
 
     VertexArray::VertexArray(VertexArray&& other) noexcept
@@ -72,5 +72,17 @@ namespace Nth {
 
     void VertexArray::Unbind() {
         GLCall(glBindVertexArray, 0);
+    }
+
+    void VertexArray::Destroy() {
+        for (const auto& vbo : mVertexBuffers) {
+            vbo->Destroy();
+        }
+        mIndexBuffer->Destroy();
+
+        if (mArrayID != 0) {
+            GLCall(glDeleteVertexArrays, 1, &mArrayID);
+            mArrayID = 0;
+        }
     }
 }  // namespace Nth

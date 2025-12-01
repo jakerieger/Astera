@@ -69,6 +69,10 @@ namespace Nth {
     }
 
     bool Game::Initialize() {
+#if defined(N_ENGINE_PLATFORM_LINUX_WAYLAND) || defined(N_ENGINE_PLATFORM_LINUX_X11)
+        glfwInitHint(GLFW_PLATFORM, GLFW_PLATFORM_X11);
+#endif
+
         if (!glfwInit()) {
             Log::Critical("Game", "Failed to initialize GLFW");
             return false;

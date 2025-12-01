@@ -52,20 +52,17 @@ namespace Nth {
 
         // Bind the sprite texture
         GLCall(glActiveTexture, GL_TEXTURE0);
-        GLCall(glBindTexture, GL_TEXTURE_2D, cmd.textureId);
+        GLCall(glBindTexture, GL_TEXTURE_2D, cmd.sprite.textureId);
         spriteShader->SetUniform<i32>("uSprite", 0);
 
         // Calculate MVP matrix
         Mat4 model      = cmd.transform.GetMatrix();
-        Mat4 projection = glm::ortho(0.0f, cmd.screenDimensions.x, cmd.screenDimensions.y, 0.0f, -1.0f, 1.0f);
+        Mat4 projection = glm::ortho(0.0f, cmd.screenDimensions.x, 0.0f, cmd.screenDimensions.y, -1.0f, 1.0f);
         Mat4 mvp        = projection * model;
         spriteShader->SetUniform<Mat4>("uMVP", mvp);
 
-        // Get or create the quad geometry (cached statically)
-        static auto quadGeometry = Geometry::CreateQuad(1.0f, 1.0f);
-
-        // Draw the sprite
-        quadGeometry->DrawIndexed();
+        cmd.sprite.geometry->DrawIndexed();
+        spriteShader->Unbind();
     }
 
     void CommandExecutor::operator()(const SetViewportCommand& cmd) const {

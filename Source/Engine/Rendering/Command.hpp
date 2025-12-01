@@ -7,6 +7,7 @@
 #include <variant>
 
 #include "CommonPCH.hpp"
+#include "Components/SpriteRenderer.hpp"
 #include "Components/Transform.hpp"
 
 namespace Nth {
@@ -19,7 +20,7 @@ namespace Nth {
 
     /// @brief Command to draw a sprite/quad
     struct DrawSpriteCommand {
-        u32 textureId {0};
+        SpriteRenderer sprite;
         Transform transform;
         Vec2 screenDimensions;
         Vec4 tintColor {1.0f, 1.0f, 1.0f, 1.0f};

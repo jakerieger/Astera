@@ -60,6 +60,10 @@ namespace Nth {
         if (mVertexArray) { mVertexArray->Bind(); }
     }
 
+    void Geometry::Destroy() const {
+        mVertexArray->Destroy();
+    }
+
     void Geometry::Unbind() {
         VertexArray::Unbind();
     }

@@ -34,6 +34,8 @@ namespace Nth {
         /// @brief Bind this geometry for rendering
         void Bind() const;
 
+        void Destroy() const;
+
         /// @brief Unbind the currently bound geometry
         static void Unbind();
 

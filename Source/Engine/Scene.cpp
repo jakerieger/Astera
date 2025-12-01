@@ -27,7 +27,7 @@ namespace Nth {
 
         const auto iter = mState.View<Transform, SpriteRenderer>().each();
         for (auto [entity, transform, sprite] : iter) {
-            context.Submit(DrawSpriteCommand {sprite.textureId, transform, {screenWidth, screenHeight}, {1, 1, 1, 1}});
+            context.Submit(DrawSpriteCommand {sprite, transform, {screenWidth, screenHeight}, {1, 1, 1, 1}});
         }
     }
 }  // namespace Nth

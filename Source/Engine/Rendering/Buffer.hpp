@@ -50,11 +50,11 @@ namespace Nth {
             return mSize;
         }
 
+        void Destroy();
+
     protected:
         GLuint mBufferID {0};
         size_t mSize {0};
-
-        void Destroy();
     };
 
     class VertexBuffer final : public IBuffer {

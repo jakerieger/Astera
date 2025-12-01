@@ -5,9 +5,11 @@
 #pragma once
 
 #include "CommonPCH.hpp"
+#include "Rendering/Geometry.hpp"
 
 namespace Nth {
     struct SpriteRenderer {
         u32 textureId;
+        Geometry* geometry;
     };
-}  // namespace N
+}  // namespace Nth
