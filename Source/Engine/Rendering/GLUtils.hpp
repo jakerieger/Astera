@@ -42,15 +42,16 @@ namespace Nth {
 
         while ((error = glGetError()) != GL_NO_ERROR) {
             hasError = true;
-            print("[OpenGL Error] {}\n"
-                  "  Function: {}\n"
-                  "  File: {}:{}\n"
-                  "  In function: {}\n",
-                  GLErrorToString(error),
-                  function_name,
-                  location.file_name(),
-                  location.line(),
-                  location.function_name());
+            auto msg = fmt::format("[OpenGL Error] {}\n"
+                                   "  Function: {}\n"
+                                   "  File: {}:{}\n"
+                                   "  In function: {}\n",
+                                   GLErrorToString(error),
+                                   function_name,
+                                   location.file_name(),
+                                   location.line(),
+                                   location.function_name());
+            fprintf(stderr, "%s\n", msg.c_str());
         }
 
         if (hasError) { throw OpenGLException(); }

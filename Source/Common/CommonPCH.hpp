@@ -4,7 +4,6 @@
 
 #pragma once
 
-#include <print>
 #include <iterator>
 #include <ranges>
 #include <filesystem>
@@ -71,7 +70,6 @@ namespace Nth {
     using std::make_shared;
     using std::make_unique;
     using std::optional;
-    using std::print;
     using std::shared_ptr;
     using std::string;
     using std::unique_ptr;
@@ -92,7 +90,7 @@ namespace Nth {
     class NotImplemented final : public std::exception {
     public:
         explicit NotImplemented(const char* funcName, const char* fileName, i32 line) {
-            mMessage = std::format("\n`{}` is not implemented in {} ({})\n", funcName, fileName, line);
+            mMessage = fmt::format("\n`{}` is not implemented in {} ({})\n", funcName, fileName, line);
         }
 
         [[nodiscard]] const char* what() const noexcept override {
