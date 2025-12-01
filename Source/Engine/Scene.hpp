@@ -17,32 +17,13 @@ namespace Nth {
 
         N_CLASS_PREVENT_MOVES_COPIES(Scene)
 
-        void Awake() {
-            N_UNUSED(this);
-        }
+        /// Lifecycle hooks
+        void Awake();
+        void Update(const Clock& clock);
+        void LateUpdate();
+        void Destroyed();
 
-        void Update(const Clock& clock) {
-            N_UNUSED(clock);
-        }
-
-        void LateUpdate() {
-            N_UNUSED(this);
-        }
-
-        void Destroyed() {
-            N_UNUSED(this);
-        }
-
-        void Render(RenderContext& context) {
-            u32 screenWidth, screenHeight;
-            context.GetViewportDimensions(screenWidth, screenHeight);
-
-            const auto iter = mState.View<Transform, SpriteRenderer>().each();
-            for (auto [entity, transform, sprite] : iter) {
-                context.Submit(
-                  DrawSpriteCommand {sprite.textureId, transform, {screenWidth, screenHeight}, {1, 1, 1, 1}});
-            }
-        }
+        void Render(RenderContext& context);
 
         N_ND SceneState& GetState() {
             return mState;

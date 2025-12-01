@@ -22,7 +22,7 @@ namespace Nth {
         }
 
         void OnAwake() override {
-            const auto spriteTex = TextureManager::Load("/home/jr/Code/NthEngine/Content/Sprites/ball.png");
+            const auto spriteTex = TextureManager::Load("Content/Sprites/ball.png");
 
             auto& state       = GetActiveScene()->GetState();
             const auto entity = state.CreateEntity();

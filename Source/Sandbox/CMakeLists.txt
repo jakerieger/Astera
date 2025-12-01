@@ -13,3 +13,11 @@ target_include_directories(Sandbox PRIVATE
         ../Common
 )
 
+add_custom_target(CMake_CopyContent ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/Content
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Content
+        COMMENT "Copying Content directory to build output"
+)
+
+add_dependencies(Sandbox CMake_CopyContent)

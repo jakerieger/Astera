@@ -16,8 +16,7 @@ namespace Nth {
         // Load internal shaders
         Shader spriteShader;
         // TODO: Obviously remove hard-coded paths in the future, this is fine for early dev
-        spriteShader.FromFile("/home/jr/Code/NthEngine/Source/Shaders/Sprite.vert",
-                              "/home/jr/Code/NthEngine/Source/Shaders/Sprite.frag");
+        spriteShader.FromFile("Content/Shaders/Sprite.vert", "Content/Shaders/Sprite.frag");
         sCache[Shaders::Sprite] = std::move(spriteShader);
     }
 
