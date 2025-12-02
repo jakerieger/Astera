@@ -1,6 +1,6 @@
-// Author: Jake Rieger
-// Created: 11/28/25.
-//
+/// @author Jake Rieger
+/// @created 11/28/25
+///
 
 #pragma once
 
@@ -10,7 +10,7 @@ namespace Nth {
     struct Transform {
         Vec2 position;
         Vec2 rotation;
-        Vec2 scale;
+        Vec2 scale {1, 1};
 
         void Translate(const Vec2& translation) {
             position += translation;

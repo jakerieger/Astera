@@ -1,6 +1,8 @@
 #version 460 core
 layout (location = 0) in vec4 aVertex;
+
 uniform mat4 uMVP;
+
 out vec2 TexCoord;
 
 void main() {

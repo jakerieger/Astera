@@ -1,7 +1,6 @@
-// Author: Jake Rieger
-// Created: 11/30/25.
-//
-
+/// @author Jake Rieger
+/// @created 11/30/25
+///
 #include "Geometry.hpp"
 #include "GLUtils.hpp"
 #include "Log.hpp"
@@ -73,6 +72,7 @@ namespace Nth {
         N_ASSERT(mVertexArray->GetIndexBuffer() != nullptr);
 
         Bind();
+
         const auto indexCount = mVertexArray->GetIndexBuffer()->GetCount();
         GLCall(glDrawElements, GL_TRIANGLES, CAST<GLsizei>(indexCount), GL_UNSIGNED_INT, nullptr);
     }

@@ -1,6 +1,6 @@
-// Author: Jake Rieger
-// Created: 11/27/25.
-//
+/// @author Jake Rieger
+/// @created 11/27/25
+///
 
 #include <Game.hpp>
 #include <InputCodes.hpp>
@@ -28,18 +28,22 @@ namespace Nth {
 
             const auto spriteTex = TextureManager::Load(Content::GetContentPath("Sprites/ball.png"));
 
-            auto& state       = GetActiveScene()->GetState();
-            const auto entity = state.CreateEntity();
-            auto& sprite      = state.AddComponent<SpriteRenderer>(entity);
-            sprite.textureId  = spriteTex;
-            sprite.geometry   = mQuad.get();  // I hate htis but we'll try it for now
+            auto& state      = GetActiveScene()->GetState();
+            mBallEntity      = state.CreateEntity();
+            auto& sprite     = state.AddComponent<SpriteRenderer>(mBallEntity);
+            sprite.textureId = spriteTex;
+            sprite.geometry  = mQuad.get();  // I hate htis but we'll try it for now
 
-            auto& transform    = state.GetComponent<Transform>(entity);
+            auto& transform    = state.GetComponent<Transform>(mBallEntity);
             transform.position = {640, 360};  // Center of screen
             transform.scale    = {64, 64};
         }
 
-        void OnUpdate(const Clock& clock) override {}
+        void OnUpdate(const Clock& clock) override {
+            auto& state     = GetActiveScene()->GetState();
+            auto& transform = state.GetComponent<Transform>(mBallEntity);
+            transform.Translate({0.1, 0});
+        }
 
         void OnLateUpdate() override {}
 
@@ -49,6 +53,7 @@ namespace Nth {
 
     private:
         shared_ptr<Geometry> mQuad;
+        Entity mBallEntity {};
     };
 }  // namespace Nth
 

@@ -1,7 +1,6 @@
-// Author: Jake Rieger
-// Created: 11/29/25.
-//
-
+/// @author Jake Rieger
+/// @created 11/29/25
+///
 #include "ShaderManager.hpp"
 #include "Content.hpp"
 #include "Log.hpp"

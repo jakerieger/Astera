@@ -1,7 +1,6 @@
-// Author: Jake Rieger
-// Created: 11/27/25.
-//
-
+/// @author Jake Rieger
+/// @created 11/27/25
+///
 #include "CommandQueue.hpp"
 
 #include "Geometry.hpp"
@@ -53,13 +52,13 @@ namespace Nth {
         // Bind the sprite texture
         GLCall(glActiveTexture, GL_TEXTURE0);
         GLCall(glBindTexture, GL_TEXTURE_2D, cmd.sprite.textureId);
-        spriteShader->SetUniform<i32>("uSprite", 0);
+        spriteShader->SetUniform("uSprite", 0);
 
         // Calculate MVP matrix
-        Mat4 model      = cmd.transform.GetMatrix();
-        Mat4 projection = glm::ortho(0.0f, cmd.screenDimensions.x, 0.0f, cmd.screenDimensions.y, -1.0f, 1.0f);
-        Mat4 mvp        = projection * model;
-        spriteShader->SetUniform<Mat4>("uMVP", mvp);
+        const Mat4 model      = cmd.transform.GetMatrix();
+        const Mat4 projection = glm::ortho(0.0f, cmd.screenDimensions.x, 0.0f, cmd.screenDimensions.y, -1.0f, 1.0f);
+        const Mat4 mvp        = projection * model;
+        spriteShader->SetUniform("uMVP", mvp);
 
         cmd.sprite.geometry->DrawIndexed();
         spriteShader->Unbind();
