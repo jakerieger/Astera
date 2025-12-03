@@ -42,8 +42,29 @@ namespace Nth {
     }
 
     void Game::ToggleFullscreen() {
-        mFullscreen = !mFullscreen;
-        throw N_NOT_IMPLEMENTED;
+        if (mFullscreen) {
+            glfwSetWindowAttrib(mWindow, GLFW_DECORATED, GLFW_TRUE);
+            glfwSetWindowMonitor(mWindow,
+                                 nullptr,
+                                 mWindowState.windowedPosX,
+                                 mWindowState.windowedPosY,
+                                 mWindowState.previousSizeX,
+                                 mWindowState.previousSizeY,
+                                 GLFW_DONT_CARE);
+            mFullscreen = false;
+        } else {
+            glfwGetWindowPos(mWindow, &mWindowState.windowedPosX, &mWindowState.windowedPosY);
+            glfwGetWindowSize(mWindow, &mWindowState.previousSizeX, &mWindowState.previousSizeY);
+
+            // Get monitor dimensions
+            GLFWmonitor* monitor    = glfwGetPrimaryMonitor();
+            const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+
+            // Switch to borderless fullscreen
+            glfwSetWindowAttrib(mWindow, GLFW_DECORATED, GLFW_FALSE);
+            glfwSetWindowMonitor(mWindow, nullptr, 0, 0, mode->width, mode->height, GLFW_DONT_CARE);
+            mFullscreen = true;
+        }
     }
 
     void Game::SetTitle(const string& title) {
@@ -51,16 +72,15 @@ namespace Nth {
         glfwSetWindowTitle(mWindow, title.c_str());
     }
 
-    void Game::Resize(u32 width, u32 height) {
-        mWidth  = width;
-        mHeight = height;
+    void Game::Resize(u32 width, u32 height) const {
         glfwSetWindowSize(mWindow, (i32)width, (i32)height);
     }
 
     void Game::OnResize(u32 width, u32 height) {
-        N_UNUSED(width);
-        N_UNUSED(height);
-        // TODO: Implement
+        mWindowState.previousSizeX = (i32)mWidth;
+        mWindowState.previousSizeY = (i32)mHeight;
+        mWidth                     = width;
+        mHeight                    = height;
     }
 
     void Game::OnKeyDown(u32 keyCode) {
@@ -133,7 +153,7 @@ namespace Nth {
         mWindow = glfwCreateWindow((i32)mWidth, (i32)mHeight, mTitle.c_str(), nullptr, nullptr);
         if (!mWindow) {
             glfwTerminate();
-            Log::Critical("Game", "Failed to create GLFW window");
+            Log::Critical("Game", "Failed to create GLFW mWindow");
             return false;
         }
 
@@ -211,19 +231,19 @@ namespace Nth {
         mRenderContext.EndFrame(mWindow);
     }
 
-    void Game::GLFWResizeCallback(GLFWwindow* window, i32 width, i32 height) {
-        auto* game = CAST<Game*>(glfwGetWindowUserPointer(window));
+    void Game::GLFWResizeCallback(GLFWwindow* mWindow, i32 width, i32 height) {
+        auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
         if (game) {
             game->GetRenderContext().Resize(width, height);
             game->OnResize(width, height);
         }
     }
 
-    void Game::GLFWKeyCallback(GLFWwindow* window, i32 key, i32 scancode, i32 action, i32 mods) {
+    void Game::GLFWKeyCallback(GLFWwindow* mWindow, i32 key, i32 scancode, i32 action, i32 mods) {
         N_UNUSED(scancode);
         N_UNUSED(mods);
 
-        auto* game = CAST<Game*>(glfwGetWindowUserPointer(window));
+        auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
         if (game) {
             game->OnKey(key);
             if (action == GLFW_PRESS) game->OnKeyDown(key);
@@ -231,10 +251,10 @@ namespace Nth {
         }
     }
 
-    void Game::GLFWMouseButtonCallback(GLFWwindow* window, i32 button, i32 action, i32 mods) {
+    void Game::GLFWMouseButtonCallback(GLFWwindow* mWindow, i32 button, i32 action, i32 mods) {
         N_UNUSED(mods);
 
-        auto* game = CAST<Game*>(glfwGetWindowUserPointer(window));
+        auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
         if (game) {
             game->OnMouseButton(button);
             if (action == GLFW_PRESS) game->OnMouseButtonDown(button);
@@ -242,13 +262,13 @@ namespace Nth {
         }
     }
 
-    void Game::GLFWMouseCursorCallback(GLFWwindow* window, f64 xpos, f64 ypos) {
-        auto* game = CAST<Game*>(glfwGetWindowUserPointer(window));
+    void Game::GLFWMouseCursorCallback(GLFWwindow* mWindow, f64 xpos, f64 ypos) {
+        auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
         if (game) { game->OnMouseMove(xpos, ypos); }
     }
 
-    void Game::GLFWMouseScrollCallback(GLFWwindow* window, f64 xoffset, f64 yoffset) {
-        auto* game = CAST<Game*>(glfwGetWindowUserPointer(window));
+    void Game::GLFWMouseScrollCallback(GLFWwindow* mWindow, f64 xoffset, f64 yoffset) {
+        auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
         if (game) { game->OnMouseScroll(xoffset, yoffset); }
     }
 }  // namespace Nth

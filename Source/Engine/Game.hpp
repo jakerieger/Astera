@@ -32,7 +32,7 @@ namespace Nth {
         void ToggleFullscreen();
 
         void SetTitle(const string& title);
-        void Resize(u32 width, u32 height);
+        void Resize(u32 width, u32 height) const;
 
         // Window callbacks
         virtual void OnResize(u32 width, u32 height);
@@ -124,5 +124,14 @@ namespace Nth {
 
         // Client systems
         unique_ptr<Scene> mActiveScene;
+
+        struct WindowState {
+            i32 windowedPosX {100};
+            i32 windowedPosY {100};
+            i32 previousSizeX {};
+            i32 previousSizeY {};
+        };
+
+        WindowState mWindowState;
     };
 }  // namespace Nth
