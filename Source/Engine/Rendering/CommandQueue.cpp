@@ -46,7 +46,7 @@ namespace Nth {
     }
 
     void CommandExecutor::operator()(const DrawSpriteCommand& cmd) const {
-        auto* spriteShader = ShaderManager::GetShader(Shaders::Sprite);
+        auto spriteShader = ShaderManager::GetShader(Shaders::Sprite);
         N_ASSERT(spriteShader);
         spriteShader->Bind();
 

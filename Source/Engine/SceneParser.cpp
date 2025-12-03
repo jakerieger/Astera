@@ -1,6 +1,6 @@
-// Author: Jake Rieger
-// Created: 12/2/25.
-//
+/// @author Jake Rieger
+/// @created 12/2/25
+///
 
 #include "SceneParser.hpp"
 
@@ -90,12 +90,13 @@ namespace Nth {
             if (entity.spriteRenderer.has_value()) {
                 auto& [textureId, geometry] = outState.AddComponent<SpriteRenderer>(newEntity);
                 geometry                    = Geometry::CreateQuad();
-                textureId = TextureManager::Load(Content::GetContentPath(entity.spriteRenderer->texture));
+                textureId = TextureManager::Load(Content<ContentType::Sprite>::Get(entity.spriteRenderer->texture));
             }
 
             if (entity.behavior.has_value()) {
                 // Load script
-                const auto scriptSource = IO::ReadString(Content::GetContentPath(entity.behavior->script));
+                const auto scriptPath   = Content<ContentType::Script>::Get(entity.behavior->script);
+                const auto scriptSource = IO::ReadString(scriptPath);
                 scriptEngine.LoadScript(scriptSource, entity.behavior->id);
 
                 auto& [id, script] = outState.AddComponent<Behavior>(newEntity);

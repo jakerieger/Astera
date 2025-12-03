@@ -6,6 +6,7 @@
 #include "TextureManager.hpp"
 #include "ShaderManager.hpp"
 #include "ScriptTypeRegistry.hpp"
+#include "Input.hpp"
 
 namespace Nth {
     using Nth::Log;
@@ -16,6 +17,7 @@ namespace Nth {
         OnAwake();
         {
             // Main loop
+            // ReSharper disable once CppDFAConstantConditions
             while (mRunning && !glfwWindowShouldClose(mWindow)) {
                 mClock.Tick();
                 OnUpdate(mClock);
@@ -50,6 +52,45 @@ namespace Nth {
         mWidth  = width;
         mHeight = height;
         glfwSetWindowSize(mWindow, (i32)width, (i32)height);
+    }
+
+    void Game::OnResize(u32 width, u32 height) {
+        N_UNUSED(width);
+        N_UNUSED(height);
+        // TODO: Implement
+    }
+
+    void Game::OnKeyDown(u32 keyCode) {
+        mInputManager.UpdateKeyState(keyCode, true);
+    }
+
+    void Game::OnKeyUp(u32 keyCode) {
+        mInputManager.UpdateKeyState(keyCode, false);
+    }
+
+    void Game::OnKey(u32 keyCode) {}
+
+    void Game::OnMouseButtonDown(u32 button) {
+        mInputManager.UpdateMouseButtonState(button, true);
+    }
+
+    void Game::OnMouseButtonUp(u32 button) {
+        mInputManager.UpdateMouseButtonState(button, false);
+    }
+
+    void Game::OnMouseButton(u32 button) {
+        N_UNUSED(button);
+        // TODO: Implement
+    }
+
+    void Game::OnMouseMove(f64 dX, f64 dY) {
+        mInputManager.UpdateMousePosition(dX, dY);
+    }
+
+    void Game::OnMouseScroll(f64 dX, f64 dY) {
+        N_UNUSED(dX);
+        N_UNUSED(dY);
+        // TODO: Implement
     }
 
     void Game::OnAwake() {
@@ -114,9 +155,7 @@ namespace Nth {
 
         TextureManager::Initialize();
         ShaderManager::Initialize();
-        mScriptEngine.Initialize();
-        N_ASSERT(mScriptEngine.IsInitialized());
-        mScriptEngine.RegisterTypes<BehaviorEntity, Vec2, Clock, Transform>();
+        InitializeScriptEngine();
 
         Log::Debug("Game",
                    "Successfully initialized game instance:\n-- Dimensions: {}x{}\n-- V-Sync: {}",
@@ -136,6 +175,22 @@ namespace Nth {
         glfwTerminate();
 
         Log::Shutdown();
+    }
+
+    bool Game::InitializeScriptEngine() {
+        mScriptEngine.Initialize();
+        if (!mScriptEngine.IsInitialized()) return false;
+
+        // Register globals
+        auto& lua                   = mScriptEngine.GetLuaState();
+        auto gameGlobal             = lua.new_usertype<Game>("Game");
+        gameGlobal["Quit"]          = &Game::Quit;
+        gameGlobal["GetScreenSize"] = [this]() -> Vec2 { return {mWidth, mHeight}; };
+        mInputManager.RegisterLuaGlobals(lua);
+
+        mScriptEngine.RegisterTypes<BehaviorEntity, Vec2, Clock, Transform>();
+
+        return true;
     }
 
     void Game::Render() {

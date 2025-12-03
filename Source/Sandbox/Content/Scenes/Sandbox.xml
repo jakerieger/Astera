@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Scene name="Sandbox">
+    <Entities>
+        <Entity id="0" name="Ball">
+            <Components>
+                <Transform>
+                    <Position x="640" y="360"/>
+                    <Rotation x="0" y="0"/>
+                    <Scale x="64" y="64"/>
+                </Transform>
+                <SpriteRenderer>
+                    <Texture>ball.png</Texture>
+                </SpriteRenderer>
+                <Behavior>
+                    <!-- TODO: Support multiple scripts per entity -->
+                    <Script id="0">BallController.lua</Script>
+                </Behavior>
+            </Components>
+        </Entity>
+    </Entities>
+</Scene>

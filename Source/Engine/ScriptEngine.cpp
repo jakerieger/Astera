@@ -1,6 +1,6 @@
-// Author: Jake Rieger
-// Created: 12/2/25.
-//
+/// @author Jake Rieger
+/// @created 12/2/25
+///
 
 #include "ScriptEngine.hpp"
 #include "Log.hpp"

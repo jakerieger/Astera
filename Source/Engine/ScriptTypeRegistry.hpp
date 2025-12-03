@@ -1,6 +1,6 @@
-// Author: Jake Rieger
-// Created: 12/2/2025.
-//
+/// @author Jake Rieger
+/// @created 12/2/2025
+///
 
 #pragma once
 
@@ -62,4 +62,5 @@ namespace Nth {
             usertype["Scale"]     = &Transform::Scale;
         }
     };
+
 }  // namespace Nth

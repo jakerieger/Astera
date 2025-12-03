@@ -22,7 +22,9 @@ namespace Nth {
         return *this;
     }
 
-    void Shader::FromFile(const fs::path& vertexFile, const fs::path& fragFile) {
+    shared_ptr<Shader> Shader::FromFile(const fs::path& vertexFile, const fs::path& fragFile) {
+        auto shader = make_shared<Shader>();
+
         N_ASSERT(fs::exists(vertexFile) && fs::exists(fragFile));
 
         const string vertexSource = IO::ReadString(vertexFile);
@@ -31,7 +33,9 @@ namespace Nth {
         N_ASSERT(!vertexSource.empty());
         N_ASSERT(!fragSource.empty());
 
-        CompileShaders(vertexSource.c_str(), fragSource.c_str());
+        shader->CompileShaders(vertexSource.c_str(), fragSource.c_str());
+
+        return shader;
     }
 
     void Shader::FromMemory(const char* vertexSource, const char* fragSource) {

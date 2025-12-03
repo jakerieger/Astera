@@ -17,10 +17,10 @@ namespace Nth {
         static void Initialize();
         static void Shutdown();
 
-        N_ND static Shader* GetShader(std::string_view name);
+        N_ND static shared_ptr<Shader> GetShader(std::string_view name);
 
     private:
-        static unordered_map<string, Shader> sCache;
+        static unordered_map<string, shared_ptr<Shader>> sCache;
         static shared_ptr<ShaderManager> sManager;
         static shared_ptr<ShaderManager> GetManager();
     };

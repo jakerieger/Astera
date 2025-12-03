@@ -22,7 +22,7 @@ namespace Nth {
         Shader(Shader&& other) noexcept;
         Shader& operator=(Shader&& other) noexcept;
 
-        void FromFile(const fs::path& vertexFile, const fs::path& fragFile);
+        static shared_ptr<Shader> FromFile(const fs::path& vertexFile, const fs::path& fragFile);
         void FromMemory(const char* vertexSource, const char* fragSource);
 
         void Bind();

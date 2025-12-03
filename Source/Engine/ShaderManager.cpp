@@ -6,34 +6,33 @@
 #include "Log.hpp"
 
 namespace Nth {
-    unordered_map<string, Shader> ShaderManager::sCache;
+    unordered_map<string, shared_ptr<Shader>> ShaderManager::sCache;
     shared_ptr<ShaderManager> ShaderManager::sManager;
 
     void ShaderManager::Initialize() {
         sManager = make_shared<ShaderManager>();
 
         // Load internal shaders
-        Shader spriteShader;
-        spriteShader.FromFile(Content::GetContentPath("Shaders/Sprite.vert"),
-                              Content::GetContentPath("Shaders/Sprite.frag"));
-        sCache.insert_or_assign(Shaders::Sprite.data(), std::move(spriteShader));
+        const auto vertShader          = Content<ContentType::Shader, true>::Get("Sprite.vert");
+        const auto fragShader          = Content<ContentType::Shader, true>::Get("Sprite.frag");
+        sCache[Shaders::Sprite.data()] = Shader::FromFile(vertShader, fragShader);
 
         Log::Debug("ShaderManager", "Loaded engine shaders");
     }
 
     void ShaderManager::Shutdown() {
         for (auto [name, shader] : sCache) {
-            shader.Destroy();
+            shader.reset();
             Log::Debug("ShaderManager", "Destroyed shader `{}`", name);
         }
         sCache.clear();
         sManager.reset();
     }
 
-    Shader* ShaderManager::GetShader(std::string_view name) {
+    shared_ptr<Shader> ShaderManager::GetShader(std::string_view name) {
         const auto iter = sCache.find(name.data());
         if (iter != sCache.end()) {
-            return &iter->second;
+            return iter->second;
         } else {
             Log::Error("ShaderManager", "Could not find shader `{}` in cache", name);
             return nullptr;

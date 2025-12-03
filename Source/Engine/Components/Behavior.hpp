@@ -1,6 +1,6 @@
-// Author: Jake Rieger
-// Created: 12/2/2025.
-//
+/// @author Jake Rieger
+/// @created 12/2/2025
+///
 
 #pragma once
 

@@ -1,5 +1,3 @@
-project(NthEngine)
-
 function(GenerateDocs)
     execute_process(
             COMMAND doxygen ${CMAKE_SOURCE_DIR}/Doxyfile
@@ -15,3 +13,5 @@ function(GenerateDocs)
         message("-- Generated documentation: ${DOXYGEN_OUTPUT}")
     endif ()
 endfunction()
+
+GenerateDocs()

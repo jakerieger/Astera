@@ -1,4 +1,5 @@
 var namespaces_dup =
 [
-    [ "Nth", "namespace_nth.html", "namespace_nth" ]
+    [ "Nth", "namespace_nth.html", "namespace_nth" ],
+    [ "sol", "namespacesol.html", null ]
 ];

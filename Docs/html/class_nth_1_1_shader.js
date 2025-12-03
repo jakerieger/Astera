@@ -5,7 +5,6 @@ var class_nth_1_1_shader =
     [ "Shader", "class_nth_1_1_shader.html#a2990f1d7e2333b397a4909e5258981dd", null ],
     [ "Shader", "class_nth_1_1_shader.html#a52deafcccc648992ec445932eaf89718", null ],
     [ "Bind", "class_nth_1_1_shader.html#a23d681f7b0ace11809bb8c1842c571a2", null ],
-    [ "FromFile", "class_nth_1_1_shader.html#a46ed8f9f72003336d5e0ef7dbddac432", null ],
     [ "FromMemory", "class_nth_1_1_shader.html#a38f6261b8d666489d09bf9223978181f", null ],
     [ "GetProgramID", "class_nth_1_1_shader.html#a8dddf3b4c4700a7d843740e1a0bf91c7", null ],
     [ "operator=", "class_nth_1_1_shader.html#a84b0775cd2e3ea907099f7163f95c3ce", null ],

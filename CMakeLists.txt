@@ -18,11 +18,11 @@ add_subdirectory(Source/Engine)
 add_subdirectory(Source/Sandbox)
 add_subdirectory(Source/Tools)
 
-# Generate documentation
-include(CMake/GenerateDocs.cmake)
-
-option(NTH_ENGINE_BUILD_DOCS "" ON)
-
-if (NTH_ENGINE_BUILD_DOCS)
-    GenerateDocs()
-endif ()
+# Generate documentation target
+add_custom_target(CMake_GenerateDocs
+        COMMAND ${CMAKE_COMMAND}
+        -D "FUNCTION_TO_RUN=GenerateDocs"
+        -P "${CMAKE_SOURCE_DIR}/CMake/GenerateDocs.cmake"
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Run doxygen and build docs"
+)

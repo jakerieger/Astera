@@ -10,6 +10,7 @@ var hierarchy =
     [ "Nth::Clock", "class_nth_1_1_clock.html", null ],
     [ "Nth::CommandExecutor", "class_nth_1_1_command_executor.html", null ],
     [ "Nth::CommandQueue", "class_nth_1_1_command_queue.html", null ],
+    [ "Nth::Content< type, engine >", "class_nth_1_1_content.html", null ],
     [ "Nth::DrawSpriteCommand", "struct_nth_1_1_draw_sprite_command.html", null ],
     [ "Nth::EntityDescriptor", "struct_nth_1_1_entity_descriptor.html", null ],
     [ "Nth::Game", "class_nth_1_1_game.html", null ],
@@ -18,6 +19,7 @@ var hierarchy =
       [ "Nth::IndexBuffer", "class_nth_1_1_index_buffer.html", null ],
       [ "Nth::VertexBuffer", "class_nth_1_1_vertex_buffer.html", null ]
     ] ],
+    [ "Nth::Input::InputManager", "class_nth_1_1_input_1_1_input_manager.html", null ],
     [ "Nth::Log", "class_nth_1_1_log.html", null ],
     [ "Nth::LuaRegisterable", "struct_nth_1_1_lua_registerable.html", [
       [ "Nth::LuaRegistry< T >", "struct_nth_1_1_lua_registry.html", null ]

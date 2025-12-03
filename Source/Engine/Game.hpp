@@ -6,6 +6,7 @@
 
 #include "CommonPCH.hpp"
 #include "Clock.hpp"
+#include "Input.hpp"
 #include "Scene.hpp"
 #include "ScriptEngine.hpp"
 #include "Rendering/RenderContext.hpp"
@@ -34,15 +35,15 @@ namespace Nth {
         void Resize(u32 width, u32 height);
 
         // Window callbacks
-        virtual void OnResize(u32 width, u32 height) {}
-        virtual void OnKeyDown(u32 keyCode) {}
-        virtual void OnKeyUp(u32 keyCode) {}
-        virtual void OnKey(u32 keyCode) {}
-        virtual void OnMouseButtonDown(u32 button) {}
-        virtual void OnMouseButtonUp(u32 button) {}
-        virtual void OnMouseButton(u32 button) {}
-        virtual void OnMouseMove(f64 dX, f64 dY) {}
-        virtual void OnMouseScroll(f64 dX, f64 dY) {}
+        virtual void OnResize(u32 width, u32 height);
+        virtual void OnKeyDown(u32 keyCode);
+        virtual void OnKeyUp(u32 keyCode);
+        virtual void OnKey(u32 keyCode);
+        virtual void OnMouseButtonDown(u32 button);
+        virtual void OnMouseButtonUp(u32 button);
+        virtual void OnMouseButton(u32 button);
+        virtual void OnMouseMove(f64 dX, f64 dY);
+        virtual void OnMouseScroll(f64 dX, f64 dY);
 
         // Lifecycle hooks
         virtual void OnAwake();
@@ -102,6 +103,8 @@ namespace Nth {
         bool Initialize();
         void Shutdown();
 
+        bool InitializeScriptEngine();
+
         // GLFW callbacks
         static void GLFWResizeCallback(GLFWwindow* window, i32 width, i32 height);
         static void GLFWKeyCallback(GLFWwindow* window, i32 key, i32 scancode, i32 action, i32 mods);
@@ -117,6 +120,7 @@ namespace Nth {
         Clock mClock;
         RenderContext mRenderContext;
         ScriptEngine mScriptEngine;
+        Input::InputManager mInputManager;
 
         // Client systems
         unique_ptr<Scene> mActiveScene;

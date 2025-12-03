@@ -18,12 +18,14 @@ namespace Nth {
         SandboxGame() : Game("Sandbox", 1280, 720) {}
 
         void OnKeyDown(u32 keyCode) override {
+            Game::OnKeyDown(keyCode);
+
             if (keyCode == Input::Keys::Escape) { Quit(); }
             if (keyCode == Input::Keys::F11) { ToggleFullscreen(); }
         }
 
         void OnAwake() override {
-            GetActiveScene()->Load(Content::GetContentPath("Scenes/Sandbox.xml"), GetScriptEngine());
+            GetActiveScene()->Load(Content<ContentType::Scene>::Get("Sandbox.xml"), GetScriptEngine());
             Game::OnAwake();
         }
 
@@ -39,7 +41,9 @@ namespace Nth {
             Game::OnDestroyed();
         }
 
-        void OnResize(u32 width, u32 height) override {}
+        void OnResize(u32 width, u32 height) override {
+            Game::OnResize(width, height);
+        }
     };
 }  // namespace Nth
 

@@ -13,11 +13,20 @@ target_include_directories(Sandbox PRIVATE
         ../Common
 )
 
-add_custom_target(CMake_CopyContent ALL
+add_custom_target(CMake_CopySandboxContent ALL
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/Content
+        ${CMAKE_SOURCE_DIR}/Source/Sandbox/Content
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Content
-        COMMENT "Copying Content directory to build output"
+        COMMENT "Copying Sandbox content directory to build output"
 )
 
-add_dependencies(Sandbox CMake_CopyContent)
+add_custom_target(CMake_CopyEngineContent ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/EngineContent
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Content/EngineContent
+        COMMENT "Copying Engine content directory to build output"
+)
+
+# The final hierarchy should be GamePath/Content/EngineContent
+add_dependencies(CMake_CopyEngineContent CMake_CopySandboxContent)
+add_dependencies(Sandbox CMake_CopyEngineContent)

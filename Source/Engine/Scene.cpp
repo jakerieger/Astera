@@ -43,7 +43,7 @@ namespace Nth {
     }
 
     void Scene::Render(RenderContext& context) {
-        u32 screenWidth, screenHeight;
+        u32 screenWidth = 0, screenHeight = 0;
         context.GetViewportDimensions(screenWidth, screenHeight);
 
         const auto iter = mState.View<Transform, SpriteRenderer>().each();

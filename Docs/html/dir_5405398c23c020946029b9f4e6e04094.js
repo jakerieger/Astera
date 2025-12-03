@@ -8,6 +8,8 @@ var dir_5405398c23c020946029b9f4e6e04094 =
     [ "Coordinates.hpp", "_coordinates_8hpp.html", null ],
     [ "Game.cpp", "_game_8cpp.html", null ],
     [ "Game.hpp", "_game_8hpp.html", "_game_8hpp" ],
+    [ "Input.cpp", "_input_8cpp.html", null ],
+    [ "Input.hpp", "_input_8hpp.html", "_input_8hpp" ],
     [ "InputCodes.hpp", "_input_codes_8hpp.html", null ],
     [ "Log.cpp", "_log_8cpp.html", null ],
     [ "Log.hpp", "_log_8hpp.html", "_log_8hpp" ],

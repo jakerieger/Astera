@@ -1,9 +1,5 @@
 var namespace_nth =
 [
-    [ "Content", "namespace_nth_1_1_content.html", [
-      [ "GetContentPath", "namespace_nth_1_1_content.html#ac7e709ffd8298219b434ad88aab50619", null ],
-      [ "ContentRoot", "namespace_nth_1_1_content.html#aaf4319860ebba0000f5486b793764e29", null ]
-    ] ],
     [ "Coordinates", "namespace_nth_1_1_coordinates.html", null ],
     [ "Input", "namespace_nth_1_1_input.html", "namespace_nth_1_1_input" ],
     [ "Shaders", "namespace_nth_1_1_shaders.html", [
@@ -19,6 +15,7 @@ var namespace_nth =
     [ "Clock", "class_nth_1_1_clock.html", "class_nth_1_1_clock" ],
     [ "CommandExecutor", "class_nth_1_1_command_executor.html", "class_nth_1_1_command_executor" ],
     [ "CommandQueue", "class_nth_1_1_command_queue.html", "class_nth_1_1_command_queue" ],
+    [ "Content", "class_nth_1_1_content.html", null ],
     [ "DrawSpriteCommand", "struct_nth_1_1_draw_sprite_command.html", "struct_nth_1_1_draw_sprite_command" ],
     [ "EntityDescriptor", "struct_nth_1_1_entity_descriptor.html", "struct_nth_1_1_entity_descriptor" ],
     [ "Game", "class_nth_1_1_game.html", "class_nth_1_1_game" ],
@@ -75,6 +72,13 @@ var namespace_nth =
       [ "Static", "namespace_nth.html#a35e71e18ce939b8fa75ed8cad5cc3f78a84a8921b25f505d0d2077aeb5db4bc16", null ],
       [ "Dynamic", "namespace_nth.html#a35e71e18ce939b8fa75ed8cad5cc3f78a971fd8cc345d8bd9f92e9f7d88fdf20c", null ],
       [ "Stream", "namespace_nth.html#a35e71e18ce939b8fa75ed8cad5cc3f78aeae835e83c0494a376229f254f7d3392", null ]
+    ] ],
+    [ "ContentType", "namespace_nth.html#a3eef24a1a7b14ac53c550acee0b26b02", [
+      [ "Audio", "namespace_nth.html#a3eef24a1a7b14ac53c550acee0b26b02ab22f0418e8ac915eb66f829d262d14a2", null ],
+      [ "Scene", "namespace_nth.html#a3eef24a1a7b14ac53c550acee0b26b02a9ead0d38e06ec253ca0ecbf6ea56e59b", null ],
+      [ "Script", "namespace_nth.html#a3eef24a1a7b14ac53c550acee0b26b02af907e651164789346ae0a1e257c462d8", null ],
+      [ "Shader", "namespace_nth.html#a3eef24a1a7b14ac53c550acee0b26b02aa88a92f4a0e793589f2341851a15c660", null ],
+      [ "Sprite", "namespace_nth.html#a3eef24a1a7b14ac53c550acee0b26b02a51f2b7b14433aa22c67d1f4fc18943cd", null ]
     ] ],
     [ "ScriptType", "namespace_nth.html#ad8c8fe69843802e0bc4be08dbc7f96da", [
       [ "Behavior", "namespace_nth.html#ad8c8fe69843802e0bc4be08dbc7f96daab39a035a995fc6597c8eb942210d1527", null ],

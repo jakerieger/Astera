@@ -111,8 +111,6 @@ $(function(){initNavTree('namespace_nth.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_nth_1_1_content.html">Content</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_nth_1_1_coordinates.html">Coordinates</a></td></tr>
 <tr class="memdesc:namespace_nth_1_1_coordinates"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility functions for converting from screen space to NDC (Normalized Device <a class="el" href="namespace_nth_1_1_coordinates.html" title="Utility functions for converting from screen space to NDC (Normalized Device Coordinates)">Coordinates</a>) <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,6 +144,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_command_queue.html">CommandQueue</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command queue for batching and executing rendering commands.  <a href="class_nth_1_1_command_queue.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_content.html">Content</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_nth_1_1_draw_sprite_command.html">DrawSpriteCommand</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command to draw a sprite/quad.  <a href="struct_nth_1_1_draw_sprite_command.html#details">More...</a><br /></td></tr>
@@ -252,6 +252,16 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:a3eef24a1a7b14ac53c550acee0b26b02" id="r_a3eef24a1a7b14ac53c550acee0b26b02"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3eef24a1a7b14ac53c550acee0b26b02">ContentType</a> { <br />
+&#160;&#160;<a class="el" href="#a3eef24a1a7b14ac53c550acee0b26b02ab22f0418e8ac915eb66f829d262d14a2">Audio</a>
+, <a class="el" href="#a3eef24a1a7b14ac53c550acee0b26b02a9ead0d38e06ec253ca0ecbf6ea56e59b">Scene</a>
+, <a class="el" href="#a3eef24a1a7b14ac53c550acee0b26b02af907e651164789346ae0a1e257c462d8">Script</a>
+, <a class="el" href="#a3eef24a1a7b14ac53c550acee0b26b02aa88a92f4a0e793589f2341851a15c660">Shader</a>
+, <br />
+&#160;&#160;<a class="el" href="#a3eef24a1a7b14ac53c550acee0b26b02a51f2b7b14433aa22c67d1f4fc18943cd">Sprite</a>
+<br />
+ }</td></tr>
+<tr class="separator:a3eef24a1a7b14ac53c550acee0b26b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35e71e18ce939b8fa75ed8cad5cc3f78" id="r_a35e71e18ce939b8fa75ed8cad5cc3f78"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35e71e18ce939b8fa75ed8cad5cc3f78">BufferUsage</a> { <a class="el" href="#a35e71e18ce939b8fa75ed8cad5cc3f78a84a8921b25f505d0d2077aeb5db4bc16">Static</a> = GL_STATIC_DRAW
 , <a class="el" href="#a35e71e18ce939b8fa75ed8cad5cc3f78a971fd8cc345d8bd9f92e9f7d88fdf20c">Dynamic</a> = GL_DYNAMIC_DRAW
 , <a class="el" href="#a35e71e18ce939b8fa75ed8cad5cc3f78aeae835e83c0494a376229f254f7d3392">Stream</a> = GL_STREAM_DRAW
@@ -296,13 +306,17 @@ requires (!std::is_void_v&lt;std::invoke_result_t&lt;Func, Args...&gt;&gt;)</td>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jake Rieger @created 11/27/25</dd>
 <dd>
+Jake Rieger @created 12/2/2025</dd>
+<dd>
 Jake Rieger @created 11/29/25</dd>
 <dd>
 Jake Rieger @created 11/28/25</dd>
 <dd>
+Jake Rieger @created 11/30/25</dd>
+<dd>
 Jake Rieger @created 12/1/25</dd>
 <dd>
-Jake Rieger @created 11/30/25 </dd></dl>
+Jake Rieger @created 12/2/25 </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="aa65d4979054658c810ffdf84a478c07b" name="aa65d4979054658c810ffdf84a478c07b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa65d4979054658c810ffdf84a478c07b">&#9670;&#160;</a></span>Entity</h2>
@@ -438,6 +452,37 @@ Jake Rieger @created 11/30/25 </dd></dl>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="_buffer_8hpp_source.html#l00010">10</a> of file <a class="el" href="_buffer_8hpp_source.html">Buffer.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3eef24a1a7b14ac53c550acee0b26b02" name="a3eef24a1a7b14ac53c550acee0b26b02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eef24a1a7b14ac53c550acee0b26b02">&#9670;&#160;</a></span>ContentType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a3eef24a1a7b14ac53c550acee0b26b02">Nth::ContentType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3eef24a1a7b14ac53c550acee0b26b02ab22f0418e8ac915eb66f829d262d14a2" name="a3eef24a1a7b14ac53c550acee0b26b02ab22f0418e8ac915eb66f829d262d14a2"></a>Audio&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3eef24a1a7b14ac53c550acee0b26b02a9ead0d38e06ec253ca0ecbf6ea56e59b" name="a3eef24a1a7b14ac53c550acee0b26b02a9ead0d38e06ec253ca0ecbf6ea56e59b"></a>Scene&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3eef24a1a7b14ac53c550acee0b26b02af907e651164789346ae0a1e257c462d8" name="a3eef24a1a7b14ac53c550acee0b26b02af907e651164789346ae0a1e257c462d8"></a>Script&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3eef24a1a7b14ac53c550acee0b26b02aa88a92f4a0e793589f2341851a15c660" name="a3eef24a1a7b14ac53c550acee0b26b02aa88a92f4a0e793589f2341851a15c660"></a>Shader&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3eef24a1a7b14ac53c550acee0b26b02a51f2b7b14433aa22c67d1f4fc18943cd" name="a3eef24a1a7b14ac53c550acee0b26b02a51f2b7b14433aa22c67d1f4fc18943cd"></a>Sprite&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="_content_8hpp_source.html#l00010">10</a> of file <a class="el" href="_content_8hpp_source.html">Content.hpp</a>.</p>
 
 </div>
 </div>
