@@ -6,13 +6,15 @@
 
 #include "CommonPCH.hpp"
 
+#include <sol/sol.hpp>
+
 // Naming conflicts from minwindef.h
 #ifdef near
-#undef near
+    #undef near
 #endif
 
 #ifdef far
-#undef far
+    #undef far
 #endif
 
 /// @brief Utility functions for converting from screen space to NDC (Normalized Device Coordinates)
@@ -176,5 +178,75 @@ namespace Nth::Coordinates {
             // Mouse Y is down, but our world Y is up, so flip it
             return {mousePos.x, screenHeight - mousePos.y};
         }
+    }
+
+    inline static void RegisterLuaGlobals(sol::state& lua) {
+        lua["Coordinates"] = lua.create_table();
+        auto coords        = lua["Coordinates"];
+
+        coords["ScreenToNDC"] = [](sol::object, const Vec2& screenPos, f32 screenWidth, f32 screenHeight) {
+            return ScreenToNDC(screenPos, screenWidth, screenHeight);
+        };
+
+        coords["NDCToScreen"] = [](sol::object, const Vec2& ndcPos, f32 screenWidth, f32 screenHeight) {
+            return NDCToScreen(ndcPos, screenWidth, screenHeight);
+        };
+
+        coords["ScreenToWorld"] = [](sol::object,
+                                     const Vec2& screenPos,
+                                     f32 screenWidth,
+                                     f32 screenHeight,
+                                     f32 worldLeft   = 0.0f,
+                                     f32 worldRight  = 0.0f,
+                                     f32 worldBottom = 0.0f,
+                                     f32 worldTop    = 0.0f) {
+            return ScreenToWorld(screenPos, screenWidth, screenHeight, worldLeft, worldRight, worldBottom, worldTop);
+        };
+
+        coords["WorldToScreen"] = [](sol::object,
+                                     const Vec2& worldPos,
+                                     f32 screenWidth,
+                                     f32 screenHeight,
+                                     f32 worldLeft   = 0.0f,
+                                     f32 worldRight  = 0.0f,
+                                     f32 worldBottom = 0.0f,
+                                     f32 worldTop    = 0.0f) {
+            return WorldToScreen(worldPos, screenWidth, screenHeight, worldLeft, worldRight, worldBottom, worldTop);
+        };
+
+        coords["NormalizedToScreen"] = [](sol::object, const Vec2& normalizedPos, f32 screenWidth, f32 screenHeight) {
+            return NormalizedToScreen(normalizedPos, screenWidth, screenHeight);
+        };
+
+        coords["ScreenToNormalized"] = [](sol::object, const Vec2& screenPos, f32 screenWidth, f32 screenHeight) {
+            return ScreenToNormalized(screenPos, screenWidth, screenHeight);
+        };
+
+        coords["CreateOrthoProjection"] =
+          [](sol::object, f32 left, f32 right, f32 bottom, f32 top, f32 near = -1.0f, f32 far = 1.0f) {
+              return CreateOrthoProjection(left, right, bottom, top, near, far);
+          };
+
+        coords["CreateScreenProjection"] =
+          [](sol::object, f32 screenWidth, f32 screenHeight, bool originTopLeft = false) {
+              return CreateScreenProjection(screenWidth, screenHeight, originTopLeft);
+          };
+
+        coords["GetAspectRatio"] = [](sol::object, f32 screenWidth, f32 screenHeight) {
+            return GetAspectRatio(screenWidth, screenHeight);
+        };
+
+        coords["ClampToScreen"] = [](sol::object, const Vec2& pos, f32 screenWidth, f32 screenHeight) {
+            return ClampToScreen(pos, screenWidth, screenHeight);
+        };
+
+        coords["IsOnScreen"] = [](sol::object, const Vec2& pos, f32 screenWidth, f32 screenHeight) {
+            return IsOnScreen(pos, screenWidth, screenHeight);
+        };
+
+        coords["MouseToWorld"] =
+          [](sol::object, const Vec2& mousePos, f32 screenWidth, f32 screenHeight, bool originTopLeft = false) {
+              return MouseToWorld(mousePos, screenWidth, screenHeight, originTopLeft);
+          };
     }
 }  // namespace Nth::Coordinates

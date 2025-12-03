@@ -2,11 +2,14 @@
 /// @created 11/27/25
 ///
 #include "Game.hpp"
+
+#include "Coordinates.hpp"
 #include "Log.hpp"
 #include "TextureManager.hpp"
 #include "ShaderManager.hpp"
 #include "ScriptTypeRegistry.hpp"
 #include "Input.hpp"
+#include "Math.hpp"
 
 namespace Nth {
     using Nth::Log;
@@ -184,10 +187,16 @@ namespace Nth {
         // Register globals
         auto& lua                   = mScriptEngine.GetLuaState();
         auto gameGlobal             = lua.new_usertype<Game>("Game");
-        gameGlobal["Quit"]          = &Game::Quit;
+        gameGlobal["Quit"]          = [this] { Quit(); };
         gameGlobal["GetScreenSize"] = [this]() -> Vec2 { return {mWidth, mHeight}; };
+
+        // Register globals
+        Log::RegisterLuaGlobals(lua);
+        Math::RegisterLuaGlobals(lua);
+        Coordinates::RegisterLuaGlobals(lua);
         mInputManager.RegisterLuaGlobals(lua);
 
+        // Register types
         mScriptEngine.RegisterTypes<BehaviorEntity, Vec2, Clock, Transform>();
 
         return true;

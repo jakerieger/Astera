@@ -1,7 +1,10 @@
 /// @author Jake Rieger
 /// @created 11/27/25
 ///
+
 #include "Log.hpp"
+
+#include <sol/sol.hpp>
 
 namespace Nth {
     shared_ptr<spdlog::logger> Log::sLogger;
@@ -53,5 +56,25 @@ namespace Nth {
     shared_ptr<spdlog::logger> Log::GetLogger() {
         if (!sLogger) { Initialize(); }
         return sLogger;
+    }
+
+    void Log::RegisterLuaGlobals(sol::state& lua) {
+        lua["Log"] = lua.create_table();
+
+        lua["Log"]["Debug"] = [](sol::object owningTable, sol::object msg) {
+            Log::GetLogger()->debug("\033[1m{}\033[0m: {}", "LuaInterpreter", msg.as<string>());
+        };
+        lua["Log"]["Info"] = [](sol::object owningTable, sol::object msg) {
+            Log::GetLogger()->info("\033[1m{}\033[0m: {}", "LuaInterpreter", msg.as<string>());
+        };
+        lua["Log"]["Warn"] = [](sol::object owningTable, sol::object msg) {
+            Log::GetLogger()->warn("\033[1m{}\033[0m: {}", "LuaInterpreter", msg.as<string>());
+        };
+        lua["Log"]["Error"] = [](sol::object owningTable, sol::object msg) {
+            Log::GetLogger()->error("\033[1m{}\033[0m: {}", "LuaInterpreter", msg.as<string>());
+        };
+        lua["Log"]["Critical"] = [](sol::object owningTable, sol::object msg) {
+            Log::GetLogger()->critical("\033[1m{}\033[0m: {}", "LuaInterpreter", msg.as<string>());
+        };
     }
 }  // namespace Nth

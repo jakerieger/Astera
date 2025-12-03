@@ -15,7 +15,7 @@ namespace Nth {
     void Scene::Awake(ScriptEngine& scriptEngine) {
         const auto iter = mState.View<Transform, Behavior>().each();
         for (auto [entity, transform, behavior] : iter) {
-            BehaviorEntity behaviorEntity(std::to_string(CAST<u32>(entity)), &transform);
+            BehaviorEntity behaviorEntity(mState.GetEntityName(entity), &transform);
             scriptEngine.CallAwakeBehavior(behavior.id, behaviorEntity);
         }
     }
@@ -23,7 +23,7 @@ namespace Nth {
     void Scene::Update(ScriptEngine& scriptEngine, const Clock& clock) {
         const auto iter = mState.View<Transform, Behavior>().each();
         for (auto [entity, transform, behavior] : iter) {
-            BehaviorEntity behaviorEntity(std::to_string(CAST<u32>(entity)), &transform);
+            BehaviorEntity behaviorEntity(mState.GetEntityName(entity), &transform);
             scriptEngine.CallUpdateBehavior(behavior.id, behaviorEntity, clock);
         }
     }
@@ -31,7 +31,7 @@ namespace Nth {
     void Scene::LateUpdate(ScriptEngine& scriptEngine) {
         const auto iter = mState.View<Transform, Behavior>().each();
         for (auto [entity, transform, behavior] : iter) {
-            BehaviorEntity behaviorEntity(std::to_string(CAST<u32>(entity)), &transform);
+            BehaviorEntity behaviorEntity(mState.GetEntityName(entity), &transform);
             scriptEngine.CallLateUpdateBehavior(behavior.id, behaviorEntity);
         }
     }
@@ -39,7 +39,7 @@ namespace Nth {
     void Scene::Destroyed(ScriptEngine& scriptEngine) {
         const auto iter = mState.View<Transform, Behavior>().each();
         for (auto [entity, transform, behavior] : iter) {
-            BehaviorEntity behaviorEntity(std::to_string(CAST<u32>(entity)), &transform);
+            BehaviorEntity behaviorEntity(mState.GetEntityName(entity), &transform);
             scriptEngine.CallDestroyedBehavior(behavior.id, behaviorEntity);
         }
     }

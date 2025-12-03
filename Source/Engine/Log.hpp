@@ -6,6 +6,10 @@
 
 #include "CommonPCH.hpp"
 
+namespace sol {
+    class state;
+}
+
 namespace Nth {
     class Log {
     public:
@@ -43,7 +47,11 @@ namespace Nth {
         }
 
     private:
+        friend class Game;
+
         static shared_ptr<spdlog::logger> GetLogger();
         static shared_ptr<spdlog::logger> sLogger;
+
+        static void RegisterLuaGlobals(sol::state& lua);
     };
 }  // namespace Nth

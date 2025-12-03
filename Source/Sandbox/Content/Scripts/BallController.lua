@@ -7,35 +7,42 @@
 ballSpeed = 500
 
 function onAwake(this)
-    print("LuaInterpreter: onAwake() was called")
+    Log:Debug(string.format("onAwake() called for entity: %s", this.name))
+
+    local screenSize = Game:GetScreenSize()
+    local screenPos = Vec2(320, 180)
+    local toNDC = Coordinates:ScreenToNDC(screenPos, screenSize.x, screenSize.y)
+    Log:Debug(string.format("NDC Pos: {x: %f, y: %f}", toNDC.x, toNDC.y))
 end
 
-function onUpdate(this, clock)
-    local dT = clock:GetDeltaTime()
-    local transform = this.transform
+function handleMovement(transform, dT)
     local newPosition = Vec2(0, 0)
 
     -- Check is one of our movement keys is pressed
     if Input:GetKeyDown(KEY_W) then
         -- Apply a new value to the correct axis scaled by delta time
-        newPosition.y = newPosition.y + (ballSpeed * dT)
+        newPosition.y = (ballSpeed * dT)
     end
     if Input:GetKeyDown(KEY_S) then
-        newPosition.y = newPosition.y - (ballSpeed * dT)
+        newPosition.y = -(ballSpeed * dT)
 
     end
     if Input:GetKeyDown(KEY_A) then
-        newPosition.x = newPosition.x - (ballSpeed * dT)
+        newPosition.x = -(ballSpeed * dT)
 
     end
     if Input:GetKeyDown(KEY_D) then
-        newPosition.x = newPosition.x + (ballSpeed * dT)
+        newPosition.x = (ballSpeed * dT)
     end
 
     -- Translate our entity by the corresponding new amount
     transform:Translate(newPosition)
 end
 
+function onUpdate(this, clock)
+    handleMovement(this.transform, clock:GetDeltaTime())
+end
+
 function onDestroyed(this)
-    print("LuaInterpreter: onDestroyed() was called")
+    Log:Debug(string.format("onDestroyed() called for entity: %s", this.name))
 end
