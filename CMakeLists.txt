@@ -15,8 +15,9 @@ include(CMake/DetectPlatform.cmake)
 include(CMake/FetchDeps.cmake)
 
 add_subdirectory(Source/Engine)
-add_subdirectory(Source/Sandbox)
 add_subdirectory(Source/Tools)
+
+add_subdirectory(Sandbox/Runtime)
 
 # Generate documentation target
 add_custom_target(CMake_GenerateDocs

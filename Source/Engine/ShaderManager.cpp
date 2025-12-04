@@ -13,8 +13,8 @@ namespace Nth {
         sManager = make_shared<ShaderManager>();
 
         // Load internal shaders
-        const auto vertShader          = Content<ContentType::Shader, true>::Get("Sprite.vert");
-        const auto fragShader          = Content<ContentType::Shader, true>::Get("Sprite.frag");
+        const auto vertShader          = Content::Get<ContentType::Shader, true>("Sprite.vert");
+        const auto fragShader          = Content::Get<ContentType::Shader, true>("Sprite.frag");
         sCache[Shaders::Sprite.data()] = Shader::FromFile(vertShader, fragShader);
 
         Log::Debug("ShaderManager", "Loaded engine shaders");

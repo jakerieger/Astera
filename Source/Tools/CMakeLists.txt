@@ -1,7 +1,12 @@
 project(NthEngine)
 
-option(BUILD_NTHPAK "Build NthPak" ON)
+include(FetchContent)
+FetchContent_Declare(
+        CLI11
+        GIT_REPOSITORY https://github.com/CLIUtils/CLI11.git
+        GIT_TAG v2.6.1
+)
+FetchContent_MakeAvailable(CLI11)
 
-if (BUILD_NTHPAK)
-    add_subdirectory(NthPak)
-endif ()
+add_subdirectory(NthPak)
+add_subdirectory(NthCLI)

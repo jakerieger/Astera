@@ -7,6 +7,7 @@
 #include "CommonPCH.hpp"
 
 namespace Nth {
+    /// @brief Type of content the container holds
     enum class ContentType {
         Audio,
         Scene,
@@ -15,7 +16,7 @@ namespace Nth {
         Sprite,
     };
 
-    template<ContentType type, bool engine = false>
+    /// @brief Content container and helper class
     class Content {
         static constexpr std::string_view kContentRoot       = "Content";
         static constexpr std::string_view kEngineContentRoot = "EngineContent";
@@ -26,9 +27,13 @@ namespace Nth {
         static constexpr std::string_view kSpriteRoot = "Sprites";
         static constexpr std::string_view kAudioRoot  = "Audio";
 
+        inline static fs::path sWorkingDirectory;
+
     public:
+        template<ContentType type, bool engine = false>
         inline static fs::path Get(const fs::path& filename) {
-            fs::path contentPath = fs::current_path() / kContentRoot;
+            N_ASSERT(exists(sWorkingDirectory));
+            fs::path contentPath = sWorkingDirectory / kContentRoot;
             if constexpr (engine) { contentPath /= kEngineContentRoot; }
 
             if constexpr (type == ContentType::Audio) {
@@ -44,6 +49,10 @@ namespace Nth {
             } else {
                 throw std::invalid_argument("Invalid content type");
             }
+        }
+
+        inline static void SetWorkingDirectory(const fs::path& path) {
+            sWorkingDirectory = path;
         }
     };
 }  // namespace Nth

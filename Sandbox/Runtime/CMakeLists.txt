@@ -9,13 +9,14 @@ add_executable(Sandbox
 target_link_libraries(Sandbox PRIVATE NthEngine)
 
 target_include_directories(Sandbox PRIVATE
-        ../Engine
-        ../Common
+        ../../Source/Common
+        ../../Source/Engine
+        ../../Source/Vendor
 )
 
 add_custom_target(CMake_CopySandboxContent ALL
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/Source/Sandbox/Content
+        ${CMAKE_SOURCE_DIR}/Sandbox/Content
         ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Content
         COMMENT "Copying Sandbox content directory to build output"
 )

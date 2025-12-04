@@ -4,13 +4,7 @@
 
 #include <Game.hpp>
 #include <InputCodes.hpp>
-#include <ShaderManager.hpp>
-#include <TextureManager.hpp>
-#include <Rendering/Shader.hpp>
 #include <Content.hpp>
-#include <Rendering/Geometry.hpp>
-#include <Coordinates.hpp>
-#include <Log.hpp>
 
 namespace Nth {
     class SandboxGame final : public Game {
@@ -25,7 +19,7 @@ namespace Nth {
         }
 
         void OnAwake() override {
-            GetActiveScene()->Load(Content<ContentType::Scene>::Get("Sandbox.xml"), GetScriptEngine());
+            GetActiveScene()->Load(Content::Get<ContentType::Scene>("Sandbox.xml"), GetScriptEngine());
             Game::OnAwake();
         }
 
@@ -48,6 +42,7 @@ namespace Nth {
 }  // namespace Nth
 
 int main() {
+    Nth::Content::SetWorkingDirectory(Nth::fs::current_path());
     Nth::SandboxGame game;
     game.Run();
 }

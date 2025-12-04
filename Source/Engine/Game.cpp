@@ -43,26 +43,9 @@ namespace Nth {
 
     void Game::ToggleFullscreen() {
         if (mFullscreen) {
-            glfwSetWindowAttrib(mWindow, GLFW_DECORATED, GLFW_TRUE);
-            glfwSetWindowMonitor(mWindow,
-                                 nullptr,
-                                 mWindowState.windowedPosX,
-                                 mWindowState.windowedPosY,
-                                 mWindowState.previousSizeX,
-                                 mWindowState.previousSizeY,
-                                 GLFW_DONT_CARE);
+            // TODO: Add the GLFW code needed to actually toggle fullscreen
             mFullscreen = false;
         } else {
-            glfwGetWindowPos(mWindow, &mWindowState.windowedPosX, &mWindowState.windowedPosY);
-            glfwGetWindowSize(mWindow, &mWindowState.previousSizeX, &mWindowState.previousSizeY);
-
-            // Get monitor dimensions
-            GLFWmonitor* monitor    = glfwGetPrimaryMonitor();
-            const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-
-            // Switch to borderless fullscreen
-            glfwSetWindowAttrib(mWindow, GLFW_DECORATED, GLFW_FALSE);
-            glfwSetWindowMonitor(mWindow, nullptr, 0, 0, mode->width, mode->height, GLFW_DONT_CARE);
             mFullscreen = true;
         }
     }
@@ -77,10 +60,8 @@ namespace Nth {
     }
 
     void Game::OnResize(u32 width, u32 height) {
-        mWindowState.previousSizeX = (i32)mWidth;
-        mWindowState.previousSizeY = (i32)mHeight;
-        mWidth                     = width;
-        mHeight                    = height;
+        mWidth  = width;
+        mHeight = height;
     }
 
     void Game::OnKeyDown(u32 keyCode) {

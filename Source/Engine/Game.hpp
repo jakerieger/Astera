@@ -22,8 +22,8 @@ namespace Nth {
         N_CLASS_PREVENT_MOVES_COPIES(Game)
 
         Game() : mActiveScene(make_unique<Scene>()) {}
-        Game(string title, u32 width, u32 height)
-            : mTitle(std::move(title)), mWidth(width), mHeight(height), mActiveScene(make_unique<Scene>()) {}
+        Game(const string& title, u32 width, u32 height)
+            : mTitle(title), mWidth(width), mHeight(height), mActiveScene(make_unique<Scene>()) {}
 
         virtual ~Game() = default;
 
@@ -124,14 +124,5 @@ namespace Nth {
 
         // Client systems
         unique_ptr<Scene> mActiveScene;
-
-        struct WindowState {
-            i32 windowedPosX {100};
-            i32 windowedPosY {100};
-            i32 previousSizeX {};
-            i32 previousSizeY {};
-        };
-
-        WindowState mWindowState;
     };
 }  // namespace Nth
