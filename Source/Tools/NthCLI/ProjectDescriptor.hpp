@@ -80,6 +80,18 @@ namespace Nth {
             out.engineContentPath = projectNode.child("EngineContentPath").child_value();
         }
 
-        inline void Serialize(pugi::xml_node& outNode) {}
+        N_ND inline pugi::xml_document Serialize() const {
+            pugi::xml_document doc;
+            pugi::xml_node root = doc.append_child("NthProject");
+
+            root.append_attribute("name").set_value(name.c_str());
+            root.append_attribute("engine_version").set_value(engineVersion);
+
+            root.append_child("StartupScene").text()      = startupScene.c_str();
+            root.append_child("ContentPath").text()       = contentPath.c_str();
+            root.append_child("EngineContentPath").text() = engineContentPath.c_str();
+
+            return doc;
+        }
     };
 }  // namespace Nth

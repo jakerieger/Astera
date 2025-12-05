@@ -7,12 +7,13 @@ var searchData=
   ['log_4',['Log',['../class_nth_1_1_log.html',1,'Nth']]],
   ['log_2ecpp_5',['Log.cpp',['../_log_8cpp.html',1,'']]],
   ['log_2ehpp_6',['Log.hpp',['../_log_8hpp.html',1,'']]],
-  ['luaregisterable_7',['LuaRegisterable',['../struct_nth_1_1_lua_registerable.html',1,'Nth']]],
-  ['luaregistry_8',['LuaRegistry',['../struct_nth_1_1_lua_registry.html',1,'Nth']]],
-  ['luatyperegistration_9',['LuaTypeRegistration',['../struct_nth_1_1_lua_type_registration.html',1,'Nth']]],
-  ['luatypetraits_10',['LuaTypeTraits',['../struct_nth_1_1_lua_type_traits.html',1,'Nth']]],
-  ['luatypetraits_3c_20behaviorentity_20_3e_11',['LuaTypeTraits&lt; BehaviorEntity &gt;',['../struct_nth_1_1_lua_type_traits_3_01_behavior_entity_01_4.html',1,'Nth']]],
-  ['luatypetraits_3c_20clock_20_3e_12',['LuaTypeTraits&lt; Clock &gt;',['../struct_nth_1_1_lua_type_traits_3_01_clock_01_4.html',1,'Nth']]],
-  ['luatypetraits_3c_20transform_20_3e_13',['LuaTypeTraits&lt; Transform &gt;',['../struct_nth_1_1_lua_type_traits_3_01_transform_01_4.html',1,'Nth']]],
-  ['luatypetraits_3c_20vec2_20_3e_14',['LuaTypeTraits&lt; Vec2 &gt;',['../struct_nth_1_1_lua_type_traits_3_01_vec2_01_4.html',1,'Nth']]]
+  ['log_2elua_7',['Log.lua',['../_log_8lua.html',1,'']]],
+  ['luaregisterable_8',['LuaRegisterable',['../struct_nth_1_1_lua_registerable.html',1,'Nth']]],
+  ['luaregistry_9',['LuaRegistry',['../struct_nth_1_1_lua_registry.html',1,'Nth']]],
+  ['luatyperegistration_10',['LuaTypeRegistration',['../struct_nth_1_1_lua_type_registration.html',1,'Nth']]],
+  ['luatypetraits_11',['LuaTypeTraits',['../struct_nth_1_1_lua_type_traits.html',1,'Nth']]],
+  ['luatypetraits_3c_20behaviorentity_20_3e_12',['LuaTypeTraits&lt; BehaviorEntity &gt;',['../struct_nth_1_1_lua_type_traits_3_01_behavior_entity_01_4.html',1,'Nth']]],
+  ['luatypetraits_3c_20clock_20_3e_13',['LuaTypeTraits&lt; Clock &gt;',['../struct_nth_1_1_lua_type_traits_3_01_clock_01_4.html',1,'Nth']]],
+  ['luatypetraits_3c_20transform_20_3e_14',['LuaTypeTraits&lt; Transform &gt;',['../struct_nth_1_1_lua_type_traits_3_01_transform_01_4.html',1,'Nth']]],
+  ['luatypetraits_3c_20vec2_20_3e_15',['LuaTypeTraits&lt; Vec2 &gt;',['../struct_nth_1_1_lua_type_traits_3_01_vec2_01_4.html',1,'Nth']]]
 ];

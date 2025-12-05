@@ -27,7 +27,31 @@ namespace fs = std::filesystem;
 namespace ProjectSubcommand {
     static std::string value;
 
-    static void Create() {}
+    static void Create() {
+        // Create project directory at specified location
+        const auto projectDir = fs::path(value);
+        if (!fs::exists(projectDir)) { fs::create_directories(projectDir); }
+
+        // Create Content/Runtime directories
+        const auto contentDir = projectDir / "Content";
+        if (!fs::exists(contentDir)) { fs::create_directories(contentDir); }
+
+        const auto runtimeDir = projectDir / "Runtime";
+        if (!fs::exists(runtimeDir)) { fs::create_directories(runtimeDir); }
+
+        const auto projectFile = projectDir / fmt::format("{}.nthproj", value);
+        Nth::ProjectDescriptor projectDescriptor;
+        projectDescriptor.name              = value;
+        projectDescriptor.contentPath       = "${ProjectRoot}/Content";
+        projectDescriptor.engineContentPath = "${ProjectRoot}/EngineContent";
+        projectDescriptor.engineVersion     = 1;
+        projectDescriptor.startupScene      = "Example";
+
+        const auto doc = projectDescriptor.Serialize();
+        if (!doc.save_file(projectFile.string().c_str())) { throw std::runtime_error("Failed to create project file"); }
+
+        // TODO: Create runtime CMake project
+    }
 
     static void Info() {}
 
@@ -52,7 +76,7 @@ int main(int argc, char* argv[]) {
     CLI::App* project = app.add_subcommand("project", "Manage projects");
     project->require_subcommand(1);
 
-    CLI::App* create = project->add_subcommand("create", "Creates a new project");
+    CLI::App* create = project->add_subcommand("create", "Creates a new project in the current directory");
     create->add_option("name", ProjectSubcommand::value, "Project name")->required();
     create->callback([&]() { ProjectSubcommand::Create(); });
 

@@ -123,7 +123,8 @@ WARN_LOGFILE =
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 INPUT = ./Source/Engine \
-        ./Source/Tools
+        ./Source/Tools \
+        ./EngineContent/Scripts/types
 INPUT_ENCODING = UTF-8
 FILE_PATTERNS = *.c \
                 *.cc \
@@ -168,7 +169,8 @@ FILE_PATTERNS = *.c \
                 *.vhdl \
                 *.ucf \
                 *.qsf \
-                *.ice
+                *.ice \
+                *.lua
 RECURSIVE = YES
 EXCLUDE = Content \
           CMake \
