@@ -52,7 +52,7 @@ FetchContent_Declare(
         GIT_TAG 12.1.0
 )
 
-set(FMT_INSTALL ON CACHE BOOL "Install fmt")
+set(FMT_INSTALL OFF CACHE BOOL "Install fmt")
 
 FetchContent_Declare(
         pugixml

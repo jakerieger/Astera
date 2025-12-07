@@ -28,10 +28,10 @@ add_custom_target(CMake_GenerateDocs
         COMMENT "Run doxygen and build docs"
 )
 
-set(NTHENGINE_INSTALL_BINDIR "bin")
-set(NTHENGINE_INSTALL_LIBDIR "lib")
-set(NTHENGINE_INSTALL_INCLUDEDIR "include")
-set(NTHENGINE_INSTALL_CMAKEDIR "cmake/NthEngine")
+set(NTHENGINE_INSTALL_BINDIR "bin" CACHE PATH "Executables install directory")
+set(NTHENGINE_INSTALL_LIBDIR "lib" CACHE PATH "Libary binaries install directory")
+set(NTHENGINE_INSTALL_INCLUDEDIR "include" CACHE PATH "Library include install directory")
+set(NTHENGINE_INSTALL_CMAKEDIR "lib/cmake/NthEngine" CACHE PATH "CMake configuration install directory")
 set(NTHENGINE_INSTALL_CONTENTDIR "." CACHE PATH "Installation directory for EngineContent")
 
 include(CMakePackageConfigHelpers)
@@ -79,7 +79,6 @@ install(
         ARCHIVE DESTINATION ${NTHENGINE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${NTHENGINE_INSTALL_BINDIR}
         INCLUDES DESTINATION ${NTHENGINE_INSTALL_INCLUDEDIR}
-        PUBLIC_HEADER DESTINATION include/fmt
 )
 
 # Install LuaJIT
