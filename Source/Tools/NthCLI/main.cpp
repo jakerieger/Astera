@@ -5,6 +5,10 @@
 #include <string>
 #include <filesystem>
 
+#ifdef Success
+    #undef Success
+#endif
+
 #include <CLI/CLI.hpp>
 #include <fmt/core.h>
 #include <fmt/color.h>

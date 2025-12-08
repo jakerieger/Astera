@@ -5,7 +5,7 @@
 #pragma once
 
 #include "Clock.hpp"
-#include "CommonPCH.hpp"
+#include "Common/CommonPCH.hpp"
 #include "SceneState.hpp"
 #include "ScriptEngine.hpp"
 #include "Rendering/RenderContext.hpp"

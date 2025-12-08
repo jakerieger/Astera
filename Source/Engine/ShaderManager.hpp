@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "CommonPCH.hpp"
+#include "Common/CommonPCH.hpp"
 #include "Rendering/Shader.hpp"
 
 namespace Nth {

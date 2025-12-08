@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "CommonPCH.hpp"
+#include "Common/CommonPCH.hpp"
 
 #ifdef N_ENGINE_PLATFORM_WINDOWS
     #include <windows.h>

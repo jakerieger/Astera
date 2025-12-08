@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "CommonPCH.hpp"
+#include "Common/CommonPCH.hpp"
 
 #pragma region Components
 #include "Components/Camera.hpp"

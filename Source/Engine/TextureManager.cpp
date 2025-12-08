@@ -5,7 +5,7 @@
 #include "Log.hpp"
 #include "Rendering/GLUtils.hpp"
 
-#include <stb_image.h>
+#include <Vendor/stb_image.h>
 
 namespace Nth {
     shared_ptr<TextureManager> TextureManager::sManager;

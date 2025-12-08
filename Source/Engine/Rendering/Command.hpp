@@ -6,7 +6,7 @@
 
 #include <variant>
 
-#include "CommonPCH.hpp"
+#include "Common/CommonPCH.hpp"
 #include "Components/SpriteRenderer.hpp"
 #include "Components/Transform.hpp"
 

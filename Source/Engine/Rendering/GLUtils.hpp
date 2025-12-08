@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "CommonPCH.hpp"
+#include "Common/CommonPCH.hpp"
 
 namespace Nth {
     struct OpenGLException final : public std::runtime_error {

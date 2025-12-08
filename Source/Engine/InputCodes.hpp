@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "CommonPCH.hpp"
+#include "Common/CommonPCH.hpp"
 
 namespace Nth::Input {
     /// @brief Key code definitions for keyboard input

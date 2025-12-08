@@ -27,8 +27,7 @@ set_source_files_properties(../Vendor/glad.c PROPERTIES
 
 target_include_directories(NthEngine PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/Source/Common>
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/Source/Vendor>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/Source>
         $<INSTALL_INTERFACE:include/NthEngine>
 )
 
