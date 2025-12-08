@@ -37,3 +37,6 @@ include(${VENDOR_ROOT}/Vendor.cmake)
 
 add_subdirectory(Source/Engine)
 add_subdirectory(Source/Tools)
+
+# Sandbox test application
+add_subdirectory(Sandbox/Runtime)
