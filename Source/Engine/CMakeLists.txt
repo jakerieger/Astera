@@ -17,7 +17,7 @@ add_library(NthEngine SHARED
 include(GenerateExportHeader)
 generate_export_header(NthEngine)
 
-target_precompile_headers(NthEngine PUBLIC ../Common/CommonPCH.hpp)
+target_precompile_headers(NthEngine PRIVATE ../Common/CommonPCH.hpp)
 
 # Remove glad from PCH
 set_source_files_properties(../Vendor/glad.c PROPERTIES
@@ -46,3 +46,53 @@ if (WIN32)
             VC_EXTRALEAN
     )
 endif ()
+
+# ============================================================================
+# Installation Configuration
+# ============================================================================
+
+# Install the library
+install(TARGETS NthEngine
+        EXPORT NthEngineTargets
+        RUNTIME DESTINATION ${NTHENGINE_INSTALL_BINDIR}
+        COMPONENT Runtime
+        LIBRARY DESTINATION ${NTHENGINE_INSTALL_LIBDIR}
+        COMPONENT Runtime
+        ARCHIVE DESTINATION ${NTHENGINE_INSTALL_LIBDIR}
+        COMPONENT Development
+        INCLUDES DESTINATION ${NTHENGINE_INSTALL_INCLUDEDIR}
+)
+
+# Install public headers
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
+        DESTINATION ${NTHENGINE_INSTALL_INCLUDEDIR}/NthEngine
+        COMPONENT Development
+        FILES_MATCHING
+        PATTERN "*.hpp"
+        PATTERN "*.h"
+)
+
+# Install Common headers
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/Source/Common/
+        DESTINATION ${NTHENGINE_INSTALL_INCLUDEDIR}/NthEngine/Common
+        COMPONENT Development
+        FILES_MATCHING
+        PATTERN "*.hpp"
+        PATTERN "*.h"
+        PATTERN "*.cpp" EXCLUDE
+)
+
+# Install Vendor headers
+install(FILES
+        ${CMAKE_SOURCE_DIR}/Source/Vendor/glad.h
+        ${CMAKE_SOURCE_DIR}/Source/Vendor/khrplatform.h
+        ${CMAKE_SOURCE_DIR}/Source/Vendor/stb_image.h
+        DESTINATION ${NTHENGINE_INSTALL_INCLUDEDIR}/NthEngine/Vendor
+        COMPONENT Development
+)
+
+# Install generated export header
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/nthengine_export.h
+        DESTINATION ${NTHENGINE_INSTALL_INCLUDEDIR}/NthEngine
+        COMPONENT Development
+)

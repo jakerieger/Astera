@@ -1,6 +1,7 @@
-project(NthEngine)
-
 include(FetchContent)
+
+# This ensures all FetchContent dependencies are built with -fPIC
+set(CMAKE_POSITION_INDEPENDENT_CODE ON CACHE BOOL "Build all libraries with -fPIC" FORCE)
 
 FetchContent_Declare(
         glfw

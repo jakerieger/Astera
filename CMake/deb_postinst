@@ -1,0 +1,19 @@
+#!/bin/sh
+# Debian post-install script for NthEngine
+# This script runs ldconfig to update the shared library cache
+
+set -e
+
+case "$1" in
+    configure)
+        ldconfig
+        ;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+        ;;
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

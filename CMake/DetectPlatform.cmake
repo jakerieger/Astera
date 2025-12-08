@@ -1,5 +1,3 @@
-project(NthEngine)
-
 # Platform detection and configuration
 if (WIN32)
     # Windows platform

@@ -1,5 +1,3 @@
-project(NthEngine)
-
 function(BuildLuaJIT)
     FetchContent_GetProperties(luajit)
 
