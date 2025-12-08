@@ -1,13 +1,13 @@
-prefix=@CMAKE_INSTALL_PREFIX@
-exec_prefix=${prefix}
-libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
-includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
-datadir=${prefix}/@CMAKE_INSTALL_DATADIR@/NthEngine
+prefix = @CMAKE_INSTALL_PREFIX@
+exec_prefix = ${prefix}
+libdir = ${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+includedir = ${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+datadir = ${prefix}/@CMAKE_INSTALL_DATADIR@/NthEngine
 
-Name: NthEngine
-Description: NthEngine game engine library
-Version: @PROJECT_VERSION@
-URL: https://github.com/yourusername/NthEngine
+Name : NthEngine
+Description : NthEngine game engine library
+Version : @PROJECT_VERSION@
+URL : https://github.com/jakerieger/NthEngine
 
-Libs: -L${libdir} -lNthEngine
-Cflags: -I${includedir}/NthEngine
+Libs : -L${libdir} -lNthEngine
+Cflags : -I${includedir}/NthEngine

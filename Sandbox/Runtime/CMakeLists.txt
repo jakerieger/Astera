@@ -12,6 +12,10 @@ else ()
     )
 endif ()
 
+set_target_properties(Sandbox PROPERTIES
+        SKIP_PRECOMPILE_HEADERS ON
+)
+
 target_link_libraries(Sandbox PRIVATE
         ${NTHENGINE_LIBS}
         NthEngine

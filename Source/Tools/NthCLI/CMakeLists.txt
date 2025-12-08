@@ -12,6 +12,7 @@ set_target_properties(nth PROPERTIES
 )
 
 target_link_libraries(nth PRIVATE
+        ${NTHENGINE_LIBS}
         CLI11
         NthEngine
 )
