@@ -1,0 +1,2 @@
+add_subdirectory(NthCLI)
+add_subdirectory(NthPak)

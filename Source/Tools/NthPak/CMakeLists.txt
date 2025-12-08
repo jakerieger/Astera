@@ -1,0 +1,1 @@
+add_library(nthpak STATIC main.cpp)

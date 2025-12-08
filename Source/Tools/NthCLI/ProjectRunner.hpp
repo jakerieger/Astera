@@ -4,9 +4,9 @@
 
 #pragma once
 
-#include <Game.hpp>
-#include <Content.hpp>
-#include <InputCodes.hpp>
+#include <Engine/Game.hpp>
+#include <Engine/Content.hpp>
+#include <Engine/InputCodes.hpp>
 
 namespace Nth {
     class ProjectRunner final : public Game {
