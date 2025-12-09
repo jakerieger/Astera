@@ -32,10 +32,10 @@ namespace Nth {
             mLua.script(source, env);
 
             if (type == ScriptType::Behavior) {
-                sol::protected_function awakeFunc      = env["onAwake"];
-                sol::protected_function updateFunc     = env["onUpdate"];
-                sol::protected_function lateUpdateFunc = env["onLateUpdate"];
-                sol::protected_function destroyedFunc  = env["onDestroyed"];
+                sol::protected_function awakeFunc      = env["OnAwake"];
+                sol::protected_function updateFunc     = env["OnUpdate"];
+                sol::protected_function lateUpdateFunc = env["OnLateUpdate"];
+                sol::protected_function destroyedFunc  = env["OnDestroyed"];
 
                 mBehaviorScriptContexts[scriptId] = {std::move(env),
                                                      std::move(awakeFunc),
@@ -91,10 +91,10 @@ namespace Nth {
             }
 
             if (type == ScriptType::Behavior) {
-                sol::protected_function awakeFunc      = env["onAwake"];
-                sol::protected_function updateFunc     = env["onUpdate"];
-                sol::protected_function lateUpdateFunc = env["onLateUpdate"];
-                sol::protected_function destroyedFunc  = env["onDestroyed"];
+                sol::protected_function awakeFunc      = env["OnAwake"];
+                sol::protected_function updateFunc     = env["OnUpdate"];
+                sol::protected_function lateUpdateFunc = env["OnLateUpdate"];
+                sol::protected_function destroyedFunc  = env["OnDestroyed"];
 
                 mBehaviorScriptContexts[scriptId] = {std::move(env),
                                                      std::move(awakeFunc),
@@ -116,9 +116,9 @@ namespace Nth {
             return;
         }
 
-        if (const auto& ctx = mBehaviorScriptContexts[id]; ctx.onAwake.valid()) {
+        if (const auto& ctx = mBehaviorScriptContexts[id]; ctx.OnAwake.valid()) {
             try {
-                std::ignore = ctx.onAwake(entity);
+                std::ignore = ctx.OnAwake(entity);
             } catch (const sol::error& e) { Log::Error("ScriptEngine", "{}", e.what()); }
         }
     }
@@ -134,9 +134,9 @@ namespace Nth {
             return;
         }
 
-        if (const auto& ctx = mBehaviorScriptContexts[id]; ctx.onAwake.valid()) {
+        if (const auto& ctx = mBehaviorScriptContexts[id]; ctx.OnAwake.valid()) {
             try {
-                std::ignore = ctx.onUpdate(entity, clock);
+                std::ignore = ctx.OnUpdate(entity, clock);
             } catch (const sol::error& e) { Log::Error("ScriptEngine", "{}", e.what()); }
         }
     }
@@ -152,9 +152,9 @@ namespace Nth {
             return;
         }
 
-        if (const auto& ctx = mBehaviorScriptContexts[id]; ctx.onAwake.valid()) {
+        if (const auto& ctx = mBehaviorScriptContexts[id]; ctx.OnAwake.valid()) {
             try {
-                std::ignore = ctx.onLateUpdate(entity);
+                std::ignore = ctx.OnLateUpdate(entity);
             } catch (const sol::error& e) { Log::Error("ScriptEngine", "{}", e.what()); }
         }
     }
@@ -170,9 +170,9 @@ namespace Nth {
             return;
         }
 
-        if (const auto& ctx = mBehaviorScriptContexts[id]; ctx.onAwake.valid()) {
+        if (const auto& ctx = mBehaviorScriptContexts[id]; ctx.OnAwake.valid()) {
             try {
-                std::ignore = ctx.onDestroyed(entity);
+                std::ignore = ctx.OnDestroyed(entity);
             } catch (const sol::error& e) { Log::Error("ScriptEngine", "{}", e.what()); }
         }
     }

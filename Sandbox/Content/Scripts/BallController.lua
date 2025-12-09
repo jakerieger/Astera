@@ -2,13 +2,12 @@
 --- Created by Nth Engine
 ---
 
-
 ballSpeed = 500
 bgMusicID = 1
 
 ---@param this Entity
-function onAwake(this)
-    Log:Debug(string.format("onAwake() called for entity: %s", this.name))
+function OnAwake(this)
+    Log:Debug(string.format("OnAwake() called for entity: %s", this.name))
 
     if AudioPlayer:IsInitialized() then
         AudioPlayer:SetSoundVolume(bgMusicID, 0.5)
@@ -16,9 +15,10 @@ function onAwake(this)
     end
 end
 
+---Handle movement of ball sprite based on input
 ---@param transform Transform
 ---@param dT number
-function handleMovement(transform, dT)
+function HandleMovement(transform, dT)
     local newPosition = Vec2(0, 0)
 
     -- Check is one of our movement keys is pressed
@@ -42,11 +42,11 @@ end
 
 ---@param this Entity
 ---@param clock Clock
-function onUpdate(this, clock)
-    handleMovement(this.transform, clock:GetDeltaTime())
+function OnUpdate(this, clock)
+    HandleMovement(this.transform, clock:GetDeltaTime())
 end
 
 ---@param this Entity
-function onDestroyed(this)
-    Log:Debug(string.format("onDestroyed() called for entity: %s", this.name))
+function OnDestroyed(this)
+    Log:Debug(string.format("OnDestroyed() called for entity: %s", this.name))
 end

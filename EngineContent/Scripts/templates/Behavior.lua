@@ -4,25 +4,25 @@
 
 ---Called at entity initialization
 ---@param this Entity
-function onAwake(this)
+function OnAwake(this)
 
 end
 
 ---Called every frame, before rendering
 ---@param this Entity
 ---@param clock Clock
-function onUpdate(this, clock)
+function OnUpdate(this, clock)
 
 end
 
 ---Called every frame, after rendering
 ---@param this Entity
-function onLateUpdate(this)
+function OnLateUpdate(this)
 
 end
 
 ---Called at entity destruction
 ---@param this Entity
-function onDestroyed(this)
+function OnDestroyed(this)
 
 end

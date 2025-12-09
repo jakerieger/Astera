@@ -56,7 +56,11 @@ namespace Nth {
     }
 
     void ImGuiDebugLayer::DrawPerformanceOverlay() {
-        ImGui::Begin("Performance");
+        ImGui::SetNextWindowPos({0, 0});
+        ImGui::Begin("Performance",
+                     nullptr,
+                     ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove |
+                       ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoBackground);
 
         ImGui::Text("%.1f FPS", ImGui::GetIO().Framerate);
 

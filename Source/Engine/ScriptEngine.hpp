@@ -44,10 +44,10 @@ namespace Nth {
 
     struct BehaviorScriptContext {
         sol::environment env;
-        sol::protected_function onAwake;
-        sol::protected_function onUpdate;
-        sol::protected_function onLateUpdate;
-        sol::protected_function onDestroyed;
+        sol::protected_function OnAwake;
+        sol::protected_function OnUpdate;
+        sol::protected_function OnLateUpdate;
+        sol::protected_function OnDestroyed;
     };
 
     // TODO: Add more types of scripts that can be implemented to expand the capabilities of the script engine
