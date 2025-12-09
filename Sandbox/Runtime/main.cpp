@@ -24,7 +24,8 @@ namespace Nth {
 
             // Audio engine test
             mTestSound = GetAudioEngine().LoadSound(Content::Get<ContentType::Audio>("bg.wav"));
-            GetAudioEngine().PlaySound(mTestSound);
+            // GetAudioEngine().SetSoundVolume(mTestSound, .5f);
+            // GetAudioEngine().PlaySound(mTestSound, true);
 
             Game::OnAwake();
         }

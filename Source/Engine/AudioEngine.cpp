@@ -5,6 +5,8 @@
 #include "AudioEngine.hpp"
 #include "Log.hpp"
 
+#include <sol/sol.hpp>
+
 namespace Nth {
     AudioEngine::AudioEngine() = default;
 
@@ -128,5 +130,18 @@ namespace Nth {
         const auto it = mSounds.find(id);
         if (it == mSounds.end() || !it->second->loaded) { return nullptr; }
         return it->second.get();
+    }
+
+    void AudioEngine::RegisterLuaGlobals(sol::state& lua) {
+        auto engine               = lua.new_usertype<AudioEngine>("AudioEngine");
+        engine["LoadSound"]       = &AudioEngine::LoadSound;
+        engine["PlaySound"]       = &AudioEngine::PlaySound;
+        engine["StopSound"]       = &AudioEngine::StopSound;
+        engine["StopAllSounds"]   = &AudioEngine::StopAllSounds;
+        engine["SetMasterVolume"] = &AudioEngine::SetMasterVolume;
+        engine["SetSoundVolume"]  = &AudioEngine::SetSoundVolume;
+        engine["IsInitialized"]   = &AudioEngine::IsInitialized;
+
+        lua["AudioPlayer"] = this;
     }
 }  // namespace Nth

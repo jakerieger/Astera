@@ -8,6 +8,10 @@
 
 #include <miniaudio.h>
 
+namespace sol {
+    class state;
+}
+
 namespace Nth {
     using SoundID = i32;
     static inline constexpr SoundID kInvalidSoundID {-1};
@@ -32,6 +36,8 @@ namespace Nth {
         }
 
     private:
+        friend class Game;
+
         struct Sound {
             ma_decoder decoder;
             ma_sound sound;
@@ -45,5 +51,7 @@ namespace Nth {
         std::unordered_map<SoundID, unique_ptr<Sound>> mSounds;
 
         Sound* GetSound(SoundID id);
+
+        void RegisterLuaGlobals(sol::state& lua);
     };
 }  // namespace Nth

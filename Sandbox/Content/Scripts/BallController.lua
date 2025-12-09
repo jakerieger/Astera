@@ -4,10 +4,16 @@
 
 
 ballSpeed = 500
+bgMusicID = 1
 
 ---@param this Entity
 function onAwake(this)
     Log:Debug(string.format("onAwake() called for entity: %s", this.name))
+
+    if AudioPlayer:IsInitialized() then
+        AudioPlayer:SetSoundVolume(bgMusicID, 0.5)
+        AudioPlayer:PlaySound(bgMusicID, true)
+    end
 end
 
 ---@param transform Transform

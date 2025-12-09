@@ -159,6 +159,7 @@ namespace Nth {
 
         TextureManager::Initialize();
         ShaderManager::Initialize();
+        mAudioEngine.Initialize();
         InitializeScriptEngine();
 
         Log::Debug("Game",
@@ -173,6 +174,7 @@ namespace Nth {
     void Game::Shutdown() {
         TextureManager::Shutdown();
         ShaderManager::Shutdown();
+        mAudioEngine.Shutdown();
         mActiveScene.reset();
         mRenderContext.Shutdown();
         if (mWindow) glfwDestroyWindow(mWindow);
@@ -196,6 +198,7 @@ namespace Nth {
         Math::RegisterLuaGlobals(lua);
         Coordinates::RegisterLuaGlobals(lua);
         mInputManager.RegisterLuaGlobals(lua);
+        mAudioEngine.RegisterLuaGlobals(lua);
 
         // Register types
         mScriptEngine.RegisterTypes<BehaviorEntity, Vec2, Clock, Transform>();
