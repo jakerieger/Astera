@@ -11,9 +11,10 @@ var searchData=
   ['color_2ecpp_8',['Color.cpp',['../_color_8cpp.html',1,'']]],
   ['color_2ehpp_9',['Color.hpp',['../_color_8hpp.html',1,'']]],
   ['command_2ehpp_10',['Command.hpp',['../_command_8hpp.html',1,'']]],
-  ['commandqueue_2ecpp_11',['CommandQueue.cpp',['../_command_queue_8cpp.html',1,'']]],
-  ['commandqueue_2ehpp_12',['CommandQueue.hpp',['../_command_queue_8hpp.html',1,'']]],
-  ['content_2ehpp_13',['Content.hpp',['../_content_8hpp.html',1,'']]],
-  ['coordinates_2ehpp_14',['Coordinates.hpp',['../_coordinates_8hpp.html',1,'']]],
-  ['coordinates_2elua_15',['Coordinates.lua',['../_coordinates_8lua.html',1,'']]]
+  ['commandhelpers_2ehpp_11',['CommandHelpers.hpp',['../_command_helpers_8hpp.html',1,'']]],
+  ['commandqueue_2ecpp_12',['CommandQueue.cpp',['../_command_queue_8cpp.html',1,'']]],
+  ['commandqueue_2ehpp_13',['CommandQueue.hpp',['../_command_queue_8hpp.html',1,'']]],
+  ['content_2ehpp_14',['Content.hpp',['../_content_8hpp.html',1,'']]],
+  ['coordinates_2ehpp_15',['Coordinates.hpp',['../_coordinates_8hpp.html',1,'']]],
+  ['coordinates_2elua_16',['Coordinates.lua',['../_coordinates_8lua.html',1,'']]]
 ];

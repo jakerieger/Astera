@@ -1,10 +1,15 @@
 var namespace_nth =
 [
     [ "Colors", "namespace_nth_1_1_colors.html", null ],
+    [ "CommandHelpers", "namespace_nth_1_1_command_helpers.html", [
+      [ "CreateIndexBufferUpdate", "namespace_nth_1_1_command_helpers.html#abc4ec5310652f81117ebe34f2bddfc7d", null ],
+      [ "CreateVertexBufferUpdate", "namespace_nth_1_1_command_helpers.html#ae9c3f199fd778f0cd2338b44d6a68a98", null ]
+    ] ],
     [ "Coordinates", "namespace_nth_1_1_coordinates.html", null ],
     [ "Input", "namespace_nth_1_1_input.html", "namespace_nth_1_1_input" ],
     [ "Shaders", "namespace_nth_1_1_shaders.html", [
-      [ "Sprite", "namespace_nth_1_1_shaders.html#a596edcfeeadcfcff558b6be87803bad9", null ]
+      [ "Sprite", "namespace_nth_1_1_shaders.html#a596edcfeeadcfcff558b6be87803bad9", null ],
+      [ "SpriteInstanced", "namespace_nth_1_1_shaders.html#a5d2a6fd85cfdfecbd563c0dc389d786a", null ]
     ] ],
     [ "AudioEngine", "class_nth_1_1_audio_engine.html", "class_nth_1_1_audio_engine" ],
     [ "Behavior", "struct_nth_1_1_behavior.html", "struct_nth_1_1_behavior" ],
@@ -12,6 +17,7 @@ var namespace_nth =
     [ "BehaviorEntity", "struct_nth_1_1_behavior_entity.html", "struct_nth_1_1_behavior_entity" ],
     [ "BehaviorScriptContext", "struct_nth_1_1_behavior_script_context.html", "struct_nth_1_1_behavior_script_context" ],
     [ "BindShaderCommand", "struct_nth_1_1_bind_shader_command.html", "struct_nth_1_1_bind_shader_command" ],
+    [ "BindVertexArrayCommand", "struct_nth_1_1_bind_vertex_array_command.html", "struct_nth_1_1_bind_vertex_array_command" ],
     [ "Camera", "struct_nth_1_1_camera.html", null ],
     [ "ClearCommand", "struct_nth_1_1_clear_command.html", "struct_nth_1_1_clear_command" ],
     [ "Clock", "class_nth_1_1_clock.html", "class_nth_1_1_clock" ],
@@ -22,6 +28,9 @@ var namespace_nth =
     [ "CommandQueue", "class_nth_1_1_command_queue.html", "class_nth_1_1_command_queue" ],
     [ "Content", "class_nth_1_1_content.html", null ],
     [ "DebugManager", "class_nth_1_1_debug_manager.html", "class_nth_1_1_debug_manager" ],
+    [ "DrawArraysCommand", "struct_nth_1_1_draw_arrays_command.html", "struct_nth_1_1_draw_arrays_command" ],
+    [ "DrawIndexedCommand", "struct_nth_1_1_draw_indexed_command.html", "struct_nth_1_1_draw_indexed_command" ],
+    [ "DrawIndexedInstancedCommand", "struct_nth_1_1_draw_indexed_instanced_command.html", "struct_nth_1_1_draw_indexed_instanced_command" ],
     [ "DrawSpriteCommand", "struct_nth_1_1_draw_sprite_command.html", "struct_nth_1_1_draw_sprite_command" ],
     [ "EntityDescriptor", "struct_nth_1_1_entity_descriptor.html", "struct_nth_1_1_entity_descriptor" ],
     [ "Game", "class_nth_1_1_game.html", "class_nth_1_1_game" ],
@@ -60,12 +69,17 @@ var namespace_nth =
     [ "SetViewportCommand", "struct_nth_1_1_set_viewport_command.html", "struct_nth_1_1_set_viewport_command" ],
     [ "Shader", "class_nth_1_1_shader.html", "class_nth_1_1_shader" ],
     [ "ShaderManager", "class_nth_1_1_shader_manager.html", null ],
+    [ "SpriteBatch", "struct_nth_1_1_sprite_batch.html", "struct_nth_1_1_sprite_batch" ],
+    [ "SpriteInstanceData", "struct_nth_1_1_sprite_instance_data.html", "struct_nth_1_1_sprite_instance_data" ],
     [ "SpriteRenderer", "struct_nth_1_1_sprite_renderer.html", "struct_nth_1_1_sprite_renderer" ],
     [ "SpriteRendererDescriptor", "struct_nth_1_1_sprite_renderer_descriptor.html", "struct_nth_1_1_sprite_renderer_descriptor" ],
     [ "SpriteVertex", "struct_nth_1_1_sprite_vertex.html", "struct_nth_1_1_sprite_vertex" ],
     [ "TextureManager", "class_nth_1_1_texture_manager.html", null ],
     [ "Transform", "struct_nth_1_1_transform.html", "struct_nth_1_1_transform" ],
     [ "TransformDescriptor", "struct_nth_1_1_transform_descriptor.html", "struct_nth_1_1_transform_descriptor" ],
+    [ "UnbindVertexArrayCommand", "struct_nth_1_1_unbind_vertex_array_command.html", null ],
+    [ "UpdateIndexBufferCommand", "struct_nth_1_1_update_index_buffer_command.html", "struct_nth_1_1_update_index_buffer_command" ],
+    [ "UpdateVertexBufferCommand", "struct_nth_1_1_update_vertex_buffer_command.html", "struct_nth_1_1_update_vertex_buffer_command" ],
     [ "VertexArray", "class_nth_1_1_vertex_array.html", "class_nth_1_1_vertex_array" ],
     [ "VertexAttribute", "struct_nth_1_1_vertex_attribute.html", "struct_nth_1_1_vertex_attribute" ],
     [ "VertexBuffer", "class_nth_1_1_vertex_buffer.html", "class_nth_1_1_vertex_buffer" ],
@@ -74,7 +88,7 @@ var namespace_nth =
     [ "ValidComponent", "concept_nth_1_1_valid_component.html", null ],
     [ "Entity", "namespace_nth.html#a6c41ebd12f9ea6eb6759bc2e99bb2bb9", null ],
     [ "GeometryHandle", "namespace_nth.html#afcd248cdcbe5deec6ad538c05f06756e", null ],
-    [ "RenderCommand", "namespace_nth.html#a9bde8dfc523c404cef2412f2d6a248db", null ],
+    [ "RenderCommand", "namespace_nth.html#a62d22af65cd7d62eee84fda51c3216ef", null ],
     [ "SoundID", "namespace_nth.html#aa757c6142cb44fd5f71854777e4b9197", null ],
     [ "TextureID", "namespace_nth.html#a4def248c22ed75cd1e606c7d62f3ddf6", null ],
     [ "AttributeType", "namespace_nth.html#a2cbc17b47e5b46db1b6d2ded11dcbd46", [

@@ -62,10 +62,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_audio_engine_8cpp.html",
-"class_nth_1_1_collision_detection.html",
-"class_nth_1_1_i_debug_overlay.html#a3c4449b61764bf0e711184ee40233892",
-"class_nth_1_1_texture_manager.html",
-"struct_nth_1_1_entity_descriptor.html#a96053f370252b8be5373c2276c87b31a"
+"class_nth_1_1_clock.html#ae439681590d1123f33436f108f9c0060",
+"class_nth_1_1_i_buffer.html#a21b297066432f8ac201e59081599b419",
+"class_nth_1_1_shader.html#a7558c9b989d18dd71f5df2db41114c00",
+"struct_nth_1_1_clear_command.html",
+"struct_nth_1_1_sprite_renderer_descriptor.html#ade519f3a4c121548f9811253de7b35ab"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

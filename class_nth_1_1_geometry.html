@@ -115,11 +115,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a127a21d1806709ac2c0c0e5ca33713e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae999e3a1382b7d66399f3dffee07fc9b" id="r_ae999e3a1382b7d66399f3dffee07fc9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_geometry.html#ae999e3a1382b7d66399f3dffee07fc9b">Destroy</a> () const</td></tr>
 <tr class="separator:ae999e3a1382b7d66399f3dffee07fc9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91d1e5f082658926ce19b1bbf3f5fea2" id="r_a91d1e5f082658926ce19b1bbf3f5fea2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_geometry.html#a91d1e5f082658926ce19b1bbf3f5fea2">DrawIndexed</a> () const</td></tr>
-<tr class="memdesc:a91d1e5f082658926ce19b1bbf3f5fea2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw this geometry using indices.  <br /></td></tr>
-<tr class="separator:a91d1e5f082658926ce19b1bbf3f5fea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa366e45ceeea21d92676bec9b8f13bad" id="r_aa366e45ceeea21d92676bec9b8f13bad"><td class="memItemLeft" align="right" valign="top">N_ND const shared_ptr&lt; <a class="el" href="class_nth_1_1_vertex_array.html">VertexArray</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_geometry.html#aa366e45ceeea21d92676bec9b8f13bad">GetVertexArray</a> () const</td></tr>
 <tr class="separator:aa366e45ceeea21d92676bec9b8f13bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d67ca84f6a0d4db6b12dddcf280cb9c" id="r_a2d67ca84f6a0d4db6b12dddcf280cb9c"><td class="memItemLeft" align="right" valign="top">N_ND u32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_geometry.html#a2d67ca84f6a0d4db6b12dddcf280cb9c">GetIndexCount</a> () const</td></tr>
+<tr class="memdesc:a2d67ca84f6a0d4db6b12dddcf280cb9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of indices in this geometry.  <br /></td></tr>
+<tr class="separator:a2d67ca84f6a0d4db6b12dddcf280cb9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -274,24 +274,33 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a91d1e5f082658926ce19b1bbf3f5fea2" name="a91d1e5f082658926ce19b1bbf3f5fea2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91d1e5f082658926ce19b1bbf3f5fea2">&#9670;&#160;</a></span>DrawIndexed()</h2>
+<a id="a2d67ca84f6a0d4db6b12dddcf280cb9c" name="a2d67ca84f6a0d4db6b12dddcf280cb9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d67ca84f6a0d4db6b12dddcf280cb9c">&#9670;&#160;</a></span>GetIndexCount()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Nth::Geometry::DrawIndexed </td>
+          <td class="memname">N_ND u32 Nth::Geometry::GetIndexCount </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Draw this geometry using indices. </p>
+<p>Get the number of indices in this geometry. </p>
+<dl class="section return"><dt>Returns</dt><dd>Index count </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_geometry_8cpp_source.html#l00095">95</a> of file <a class="el" href="_geometry_8cpp_source.html">Geometry.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_geometry_8hpp_source.html#l00074">74</a> of file <a class="el" href="_geometry_8hpp_source.html">Geometry.hpp</a>.</p>
 
 </div>
 </div>
@@ -318,7 +327,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_geometry_8hpp_source.html#l00071">71</a> of file <a class="el" href="_geometry_8hpp_source.html">Geometry.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_geometry_8hpp_source.html#l00068">68</a> of file <a class="el" href="_geometry_8hpp_source.html">Geometry.hpp</a>.</p>
 
 </div>
 </div>

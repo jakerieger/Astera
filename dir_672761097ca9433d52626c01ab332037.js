@@ -3,6 +3,7 @@ var dir_672761097ca9433d52626c01ab332037 =
     [ "Buffer.cpp", "_buffer_8cpp.html", null ],
     [ "Buffer.hpp", "_buffer_8hpp.html", "_buffer_8hpp" ],
     [ "Command.hpp", "_command_8hpp.html", "_command_8hpp" ],
+    [ "CommandHelpers.hpp", "_command_helpers_8hpp.html", "_command_helpers_8hpp" ],
     [ "CommandQueue.cpp", "_command_queue_8cpp.html", null ],
     [ "CommandQueue.hpp", "_command_queue_8hpp.html", "_command_queue_8hpp" ],
     [ "DebugInterface.cpp", "_debug_interface_8cpp.html", null ],
