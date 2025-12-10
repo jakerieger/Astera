@@ -13,8 +13,22 @@ add_library(NthEngine_Objects OBJECT
     ${MINIAUDIO_SOURCES}
     ${GLAD_SOURCES}
     ${STB_SOURCES}
+    ${COMMON_ROOT}/CommonPCH.hpp
+    ${COMMON_ROOT}/CommonPCH.cpp
     ${ENGINE_INCLUDES}
     ${ENGINE_SOURCES}
+)
+
+target_precompile_headers(NthEngine_Objects PRIVATE
+    "$<$<COMPILE_LANGUAGE:CXX>:${COMMON_ROOT}/CommonPCH.hpp>"
+)
+
+set_source_files_properties(
+    ${VENDOR_ROOT}/backends/imgui_impl_glfw.cpp
+    ${VENDOR_ROOT}/backends/imgui_impl_opengl3.cpp
+    ${VENDOR_ROOT}/glad.c
+    PROPERTIES
+    SKIP_PRECOMPILE_HEADERS ON
 )
 
 target_include_directories(NthEngine_Objects PUBLIC
