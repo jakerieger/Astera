@@ -1,3 +1,6 @@
 * @jakerieger
 
 /Source/Vendor/
+/Source/Vendor/Vendor.cmake @jakerieger
+
+Docs/doxygen-awesome.css
