@@ -132,9 +132,9 @@ namespace glm
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL vec<L, T, Q> prevMultiple(vec<L, T, Q> const& v, vec<L, T, Q> const& Multiple);
 
-	/// Returns the bit number of the Nth significant bit set to
+	/// Returns the bit number of the Astera significant bit set to
 	/// 1 in the binary representation of value.
-	/// If value bitcount is less than the Nth significant bit, -1 will be returned.
+	/// If value bitcount is less than the Astera significant bit, -1 will be returned.
 	///
 	/// @tparam L An integer between 1 and 4 included that qualify the dimension of the vector.
 	/// @tparam T Signed or unsigned integer scalar types.

@@ -1,6 +1,6 @@
 /*
  *  Filename: InputCodes.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@
 
 #include "EngineCommon.hpp"
 
-namespace Nth::Input {
+namespace Astera::Input {
     /// @brief Key code definitions for keyboard input
     namespace Keys {
         static constexpr u16 Space        = 32;
@@ -174,4 +174,4 @@ namespace Nth::Input {
         static constexpr u16 Macro8 = 7;
         static constexpr u16 Last   = Macro8;
     }  // namespace MouseButtons
-}  // namespace Nth::Input
+}  // namespace Astera::Input

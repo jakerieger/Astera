@@ -2,5 +2,5 @@
 <NthProject name="Sandbox" engine_version="1">
     <StartupScene>Sandbox</StartupScene>
     <ContentPath>${ProjectRoot}/Content</ContentPath>
-    <EngineContentPath>C:/Users/conta/Code/NthEngine/EngineContent</EngineContentPath>
+    <EngineContentPath>C:/Users/conta/Code/Astera/EngineContent</EngineContentPath>
 </NthProject>

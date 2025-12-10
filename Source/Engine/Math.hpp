@@ -1,6 +1,6 @@
 /*
  *  Filename: Math.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ namespace sol {
     class state;
 }  // namespace sol
 
-namespace Nth {
+namespace Astera {
     /// @brief Implements standard math operations and defines common constants
     class Math {
     public:
@@ -133,4 +133,4 @@ namespace Nth {
 
         static void RegisterLuaGlobals(sol::state& lua);
     };
-}  // namespace Nth
+}  // namespace Astera

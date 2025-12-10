@@ -2,9 +2,9 @@
 /// @created 11/27/25
 ///
 
-#include <NthEngine.hpp>
+#include <AsteraCore.hpp>
 
-using namespace Nth;
+using namespace Astera;
 
 class SandboxGame final : public Game {
 public:

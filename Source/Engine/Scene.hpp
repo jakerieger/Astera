@@ -1,6 +1,6 @@
 /*
  *  Filename: Scene.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +34,7 @@
 #include "ScriptEngine.hpp"
 #include "Rendering/RenderContext.hpp"
 
-namespace Nth {
+namespace Astera {
     /// @brief Represents a game scene with lifecycle management and rendering capabilities
     class Scene {
         friend class Game;
@@ -86,4 +86,4 @@ namespace Nth {
         /// @brief Internal state data for the scene
         SceneState mState;
     };
-}  // namespace Nth
+}  // namespace Astera

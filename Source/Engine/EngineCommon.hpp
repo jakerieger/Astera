@@ -1,6 +1,6 @@
 // /*
 //  *  Filename: ${NAME}
-//  *  This code is part of the Nth Engine core library
+//  *  This code is part of the Astera core library
 //  *  Copyright ${YEAR} Jake Rieger
 //  *
 //  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -73,8 +73,8 @@
 #define DCAST dynamic_cast
 #define RCAST reinterpret_cast
 
-/// @brief Root namespace containing all Nth Engine code
-namespace Nth {
+/// @brief Root namespace containing all Astera code
+namespace Astera {
     using u8   = uint8_t;
     using u16  = uint16_t;
     using u32  = uint32_t;
@@ -167,4 +167,4 @@ namespace Nth {
 
         throw std::runtime_error("Unknown conversion error");
     }
-}  // namespace Nth
+}  // namespace Astera

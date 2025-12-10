@@ -1,6 +1,6 @@
 /*
  *  Filename: Scene.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@
 #include "ScriptTypeRegistry.hpp"
 #include "Log.hpp"
 
-namespace Nth {
+namespace Astera {
     Scene::~Scene() {
         mState.Reset();
     }
@@ -97,4 +97,4 @@ namespace Nth {
         Awake(scriptEngine);
         Log::Debug("Scene", "Loaded scene: `{}`", descriptor.name);
     }
-}  // namespace Nth
+}  // namespace Astera

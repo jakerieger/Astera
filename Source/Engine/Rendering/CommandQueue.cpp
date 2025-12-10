@@ -1,6 +1,6 @@
 /*
  *  Filename: CommandQueue.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +34,7 @@
 #include "ShaderManager.hpp"
 #include "Rendering/GLUtils.hpp"
 
-namespace Nth {
+namespace Astera {
     void CommandQueue::ExecuteQueue() {
         CommandExecutor executor;
 
@@ -386,4 +386,4 @@ namespace Nth {
         N_UNUSED(cmd);
         VertexArray::Unbind();
     }
-}  // namespace Nth
+}  // namespace Astera

@@ -1,6 +1,6 @@
 /*
  *  Filename: TextureManager.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@
 
 #include "EngineCommon.hpp"
 
-namespace Nth {
+namespace Astera {
     /// @brief Type alias for texture identifiers
     using TextureID = u32;
 
@@ -64,4 +64,4 @@ namespace Nth {
         /// @return Shared pointer to the texture manager instance
         static shared_ptr<TextureManager> GetManager();
     };
-}  // namespace Nth
+}  // namespace Astera

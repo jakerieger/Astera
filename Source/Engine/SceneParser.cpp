@@ -1,6 +1,6 @@
 /*
  *  Filename: SceneParser.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@
 
 #include <pugixml.hpp>
 
-namespace Nth {
+namespace Astera {
     static Rigidbody2DDescriptor ParseRigidbodyComponent(const pugi::xml_node& rigidbodyNode) {
         Rigidbody2DDescriptor rigidbody {};
 
@@ -267,4 +267,4 @@ namespace Nth {
             }
         }
     }
-}  // namespace Nth
+}  // namespace Astera

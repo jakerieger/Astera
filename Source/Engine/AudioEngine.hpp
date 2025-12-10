@@ -1,6 +1,6 @@
 /*
  *  Filename: AudioEngine.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ namespace sol {
     class state;
 }
 
-namespace Nth {
+namespace Astera {
     /// @brief Type alias for sound identifiers
     using SoundID = i32;
 
@@ -122,4 +122,4 @@ namespace Nth {
         /// @param lua Reference to the Lua state
         void RegisterLuaGlobals(sol::state& lua);
     };
-}  // namespace Nth
+}  // namespace Astera

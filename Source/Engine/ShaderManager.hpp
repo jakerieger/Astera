@@ -1,6 +1,6 @@
 /*
  *  Filename: ShaderManager.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@
 #include "EngineCommon.hpp"
 #include "Rendering/Shader.hpp"
 
-namespace Nth {
+namespace Astera {
     /// @brief Predefined shader name constants
     namespace Shaders {
         /// @brief Name identifier for the sprite shader
@@ -66,4 +66,4 @@ namespace Nth {
         /// @return Shared pointer to the shader manager instance
         static shared_ptr<ShaderManager> GetManager();
     };
-}  // namespace Nth
+}  // namespace Astera

@@ -1,6 +1,6 @@
 /*
  *  Filename: Input.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +34,7 @@ namespace sol {
     class state;
 }
 
-namespace Nth {
+namespace Astera {
     /// @brief Manages keyboard and mouse input state for the game
     ///
     /// Provides polling-based input handling for keyboard keys and mouse buttons,
@@ -149,4 +149,4 @@ namespace Nth {
         /// @brief Whether input processing is currently enabled
         bool mEnabled = true;
     };
-}  // namespace Nth
+}  // namespace Astera

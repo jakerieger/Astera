@@ -8,7 +8,7 @@ file(GLOB ENGINE_INCLUDES
     **/*.hpp
 )
 
-add_library(NthEngine_Objects OBJECT
+add_library(Astera_Objects OBJECT
     ${IMGUI_SOURCES}
     ${MINIAUDIO_SOURCES}
     ${GLAD_SOURCES}
@@ -17,56 +17,56 @@ add_library(NthEngine_Objects OBJECT
     ${ENGINE_SOURCES}
 )
 
-target_include_directories(NthEngine_Objects PUBLIC
+target_include_directories(Astera_Objects PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<BUILD_INTERFACE:${COMMON_ROOT}>
     $<BUILD_INTERFACE:${SOURCE_ROOT}>
     $<BUILD_INTERFACE:${VENDOR_ROOT}>
-    $<INSTALL_INTERFACE:include/NthEngine>
+    $<INSTALL_INTERFACE:include/Astera>
 )
 
 # CRITICAL: Enable PIC for the object library
-set_target_properties(NthEngine_Objects PROPERTIES
+set_target_properties(Astera_Objects PROPERTIES
     POSITION_INDEPENDENT_CODE ON
 )
 
 # Link dependencies to the object library
-target_link_libraries(NthEngine_Objects PUBLIC ${NTHENGINE_LIBS})
+target_link_libraries(Astera_Objects PUBLIC ${ASTERA_LIBS})
 
 # Create shared library from object files
-add_library(NthEngine_Shared SHARED $<TARGET_OBJECTS:NthEngine_Objects>)
-set_target_properties(NthEngine_Shared PROPERTIES OUTPUT_NAME NthEngine)
+add_library(Astera_Shared SHARED $<TARGET_OBJECTS:Astera_Objects>)
+set_target_properties(Astera_Shared PROPERTIES OUTPUT_NAME Astera)
 
 # Create static library from object files
-add_library(NthEngine_Static STATIC $<TARGET_OBJECTS:NthEngine_Objects>)
-set_target_properties(NthEngine_Static PROPERTIES OUTPUT_NAME NthEngine)
+add_library(Astera_Static STATIC $<TARGET_OBJECTS:Astera_Objects>)
+set_target_properties(Astera_Static PROPERTIES OUTPUT_NAME Astera)
 
 # Inherit include directories and compile definitions, but use INTERFACE linking
 # This breaks the direct dependency chain for exports
-target_include_directories(NthEngine_Shared PUBLIC
+target_include_directories(Astera_Shared PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<BUILD_INTERFACE:${COMMON_ROOT}>
     $<BUILD_INTERFACE:${SOURCE_ROOT}>
     $<BUILD_INTERFACE:${VENDOR_ROOT}>
-    $<INSTALL_INTERFACE:include/NthEngine>
+    $<INSTALL_INTERFACE:include/Astera>
 )
 
-target_include_directories(NthEngine_Static PUBLIC
+target_include_directories(Astera_Static PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<BUILD_INTERFACE:${COMMON_ROOT}>
     $<BUILD_INTERFACE:${SOURCE_ROOT}>
     $<BUILD_INTERFACE:${VENDOR_ROOT}>
-    $<INSTALL_INTERFACE:include/NthEngine>
+    $<INSTALL_INTERFACE:include/Astera>
 )
 
 # Link the actual libraries (not the object library) to dependencies
-target_link_libraries(NthEngine_Shared PUBLIC ${NTHENGINE_LIBS})
-target_link_libraries(NthEngine_Static PUBLIC ${NTHENGINE_LIBS})
+target_link_libraries(Astera_Shared PUBLIC ${ASTERA_LIBS})
+target_link_libraries(Astera_Static PUBLIC ${ASTERA_LIBS})
 
 include(GenerateExportHeader)
-generate_export_header(NthEngine_Shared)
+generate_export_header(Astera_Shared)
 
 # Aliases
-add_library(NthEngine::Shared ALIAS NthEngine_Shared)
-add_library(NthEngine::Static ALIAS NthEngine_Static)
-add_library(NthEngine::NthEngine ALIAS NthEngine_Shared)
+add_library(Astera::Shared ALIAS Astera_Shared)
+add_library(Astera::Static ALIAS Astera_Static)
+add_library(Astera::Astera ALIAS Astera_Shared)

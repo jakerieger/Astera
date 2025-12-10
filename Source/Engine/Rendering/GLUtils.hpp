@@ -1,6 +1,6 @@
 /*
  *  Filename: GLUtils.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@
 
 #include "EngineCommon.hpp"
 
-namespace Nth {
+namespace Astera {
     struct OpenGLException final : public std::runtime_error {
         OpenGLException() : std::runtime_error("OpenGLException was thrown") {}
     };
@@ -104,4 +104,4 @@ namespace Nth {
 
 // Macro that works for both void and non-void
 #define GLCall(func, ...) GLCallImpl(#func, std::source_location::current(), func, ##__VA_ARGS__)
-}  // namespace Nth
+}  // namespace Astera

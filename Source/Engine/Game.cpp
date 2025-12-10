@@ -1,6 +1,6 @@
 /*
  *  Filename: Game.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,8 +38,8 @@
 
 #include <stb_image.h>
 
-namespace Nth {
-    using Nth::Log;
+namespace Astera {
+    using Astera::Log;
 
     void Game::Run() {
         mRunning = Initialize();
@@ -323,4 +323,4 @@ namespace Nth {
         auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
         if (game) { game->OnMouseScroll(xoffset, yoffset); }
     }
-}  // namespace Nth
+}  // namespace Astera

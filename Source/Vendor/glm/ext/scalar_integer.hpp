@@ -76,9 +76,9 @@ namespace glm
 	template<typename genIUType>
 	GLM_FUNC_DECL genIUType prevMultiple(genIUType v, genIUType Multiple);
 
-	/// Returns the bit number of the Nth significant bit set to
+	/// Returns the bit number of the Astera significant bit set to
 	/// 1 in the binary representation of value.
-	/// If value bitcount is less than the Nth significant bit, -1 will be returned.
+	/// If value bitcount is less than the Astera significant bit, -1 will be returned.
 	///
 	/// @tparam genIUType Signed or unsigned integer scalar types.
 	///

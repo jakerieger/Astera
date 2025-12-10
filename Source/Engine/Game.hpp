@@ -1,6 +1,6 @@
 /*
  *  Filename: Game.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,7 +39,7 @@
 #include "Rendering/PhysicsDebugLayer.hpp"
 #include "Rendering/RenderContext.hpp"
 
-namespace Nth {
+namespace Astera {
     /// @brief Base class where all engine systems meet and execute
     ///
     /// Central hub for the game engine that owns and manages all core systems including
@@ -356,4 +356,4 @@ namespace Nth {
     /// Uses standard main function with command-line arguments
     #define N_ENTRYPOINT int main(int argc, char* argv[])
 #endif
-}  // namespace Nth
+}  // namespace Astera

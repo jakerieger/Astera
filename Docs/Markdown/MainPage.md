@@ -1,4 +1,4 @@
-@mainpage Nth Engine Documentation
+@mainpage Astera Documentation
 
 ## Overview
 

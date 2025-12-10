@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(NthEngine VERSION 1.0.0 LANGUAGES CXX C)
+project(Astera VERSION 1.0.0 LANGUAGES CXX C)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -22,7 +22,7 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(LUAJIT REQUIRED luajit)
 pkg_check_modules(GLFW REQUIRED glfw3)
 
-set(NTHENGINE_LIBS
+set(ASTERA_LIBS
     fmt::fmt
     glfw
     spdlog::spdlog

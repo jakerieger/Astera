@@ -1,6 +1,6 @@
 /*
  *  Filename: Input.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@
 
 #include <sol/sol.hpp>
 
-namespace Nth {
+namespace Astera {
     bool InputManager::GetKeyDown(i32 key) {
         return mKeyStates[key].pressed;
     }
@@ -194,4 +194,4 @@ namespace Nth {
     void InputManager::SetEnabled(const bool enabled) {
         mEnabled = enabled;
     }
-}  // namespace Nth
+}  // namespace Astera

@@ -1,6 +1,6 @@
 /*
  *  Filename: Rigidbody2D.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@
 
 #include "Rigidbody2D.hpp"
 
-namespace Nth {
+namespace Astera {
     Rigidbody2D::Rigidbody2D() {
         UpdateMass(mass);
     }
@@ -80,4 +80,4 @@ namespace Nth {
         force  = Vec2(0.0f);
         torque = 0.0f;
     }
-}  // namespace Nth
+}  // namespace Astera

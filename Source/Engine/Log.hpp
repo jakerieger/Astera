@@ -1,6 +1,6 @@
 /*
  *  Filename: Log.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +34,7 @@ namespace sol {
     class state;
 }
 
-namespace Nth {
+namespace Astera {
     class Log {
     public:
         static void Initialize();
@@ -78,4 +78,4 @@ namespace Nth {
 
         static void RegisterLuaGlobals(sol::state& lua);
     };
-}  // namespace Nth
+}  // namespace Astera

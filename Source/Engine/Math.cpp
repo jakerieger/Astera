@@ -1,6 +1,6 @@
 /*
  *  Filename: Math.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@
 
 #include <random>
 
-namespace Nth {
+namespace Astera {
     f32 Math::Min(f32 a, f32 b) {
         return (a < b) ? a : b;
     }
@@ -124,4 +124,4 @@ namespace Nth {
         math["RandomInt"] = [](const sol::object&, i32 a, i32 b) -> i32 { return RandomInt(a, b); };
         math["Lerp"]      = [](const sol::object&, f32 a, f32 b, f32 t) -> f32 { return Lerp(a, b, t); };
     }
-}  // namespace Nth
+}  // namespace Astera

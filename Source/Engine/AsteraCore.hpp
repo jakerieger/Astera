@@ -1,6 +1,6 @@
 /*
- *  Filename: NthEngine.hpp
- *  This code is part of the Nth Engine core library
+ *  Filename: Astera.hpp
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,5 +37,5 @@
 #include "Math.hpp"
 #include "Log.hpp"
 
-/// @brief Root namespace of all Nth Engine components
-namespace Nth {}
+/// @brief Root namespace of all Astera components
+namespace Astera {}

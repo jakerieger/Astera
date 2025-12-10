@@ -1,6 +1,6 @@
 /*
  *  Filename: CommandHelpers.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@
 
 #include "Command.hpp"
 
-namespace Nth {
+namespace Astera {
     /// @brief Helper functions for creating buffer update commands
     namespace CommandHelpers {
 
@@ -59,4 +59,4 @@ namespace Nth {
             return UpdateIndexBufferCommand {.buffer = buffer, .indices = indices, .offset = offset};
         }
     }  // namespace CommandHelpers
-}  // namespace Nth
+}  // namespace Astera

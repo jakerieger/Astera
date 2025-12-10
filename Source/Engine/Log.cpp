@@ -1,6 +1,6 @@
 /*
  *  Filename: Log.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@
 
 #include <sol/sol.hpp>
 
-namespace Nth {
+namespace Astera {
     shared_ptr<spdlog::logger> Log::sLogger;
 
     void Log::Initialize() {
@@ -101,4 +101,4 @@ namespace Nth {
             Log::GetLogger()->critical("\033[1m{}\033[0m: {}", "LuaInterpreter", msg.as<string>());
         };
     }
-}  // namespace Nth
+}  // namespace Astera

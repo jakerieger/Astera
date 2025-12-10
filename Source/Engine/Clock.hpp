@@ -1,6 +1,6 @@
 /*
  *  Filename: Clock.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@
     #include <ctime>
 #endif
 
-namespace Nth {
+namespace Astera {
     /// @brief High-precision clock for timing and frame rate tracking
     ///
     /// Provides accurate time measurements for delta time calculation, frame rate monitoring,
@@ -112,4 +112,4 @@ namespace Nth {
         /// @brief Time accumulated since last FPS update in seconds
         f64 mTimeSinceLastFpsUpdate;
     };
-}  // namespace Nth
+}  // namespace Astera

@@ -1,6 +1,6 @@
 /*
  *  Filename: Collider2D.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,4 +28,4 @@
 
 #include "Collider2D.hpp"
 
-namespace Nth {}  // namespace Nth
+namespace Astera {}  // namespace Astera

@@ -1,6 +1,6 @@
 /*
  *  Filename: Rigidbody2D.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@
 
 #include "EngineCommon.hpp"
 
-namespace Nth {
+namespace Astera {
     enum class BodyType {
         Static,    // Infinite mass, doesn't move (e.g., walls, ground)
         Dynamic,   // Affected by forces and gravity
@@ -128,4 +128,4 @@ namespace Nth {
         /// Typically called after physics integration step
         void ClearForces();
     };
-}  // namespace Nth
+}  // namespace Astera

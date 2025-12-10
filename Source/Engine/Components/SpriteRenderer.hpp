@@ -1,6 +1,6 @@
 /*
  *  Filename: SpriteRenderer.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@
 #include "EngineCommon.hpp"
 #include "Rendering/Geometry.hpp"
 
-namespace Nth {
+namespace Astera {
     struct SpriteRenderer {
         u32 textureId;
         GeometryHandle geometry;
@@ -40,4 +40,4 @@ namespace Nth {
             geometry.reset();
         }
     };
-}  // namespace Nth
+}  // namespace Astera

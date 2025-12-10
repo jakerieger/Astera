@@ -1,6 +1,6 @@
 /*
  *  Filename: TextureManager.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@
 
 #include <Vendor/stb_image.h>
 
-namespace Nth {
+namespace Astera {
     shared_ptr<TextureManager> TextureManager::sManager;
     unordered_map<string, TextureID> TextureManager::sCache;
 
@@ -90,4 +90,4 @@ namespace Nth {
         if (!sManager) Initialize();
         return sManager;
     }
-}  // namespace Nth
+}  // namespace Astera

@@ -1,6 +1,6 @@
 /*
  *  Filename: CommandQueue.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@
 #include "EngineCommon.hpp"
 #include "Command.hpp"
 
-namespace Nth {
+namespace Astera {
     /// @brief Command queue for batching and executing rendering commands
     class CommandQueue {
     public:
@@ -116,4 +116,4 @@ namespace Nth {
         void operator()(const BindVertexArrayCommand& cmd) const;
         void operator()(const UnbindVertexArrayCommand& cmd) const;
     };
-}  // namespace Nth
+}  // namespace Astera

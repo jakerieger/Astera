@@ -1,6 +1,6 @@
 /*
  *  Filename: IO.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@
 #include <string>
 #include <sstream>
 
-namespace Nth::IO {
+namespace Astera::IO {
     inline static std::optional<std::vector<uint8_t>> ReadBytes(const std::filesystem::path& filename) {
         if (!exists(filename)) { return {}; }
         std::ifstream file(filename, std::ios::binary | std::ios::ate);
@@ -57,4 +57,4 @@ namespace Nth::IO {
         buffer << file.rdbuf();
         return buffer.str();
     }
-}  // namespace Nth::IO
+}  // namespace Astera::IO

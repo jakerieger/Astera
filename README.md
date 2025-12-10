@@ -1,9 +1,7 @@
-# Nth Engine
+# Astera
 
-Nth Engine (named after the fact that I've lost count of what iteration I'm on) is a cross-platform,
-2D game engine
-written in C++. It uses OpenGL for rendering, Lua for scripting, and an Entity Component System for
-scene management.
+Astera is a cross-platform, 2D game engine written in C++. It uses OpenGL for rendering, Lua for
+scripting, and an Entity Component System for scene management.
 
 The bulk of the engine's API is exposed to Lua and available to scripts. Here's an example script
 from the
@@ -11,7 +9,7 @@ Sandbox demo project:
 
 ```lua
 --- Behavior: BallController.lua
---- Created by Nth Engine
+--- Created by Astera
 ---
 
 ballSpeed = 500
@@ -68,7 +66,7 @@ end
 The Lua API is fully typed and documented (stubs can be found
 in [EngineContent/Scripts/types](EngineContent/Scripts/types)).
 
-Nth Engine uses XML to describe scenes and currently only supports loading content in original
+Astera uses XML to describe scenes and currently only supports loading content in original
 authored form (no packing or compression yet).
 
 Sandbox demo scene:
@@ -116,4 +114,4 @@ Sandbox demo scene:
 ```
 
 This is an ongoing project and is provided as-is. Issue reports are welcome but likely to be ignored
-until Nth Engine is "officially" released.
+until Astera is "officially" released.

@@ -1,6 +1,6 @@
 /*
  *  Filename: RenderContext.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@
 #include "Log.hpp"
 #include "GLUtils.hpp"
 
-namespace Nth {
+namespace Astera {
     bool RenderContext::Initialize(u32 width, u32 height) {
         if (mInitialized) return true;
 
@@ -77,4 +77,4 @@ namespace Nth {
         mHeight = height;
         Submit(SetViewportCommand {0, 0, width, height});
     }
-}  // namespace Nth
+}  // namespace Astera

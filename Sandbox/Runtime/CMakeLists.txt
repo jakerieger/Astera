@@ -2,7 +2,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Sandbox)
 add_executable(Sandbox main.cpp)
 
 target_link_libraries(Sandbox PRIVATE
-    NthEngine::NthEngine
+    Astera::Astera
 )
 
 add_custom_target(CMake_CopySandboxContent ALL

@@ -1,2 +1,3 @@
-add_subdirectory(NthCLI)
-add_subdirectory(NthPak)
+add_subdirectory(AsteraBin)
+add_subdirectory(AsteraCLI)
+add_subdirectory(AsteraPak)

@@ -1,6 +1,6 @@
 /*
  *  Filename: VertexArray.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@
 #include "VertexArray.hpp"
 #include "GLUtils.hpp"
 
-namespace Nth {
+namespace Astera {
     VertexArray::VertexArray() {
         GLCall(glGenVertexArrays, 1, &mArrayID);
     }
@@ -109,4 +109,4 @@ namespace Nth {
             mArrayID = 0;
         }
     }
-}  // namespace Nth
+}  // namespace Astera

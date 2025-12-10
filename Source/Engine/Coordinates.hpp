@@ -1,6 +1,6 @@
 /*
  *  Filename: Coordinates.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,7 +42,7 @@
 #endif
 
 /// @brief Utility functions for converting from screen space to NDC (Normalized Device Coordinates)
-namespace Nth::Coordinates {
+namespace Astera::Coordinates {
     /// @brief Convert screen pixel coordinates to NDC (Normalized Device Coordinates)
     /// @param screenPos Position in screen space (pixels)
     /// @param screenWidth Width of the screen in pixels
@@ -273,4 +273,4 @@ namespace Nth::Coordinates {
               return MouseToWorld(mousePos, screenWidth, screenHeight, originTopLeft);
           };
     }
-}  // namespace Nth::Coordinates
+}  // namespace Astera::Coordinates

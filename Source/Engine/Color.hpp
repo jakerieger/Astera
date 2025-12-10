@@ -1,6 +1,6 @@
 /*
  *  Filename: Color.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +34,7 @@
 #include <sstream>
 #include <imgui.h>
 
-namespace Nth {
+namespace Astera {
     /// @brief Encapsulation for representing and manipulating colors
     ///
     /// Provides a comprehensive color class supporting multiple color spaces (RGB, HSV),
@@ -384,7 +384,7 @@ namespace Nth {
         /// @brief Fully transparent color (0.0, 0.0, 0.0, 0.0)
         static Color Transparent {0.0f, 0.0f};
     }  // namespace Colors
-}  // namespace Nth
+}  // namespace Astera
 
 #ifndef N_COLOR_HASH_SPECIALIZATION
     #define N_COLOR_HASH_SPECIALIZATION
@@ -393,12 +393,12 @@ namespace Nth {
 /// Enables Color to be used as a key in std::unordered_map, std::unordered_set, etc.
 /// Hash is computed from the 32-bit ARGB representation.
 template<>
-struct std::hash<Nth::Color> {
+struct std::hash<Astera::Color> {
     /// @brief Computes hash value for a Color
     /// @param color Color to hash
     /// @return Hash value based on 32-bit ARGB representation
-    std::size_t operator()(const Nth::Color& color) const noexcept {
-        return std::hash<Nth::u32> {}(color.ToU32());
+    std::size_t operator()(const Astera::Color& color) const noexcept {
+        return std::hash<Astera::u32> {}(color.ToU32());
     }
 };
 #endif

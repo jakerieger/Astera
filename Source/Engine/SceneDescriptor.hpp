@@ -1,6 +1,6 @@
 /*
  *  Filename: SceneDescriptor.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@
 
 #include "EngineCommon.hpp"
 
-namespace Nth {
+namespace Astera {
     struct Rigidbody2DDescriptor {
         string type;  // "Static", "Dynamic", or "Kinematic"
         Vec2 velocity;
@@ -79,4 +79,4 @@ namespace Nth {
         string name;
         vector<EntityDescriptor> entities;
     };
-}  // namespace Nth
+}  // namespace Astera

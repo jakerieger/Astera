@@ -1,6 +1,6 @@
 /*
  *  Filename: VertexArray.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@
 #include "EngineCommon.hpp"
 #include "Buffer.hpp"
 
-namespace Nth {
+namespace Astera {
     /// @brief Describes the data type of a vertex attribute
     enum class AttributeType {
         Float,
@@ -189,4 +189,4 @@ namespace Nth {
         vector<shared_ptr<VertexBuffer>> mVertexBuffers;
         shared_ptr<IndexBuffer> mIndexBuffer;
     };
-}  // namespace Nth
+}  // namespace Astera

@@ -1,6 +1,6 @@
 /*
  *  Filename: SceneParser.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@
 #include "EngineCommon.hpp"
 #include "SceneDescriptor.hpp"
 
-namespace Nth {
+namespace Astera {
     struct SceneDescriptor;
     class SceneState;
     class ScriptEngine;
@@ -65,4 +65,4 @@ namespace Nth {
         /// @param outDescriptor The descriptor to populate with deserialized data
         static void DeserializeDescriptor(const string& source, SceneDescriptor& outDescriptor);
     };
-}  // namespace Nth
+}  // namespace Astera

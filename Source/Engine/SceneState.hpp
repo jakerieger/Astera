@@ -1,6 +1,6 @@
 /*
  *  Filename: SceneState.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -41,7 +41,7 @@
 
 #include "Vendor/entt/entt.hpp"
 
-namespace Nth {
+namespace Astera {
     /// @brief Type alias for entt::entity. Casts to integer types as id value.
     using Entity = entt::entity;
 
@@ -142,4 +142,4 @@ namespace Nth {
         entt::registry mRegistry {};
         unordered_map<Entity, string> mEntityNames {};
     };
-}  // namespace Nth
+}  // namespace Astera

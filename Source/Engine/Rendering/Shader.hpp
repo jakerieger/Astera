@@ -1,6 +1,6 @@
 /*
  *  Filename: Shader.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@
 #include "GLUtils.hpp"
 #include "Log.hpp"
 
-namespace Nth {
+namespace Astera {
     class Shader {
         friend class ShaderManager;
 
@@ -72,4 +72,4 @@ namespace Nth {
 
         inline void VerifyLocation(i32 location, const char* name);
     };
-}  // namespace Nth
+}  // namespace Astera

@@ -1,5 +1,5 @@
 # ============================================================================
-# Installation Configuration for NthEngine
+# Installation Configuration for Astera
 # ============================================================================
 
 include(GNUInstallDirs)
@@ -7,7 +7,7 @@ include(GNUInstallDirs)
 # ----------------------------------------------------------------------------
 # Install NthCLI Binary
 # ----------------------------------------------------------------------------
-install(TARGETS nth
+install(TARGETS astera-cli
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     COMPONENT cli
 )
@@ -15,8 +15,8 @@ install(TARGETS nth
 # ----------------------------------------------------------------------------
 # Install Engine Libraries
 # ----------------------------------------------------------------------------
-install(TARGETS NthEngine_Shared NthEngine_Static
-    EXPORT NthEngineTargets
+install(TARGETS Astera_Shared Astera_Static
+    EXPORT AsteraTargets
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -27,7 +27,7 @@ install(TARGETS NthEngine_Shared NthEngine_Static
 # Install Engine Headers
 # ----------------------------------------------------------------------------
 install(DIRECTORY ${ENGINE_ROOT}/
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/NthEngine
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/Astera
     COMPONENT headers
     FILES_MATCHING
     PATTERN "*.hpp"
@@ -36,7 +36,7 @@ install(DIRECTORY ${ENGINE_ROOT}/
 
 # Install Common headers (excluding precompiled header)
 install(DIRECTORY ${COMMON_ROOT}/
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/NthEngine/Common
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/Astera/Common
     COMPONENT headers
     FILES_MATCHING
     PATTERN "*.hpp"
@@ -47,7 +47,7 @@ install(DIRECTORY ${COMMON_ROOT}/
 
 # Install necessary vendor headers
 install(DIRECTORY ${VENDOR_ROOT}/
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/NthEngine/Vendor
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/Astera/Vendor
     COMPONENT headers
     FILES_MATCHING
     PATTERN "*.hpp"
@@ -58,7 +58,7 @@ install(DIRECTORY ${VENDOR_ROOT}/
 # Install EngineContent Directory
 # ----------------------------------------------------------------------------
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/EngineContent/
-    DESTINATION ${CMAKE_INSTALL_DATADIR}/NthEngine/EngineContent
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/Astera/EngineContent
     COMPONENT engine_content
     PATTERN ".git" EXCLUDE
     PATTERN ".DS_Store" EXCLUDE
@@ -67,10 +67,10 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/EngineContent/
 # ----------------------------------------------------------------------------
 # CMake Package Configuration
 # ----------------------------------------------------------------------------
-install(EXPORT NthEngineTargets
-    FILE NthEngineTargets.cmake
-    NAMESPACE NthEngine::
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/NthEngine
+install(EXPORT AsteraTargets
+    FILE AsteraTargets.cmake
+    NAMESPACE Astera::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Astera
     COMPONENT cmake_config
 )
 
@@ -78,23 +78,23 @@ include(CMakePackageConfigHelpers)
 
 # Create package config file
 configure_package_config_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/CMake/NthEngineConfig.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/NthEngineConfig.cmake
-    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/NthEngine
+    ${CMAKE_CURRENT_SOURCE_DIR}/CMake/AsteraConfig.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/AsteraConfig.cmake
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Astera
     PATH_VARS CMAKE_INSTALL_INCLUDEDIR CMAKE_INSTALL_LIBDIR CMAKE_INSTALL_DATADIR
 )
 
 # Create version file
 write_basic_package_version_file(
-    ${CMAKE_CURRENT_BINARY_DIR}/NthEngineConfigVersion.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/AsteraConfigVersion.cmake
     VERSION ${PROJECT_VERSION}
     COMPATIBILITY SameMajorVersion
 )
 
 install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/NthEngineConfig.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/NthEngineConfigVersion.cmake
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/NthEngine
+    ${CMAKE_CURRENT_BINARY_DIR}/AsteraConfig.cmake
+    ${CMAKE_CURRENT_BINARY_DIR}/AsteraConfigVersion.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Astera
     COMPONENT cmake_config
 )
 
@@ -103,16 +103,16 @@ install(FILES
 # ----------------------------------------------------------------------------
 message(STATUS "")
 message(STATUS "========================================")
-message(STATUS "NthEngine Installation Configuration")
+message(STATUS "Astera Installation Configuration")
 message(STATUS "========================================")
 message(STATUS "Install prefix: ${CMAKE_INSTALL_PREFIX}")
 message(STATUS "")
 message(STATUS "Components:")
 message(STATUS "  CLI tool (nth): ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}/nth")
 message(STATUS "  Libraries: ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
-message(STATUS "  Headers: ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}/NthEngine")
-message(STATUS "  Engine content: ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/NthEngine/EngineContent")
-message(STATUS "  CMake config: ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake/NthEngine")
+message(STATUS "  Headers: ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR}/Astera")
+message(STATUS "  Engine content: ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/Astera/EngineContent")
+message(STATUS "  CMake config: ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake/Astera")
 message(STATUS "")
 message(STATUS "To install, run: cmake --build . --target install")
 message(STATUS "========================================")
@@ -121,9 +121,9 @@ message(STATUS "")
 # ----------------------------------------------------------------------------
 # Optional: CPack Configuration for Package Generation
 # ----------------------------------------------------------------------------
-set(CPACK_PACKAGE_NAME "NthEngine")
+set(CPACK_PACKAGE_NAME "Astera")
 set(CPACK_PACKAGE_VENDOR "Jake Rieger")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "NthEngine - Simple 2D game engine")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Astera - Simple 2D game engine")
 set(CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
 set(CPACK_PACKAGE_VERSION_PATCH ${PROJECT_VERSION_PATCH})

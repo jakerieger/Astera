@@ -1,6 +1,6 @@
 /*
  *  Filename: Command.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +34,7 @@
 #include "Components/SpriteRenderer.hpp"
 #include "Components/Transform.hpp"
 
-namespace Nth {
+namespace Astera {
     /// @brief Command to clear the framebuffer
     struct ClearCommand {
         Vec4 color {0.0f, 0.0f, 0.0f, 1.0f};
@@ -163,4 +163,4 @@ namespace Nth {
                                        UpdateIndexBufferCommand,
                                        BindVertexArrayCommand,
                                        UnbindVertexArrayCommand>;
-}  // namespace Nth
+}  // namespace Astera

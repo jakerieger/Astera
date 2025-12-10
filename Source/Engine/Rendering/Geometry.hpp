@@ -1,6 +1,6 @@
 /*
  *  Filename: Geometry.hpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@
 #include "EngineCommon.hpp"
 #include "VertexArray.hpp"
 
-namespace Nth {
+namespace Astera {
     /// @brief Vertex structure for sprite/quad rendering (position + texcoord packed)
     struct SpriteVertex {
         f32 x, y;  // Position
@@ -80,4 +80,4 @@ namespace Nth {
     private:
         shared_ptr<VertexArray> mVertexArray;
     };
-}  // namespace Nth
+}  // namespace Astera

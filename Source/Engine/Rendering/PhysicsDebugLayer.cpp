@@ -1,6 +1,6 @@
 /*
  *  Filename: PhysicsDebugLayer.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@
 #include "Log.hpp"
 #include "Rendering/GLUtils.hpp"
 
-namespace Nth {
+namespace Astera {
     static Color GetRandomColor() {
         static constexpr size_t colorCount {5};
         static Color colors[colorCount] = {Colors::Red, Colors::Green, Colors::Cyan, Colors::Magenta, Colors::Yellow};
@@ -246,4 +246,4 @@ namespace Nth {
             DrawVertices(vertices, GL_LINE_LOOP);
         }
     }
-}  // namespace Nth
+}  // namespace Astera

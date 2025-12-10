@@ -1,6 +1,6 @@
 /*
  *  Filename: SceneState.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@
 #include "SceneState.hpp"
 #include "Log.hpp"
 
-namespace Nth {
+namespace Astera {
     SceneState::SceneState() = default;
     SceneState::SceneState(SceneState&& other) noexcept : mRegistry(std::exchange(other.mRegistry, {})) {}
 
@@ -55,7 +55,7 @@ namespace Nth {
 
     size_t SceneState::GetEntityCount() const {
         const auto iter = mRegistry.view<Transform>().each();
-        return CAST<size_t>(Nth::Distance(iter));
+        return CAST<size_t>(Astera::Distance(iter));
     }
 
     Transform& SceneState::GetTransform(Entity entity) {
@@ -73,4 +73,4 @@ namespace Nth {
     void SceneState::Reset() {
         mRegistry.clear();
     }
-}  // namespace Nth
+}  // namespace Astera

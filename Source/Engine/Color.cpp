@@ -1,6 +1,6 @@
 /*
  *  Filename: Color.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@
 #include "Color.hpp"
 #include "Math.hpp"
 
-namespace Nth {
+namespace Astera {
     Color::Color(f32 v, f32 a) {
         mRed   = v;
         mGreen = v;
@@ -388,4 +388,4 @@ namespace Nth {
     f32 Color::U32ToFloat(u32 v) {
         return v / 255.0f;
     }
-}  // namespace Nth
+}  // namespace Astera

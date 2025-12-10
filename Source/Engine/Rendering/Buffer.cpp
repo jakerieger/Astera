@@ -1,6 +1,6 @@
 /*
  *  Filename: Buffer.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@
 #include "Buffer.hpp"
 #include "GLUtils.hpp"
 
-namespace Nth {
+namespace Astera {
 #pragma region IBuffer
     IBuffer::IBuffer() {
         GLCall(glGenBuffers, 1, &mBufferID);
@@ -119,4 +119,4 @@ namespace Nth {
         GLCall(glBindBuffer, GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 #pragma endregion
-}  // namespace Nth
+}  // namespace Astera

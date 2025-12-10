@@ -1,6 +1,6 @@
 /*
  *  Filename: ScriptEngine.cpp
- *  This code is part of the Nth Engine core library
+ *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@
 #include "Log.hpp"
 #include "ScriptTypeRegistry.hpp"
 
-namespace Nth {
+namespace Astera {
     static void PrintUninitializedError() {
         Log::Error("ScriptEngine", "Attempted to load script before script engine has been initialized!");
     }
@@ -226,4 +226,4 @@ namespace Nth {
             mLua.script(source);
         } catch (const sol::error& e) { Log::Error("ScriptEngine", "{}", e.what()); }
     }
-}  // namespace Nth
+}  // namespace Astera
