@@ -48,3 +48,4 @@ generate_export_header(NthEngine_Shared)
 # Aliases
 add_library(NthEngine::Shared ALIAS NthEngine_Shared)
 add_library(NthEngine::Static ALIAS NthEngine_Static)
+add_library(NthEngine::NthEngine ALIAS NthEngine_Shared)

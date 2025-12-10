@@ -2,7 +2,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Sandbox)
 add_executable(Sandbox main.cpp)
 
 target_link_libraries(Sandbox PRIVATE
-    NthEngine::Shared
+    NthEngine::NthEngine
 )
 
 add_custom_target(CMake_CopySandboxContent ALL
