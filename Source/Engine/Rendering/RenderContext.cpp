@@ -68,7 +68,7 @@ namespace Nth {
 
     void RenderContext::EndFrame() {
         N_ASSERT(mInitialized);
-        mCommandQueue.ExecuteQueue();
+        mCommandQueue.ExecuteQueueBatched();
     }
 
     void RenderContext::Resize(u32 width, u32 height) {

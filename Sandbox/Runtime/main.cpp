@@ -34,7 +34,9 @@ namespace Nth {
             SetWindowIcon("Res/icon.png");
 
             GetActiveScene()->Load(Content::Get<ContentType::Scene>("Sandbox.xml"), GetScriptEngine());
-            GetAudioEngine().LoadSound(Content::Get<ContentType::Audio>("bg.wav"));  // Played via BallController.lua
+            const SoundID bgMusic = GetAudioEngine().LoadSound(Content::Get<ContentType::Audio>("bg.wav"));
+            GetAudioEngine().SetSoundVolume(bgMusic, .5f);
+            GetAudioEngine().PlaySound(bgMusic, true);
 
             Game::OnAwake();
         }

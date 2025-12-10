@@ -3,7 +3,6 @@
 ---
 
 ballSpeed = 500
-bgMusicID = 1
 
 ---@param this Entity
 function OnAwake(this)
@@ -14,12 +13,6 @@ function OnAwake(this)
         local newPosX = Math:RandomInt(100, 600)
         local newPosY = Math:RandomInt(100, 600)
         ball2Transform.position = Vec2(newPosX, newPosY)
-    end
-
-    -- Test audio player. bgMusicID is loaded by the C++ runtime
-    if AudioPlayer:IsInitialized() then
-        AudioPlayer:SetSoundVolume(bgMusicID, 0.5)
-        AudioPlayer:PlaySound(bgMusicID, true)
     end
 end
 

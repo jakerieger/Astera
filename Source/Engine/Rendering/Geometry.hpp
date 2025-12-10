@@ -65,11 +65,16 @@ namespace Nth {
         /// @brief Unbind the currently bound geometry
         static void Unbind();
 
-        /// @brief Draw this geometry using indices
-        void DrawIndexed() const;
-
         N_ND const shared_ptr<VertexArray>& GetVertexArray() const {
             return mVertexArray;
+        }
+
+        /// @brief Get the number of indices in this geometry
+        /// @return Index count
+        N_ND u32 GetIndexCount() const {
+            N_ASSERT(mVertexArray != nullptr);
+            N_ASSERT(mVertexArray->GetIndexBuffer() != nullptr);
+            return CAST<u32>(mVertexArray->GetIndexBuffer()->GetCount());
         }
 
     private:

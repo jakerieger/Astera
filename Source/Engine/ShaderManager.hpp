@@ -36,6 +36,9 @@ namespace Nth {
     namespace Shaders {
         /// @brief Name identifier for the sprite shader
         inline constexpr std::string_view Sprite = "sprite";
+
+        /// @brief Name identifier for the sprite batch shader
+        inline constexpr std::string_view SpriteInstanced = "sprite_instanced";
     }  // namespace Shaders
 
     /// @brief Manages shader resources and provides cached access to compiled shaders

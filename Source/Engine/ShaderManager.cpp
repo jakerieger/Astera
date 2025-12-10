@@ -38,9 +38,13 @@ namespace Nth {
         sManager = make_shared<ShaderManager>();
 
         // Load internal shaders
-        const auto vertShader          = Content::Get<ContentType::Shader, true>("Sprite.vert");
-        const auto fragShader          = Content::Get<ContentType::Shader, true>("Sprite.frag");
-        sCache[Shaders::Sprite.data()] = Shader::FromFile(vertShader, fragShader);
+        const auto spriteVert          = Content::Get<ContentType::Shader, true>("Sprite.vert");
+        const auto spriteFrag          = Content::Get<ContentType::Shader, true>("Sprite.frag");
+        sCache[Shaders::Sprite.data()] = Shader::FromFile(spriteVert, spriteFrag);
+
+        const auto spriteInstVert               = Content::Get<ContentType::Shader, true>("SpriteInstanced.vert");
+        const auto spriteInstFrag               = Content::Get<ContentType::Shader, true>("SpriteInstanced.frag");
+        sCache[Shaders::SpriteInstanced.data()] = Shader::FromFile(spriteInstVert, spriteInstFrag);
 
         Log::Debug("ShaderManager", "Loaded engine shaders");
     }

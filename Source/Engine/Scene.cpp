@@ -84,6 +84,7 @@ namespace Nth {
         SceneParser::DeserializeDescriptor(filename, descriptor);
         SceneParser::DescriptorToState(descriptor, mState, scriptEngine);
 
+        Awake(scriptEngine);
         Log::Debug("Scene", "Loaded scene: `{}`", descriptor.name);
     }
 
@@ -93,6 +94,7 @@ namespace Nth {
         SceneParser::DeserializeDescriptor(source, descriptor);
         SceneParser::DescriptorToState(descriptor, mState, scriptEngine);
 
+        Awake(scriptEngine);
         Log::Debug("Scene", "Loaded scene: `{}`", descriptor.name);
     }
 }  // namespace Nth

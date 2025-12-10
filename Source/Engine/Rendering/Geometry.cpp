@@ -91,14 +91,4 @@ namespace Nth {
     void Geometry::Unbind() {
         VertexArray::Unbind();
     }
-
-    void Geometry::DrawIndexed() const {
-        N_ASSERT(mVertexArray != nullptr);
-        N_ASSERT(mVertexArray->GetIndexBuffer() != nullptr);
-
-        Bind();
-
-        const auto indexCount = mVertexArray->GetIndexBuffer()->GetCount();
-        GLCall(glDrawElements, GL_TRIANGLES, CAST<GLsizei>(indexCount), GL_UNSIGNED_INT, nullptr);
-    }
 }  // namespace Nth

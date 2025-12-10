@@ -51,6 +51,9 @@ namespace Nth {
         /// @brief Execute all queued commands and clear the queue
         void ExecuteQueue();
 
+        /// @brief Execute all queued commands with sprite batching
+        void ExecuteQueueBatched();
+
         /// @brief Clear all queued commands without executing them
         void Clear();
 
@@ -70,10 +73,31 @@ namespace Nth {
         }
 
     private:
+        friend class Game;
+
         /// @brief Execute a single command using visitor pattern
         static void ExecuteCommand(const RenderCommand& command);
 
+        /// @brief Sort and batch sprite draw commands
+        void BatchSpriteCommands();
+
+        /// @brief Render a single sprite batch
+        void RenderBatch(const SpriteBatch& batch) const;
+
+        /// @brief Initialize batch rendering resources
+        void InitializeBatchResources();
+
         vector<RenderCommand> mCommands;
+
+        // Batching resources
+        vector<SpriteBatch> mBatches;
+        shared_ptr<VertexArray> mBatchVAO;
+        shared_ptr<VertexBuffer> mQuadVBO;
+        shared_ptr<IndexBuffer> mQuadIBO;
+        shared_ptr<VertexBuffer> mInstanceVBO;
+        bool mBatchResourcesInitialized {false};
+
+        static constexpr size_t kMaxSpritesPerBatch = 1000;
     };
 
     /// @brief Command visitor for dispatching commands to their handlers
@@ -84,5 +108,12 @@ namespace Nth {
         void operator()(const SetViewportCommand& cmd) const;
         void operator()(const BindShaderCommand& cmd) const;
         void operator()(const SetUniformCommand& cmd) const;
+        void operator()(const DrawIndexedCommand& cmd) const;
+        void operator()(const DrawIndexedInstancedCommand& cmd) const;
+        void operator()(const DrawArraysCommand& cmd) const;
+        void operator()(const UpdateVertexBufferCommand& cmd) const;
+        void operator()(const UpdateIndexBufferCommand& cmd) const;
+        void operator()(const BindVertexArrayCommand& cmd) const;
+        void operator()(const UnbindVertexArrayCommand& cmd) const;
     };
-}  // namespace N
+}  // namespace Nth

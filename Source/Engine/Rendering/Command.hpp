@@ -70,7 +70,97 @@ namespace Nth {
         std::variant<i32, f32, Vec2, Vec3, Vec4, Mat4> value;
     };
 
+    // ============================================================================
+    // Core Drawing Commands
+    // ============================================================================
+
+    /// @brief Draw geometry using indexed triangles
+    struct DrawIndexedCommand {
+        shared_ptr<VertexArray> vao;
+        u32 indexCount;
+        GLenum primitiveType {GL_TRIANGLES};
+        u32 indexOffset {0};
+    };
+
+    /// @brief Draw geometry using instanced indexed triangles
+    struct DrawIndexedInstancedCommand {
+        shared_ptr<VertexArray> vao;
+        u32 indexCount;
+        u32 instanceCount;
+        GLenum primitiveType {GL_TRIANGLES};
+        u32 indexOffset {0};
+    };
+
+    /// @brief Draw geometry without indices (vertex arrays only)
+    struct DrawArraysCommand {
+        shared_ptr<VertexArray> vao;
+        u32 vertexCount;
+        u32 vertexOffset {0};
+        GLenum primitiveType {GL_TRIANGLES};
+    };
+
+    // ============================================================================
+    // Buffer Management Commands
+    // ============================================================================
+
+    /// @brief Update vertex buffer data
+    struct UpdateVertexBufferCommand {
+        shared_ptr<VertexBuffer> buffer;
+        vector<u8> data;
+        size_t offset {0};
+    };
+
+    /// @brief Update index buffer data
+    struct UpdateIndexBufferCommand {
+        shared_ptr<IndexBuffer> buffer;
+        vector<u32> indices;
+        size_t offset {0};
+    };
+
+    /// @brief Bind a vertex array object
+    struct BindVertexArrayCommand {
+        shared_ptr<VertexArray> vao;
+    };
+
+    /// @brief Unbind the currently bound vertex array
+    struct UnbindVertexArrayCommand {};
+
+    /// @brief Per-instance data for sprite batching
+    struct SpriteInstanceData {
+        Mat4 transform;  ///< Model-view-projection matrix for this sprite
+        Vec4 tintColor;  ///< Color tint (for future use)
+
+        SpriteInstanceData() = default;
+        SpriteInstanceData(const Mat4& transform, const Vec4& tintColor = Vec4(1.0f))
+            : transform(transform), tintColor(tintColor) {}
+    };
+
+    /// @brief A batch of sprites sharing the same texture
+    struct SpriteBatch {
+        u32 textureId;
+        vector<SpriteInstanceData> instances;
+        shared_ptr<VertexArray> quadVAO;  ///< Shared quad geometry
+
+        void Clear() {
+            instances.clear();
+        }
+
+        N_ND size_t SpriteCount() const {
+            return instances.size();
+        }
+    };
+
     /// @brief Variant type that can hold any command
-    using RenderCommand =
-      std::variant<ClearCommand, DrawSpriteCommand, SetViewportCommand, BindShaderCommand, SetUniformCommand>;
+    using RenderCommand = std::variant<ClearCommand,
+                                       DrawSpriteCommand,
+                                       SetViewportCommand,
+                                       BindShaderCommand,
+                                       SetUniformCommand,
+                                       DrawIndexedCommand,
+                                       DrawIndexedInstancedCommand,
+                                       DrawArraysCommand,
+                                       UpdateVertexBufferCommand,
+                                       UpdateIndexBufferCommand,
+                                       BindVertexArrayCommand,
+                                       UnbindVertexArrayCommand>;
 }  // namespace Nth
