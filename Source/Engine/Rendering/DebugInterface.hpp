@@ -5,6 +5,7 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
 namespace Nth {
     /// @brief Generic engine event type. To be implemented further.
@@ -24,13 +25,13 @@ namespace Nth {
         ~DebugManager();
 
         void AttachOverlay(IDebugOverlay* overlay);
-        void DetachOverlay();
+        void DetachOverlays();
 
         void Update(float deltaTime) const;
         void Render() const;
         void HandleEvent(const Event& event) const;
 
     private:
-        IDebugOverlay* mOverlay {nullptr};
+        std::vector<IDebugOverlay*> mOverlays;
     };
 }  // namespace Nth

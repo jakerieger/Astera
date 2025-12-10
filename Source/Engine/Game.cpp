@@ -104,7 +104,17 @@ namespace Nth {
 
     void Game::OnUpdate(const Clock& clock) {
         mDebugManager.Update(clock.GetDeltaTime());
-        if (mActiveScene) mActiveScene->Update(mScriptEngine, clock);
+
+        if (mActiveScene) {
+            mActiveScene->Update(mScriptEngine, clock);
+
+            vector<Transform> transforms;
+            const auto iter = mActiveScene->GetState().View<Transform>().each();
+            for (auto [entity, transform] : iter) {
+                transforms.push_back(transform);
+            }
+            mPhysicsDebugLayer->UpdateTransforms(transforms);
+        }
     }
 
     void Game::OnLateUpdate() {
@@ -164,9 +174,12 @@ namespace Nth {
         mAudioEngine.Initialize();
         InitializeScriptEngine();
 
-        // Debug layer
+        // Debug layers
         mImGuiDebugLayer = make_unique<ImGuiDebugLayer>(GetWindowHandle());
         mDebugManager.AttachOverlay(mImGuiDebugLayer.get());
+
+        mPhysicsDebugLayer = make_unique<PhysicsDebugLayer>(mWidth, mHeight);
+        mDebugManager.AttachOverlay(mPhysicsDebugLayer.get());
 
         Log::Debug("Game",
                    "Successfully initialized game instance:\n-- Dimensions: {}x{}\n-- V-Sync: {}",
@@ -178,8 +191,9 @@ namespace Nth {
     }
 
     void Game::Shutdown() {
-        mDebugManager.DetachOverlay();
+        mDebugManager.DetachOverlays();
         mImGuiDebugLayer.reset();
+        mPhysicsDebugLayer.reset();
         TextureManager::Shutdown();
         ShaderManager::Shutdown();
         mAudioEngine.Shutdown();

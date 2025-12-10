@@ -6,27 +6,35 @@
 
 namespace Nth {
     DebugManager::~DebugManager() {
-        DetachOverlay();
+        DetachOverlays();
     }
 
     void DebugManager::AttachOverlay(IDebugOverlay* overlay) {
-        mOverlay = overlay;
+        mOverlays.push_back(overlay);
     }
 
-    void DebugManager::DetachOverlay() {
-        if (!mOverlay) return;
-        mOverlay = nullptr;
+    void DebugManager::DetachOverlays() {
+        for (auto& overlay : mOverlays) {
+            overlay = nullptr;
+        }
+        mOverlays.clear();
     }
 
     void DebugManager::Update(float deltaTime) const {
-        mOverlay->OnUpdate(deltaTime);
+        for (auto& overlay : mOverlays) {
+            overlay->OnUpdate(deltaTime);
+        }
     }
 
     void DebugManager::Render() const {
-        mOverlay->OnRender();
+        for (auto& overlay : mOverlays) {
+            overlay->OnRender();
+        }
     }
 
     void DebugManager::HandleEvent(const Event& event) const {
-        mOverlay->OnEvent(event);
+        for (auto& overlay : mOverlays) {
+            overlay->OnEvent(event);
+        }
     }
 }  // namespace Nth

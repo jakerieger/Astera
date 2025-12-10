@@ -62,5 +62,4 @@ namespace Nth {
             usertype["Scale"]     = &Transform::Scale;
         }
     };
-
 }  // namespace Nth

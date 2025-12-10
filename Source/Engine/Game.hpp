@@ -12,6 +12,7 @@
 #include "ScriptEngine.hpp"
 #include "Rendering/DebugInterface.hpp"
 #include "Rendering/ImGuiDebugLayer.hpp"
+#include "Rendering/PhysicsDebugLayer.hpp"
 #include "Rendering/RenderContext.hpp"
 
 namespace Nth {
@@ -134,6 +135,7 @@ namespace Nth {
         // Client systems
         unique_ptr<Scene> mActiveScene;
         unique_ptr<ImGuiDebugLayer> mImGuiDebugLayer;
+        unique_ptr<PhysicsDebugLayer> mPhysicsDebugLayer;
     };
 
 #if defined(N_ENGINE_PLATFORM_WINDOWS) && defined(NDEBUG)
