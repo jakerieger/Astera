@@ -176,10 +176,10 @@ namespace Nth {
 
         // Debug layers
         mImGuiDebugLayer = make_unique<ImGuiDebugLayer>(GetWindowHandle());
-        mDebugManager.AttachOverlay(mImGuiDebugLayer.get());
+        mDebugManager.AttachOverlay("ImGuiDebugLayer", mImGuiDebugLayer.get());
 
         mPhysicsDebugLayer = make_unique<PhysicsDebugLayer>(mWidth, mHeight);
-        mDebugManager.AttachOverlay(mPhysicsDebugLayer.get());
+        mDebugManager.AttachOverlay("PhysicsDebugLayer", mPhysicsDebugLayer.get());
 
         Log::Debug("Game",
                    "Successfully initialized game instance:\n-- Dimensions: {}x{}\n-- V-Sync: {}",

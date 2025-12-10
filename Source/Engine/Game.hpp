@@ -202,6 +202,12 @@ namespace Nth {
             return mAudioEngine;
         }
 
+        /// @brief Gets the debug manager
+        /// @return Reference to the DebugManager instance
+        N_ND DebugManager& GetDebugManager() {
+            return mDebugManager;
+        }
+
     protected:
         // Subclass-accessible window properties. Use provided getters for the others.
 

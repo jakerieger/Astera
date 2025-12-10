@@ -14,9 +14,21 @@ namespace Nth {
 
         void OnKeyDown(u32 keyCode) override {
             Game::OnKeyDown(keyCode);
-
-            if (keyCode == Input::Keys::Escape) { Quit(); }
-            if (keyCode == Input::Keys::F11) { ToggleFullscreen(); }
+            using namespace Input;
+            switch (keyCode) {
+                case Keys::Escape:
+                    Quit();
+                    break;
+                case Keys::F11:
+                    ToggleFullscreen();
+                    break;
+                case Keys::F10: {
+                    auto& debug = GetDebugManager();
+                    debug.SetOverlayEnabled("PhysicsDebugLayer", !debug.GetOverlayEnabled("PhysicsDebugLayer"));
+                } break;
+                default:
+                    return;
+            }
         }
 
         void OnAwake() override {

@@ -4,34 +4,77 @@
 
 #pragma once
 
+#include <Macros.hpp>
 #include <memory>
-#include <vector>
+#include <unordered_map>
 
 namespace Nth {
     /// @brief Generic engine event type. To be implemented further.
     struct Event;
 
+    /// @brief Interface for debug overlay implementations
     class IDebugOverlay {
     public:
         virtual ~IDebugOverlay() = default;
 
-        virtual void OnUpdate(float deltaTime)   = 0;
-        virtual void OnRender()                  = 0;
+        /// @brief Updates the debug overlay state
+        /// @param deltaTime Time elapsed since the last update in seconds
+        virtual void OnUpdate(float deltaTime) = 0;
+
+        /// @brief Renders the debug overlay to the screen
+        virtual void OnRender() = 0;
+
+        /// @brief Handles incoming engine events
+        /// @param event The event to process
         virtual void OnEvent(const Event& event) = 0;
     };
 
+    /// @brief Manages debug overlays for the engine
     class DebugManager {
     public:
         ~DebugManager();
 
-        void AttachOverlay(IDebugOverlay* overlay);
+        N_CLASS_PREVENT_MOVES_COPIES(DebugManager)
+
+        /// @brief Attaches a debug overlay to the manager
+        /// @param name Unique identifier for the overlay
+        /// @param overlay Pointer to the overlay instance to attach
+        void AttachOverlay(const std::string& name, IDebugOverlay* overlay);
+
+        /// @brief Detaches all registered debug overlays
         void DetachOverlays();
 
+        /// @brief Enables or disables a specific debug overlay
+        /// @param name The identifier of the overlay to modify
+        /// @param enabled True to enable the overlay, false to disable
+        void SetOverlayEnabled(const std::string& name, bool enabled);
+
+        /// @brief Checks if a specific debug overlay is enabled
+        /// @param name The identifier of the overlay to check
+        /// @return True if the overlay is enabled, false otherwise
+        bool GetOverlayEnabled(const std::string& name) const;
+
+        /// @brief Updates all enabled debug overlays
+        /// @param deltaTime Time elapsed since the last update in seconds
         void Update(float deltaTime) const;
+
+        /// @brief Renders all enabled debug overlays
         void Render() const;
+
+        /// @brief Dispatches an event to all enabled debug overlays
+        /// @param event The event to handle
         void HandleEvent(const Event& event) const;
 
     private:
-        std::vector<IDebugOverlay*> mOverlays;
+        /// @brief Internal structure holding overlay state
+        struct Overlay {
+            /// @brief Pointer to the overlay instance
+            IDebugOverlay* overlay {nullptr};
+            /// @brief Whether the overlay is currently enabled
+            bool enabled {true};
+        };
+
+        /// @brief Map of overlay names to their corresponding overlay data
+        std::unordered_map<std::string, Overlay> mOverlays;
     };
 }  // namespace Nth
