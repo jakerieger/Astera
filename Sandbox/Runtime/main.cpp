@@ -33,11 +33,7 @@ namespace Nth {
 
         void OnAwake() override {
             GetActiveScene()->Load(Content::Get<ContentType::Scene>("Sandbox.xml"), GetScriptEngine());
-
-            // Audio engine test
-            mTestSound = GetAudioEngine().LoadSound(Content::Get<ContentType::Audio>("bg.wav"));
-            // GetAudioEngine().SetSoundVolume(mTestSound, .5f);
-            // GetAudioEngine().PlaySound(mTestSound, true);
+            GetAudioEngine().LoadSound(Content::Get<ContentType::Audio>("bg.wav"));  // Played via BallController.lua
 
             Game::OnAwake();
         }
@@ -57,9 +53,6 @@ namespace Nth {
         void OnResize(u32 width, u32 height) override {
             Game::OnResize(width, height);
         }
-
-    private:
-        SoundID mTestSound {kInvalidSoundID};
     };
 }  // namespace Nth
 

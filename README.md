@@ -88,14 +88,32 @@ Sandbox demo scene:
                     <Texture>ball.png</Texture>
                 </SpriteRenderer>
                 <Behavior>
-                    <!-- TODO: Support multiple scripts per entity -->
                     <Script id="0">BallController.lua</Script>
                 </Behavior>
+                <Rigidbody2D>
+                    <BodyType>Dynamic</BodyType>
+                    <Velocity x="0.0" y="0.0"/>
+                    <Acceleration x="0.0" y="0.0"/>
+                    <Force x="0.0" y="0.0"/>
+                    <AngularVelocity>0.0</AngularVelocity>
+                    <AngularAcceleration>0.0</AngularAcceleration>
+                    <Torque>0.0</Torque>
+                    <Mass>1.0</Mass>
+                    <InverseMass>1.0</InverseMass>
+                    <Inertia>1.0</Inertia>
+                    <InverseInertia>1.0</InverseInertia>
+                    <Restitution>0.5</Restitution>
+                    <Friction>0.3</Friction>
+                    <LinearDamping>0.01</LinearDamping>
+                    <AngularDamping>0.01</AngularDamping>
+                    <GravityScale>1.0</GravityScale>
+                    <LockRotation>false</LockRotation>
+                </Rigidbody2D>
             </Components>
         </Entity>
     </Entities>
 </Scene>
 ```
 
-This is an ongoing project and a license will be attached once the project has reached a presentable
-state.
+This is an ongoing project and is provided as-is. Issue reports are welcome but likely to be ignored
+until Nth Engine is "officially" released.
