@@ -20,43 +20,43 @@ namespace Nth {
     }
 
     f32 Math::Sqrt(f32 a) {
-        return sqrt(a);
+        return sqrtf(a);
     }
 
     f32 Math::Pow(f32 a, f32 b) {
-        return pow(a, b);
+        return powf(a, b);
     }
 
     f32 Math::Sin(f32 a) {
-        return sin(a);
+        return sinf(a);
     }
 
     f32 Math::Cos(f32 a) {
-        return cos(a);
+        return cosf(a);
     }
 
     f32 Math::Tan(f32 a) {
-        return tan(a);
+        return tanf(a);
     }
 
     f32 Math::Floor(f32 a) {
-        return floor(a);
+        return floorf(a);
     }
 
     f32 Math::Ceil(f32 a) {
-        return ceil(a);
+        return ceilf(a);
     }
 
     f32 Math::Round(f32 a) {
-        return round(a);
+        return roundf(a);
     }
 
     f32 Math::DegToRad(f32 a) {
-        return a * kPi / 180.f;
+        return CAST<f64>(a) * kPi / 180.f;
     }
 
     f32 Math::RadToDeg(f32 a) {
-        return a * kPi;
+        return CAST<f64>(a) * kPi;
     }
 
     f32 Math::Random() {
