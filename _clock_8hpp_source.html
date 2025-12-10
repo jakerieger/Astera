@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('_clock_8hpp_source.html',''); initResi
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;Common/CommonPCH.hpp&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="_engine_common_8hpp.html">EngineCommon.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#ifdef N_ENGINE_PLATFORM_WINDOWS</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">    #include &lt;windows.h&gt;</span></div>
@@ -145,17 +145,17 @@ $(document).ready(function(){initNavTree('_clock_8hpp_source.html',''); initResi
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_nth_1_1_clock.html#a216cf37aa34c4db3959c6d85fe92ec21">Tick</a>();</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        N_ND f64 <a class="code hl_function" href="class_nth_1_1_clock.html#afe4ac2b110c6ab550c1cd81e72a60780">GetDeltaTimePrecise</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        N_ND <a class="code hl_typedef" href="namespace_nth.html#adbfff1837c1499f5696c54589fc21ff0">f64</a> <a class="code hl_function" href="class_nth_1_1_clock.html#afe4ac2b110c6ab550c1cd81e72a60780">GetDeltaTimePrecise</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        N_ND f32 <a class="code hl_function" href="class_nth_1_1_clock.html#af0285004652d6f1a6a7b8b34a0f9fbf0">GetDeltaTime</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        N_ND <a class="code hl_typedef" href="namespace_nth.html#a033d89390ade53234803cbe560c0f2cd">f32</a> <a class="code hl_function" href="class_nth_1_1_clock.html#af0285004652d6f1a6a7b8b34a0f9fbf0">GetDeltaTime</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        N_ND f64 <a class="code hl_function" href="class_nth_1_1_clock.html#ae439681590d1123f33436f108f9c0060">GetTotalTime</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        N_ND <a class="code hl_typedef" href="namespace_nth.html#adbfff1837c1499f5696c54589fc21ff0">f64</a> <a class="code hl_function" href="class_nth_1_1_clock.html#ae439681590d1123f33436f108f9c0060">GetTotalTime</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        N_ND f64 <a class="code hl_function" href="class_nth_1_1_clock.html#a8cd9fb3ae6a50a606628a7712cfe3d0b">GetFramesPerSecond</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        N_ND <a class="code hl_typedef" href="namespace_nth.html#adbfff1837c1499f5696c54589fc21ff0">f64</a> <a class="code hl_function" href="class_nth_1_1_clock.html#a8cd9fb3ae6a50a606628a7712cfe3d0b">GetFramesPerSecond</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        N_ND u64 <a class="code hl_function" href="class_nth_1_1_clock.html#a4ce74379371ff366e163918ffa06865f">GetRawCounter</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        N_ND <a class="code hl_typedef" href="namespace_nth.html#ab49d5f12240c9ec4247546ffad6f3f86">u64</a> <a class="code hl_function" href="class_nth_1_1_clock.html#a4ce74379371ff366e163918ffa06865f">GetRawCounter</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        N_ND u64 <a class="code hl_function" href="class_nth_1_1_clock.html#a16eca9d3d7531ead66ad5a42ba33dcea">GetCounterFrequency</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        N_ND <a class="code hl_typedef" href="namespace_nth.html#ab49d5f12240c9ec4247546ffad6f3f86">u64</a> <a class="code hl_function" href="class_nth_1_1_clock.html#a16eca9d3d7531ead66ad5a42ba33dcea">GetCounterFrequency</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#ifdef N_ENGINE_PLATFORM_WINDOWS</span></div>
@@ -163,25 +163,26 @@ $(document).ready(function(){initNavTree('_clock_8hpp_source.html',''); initResi
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        LARGE_INTEGER mLastTime;</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        u64 mFrequency;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <a class="code hl_typedef" href="namespace_nth.html#ab49d5f12240c9ec4247546ffad6f3f86">u64</a> mFrequency;</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        u64 mLastTime;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <a class="code hl_typedef" href="namespace_nth.html#ab49d5f12240c9ec4247546ffad6f3f86">u64</a> mLastTime;</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        f64 mDeltaTime;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <a class="code hl_typedef" href="namespace_nth.html#adbfff1837c1499f5696c54589fc21ff0">f64</a> mDeltaTime;</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        f64 mTotalTime;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <a class="code hl_typedef" href="namespace_nth.html#adbfff1837c1499f5696c54589fc21ff0">f64</a> mTotalTime;</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        u64 mFrameCount;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <a class="code hl_typedef" href="namespace_nth.html#ab49d5f12240c9ec4247546ffad6f3f86">u64</a> mFrameCount;</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        f64 mFramesPerSecond;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <a class="code hl_typedef" href="namespace_nth.html#adbfff1837c1499f5696c54589fc21ff0">f64</a> mFramesPerSecond;</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        f64 mFpsUpdateInterval;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <a class="code hl_typedef" href="namespace_nth.html#adbfff1837c1499f5696c54589fc21ff0">f64</a> mFpsUpdateInterval;</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        f64 mTimeSinceLastFpsUpdate;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <a class="code hl_typedef" href="namespace_nth.html#adbfff1837c1499f5696c54589fc21ff0">f64</a> mTimeSinceLastFpsUpdate;</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    };</div>
 </div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>}  <span class="comment">// namespace Nth</span></div>
+<div class="ttc" id="a_engine_common_8hpp_html"><div class="ttname"><a href="_engine_common_8hpp.html">EngineCommon.hpp</a></div></div>
 <div class="ttc" id="aclass_nth_1_1_clock_html"><div class="ttname"><a href="class_nth_1_1_clock.html">Nth::Clock</a></div><div class="ttdoc">High-precision clock for timing and frame rate tracking.</div><div class="ttdef"><b>Definition</b> <a href="_clock_8hpp_source.html#l00045">Clock.hpp:45</a></div></div>
 <div class="ttc" id="aclass_nth_1_1_clock_html_a16eca9d3d7531ead66ad5a42ba33dcea"><div class="ttname"><a href="class_nth_1_1_clock.html#a16eca9d3d7531ead66ad5a42ba33dcea">Nth::Clock::GetCounterFrequency</a></div><div class="ttdeci">N_ND u64 GetCounterFrequency() const</div><div class="ttdoc">Gets the frequency of the high-resolution counter.</div><div class="ttdef"><b>Definition</b> <a href="_clock_8cpp_source.html#l00109">Clock.cpp:109</a></div></div>
 <div class="ttc" id="aclass_nth_1_1_clock_html_a216cf37aa34c4db3959c6d85fe92ec21"><div class="ttname"><a href="class_nth_1_1_clock.html#a216cf37aa34c4db3959c6d85fe92ec21">Nth::Clock::Tick</a></div><div class="ttdeci">void Tick()</div><div class="ttdoc">Updates the clock and calculates time deltas.</div><div class="ttdef"><b>Definition</b> <a href="_clock_8cpp_source.html#l00053">Clock.cpp:53</a></div></div>
@@ -191,7 +192,10 @@ $(document).ready(function(){initNavTree('_clock_8hpp_source.html',''); initResi
 <div class="ttc" id="aclass_nth_1_1_clock_html_ae439681590d1123f33436f108f9c0060"><div class="ttname"><a href="class_nth_1_1_clock.html#ae439681590d1123f33436f108f9c0060">Nth::Clock::GetTotalTime</a></div><div class="ttdeci">N_ND f64 GetTotalTime() const</div><div class="ttdoc">Gets the total time elapsed since clock creation.</div><div class="ttdef"><b>Definition</b> <a href="_clock_8cpp_source.html#l00088">Clock.cpp:88</a></div></div>
 <div class="ttc" id="aclass_nth_1_1_clock_html_af0285004652d6f1a6a7b8b34a0f9fbf0"><div class="ttname"><a href="class_nth_1_1_clock.html#af0285004652d6f1a6a7b8b34a0f9fbf0">Nth::Clock::GetDeltaTime</a></div><div class="ttdeci">N_ND f32 GetDeltaTime() const</div><div class="ttdoc">Gets the time elapsed since the last tick.</div><div class="ttdef"><b>Definition</b> <a href="_clock_8cpp_source.html#l00084">Clock.cpp:84</a></div></div>
 <div class="ttc" id="aclass_nth_1_1_clock_html_afe4ac2b110c6ab550c1cd81e72a60780"><div class="ttname"><a href="class_nth_1_1_clock.html#afe4ac2b110c6ab550c1cd81e72a60780">Nth::Clock::GetDeltaTimePrecise</a></div><div class="ttdeci">N_ND f64 GetDeltaTimePrecise() const</div><div class="ttdoc">Gets the precise time elapsed since the last tick.</div><div class="ttdef"><b>Definition</b> <a href="_clock_8cpp_source.html#l00080">Clock.cpp:80</a></div></div>
-<div class="ttc" id="anamespace_nth_html"><div class="ttname"><a href="namespace_nth.html">Nth</a></div><div class="ttdef"><b>Definition</b> <a href="_audio_engine_8cpp_source.html#l00034">AudioEngine.cpp:34</a></div></div>
+<div class="ttc" id="anamespace_nth_html"><div class="ttname"><a href="namespace_nth.html">Nth</a></div><div class="ttdoc">Root namespace containing all Nth Engine code.</div><div class="ttdef"><b>Definition</b> <a href="_audio_engine_8cpp_source.html#l00034">AudioEngine.cpp:34</a></div></div>
+<div class="ttc" id="anamespace_nth_html_a033d89390ade53234803cbe560c0f2cd"><div class="ttname"><a href="namespace_nth.html#a033d89390ade53234803cbe560c0f2cd">Nth::f32</a></div><div class="ttdeci">float f32</div><div class="ttdef"><b>Definition</b> <a href="_engine_common_8hpp_source.html#l00095">EngineCommon.hpp:95</a></div></div>
+<div class="ttc" id="anamespace_nth_html_ab49d5f12240c9ec4247546ffad6f3f86"><div class="ttname"><a href="namespace_nth.html#ab49d5f12240c9ec4247546ffad6f3f86">Nth::u64</a></div><div class="ttdeci">uint64_t u64</div><div class="ttdef"><b>Definition</b> <a href="_engine_common_8hpp_source.html#l00081">EngineCommon.hpp:81</a></div></div>
+<div class="ttc" id="anamespace_nth_html_adbfff1837c1499f5696c54589fc21ff0"><div class="ttname"><a href="namespace_nth.html#adbfff1837c1499f5696c54589fc21ff0">Nth::f64</a></div><div class="ttdeci">double f64</div><div class="ttdef"><b>Definition</b> <a href="_engine_common_8hpp_source.html#l00096">EngineCommon.hpp:96</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

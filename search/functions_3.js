@@ -10,5 +10,6 @@ var searchData=
   ['destroy_7',['destroy',['../class_nth_1_1_i_buffer.html#af0c330d555dc80e36a7f76c08f63833e',1,'Nth::IBuffer::Destroy()'],['../class_nth_1_1_geometry.html#ae999e3a1382b7d66399f3dffee07fc9b',1,'Nth::Geometry::Destroy()'],['../class_nth_1_1_vertex_array.html#a3656c60f8168ad03ad22dca2e75d869c',1,'Nth::VertexArray::Destroy()']]],
   ['destroyed_8',['Destroyed',['../class_nth_1_1_scene.html#af6608bcda4c079e97230a4c836b5533d',1,'Nth::Scene']]],
   ['destroyentity_9',['DestroyEntity',['../class_nth_1_1_scene_state.html#a45923d8851c6b62667ccf21abb1261f7',1,'Nth::SceneState']]],
-  ['detachoverlays_10',['DetachOverlays',['../class_nth_1_1_debug_manager.html#ad5edce6a728e6fa86c14a46afe398d69',1,'Nth::DebugManager']]]
+  ['detachoverlays_10',['DetachOverlays',['../class_nth_1_1_debug_manager.html#ad5edce6a728e6fa86c14a46afe398d69',1,'Nth::DebugManager']]],
+  ['distance_11',['Distance',['../namespace_nth.html#ac2999025ea01e65ac6baaf15a8d96248',1,'Nth']]]
 ];

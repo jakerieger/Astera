@@ -41,6 +41,7 @@ var annotated_dup =
       [ "LuaTypeTraits< Transform >", "struct_nth_1_1_lua_type_traits_3_01_transform_01_4.html", null ],
       [ "LuaTypeTraits< Vec2 >", "struct_nth_1_1_lua_type_traits_3_01_vec2_01_4.html", null ],
       [ "Math", "class_nth_1_1_math.html", "class_nth_1_1_math" ],
+      [ "NotImplemented", "class_nth_1_1_not_implemented.html", "class_nth_1_1_not_implemented" ],
       [ "OpenGLException", "struct_nth_1_1_open_g_l_exception.html", "struct_nth_1_1_open_g_l_exception" ],
       [ "PhysicsDebugLayer", "class_nth_1_1_physics_debug_layer.html", "class_nth_1_1_physics_debug_layer" ],
       [ "PhysicsEngine", "class_nth_1_1_physics_engine.html", null ],

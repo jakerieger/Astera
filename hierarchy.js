@@ -22,6 +22,9 @@ var hierarchy =
     [ "Nth::DrawIndexedInstancedCommand", "struct_nth_1_1_draw_indexed_instanced_command.html", null ],
     [ "Nth::DrawSpriteCommand", "struct_nth_1_1_draw_sprite_command.html", null ],
     [ "Nth::EntityDescriptor", "struct_nth_1_1_entity_descriptor.html", null ],
+    [ "std::exception", null, [
+      [ "Nth::NotImplemented", "class_nth_1_1_not_implemented.html", null ]
+    ] ],
     [ "Nth::Game", "class_nth_1_1_game.html", [
       [ "Nth::ProjectRunner", "class_nth_1_1_project_runner.html", null ]
     ] ],
