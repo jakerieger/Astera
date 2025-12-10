@@ -5,6 +5,7 @@ var class_nth_1_1_game =
     [ "~Game", "class_nth_1_1_game.html#a30ffbbded3be3744c6dc8ec53ec3f1eb", null ],
     [ "GetActiveScene", "class_nth_1_1_game.html#ad75d1a7e3f10d7a111ca24f9ad2b7a0a", null ],
     [ "GetAudioEngine", "class_nth_1_1_game.html#a1762e69af3961adb53ff6a406aeb50cb", null ],
+    [ "GetDebugManager", "class_nth_1_1_game.html#aeff1d2c87182919116c43093c9e3366c", null ],
     [ "GetFullscreen", "class_nth_1_1_game.html#a83035c39bd624542bdd900f3c599526c", null ],
     [ "GetRenderContext", "class_nth_1_1_game.html#a1fd80fd3ac5a60e167c81d686291188f", null ],
     [ "GetRunning", "class_nth_1_1_game.html#af8bb36701dc38d381fa56b3a02c4254c", null ],

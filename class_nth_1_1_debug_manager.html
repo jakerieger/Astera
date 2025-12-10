@@ -92,11 +92,15 @@ $(document).ready(function(){initNavTree('class_nth_1_1_debug_manager.html','');
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_nth_1_1_debug_manager-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Nth::DebugManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manages debug overlays for the engine.  
+ <a href="class_nth_1_1_debug_manager.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_debug_interface_8hpp_source.html">DebugInterface.hpp</a>&gt;</code></p>
 <table class="memberdecls">
@@ -104,20 +108,32 @@ $(document).ready(function(){initNavTree('class_nth_1_1_debug_manager.html','');
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afdac52ac895364bb74f2abce124797dc" id="r_afdac52ac895364bb74f2abce124797dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_debug_manager.html#afdac52ac895364bb74f2abce124797dc">~DebugManager</a> ()</td></tr>
 <tr class="separator:afdac52ac895364bb74f2abce124797dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10172d7390efefa71cfd73fd18ef3cee" id="r_a10172d7390efefa71cfd73fd18ef3cee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_debug_manager.html#a10172d7390efefa71cfd73fd18ef3cee">AttachOverlay</a> (<a class="el" href="class_nth_1_1_i_debug_overlay.html">IDebugOverlay</a> *overlay)</td></tr>
-<tr class="separator:a10172d7390efefa71cfd73fd18ef3cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdb5ad9510f6937fd335b91f971e217c" id="r_abdb5ad9510f6937fd335b91f971e217c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_debug_manager.html#abdb5ad9510f6937fd335b91f971e217c">AttachOverlay</a> (const std::string &amp;name, <a class="el" href="class_nth_1_1_i_debug_overlay.html">IDebugOverlay</a> *overlay)</td></tr>
+<tr class="memdesc:abdb5ad9510f6937fd335b91f971e217c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attaches a debug overlay to the manager.  <br /></td></tr>
+<tr class="separator:abdb5ad9510f6937fd335b91f971e217c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5edce6a728e6fa86c14a46afe398d69" id="r_ad5edce6a728e6fa86c14a46afe398d69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_debug_manager.html#ad5edce6a728e6fa86c14a46afe398d69">DetachOverlays</a> ()</td></tr>
+<tr class="memdesc:ad5edce6a728e6fa86c14a46afe398d69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detaches all registered debug overlays.  <br /></td></tr>
 <tr class="separator:ad5edce6a728e6fa86c14a46afe398d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af263b7acdad51a38ce696a8b81128057" id="r_af263b7acdad51a38ce696a8b81128057"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_debug_manager.html#af263b7acdad51a38ce696a8b81128057">SetOverlayEnabled</a> (const std::string &amp;name, bool enabled)</td></tr>
+<tr class="memdesc:af263b7acdad51a38ce696a8b81128057"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables a specific debug overlay.  <br /></td></tr>
+<tr class="separator:af263b7acdad51a38ce696a8b81128057"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd733b8554b5b7db0e6ae6c6fb82844e" id="r_afd733b8554b5b7db0e6ae6c6fb82844e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_debug_manager.html#afd733b8554b5b7db0e6ae6c6fb82844e">GetOverlayEnabled</a> (const std::string &amp;name) const</td></tr>
+<tr class="memdesc:afd733b8554b5b7db0e6ae6c6fb82844e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a specific debug overlay is enabled.  <br /></td></tr>
+<tr class="separator:afd733b8554b5b7db0e6ae6c6fb82844e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a458df2c61d9029127e0eb967ca110678" id="r_a458df2c61d9029127e0eb967ca110678"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_debug_manager.html#a458df2c61d9029127e0eb967ca110678">Update</a> (float deltaTime) const</td></tr>
+<tr class="memdesc:a458df2c61d9029127e0eb967ca110678"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates all enabled debug overlays.  <br /></td></tr>
 <tr class="separator:a458df2c61d9029127e0eb967ca110678"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87d6287e22c433e6e40f4999a5f0fb9a" id="r_a87d6287e22c433e6e40f4999a5f0fb9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_debug_manager.html#a87d6287e22c433e6e40f4999a5f0fb9a">Render</a> () const</td></tr>
+<tr class="memdesc:a87d6287e22c433e6e40f4999a5f0fb9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders all enabled debug overlays.  <br /></td></tr>
 <tr class="separator:a87d6287e22c433e6e40f4999a5f0fb9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace3c18e1ece62d4ec20fac674fba1962" id="r_ace3c18e1ece62d4ec20fac674fba1962"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_debug_manager.html#ace3c18e1ece62d4ec20fac674fba1962">HandleEvent</a> (const Event &amp;event) const</td></tr>
+<tr class="memdesc:ace3c18e1ece62d4ec20fac674fba1962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatches an event to all enabled debug overlays.  <br /></td></tr>
 <tr class="separator:ace3c18e1ece62d4ec20fac674fba1962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_debug_interface_8hpp_source.html#l00023">23</a> of file <a class="el" href="_debug_interface_8hpp_source.html">DebugInterface.hpp</a>.</p>
+<div class="textblock"><p>Manages debug overlays for the engine. </p>
+
+<p class="definition">Definition at line <a class="el" href="_debug_interface_8hpp_source.html#l00033">33</a> of file <a class="el" href="_debug_interface_8hpp_source.html">DebugInterface.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afdac52ac895364bb74f2abce124797dc" name="afdac52ac895364bb74f2abce124797dc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afdac52ac895364bb74f2abce124797dc">&#9670;&#160;</a></span>~DebugManager()</h2>
@@ -134,13 +150,13 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00008">8</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00009">9</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a10172d7390efefa71cfd73fd18ef3cee" name="a10172d7390efefa71cfd73fd18ef3cee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10172d7390efefa71cfd73fd18ef3cee">&#9670;&#160;</a></span>AttachOverlay()</h2>
+<a id="abdb5ad9510f6937fd335b91f971e217c" name="abdb5ad9510f6937fd335b91f971e217c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdb5ad9510f6937fd335b91f971e217c">&#9670;&#160;</a></span>AttachOverlay()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -148,14 +164,33 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Nth::DebugManager::AttachOverlay </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_nth_1_1_i_debug_overlay.html">IDebugOverlay</a> *&#160;</td>
-          <td class="paramname"><em>overlay</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="class_nth_1_1_i_debug_overlay.html">IDebugOverlay</a> *&#160;</td>
+          <td class="paramname"><em>overlay</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00012">12</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
+<p>Attaches a debug overlay to the manager. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Unique identifier for the overlay </td></tr>
+    <tr><td class="paramname">overlay</td><td>Pointer to the overlay instance to attach </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00013">13</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
 
 </div>
 </div>
@@ -174,7 +209,38 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00016">16</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
+<p>Detaches all registered debug overlays. </p>
+
+<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00017">17</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
+
+</div>
+</div>
+<a id="afd733b8554b5b7db0e6ae6c6fb82844e" name="afd733b8554b5b7db0e6ae6c6fb82844e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd733b8554b5b7db0e6ae6c6fb82844e">&#9670;&#160;</a></span>GetOverlayEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Nth::DebugManager::GetOverlayEnabled </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if a specific debug overlay is enabled. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The identifier of the overlay to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the overlay is enabled, false otherwise </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00030">30</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
 
 </div>
 </div>
@@ -194,7 +260,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00035">35</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
+<p>Dispatches an event to all enabled debug overlays. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The event to handle </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00046">46</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
 
 </div>
 </div>
@@ -213,7 +287,48 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00029">29</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
+<p>Renders all enabled debug overlays. </p>
+
+<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00040">40</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af263b7acdad51a38ce696a8b81128057" name="af263b7acdad51a38ce696a8b81128057"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af263b7acdad51a38ce696a8b81128057">&#9670;&#160;</a></span>SetOverlayEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Nth::DebugManager::SetOverlayEnabled </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enabled</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enables or disables a specific debug overlay. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The identifier of the overlay to modify </td></tr>
+    <tr><td class="paramname">enabled</td><td>True to enable the overlay, false to disable </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00025">25</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
 
 </div>
 </div>
@@ -233,7 +348,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00023">23</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
+<p>Updates all enabled debug overlays. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deltaTime</td><td>Time elapsed since the last update in seconds </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_debug_interface_8cpp_source.html#l00034">34</a> of file <a class="el" href="_debug_interface_8cpp_source.html">DebugInterface.cpp</a>.</p>
 
 </div>
 </div>

@@ -105,7 +105,7 @@ Inheritance diagram for Nth::PhysicsDebugLayer:</div>
  <div class="center">
   <img src="class_nth_1_1_physics_debug_layer.png" usemap="#Nth::PhysicsDebugLayer_map" alt=""/>
   <map id="Nth::PhysicsDebugLayer_map" name="Nth::PhysicsDebugLayer_map">
-<area href="class_nth_1_1_i_debug_overlay.html" alt="Nth::IDebugOverlay" shape="rect" coords="0,0,151,24"/>
+<area href="class_nth_1_1_i_debug_overlay.html" title="Interface for debug overlay implementations." alt="Nth::IDebugOverlay" shape="rect" coords="0,0,151,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -116,10 +116,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad0360b7c6e67573a8576f1149b833aed" id="r_ad0360b7c6e67573a8576f1149b833aed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_physics_debug_layer.html#ad0360b7c6e67573a8576f1149b833aed">~PhysicsDebugLayer</a> () override</td></tr>
 <tr class="separator:ad0360b7c6e67573a8576f1149b833aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52829742e40ca97634d19a99e1d3949b" id="r_a52829742e40ca97634d19a99e1d3949b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_physics_debug_layer.html#a52829742e40ca97634d19a99e1d3949b">OnUpdate</a> (float deltaTime) override</td></tr>
+<tr class="memdesc:a52829742e40ca97634d19a99e1d3949b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the debug overlay state.  <br /></td></tr>
 <tr class="separator:a52829742e40ca97634d19a99e1d3949b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adde53bcc01df7459aa421641ad56990a" id="r_adde53bcc01df7459aa421641ad56990a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_physics_debug_layer.html#adde53bcc01df7459aa421641ad56990a">OnRender</a> () override</td></tr>
+<tr class="memdesc:adde53bcc01df7459aa421641ad56990a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the debug overlay to the screen.  <br /></td></tr>
 <tr class="separator:adde53bcc01df7459aa421641ad56990a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c446f1308247b15210a327173a4189d" id="r_a8c446f1308247b15210a327173a4189d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_physics_debug_layer.html#a8c446f1308247b15210a327173a4189d">OnEvent</a> (const Event &amp;event) override</td></tr>
+<tr class="memdesc:a8c446f1308247b15210a327173a4189d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles incoming engine events.  <br /></td></tr>
 <tr class="separator:a8c446f1308247b15210a327173a4189d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a567a3d39275a6a971cc6ce8d6088bada" id="r_a567a3d39275a6a971cc6ce8d6088bada"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_physics_debug_layer.html#a567a3d39275a6a971cc6ce8d6088bada">UpdateTransforms</a> (const vector&lt; <a class="el" href="struct_nth_1_1_transform.html">Transform</a> &gt; &amp;transforms)</td></tr>
 <tr class="separator:a567a3d39275a6a971cc6ce8d6088bada"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,6 +216,14 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Handles incoming engine events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The event to process </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implements <a class="el" href="class_nth_1_1_i_debug_overlay.html#a59377442da1745298502700e4c9f9daf">Nth::IDebugOverlay</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_physics_debug_layer_8cpp_source.html#l00049">49</a> of file <a class="el" href="_physics_debug_layer_8cpp_source.html">PhysicsDebugLayer.cpp</a>.</p>
@@ -241,6 +252,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Renders the debug overlay to the screen. </p>
 
 <p>Implements <a class="el" href="class_nth_1_1_i_debug_overlay.html#a3c4449b61764bf0e711184ee40233892">Nth::IDebugOverlay</a>.</p>
 
@@ -271,6 +284,14 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Updates the debug overlay state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deltaTime</td><td>Time elapsed since the last update in seconds </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="class_nth_1_1_i_debug_overlay.html#afe3f9ad29b6a86e597f21a63089f5cd2">Nth::IDebugOverlay</a>.</p>
 

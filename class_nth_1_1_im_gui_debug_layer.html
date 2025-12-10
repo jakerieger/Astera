@@ -105,7 +105,7 @@ Inheritance diagram for Nth::ImGuiDebugLayer:</div>
  <div class="center">
   <img src="class_nth_1_1_im_gui_debug_layer.png" usemap="#Nth::ImGuiDebugLayer_map" alt=""/>
   <map id="Nth::ImGuiDebugLayer_map" name="Nth::ImGuiDebugLayer_map">
-<area href="class_nth_1_1_i_debug_overlay.html" alt="Nth::IDebugOverlay" shape="rect" coords="0,0,138,24"/>
+<area href="class_nth_1_1_i_debug_overlay.html" title="Interface for debug overlay implementations." alt="Nth::IDebugOverlay" shape="rect" coords="0,0,138,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -116,10 +116,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad2e592c71a9b6896aa234b6c25ced4a0" id="r_ad2e592c71a9b6896aa234b6c25ced4a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_im_gui_debug_layer.html#ad2e592c71a9b6896aa234b6c25ced4a0">~ImGuiDebugLayer</a> () override</td></tr>
 <tr class="separator:ad2e592c71a9b6896aa234b6c25ced4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a536c4a433cf5eb1b252ac8f41bb29538" id="r_a536c4a433cf5eb1b252ac8f41bb29538"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_im_gui_debug_layer.html#a536c4a433cf5eb1b252ac8f41bb29538">OnUpdate</a> (float deltaTime) override</td></tr>
+<tr class="memdesc:a536c4a433cf5eb1b252ac8f41bb29538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the debug overlay state.  <br /></td></tr>
 <tr class="separator:a536c4a433cf5eb1b252ac8f41bb29538"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c694d671d7cb3a95d2b16d0be338b47" id="r_a5c694d671d7cb3a95d2b16d0be338b47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_im_gui_debug_layer.html#a5c694d671d7cb3a95d2b16d0be338b47">OnRender</a> () override</td></tr>
+<tr class="memdesc:a5c694d671d7cb3a95d2b16d0be338b47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the debug overlay to the screen.  <br /></td></tr>
 <tr class="separator:a5c694d671d7cb3a95d2b16d0be338b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2f3b687ab0680b902c84c62eb3f6958" id="r_ae2f3b687ab0680b902c84c62eb3f6958"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_im_gui_debug_layer.html#ae2f3b687ab0680b902c84c62eb3f6958">OnEvent</a> (const Event &amp;event) override</td></tr>
+<tr class="memdesc:ae2f3b687ab0680b902c84c62eb3f6958"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles incoming engine events.  <br /></td></tr>
 <tr class="separator:ae2f3b687ab0680b902c84c62eb3f6958"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42ba253c36d68a6c0a68cc0225bcd752" id="r_a42ba253c36d68a6c0a68cc0225bcd752"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_im_gui_debug_layer.html#a42ba253c36d68a6c0a68cc0225bcd752">ShowPerformanceOverlay</a> (bool show)</td></tr>
 <tr class="separator:a42ba253c36d68a6c0a68cc0225bcd752"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,6 +214,14 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Handles incoming engine events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The event to process </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implements <a class="el" href="class_nth_1_1_i_debug_overlay.html#a59377442da1745298502700e4c9f9daf">Nth::IDebugOverlay</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_im_gui_debug_layer_8cpp_source.html#l00035">35</a> of file <a class="el" href="_im_gui_debug_layer_8cpp_source.html">ImGuiDebugLayer.cpp</a>.</p>
@@ -239,6 +250,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Renders the debug overlay to the screen. </p>
 
 <p>Implements <a class="el" href="class_nth_1_1_i_debug_overlay.html#a3c4449b61764bf0e711184ee40233892">Nth::IDebugOverlay</a>.</p>
 
@@ -269,6 +282,14 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Updates the debug overlay state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deltaTime</td><td>Time elapsed since the last update in seconds </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="class_nth_1_1_i_debug_overlay.html#afe3f9ad29b6a86e597f21a63089f5cd2">Nth::IDebugOverlay</a>.</p>
 

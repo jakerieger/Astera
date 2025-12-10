@@ -99,22 +99,34 @@ $(document).ready(function(){initNavTree('struct_nth_1_1_lua_type_traits.html','
 </div><!--header-->
 <div class="contents">
 
+<p>Trait struct for extracting Lua type information from C++ types.  
+ <a href="struct_nth_1_1_lua_type_traits.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_script_engine_8hpp_source.html">ScriptEngine.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac9e24802cddef07f474d81716f7ad0e4" id="r_ac9e24802cddef07f474d81716f7ad0e4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_nth_1_1_lua_type_traits.html#ac9e24802cddef07f474d81716f7ad0e4">RegisterMembers</a> (sol::usertype&lt; T &gt; &amp;usertype)</td></tr>
+<tr class="memdesc:ac9e24802cddef07f474d81716f7ad0e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers the type's members with Lua.  <br /></td></tr>
 <tr class="separator:ac9e24802cddef07f474d81716f7ad0e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:abfdd9c86c747012b54dc56b6dc172ec3" id="r_abfdd9c86c747012b54dc56b6dc172ec3"><td class="memItemLeft" align="right" valign="top">static constexpr std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_nth_1_1_lua_type_traits.html#abfdd9c86c747012b54dc56b6dc172ec3">typeName</a> = T::kLuaTypeName</td></tr>
+<tr class="memdesc:abfdd9c86c747012b54dc56b6dc172ec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the type as it appears in Lua.  <br /></td></tr>
 <tr class="separator:abfdd9c86c747012b54dc56b6dc172ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T, typename = void&gt;<br />
-struct Nth::LuaTypeTraits&lt; T, typename &gt;</div>
-<p class="definition">Definition at line <a class="el" href="_script_engine_8hpp_source.html#l00019">19</a> of file <a class="el" href="_script_engine_8hpp_source.html">ScriptEngine.hpp</a>.</p>
+struct Nth::LuaTypeTraits&lt; T, typename &gt;</div><p>Trait struct for extracting Lua type information from C++ types. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The C++ type to extract Lua information from </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_script_engine_8hpp_source.html#l00021">21</a> of file <a class="el" href="_script_engine_8hpp_source.html">ScriptEngine.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac9e24802cddef07f474d81716f7ad0e4" name="ac9e24802cddef07f474d81716f7ad0e4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac9e24802cddef07f474d81716f7ad0e4">&#9670;&#160;</a></span>RegisterMembers()</h2>
@@ -142,7 +154,15 @@ template&lt;typename T , typename  = void&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_script_engine_8hpp_source.html#l00022">22</a> of file <a class="el" href="_script_engine_8hpp_source.html">ScriptEngine.hpp</a>.</p>
+<p>Registers the type's members with Lua. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">usertype</td><td>The sol::usertype to register members with </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_script_engine_8hpp_source.html#l00027">27</a> of file <a class="el" href="_script_engine_8hpp_source.html">ScriptEngine.hpp</a>.</p>
 
 </div>
 </div>
@@ -169,7 +189,9 @@ template&lt;typename T , typename  = void&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_script_engine_8hpp_source.html#l00020">20</a> of file <a class="el" href="_script_engine_8hpp_source.html">ScriptEngine.hpp</a>.</p>
+<p>The name of the type as it appears in Lua. </p>
+
+<p class="definition">Definition at line <a class="el" href="_script_engine_8hpp_source.html#l00023">23</a> of file <a class="el" href="_script_engine_8hpp_source.html">ScriptEngine.hpp</a>.</p>
 
 </div>
 </div>

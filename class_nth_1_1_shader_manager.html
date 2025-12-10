@@ -98,20 +98,27 @@ $(document).ready(function(){initNavTree('class_nth_1_1_shader_manager.html','')
 </div><!--header-->
 <div class="contents">
 
+<p>Manages shader resources and provides cached access to compiled shaders.  
+ <a href="class_nth_1_1_shader_manager.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_shader_manager_8hpp_source.html">ShaderManager.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a0e2ef5972bfc5d0f4f4ffef5fd4337ce" id="r_a0e2ef5972bfc5d0f4f4ffef5fd4337ce"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_shader_manager.html#a0e2ef5972bfc5d0f4f4ffef5fd4337ce">Initialize</a> ()</td></tr>
+<tr class="memdesc:a0e2ef5972bfc5d0f4f4ffef5fd4337ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the shader manager and loads default shaders.  <br /></td></tr>
 <tr class="separator:a0e2ef5972bfc5d0f4f4ffef5fd4337ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afeeca0508342a19cf92e0ff308c94393" id="r_afeeca0508342a19cf92e0ff308c94393"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_shader_manager.html#afeeca0508342a19cf92e0ff308c94393">Shutdown</a> ()</td></tr>
+<tr class="memdesc:afeeca0508342a19cf92e0ff308c94393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down the shader manager and releases all cached shaders.  <br /></td></tr>
 <tr class="separator:afeeca0508342a19cf92e0ff308c94393"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe1ea2436a14920a7e727c8be51a7ba3" id="r_abe1ea2436a14920a7e727c8be51a7ba3"><td class="memItemLeft" align="right" valign="top">static N_ND shared_ptr&lt; <a class="el" href="class_nth_1_1_shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_shader_manager.html#abe1ea2436a14920a7e727c8be51a7ba3">GetShader</a> (std::string_view name)</td></tr>
+<tr class="memdesc:abe1ea2436a14920a7e727c8be51a7ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a shader by name from the cache.  <br /></td></tr>
 <tr class="separator:abe1ea2436a14920a7e727c8be51a7ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_shader_manager_8hpp_source.html#l00015">15</a> of file <a class="el" href="_shader_manager_8hpp_source.html">ShaderManager.hpp</a>.</p>
+<div class="textblock"><p>Manages shader resources and provides cached access to compiled shaders. </p>
+
+<p class="definition">Definition at line <a class="el" href="_shader_manager_8hpp_source.html#l00018">18</a> of file <a class="el" href="_shader_manager_8hpp_source.html">ShaderManager.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="abe1ea2436a14920a7e727c8be51a7ba3" name="abe1ea2436a14920a7e727c8be51a7ba3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abe1ea2436a14920a7e727c8be51a7ba3">&#9670;&#160;</a></span>GetShader()</h2>
@@ -136,6 +143,15 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retrieves a shader by name from the cache. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name identifier of the shader to retrieve </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the requested shader, or nullptr if not found </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_shader_manager_8cpp_source.html#l00032">32</a> of file <a class="el" href="_shader_manager_8cpp_source.html">ShaderManager.cpp</a>.</p>
 
@@ -164,6 +180,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Initializes the shader manager and loads default shaders. </p>
+
 <p class="definition">Definition at line <a class="el" href="_shader_manager_8cpp_source.html#l00012">12</a> of file <a class="el" href="_shader_manager_8cpp_source.html">ShaderManager.cpp</a>.</p>
 
 </div>
@@ -190,6 +208,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Shuts down the shader manager and releases all cached shaders. </p>
 
 <p class="definition">Definition at line <a class="el" href="_shader_manager_8cpp_source.html#l00023">23</a> of file <a class="el" href="_shader_manager_8cpp_source.html">ShaderManager.cpp</a>.</p>
 

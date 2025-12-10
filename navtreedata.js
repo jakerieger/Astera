@@ -63,9 +63,9 @@ var NAVTREEINDEX =
 [
 "_audio_engine_8cpp.html",
 "class_nth_1_1_color.html",
-"class_nth_1_1_im_gui_debug_layer.html#a42ba253c36d68a6c0a68cc0225bcd752",
-"class_nth_1_1_vertex_array.html#a721352e01c453b270e143297450389d1",
-"struct_nth_1_1_lua_type_traits.html"
+"class_nth_1_1_i_debug_overlay.html#afe3f9ad29b6a86e597f21a63089f5cd2",
+"class_nth_1_1_vertex_array.html#a24bb8a7e147c1587a9ceebc3bce5f875",
+"struct_nth_1_1_lua_registry.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

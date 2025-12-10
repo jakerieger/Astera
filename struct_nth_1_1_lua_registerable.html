@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('struct_nth_1_1_lua_registerable.html',
 </div><!--header-->
 <div class="contents">
 
+<p>Interface for types that can be registered with Lua.  
+ <a href="struct_nth_1_1_lua_registerable.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_script_engine_8hpp_source.html">ScriptEngine.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Nth::LuaRegisterable:</div>
@@ -105,7 +108,7 @@ Inheritance diagram for Nth::LuaRegisterable:</div>
  <div class="center">
   <img src="struct_nth_1_1_lua_registerable.png" usemap="#Nth::LuaRegisterable_map" alt=""/>
   <map id="Nth::LuaRegisterable_map" name="Nth::LuaRegisterable_map">
-<area href="struct_nth_1_1_lua_registry.html" alt="Nth::LuaRegistry&lt; T &gt;" shape="rect" coords="0,56,135,80"/>
+<area href="struct_nth_1_1_lua_registry.html" title="Concrete implementation of Lua type registration." alt="Nth::LuaRegistry&lt; T &gt;" shape="rect" coords="0,56,135,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -114,11 +117,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a16abe6a6f29d4bba6c60f2b63c95b356" id="r_a16abe6a6f29d4bba6c60f2b63c95b356"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_nth_1_1_lua_registerable.html#a16abe6a6f29d4bba6c60f2b63c95b356">~LuaRegisterable</a> ()=default</td></tr>
 <tr class="separator:a16abe6a6f29d4bba6c60f2b63c95b356"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5a9e828e902c8e0281f037d32250921" id="r_ae5a9e828e902c8e0281f037d32250921"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_nth_1_1_lua_registerable.html#ae5a9e828e902c8e0281f037d32250921">RegisterWithLua</a> (sol::state &amp;lua) const =0</td></tr>
+<tr class="memdesc:ae5a9e828e902c8e0281f037d32250921"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers this type with the Lua state.  <br /></td></tr>
 <tr class="separator:ae5a9e828e902c8e0281f037d32250921"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_script_engine_8hpp_source.html#l00030">30</a> of file <a class="el" href="_script_engine_8hpp_source.html">ScriptEngine.hpp</a>.</p>
+<div class="textblock"><p>Interface for types that can be registered with Lua. </p>
+
+<p class="definition">Definition at line <a class="el" href="_script_engine_8hpp_source.html#l00038">38</a> of file <a class="el" href="_script_engine_8hpp_source.html">ScriptEngine.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a16abe6a6f29d4bba6c60f2b63c95b356" name="a16abe6a6f29d4bba6c60f2b63c95b356"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a16abe6a6f29d4bba6c60f2b63c95b356">&#9670;&#160;</a></span>~LuaRegisterable()</h2>
@@ -169,6 +174,14 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Registers this type with the Lua state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lua</td><td>Reference to the Lua state </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="struct_nth_1_1_lua_registry.html#a1b4c979b94f70101e7327d50e0d842a5">Nth::LuaRegistry&lt; T &gt;</a>.</p>
 

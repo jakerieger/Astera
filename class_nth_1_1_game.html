@@ -210,6 +210,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1762e69af3961adb53ff6a406aeb50cb" id="r_a1762e69af3961adb53ff6a406aeb50cb"><td class="memItemLeft" align="right" valign="top">N_ND <a class="el" href="class_nth_1_1_audio_engine.html">AudioEngine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_game.html#a1762e69af3961adb53ff6a406aeb50cb">GetAudioEngine</a> ()</td></tr>
 <tr class="memdesc:a1762e69af3961adb53ff6a406aeb50cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the audio engine.  <br /></td></tr>
 <tr class="separator:a1762e69af3961adb53ff6a406aeb50cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeff1d2c87182919116c43093c9e3366c" id="r_aeff1d2c87182919116c43093c9e3366c"><td class="memItemLeft" align="right" valign="top">N_ND <a class="el" href="class_nth_1_1_debug_manager.html">DebugManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_nth_1_1_game.html#aeff1d2c87182919116c43093c9e3366c">GetDebugManager</a> ()</td></tr>
+<tr class="memdesc:aeff1d2c87182919116c43093c9e3366c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the debug manager.  <br /></td></tr>
+<tr class="separator:aeff1d2c87182919116c43093c9e3366c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -385,7 +388,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the currently active scene. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the active <a class="el" href="class_nth_1_1_scene.html">Scene</a> instance </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the active <a class="el" href="class_nth_1_1_scene.html" title="Represents a game scene with lifecycle management and rendering capabilities.">Scene</a> instance </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00183">183</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
@@ -415,9 +418,39 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the audio engine. </p>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="class_nth_1_1_audio_engine.html">AudioEngine</a> for audio playback </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="class_nth_1_1_audio_engine.html" title="Manages audio playback and sound resources.">AudioEngine</a> for audio playback </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00201">201</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aeff1d2c87182919116c43093c9e3366c" name="aeff1d2c87182919116c43093c9e3366c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeff1d2c87182919116c43093c9e3366c">&#9670;&#160;</a></span>GetDebugManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">N_ND <a class="el" href="class_nth_1_1_debug_manager.html">DebugManager</a> &amp; Nth::Game::GetDebugManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the debug manager. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="class_nth_1_1_debug_manager.html" title="Manages debug overlays for the engine.">DebugManager</a> instance </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00207">207</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -535,7 +568,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the script engine. </p>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="class_nth_1_1_script_engine.html">ScriptEngine</a> for Lua scripting </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="class_nth_1_1_script_engine.html" title="Manages Lua script execution and lifecycle for the game engine.">ScriptEngine</a> for Lua scripting </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00195">195</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
@@ -1403,7 +1436,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Whether the window is in fullscreen mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00215">215</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00221">221</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -1429,7 +1462,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Current window height in pixels. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00221">221</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00227">227</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -1455,7 +1488,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Whether the game loop is currently running. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00212">212</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00218">218</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -1481,7 +1514,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Window title text. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00209">209</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00215">215</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -1507,7 +1540,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Current window width in pixels. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00218">218</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00224">224</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
