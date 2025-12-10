@@ -241,15 +241,15 @@ namespace Nth {
         gameGlobal["Quit"]          = [this] { Quit(); };
         gameGlobal["GetScreenSize"] = [this]() -> Vec2 { return {mWidth, mHeight}; };
 
+        lua["Scene"] = &mActiveScene->GetState();
+
         // Register globals
         Log::RegisterLuaGlobals(lua);
         Math::RegisterLuaGlobals(lua);
         Coordinates::RegisterLuaGlobals(lua);
         mInputManager.RegisterLuaGlobals(lua);
         mAudioEngine.RegisterLuaGlobals(lua);
-
-        // Register types
-        mScriptEngine.RegisterTypes<BehaviorEntity, Vec2, Clock, Transform>();
+        ScriptTypeRegistry::RegisterTypes(mScriptEngine);
 
         return true;
     }

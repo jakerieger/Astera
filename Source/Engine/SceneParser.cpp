@@ -238,6 +238,7 @@ namespace Nth {
         if (const auto entitiesNode = sceneNode.child("Entities")) {
             for (auto entityNode : entitiesNode.children("Entity")) {
                 EntityDescriptor entity {};
+                entity.id = entityNode.attribute("id").as_int();
                 ParseEntity(entityNode, entity);
                 outDescriptor.entities.push_back(entity);
             }
@@ -260,6 +261,7 @@ namespace Nth {
         if (const auto entitiesNode = sceneNode.child("Entities")) {
             for (pugi::xml_node entityNode : entitiesNode.children("Entity")) {
                 EntityDescriptor entity {};
+                entity.id = entityNode.attribute("id").as_int();
                 ParseEntity(entityNode, entity);
                 outDescriptor.entities.push_back(entity);
             }

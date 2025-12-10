@@ -5,6 +5,7 @@
 ---
 
 ---@class Entity Behavior entity with transform component
+---@field id number Entity ID
 ---@field name string The name of the entity
 ---@field transform Transform Reference to the entity's transform component
 local Entity = {}

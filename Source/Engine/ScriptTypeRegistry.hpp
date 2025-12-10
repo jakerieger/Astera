@@ -28,14 +28,17 @@
 
 #pragma once
 
+#include "Scene.hpp"
 #include "ScriptEngine.hpp"
 
 namespace Nth {
     struct BehaviorEntity {
+        u32 id;
         string name;
         Transform* transform;
 
-        explicit BehaviorEntity(const string& name, Transform* transform) : name(name), transform(transform) {}
+        explicit BehaviorEntity(u32 id, const string& name, Transform* transform)
+            : id(id), name(name), transform(transform) {}
     };
 
     template<>
@@ -84,6 +87,33 @@ namespace Nth {
             usertype["Translate"] = &Transform::Translate;
             usertype["Rotate"]    = &Transform::Rotate;
             usertype["Scale"]     = &Transform::Scale;
+        }
+    };
+
+    template<>
+    struct LuaTypeTraits<SceneState> {
+        static constexpr std::string_view typeName = "SceneState";
+
+        static void RegisterMembers(sol::usertype<SceneState>& usertype) {
+            usertype["FindEntityByName"] = [](SceneState& scene, const string& name) -> sol::optional<Entity> {
+                const auto view = scene.View<Transform>();
+                for (auto entity : view) {
+                    if (scene.GetEntityName(entity) == name) { return entity; }
+                }
+                return sol::nullopt;
+            };
+
+            usertype["GetEntityTransform"] = [](SceneState& scene, Entity entity) -> Transform* {
+                auto& transform = scene.GetTransform(entity);
+                return &transform;
+            };
+        }
+    };
+
+    class ScriptTypeRegistry {
+    public:
+        inline static void RegisterTypes(ScriptEngine& engine) {
+            engine.RegisterTypes<BehaviorEntity, Clock, Transform, SceneState, Vec2>();
         }
     };
 }  // namespace Nth

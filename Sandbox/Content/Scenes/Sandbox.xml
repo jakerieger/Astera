@@ -35,5 +35,17 @@
                 </Rigidbody2D>
             </Components>
         </Entity>
+        <Entity id="1" name="Ball2">
+            <Components>
+                <Transform>
+                    <Position x="740" y="360"/>
+                    <Rotation x="0" y="0"/>
+                    <Scale x="64" y="64"/>
+                </Transform>
+                <SpriteRenderer>
+                    <Texture>ball.png</Texture>
+                </SpriteRenderer>
+            </Components>
+        </Entity>
     </Entities>
 </Scene>
