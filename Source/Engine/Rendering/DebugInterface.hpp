@@ -56,6 +56,7 @@ namespace Nth {
     /// @brief Manages debug overlays for the engine
     class DebugManager {
     public:
+        DebugManager() = default;
         ~DebugManager();
 
         N_CLASS_PREVENT_MOVES_COPIES(DebugManager)

@@ -256,6 +256,10 @@ namespace Nth {
         /// and swap buffers.
         void Render();
 
+        /// @brief Sets the game window icon to the specified image file
+        /// @param filename The path of the image file to use
+        void SetWindowIcon(const fs::path& filename) const;
+
     private:
         /// @brief Initializes all engine systems
         /// @return True if initialization succeeded, false otherwise

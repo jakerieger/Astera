@@ -27,7 +27,6 @@
  */
 
 #include "Game.hpp"
-
 #include "Coordinates.hpp"
 #include "Log.hpp"
 #include "TextureManager.hpp"
@@ -36,6 +35,8 @@
 #include "Input.hpp"
 #include "Math.hpp"
 #include "Rendering/ImGuiDebugLayer.hpp"
+
+#include <stb_image.h>
 
 namespace Nth {
     using Nth::Log;
@@ -263,6 +264,22 @@ namespace Nth {
 
         mDebugManager.Render();
         glfwSwapBuffers(mWindow);
+    }
+
+    void Game::SetWindowIcon(const fs::path& filename) const {
+        i32 width, height, channels;
+        u8* pixels = stbi_load(filename.string().c_str(), &width, &height, &channels, 4);  // Force RGBA
+
+        if (pixels) {
+            GLFWimage icon;
+            icon.width  = width;
+            icon.height = height;
+            icon.pixels = pixels;
+            glfwSetWindowIcon(mWindow, 1, &icon);
+            stbi_image_free(pixels);
+        } else {
+            Log::Error("Game", "Failed to load window icon: {}", filename.string());
+        }
     }
 
     void Game::GLFWResizeCallback(GLFWwindow* mWindow, i32 width, i32 height) {

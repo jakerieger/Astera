@@ -2,6 +2,8 @@
 /// @created 11/27/25
 ///
 
+#include "TextureManager.hpp"
+
 #include <Game.hpp>
 #include <InputCodes.hpp>
 #include <Content.hpp>
@@ -32,6 +34,8 @@ namespace Nth {
         }
 
         void OnAwake() override {
+            SetWindowIcon("Res/icon.png");
+
             GetActiveScene()->Load(Content::Get<ContentType::Scene>("Sandbox.xml"), GetScriptEngine());
             GetAudioEngine().LoadSound(Content::Get<ContentType::Audio>("bg.wav"));  // Played via BallController.lua
 
