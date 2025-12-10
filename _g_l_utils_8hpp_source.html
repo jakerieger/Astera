@@ -99,103 +99,129 @@ $(document).ready(function(){initNavTree('_g_l_utils_8hpp_source.html',''); init
   <div class="headertitle"><div class="title">GLUtils.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_g_l_utils_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Common/CommonPCH.hpp&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_nth.html">Nth</a> {</div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="struct_nth_1_1_open_g_l_exception.html">   10</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="struct_nth_1_1_open_g_l_exception.html">OpenGLException</a> final : <span class="keyword">public</span> std::runtime_error {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="struct_nth_1_1_open_g_l_exception.html#aeb2c138928b99a20f5fd4addfb10d9ad">   11</a></span>        <a class="code hl_function" href="struct_nth_1_1_open_g_l_exception.html#aeb2c138928b99a20f5fd4addfb10d9ad">OpenGLException</a>() : std::runtime_error(<span class="stringliteral">&quot;OpenGLException was thrown&quot;</span>) {}</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    };</div>
-</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="comment">// Convert OpenGL error code to string</span></div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="namespace_nth.html#a902c6caf5cb7c20e7b79ae2dd2830f4f">   15</a></span>    <span class="keyword">constexpr</span> std::string_view <a class="code hl_function" href="namespace_nth.html#a902c6caf5cb7c20e7b79ae2dd2830f4f">GLErrorToString</a>(GLenum error) {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keywordflow">switch</span> (error) {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            <span class="keywordflow">case</span> GL_NO_ERROR:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_NO_ERROR&quot;</span>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keywordflow">case</span> GL_INVALID_ENUM:</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_INVALID_ENUM&quot;</span>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordflow">case</span> GL_INVALID_VALUE:</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_INVALID_VALUE&quot;</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keywordflow">case</span> GL_INVALID_OPERATION:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_INVALID_OPERATION&quot;</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keywordflow">case</span> GL_STACK_OVERFLOW:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_STACK_OVERFLOW&quot;</span>;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <span class="keywordflow">case</span> GL_STACK_UNDERFLOW:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_STACK_UNDERFLOW&quot;</span>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="keywordflow">case</span> GL_OUT_OF_MEMORY:</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_OUT_OF_MEMORY&quot;</span>;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="keywordflow">case</span> GL_INVALID_FRAMEBUFFER_OPERATION:</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_INVALID_FRAMEBUFFER_OPERATION&quot;</span>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <span class="keywordflow">default</span>:</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;UNKNOWN_ERROR&quot;</span>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        }</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
+<a href="_g_l_utils_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *  Filename: GLUtils.hpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *  This code is part of the Nth Engine core library</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Copyright 2025 Jake Rieger</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *  you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *  You may obtain a copy of the License at</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *      http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *  See the License for the specific language governing permissions and</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> *  limitations under the License.</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> *  In no event and under no legal theory, whether in tort (including negligence),</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> *  contract, or otherwise, unless required by applicable law (such as deliberate</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *  and grossly negligent acts) or agreed to in writing, shall any Contributor be</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> *  liable for any damages, including any direct, indirect, special, incidental,</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> *  or consequential damages of any character arising as a result of this License or</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> *  out of the use or inability to use the software (including but not limited to damages</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> *  for loss of goodwill, work stoppage, computer failure or malfunction, or any and</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> *  all other commercial damages or losses), even if such Contributor has been advised</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> *  of the possibility of such damages.</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;Common/CommonPCH.hpp&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_nth.html">Nth</a> {</div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="struct_nth_1_1_open_g_l_exception.html">   34</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="struct_nth_1_1_open_g_l_exception.html">OpenGLException</a> final : <span class="keyword">public</span> std::runtime_error {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="struct_nth_1_1_open_g_l_exception.html#aeb2c138928b99a20f5fd4addfb10d9ad">   35</a></span>        <a class="code hl_function" href="struct_nth_1_1_open_g_l_exception.html#aeb2c138928b99a20f5fd4addfb10d9ad">OpenGLException</a>() : std::runtime_error(<span class="stringliteral">&quot;OpenGLException was thrown&quot;</span>) {}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    };</div>
 </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// Check for OpenGL errors and report them</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// Convert OpenGL error code to string</span></div>
 <div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespace_nth.html#aadeafb11c8ba68056573fdd8e3f76951">   39</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_nth.html#aadeafb11c8ba68056573fdd8e3f76951">GLCheckError</a>(std::string_view function_name, <span class="keyword">const</span> std::source_location&amp; location) {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        GLenum error;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">bool</span> hasError = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">while</span> ((error = glGetError()) != GL_NO_ERROR) {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            hasError = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keyword">auto</span> msg = fmt::format(<span class="stringliteral">&quot;[OpenGL Error] {}\n&quot;</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                                   <span class="stringliteral">&quot;  Function: {}\n&quot;</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                                   <span class="stringliteral">&quot;  File: {}:{}\n&quot;</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                                   <span class="stringliteral">&quot;  In function: {}\n&quot;</span>,</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                                   <a class="code hl_function" href="namespace_nth.html#a902c6caf5cb7c20e7b79ae2dd2830f4f">GLErrorToString</a>(error),</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                                   function_name,</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                                   location.file_name(),</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                                   location.line(),</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                                   location.function_name());</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            fprintf(stderr, <span class="stringliteral">&quot;%s\n&quot;</span>, msg.c_str());</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">if</span> (hasError) { <span class="keywordflow">throw</span> <a class="code hl_struct" href="struct_nth_1_1_open_g_l_exception.html">OpenGLException</a>(); }</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespace_nth.html#a902c6caf5cb7c20e7b79ae2dd2830f4f">   39</a></span>    <span class="keyword">constexpr</span> std::string_view <a class="code hl_function" href="namespace_nth.html#a902c6caf5cb7c20e7b79ae2dd2830f4f">GLErrorToString</a>(GLenum error) {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">switch</span> (error) {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">case</span> GL_NO_ERROR:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_NO_ERROR&quot;</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">case</span> GL_INVALID_ENUM:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_INVALID_ENUM&quot;</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keywordflow">case</span> GL_INVALID_VALUE:</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_INVALID_VALUE&quot;</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">case</span> GL_INVALID_OPERATION:</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_INVALID_OPERATION&quot;</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="keywordflow">case</span> GL_STACK_OVERFLOW:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_STACK_OVERFLOW&quot;</span>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">case</span> GL_STACK_UNDERFLOW:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_STACK_UNDERFLOW&quot;</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">case</span> GL_OUT_OF_MEMORY:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_OUT_OF_MEMORY&quot;</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">case</span> GL_INVALID_FRAMEBUFFER_OPERATION:</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GL_INVALID_FRAMEBUFFER_OPERATION&quot;</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;UNKNOWN_ERROR&quot;</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
 </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// Helper to call and check - void version</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Func, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">requires</span> std::is_void_v&lt;std::invoke_result_t&lt;Func, Args...&gt;&gt;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// Check for OpenGL errors and report them</span></div>
 <div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="namespace_nth.html#a78f356084e31b6e3b751897e8dc04c4a">   63</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_nth.html#a78f356084e31b6e3b751897e8dc04c4a">GLCallImpl</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* func_name, <span class="keyword">const</span> std::source_location&amp; loc, Func&amp;&amp; func, Args&amp;&amp;... args) {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">while</span> (glGetError() != GL_NO_ERROR)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            ;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        std::forward&lt;Func&gt;(func)(std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_function" href="namespace_nth.html#aadeafb11c8ba68056573fdd8e3f76951">GLCheckError</a>(func_name, loc);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
-</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">// Helper to call and check - non-void version</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Func, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keyword">requires</span>(!std::is_void_v&lt;std::invoke_result_t&lt;Func, Args...&gt;&gt;)</div>
-<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="namespace_nth.html#afe781e6ae9f9b66190b57d17daefee7e">   73</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespace_nth.html#a78f356084e31b6e3b751897e8dc04c4a">GLCallImpl</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* func_name, <span class="keyword">const</span> std::source_location&amp; loc, Func&amp;&amp; func, Args&amp;&amp;... args) {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordflow">while</span> (glGetError() != GL_NO_ERROR)</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            ;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keyword">auto</span> result = std::forward&lt;Func&gt;(func)(std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <a class="code hl_function" href="namespace_nth.html#aadeafb11c8ba68056573fdd8e3f76951">GLCheckError</a>(func_name, loc);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
-</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="namespace_nth.html#aadeafb11c8ba68056573fdd8e3f76951">   63</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_nth.html#aadeafb11c8ba68056573fdd8e3f76951">GLCheckError</a>(std::string_view function_name, <span class="keyword">const</span> std::source_location&amp; location) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        GLenum error;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordtype">bool</span> hasError = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">while</span> ((error = glGetError()) != GL_NO_ERROR) {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            hasError = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keyword">auto</span> msg = fmt::format(<span class="stringliteral">&quot;[OpenGL Error] {}\n&quot;</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                                   <span class="stringliteral">&quot;  Function: {}\n&quot;</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                                   <span class="stringliteral">&quot;  File: {}:{}\n&quot;</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                                   <span class="stringliteral">&quot;  In function: {}\n&quot;</span>,</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                                   <a class="code hl_function" href="namespace_nth.html#a902c6caf5cb7c20e7b79ae2dd2830f4f">GLErrorToString</a>(error),</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                                   function_name,</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                                   location.file_name(),</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                                   location.line(),</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                                   location.function_name());</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            fprintf(stderr, <span class="stringliteral">&quot;%s\n&quot;</span>, msg.c_str());</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        }</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">// Macro that works for both void and non-void</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="_g_l_utils_8hpp.html#a6f1e1a1061e32e80cc502e560beb25e6">   82</a></span><span class="preprocessor">#define GLCall(func, ...) GLCallImpl(#func, std::source_location::current(), func, ##__VA_ARGS__)</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}  <span class="comment">// namespace Nth</span></div>
-<div class="ttc" id="anamespace_nth_html"><div class="ttname"><a href="namespace_nth.html">Nth</a></div><div class="ttdef"><b>Definition</b> <a href="_audio_engine_8cpp_source.html#l00010">AudioEngine.cpp:10</a></div></div>
-<div class="ttc" id="anamespace_nth_html_a78f356084e31b6e3b751897e8dc04c4a"><div class="ttname"><a href="namespace_nth.html#a78f356084e31b6e3b751897e8dc04c4a">Nth::GLCallImpl</a></div><div class="ttdeci">void GLCallImpl(const char *func_name, const std::source_location &amp;loc, Func &amp;&amp;func, Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition</b> <a href="_g_l_utils_8hpp_source.html#l00063">GLUtils.hpp:63</a></div></div>
-<div class="ttc" id="anamespace_nth_html_a902c6caf5cb7c20e7b79ae2dd2830f4f"><div class="ttname"><a href="namespace_nth.html#a902c6caf5cb7c20e7b79ae2dd2830f4f">Nth::GLErrorToString</a></div><div class="ttdeci">constexpr std::string_view GLErrorToString(GLenum error)</div><div class="ttdef"><b>Definition</b> <a href="_g_l_utils_8hpp_source.html#l00015">GLUtils.hpp:15</a></div></div>
-<div class="ttc" id="anamespace_nth_html_aadeafb11c8ba68056573fdd8e3f76951"><div class="ttname"><a href="namespace_nth.html#aadeafb11c8ba68056573fdd8e3f76951">Nth::GLCheckError</a></div><div class="ttdeci">void GLCheckError(std::string_view function_name, const std::source_location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="_g_l_utils_8hpp_source.html#l00039">GLUtils.hpp:39</a></div></div>
-<div class="ttc" id="astruct_nth_1_1_open_g_l_exception_html"><div class="ttname"><a href="struct_nth_1_1_open_g_l_exception.html">Nth::OpenGLException</a></div><div class="ttdef"><b>Definition</b> <a href="_g_l_utils_8hpp_source.html#l00010">GLUtils.hpp:10</a></div></div>
-<div class="ttc" id="astruct_nth_1_1_open_g_l_exception_html_aeb2c138928b99a20f5fd4addfb10d9ad"><div class="ttname"><a href="struct_nth_1_1_open_g_l_exception.html#aeb2c138928b99a20f5fd4addfb10d9ad">Nth::OpenGLException::OpenGLException</a></div><div class="ttdeci">OpenGLException()</div><div class="ttdef"><b>Definition</b> <a href="_g_l_utils_8hpp_source.html#l00011">GLUtils.hpp:11</a></div></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">if</span> (hasError) { <span class="keywordflow">throw</span> <a class="code hl_struct" href="struct_nth_1_1_open_g_l_exception.html">OpenGLException</a>(); }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
+</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="comment">// Helper to call and check - void version</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Func, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keyword">requires</span> std::is_void_v&lt;std::invoke_result_t&lt;Func, Args...&gt;&gt;</div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="namespace_nth.html#a78f356084e31b6e3b751897e8dc04c4a">   87</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_nth.html#a78f356084e31b6e3b751897e8dc04c4a">GLCallImpl</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* func_name, <span class="keyword">const</span> std::source_location&amp; loc, Func&amp;&amp; func, Args&amp;&amp;... args) {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">while</span> (glGetError() != GL_NO_ERROR)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            ;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        std::forward&lt;Func&gt;(func)(std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <a class="code hl_function" href="namespace_nth.html#aadeafb11c8ba68056573fdd8e3f76951">GLCheckError</a>(func_name, loc);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
+</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="comment">// Helper to call and check - non-void version</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Func, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keyword">requires</span>(!std::is_void_v&lt;std::invoke_result_t&lt;Func, Args...&gt;&gt;)</div>
+<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="namespace_nth.html#afe781e6ae9f9b66190b57d17daefee7e">   97</a></span>    <span class="keyword">auto</span> <a class="code hl_function" href="namespace_nth.html#a78f356084e31b6e3b751897e8dc04c4a">GLCallImpl</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* func_name, <span class="keyword">const</span> std::source_location&amp; loc, Func&amp;&amp; func, Args&amp;&amp;... args) {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">while</span> (glGetError() != GL_NO_ERROR)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            ;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keyword">auto</span> result = std::forward&lt;Func&gt;(func)(std::forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <a class="code hl_function" href="namespace_nth.html#aadeafb11c8ba68056573fdd8e3f76951">GLCheckError</a>(func_name, loc);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
+</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">// Macro that works for both void and non-void</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="_g_l_utils_8hpp.html#a6f1e1a1061e32e80cc502e560beb25e6">  106</a></span><span class="preprocessor">#define GLCall(func, ...) GLCallImpl(#func, std::source_location::current(), func, ##__VA_ARGS__)</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}  <span class="comment">// namespace Nth</span></div>
+<div class="ttc" id="anamespace_nth_html"><div class="ttname"><a href="namespace_nth.html">Nth</a></div><div class="ttdef"><b>Definition</b> <a href="_audio_engine_8cpp_source.html#l00034">AudioEngine.cpp:34</a></div></div>
+<div class="ttc" id="anamespace_nth_html_a78f356084e31b6e3b751897e8dc04c4a"><div class="ttname"><a href="namespace_nth.html#a78f356084e31b6e3b751897e8dc04c4a">Nth::GLCallImpl</a></div><div class="ttdeci">void GLCallImpl(const char *func_name, const std::source_location &amp;loc, Func &amp;&amp;func, Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition</b> <a href="_g_l_utils_8hpp_source.html#l00087">GLUtils.hpp:87</a></div></div>
+<div class="ttc" id="anamespace_nth_html_a902c6caf5cb7c20e7b79ae2dd2830f4f"><div class="ttname"><a href="namespace_nth.html#a902c6caf5cb7c20e7b79ae2dd2830f4f">Nth::GLErrorToString</a></div><div class="ttdeci">constexpr std::string_view GLErrorToString(GLenum error)</div><div class="ttdef"><b>Definition</b> <a href="_g_l_utils_8hpp_source.html#l00039">GLUtils.hpp:39</a></div></div>
+<div class="ttc" id="anamespace_nth_html_aadeafb11c8ba68056573fdd8e3f76951"><div class="ttname"><a href="namespace_nth.html#aadeafb11c8ba68056573fdd8e3f76951">Nth::GLCheckError</a></div><div class="ttdeci">void GLCheckError(std::string_view function_name, const std::source_location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="_g_l_utils_8hpp_source.html#l00063">GLUtils.hpp:63</a></div></div>
+<div class="ttc" id="astruct_nth_1_1_open_g_l_exception_html"><div class="ttname"><a href="struct_nth_1_1_open_g_l_exception.html">Nth::OpenGLException</a></div><div class="ttdef"><b>Definition</b> <a href="_g_l_utils_8hpp_source.html#l00034">GLUtils.hpp:34</a></div></div>
+<div class="ttc" id="astruct_nth_1_1_open_g_l_exception_html_aeb2c138928b99a20f5fd4addfb10d9ad"><div class="ttname"><a href="struct_nth_1_1_open_g_l_exception.html#aeb2c138928b99a20f5fd4addfb10d9ad">Nth::OpenGLException::OpenGLException</a></div><div class="ttdeci">OpenGLException()</div><div class="ttdef"><b>Definition</b> <a href="_g_l_utils_8hpp_source.html#l00035">GLUtils.hpp:35</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

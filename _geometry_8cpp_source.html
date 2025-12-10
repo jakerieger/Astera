@@ -99,112 +99,139 @@ $(document).ready(function(){initNavTree('_geometry_8cpp_source.html',''); initR
   <div class="headertitle"><div class="title">Geometry.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="_geometry_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_geometry_8hpp.html">Geometry.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="_g_l_utils_8hpp.html">GLUtils.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_log_8hpp.html">Log.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_nth.html">Nth</a> {</div>
-<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_nth_1_1_geometry.html#a93f0d04afae1805d5748c38a6bea84cd">    9</a></span>    <a class="code hl_typedef" href="namespace_nth.html#afcd248cdcbe5deec6ad538c05f06756e">GeometryHandle</a> <a class="code hl_function" href="class_nth_1_1_geometry.html#a93f0d04afae1805d5748c38a6bea84cd">Geometry::CreateQuad</a>(f32 width, f32 height) {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <span class="keyword">auto</span> geometry = make_shared&lt;Geometry&gt;();</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="comment">// Calculate half-extents for centered quad</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keyword">const</span> f32 halfWidth  = width * 0.5f;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">const</span> f32 halfHeight = height * 0.5f;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="comment">// Define quad vertices (position + texcoord packed as vec4)</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="comment">// Triangle strip ordering: bottom-left, bottom-right, top-left, top-right</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keyword">const</span> <a class="code hl_struct" href="struct_nth_1_1_sprite_vertex.html">SpriteVertex</a> vertices[] = {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>          {-halfWidth, -halfHeight, 0.0f, 0.0f},  <span class="comment">// Bottom-left</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>          {halfWidth, -halfHeight, 1.0f, 0.0f},   <span class="comment">// Bottom-right</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>          {-halfWidth, halfHeight, 0.0f, 1.0f},   <span class="comment">// Top-left</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>          {halfWidth, halfHeight, 1.0f, 1.0f},    <span class="comment">// Top-right</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        };</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="comment">// Define indices for two triangles</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keyword">const</span> u32 indices[] = {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>          0,</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>          1,</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>          2,  <span class="comment">// First triangle</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>          2,</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>          1,</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>          3  <span class="comment">// Second triangle</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        };</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="comment">// Create vertex buffer and upload data</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keyword">auto</span> vertexBuffer = make_shared&lt;VertexBuffer&gt;();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        vertexBuffer-&gt;SetData(vertices, <span class="keyword">sizeof</span>(vertices), <a class="code hl_enumvalue" href="namespace_nth.html#a35e71e18ce939b8fa75ed8cad5cc3f78a84a8921b25f505d0d2077aeb5db4bc16">BufferUsage::Static</a>);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="comment">// Create index buffer and upload data</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">auto</span> indexBuffer = make_shared&lt;IndexBuffer&gt;();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        indexBuffer-&gt;SetIndices(indices, 6, <a class="code hl_enumvalue" href="namespace_nth.html#a35e71e18ce939b8fa75ed8cad5cc3f78a84a8921b25f505d0d2077aeb5db4bc16">BufferUsage::Static</a>);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">// Define vertex layout matching the shader&#39;s input</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="comment">// layout (location = 0) in vec4 aVertex;</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <a class="code hl_class" href="class_nth_1_1_vertex_layout.html">VertexLayout</a> layout;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        layout.<a class="code hl_function" href="class_nth_1_1_vertex_layout.html#ae8586b4f0f80675a0c33bf8ca8c68a11">AddAttribute</a>(<a class="code hl_struct" href="struct_nth_1_1_vertex_attribute.html">VertexAttribute</a>(<span class="stringliteral">&quot;aVertex&quot;</span>, <a class="code hl_enumvalue" href="namespace_nth.html#a2cbc17b47e5b46db1b6d2ded11dcbd46a33116adc6690289da9b82ea736864eeb">AttributeType::Float4</a>));</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="comment">// Create and configure VAO</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        geometry-&gt;mVertexArray = make_shared&lt;VertexArray&gt;();</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        geometry-&gt;mVertexArray-&gt;AddVertexBuffer(vertexBuffer, layout);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        geometry-&gt;mVertexArray-&gt;SetIndexBuffer(indexBuffer);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <a class="code hl_function" href="class_nth_1_1_log.html#ae0272636802a7da7ae86032bb33d5b7d">Log::Debug</a>(<span class="stringliteral">&quot;Geometry&quot;</span>, <span class="stringliteral">&quot;Created quad geometry ({}x{})&quot;</span>, width, height);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">return</span> geometry;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
+<a href="_geometry_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> *  Filename: Geometry.cpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *  This code is part of the Nth Engine core library</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Copyright 2025 Jake Rieger</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *  you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *  You may obtain a copy of the License at</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *      http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> *  Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *  See the License for the specific language governing permissions and</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> *  limitations under the License.</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> *  In no event and under no legal theory, whether in tort (including negligence),</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> *  contract, or otherwise, unless required by applicable law (such as deliberate</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *  and grossly negligent acts) or agreed to in writing, shall any Contributor be</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> *  liable for any damages, including any direct, indirect, special, incidental,</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> *  or consequential damages of any character arising as a result of this License or</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> *  out of the use or inability to use the software (including but not limited to damages</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> *  for loss of goodwill, work stoppage, computer failure or malfunction, or any and</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> *  all other commercial damages or losses), even if such Contributor has been advised</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> *  of the possibility of such damages.</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="_geometry_8hpp.html">Geometry.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;<a class="code" href="_g_l_utils_8hpp.html">GLUtils.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="_log_8hpp.html">Log.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_nth.html">Nth</a> {</div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="class_nth_1_1_geometry.html#a93f0d04afae1805d5748c38a6bea84cd">   34</a></span>    <a class="code hl_typedef" href="namespace_nth.html#afcd248cdcbe5deec6ad538c05f06756e">GeometryHandle</a> <a class="code hl_function" href="class_nth_1_1_geometry.html#a93f0d04afae1805d5748c38a6bea84cd">Geometry::CreateQuad</a>(f32 width, f32 height) {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keyword">auto</span> geometry = make_shared&lt;Geometry&gt;();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="comment">// Calculate half-extents for centered quad</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">const</span> f32 halfWidth  = width * 0.5f;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">const</span> f32 halfHeight = height * 0.5f;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="comment">// Define quad vertices (position + texcoord packed as vec4)</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="comment">// Triangle strip ordering: bottom-left, bottom-right, top-left, top-right</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">const</span> <a class="code hl_struct" href="struct_nth_1_1_sprite_vertex.html">SpriteVertex</a> vertices[] = {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>          {-halfWidth, -halfHeight, 0.0f, 0.0f},  <span class="comment">// Bottom-left</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>          {halfWidth, -halfHeight, 1.0f, 0.0f},   <span class="comment">// Bottom-right</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>          {-halfWidth, halfHeight, 0.0f, 1.0f},   <span class="comment">// Top-left</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>          {halfWidth, halfHeight, 1.0f, 1.0f},    <span class="comment">// Top-right</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        };</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="comment">// Define indices for two triangles</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keyword">const</span> u32 indices[] = {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>          0,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>          1,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>          2,  <span class="comment">// First triangle</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>          2,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>          1,</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>          3  <span class="comment">// Second triangle</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        };</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="comment">// Create vertex buffer and upload data</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keyword">auto</span> vertexBuffer = make_shared&lt;VertexBuffer&gt;();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        vertexBuffer-&gt;SetData(vertices, <span class="keyword">sizeof</span>(vertices), <a class="code hl_enumvalue" href="namespace_nth.html#a35e71e18ce939b8fa75ed8cad5cc3f78a84a8921b25f505d0d2077aeb5db4bc16">BufferUsage::Static</a>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="comment">// Create index buffer and upload data</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keyword">auto</span> indexBuffer = make_shared&lt;IndexBuffer&gt;();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        indexBuffer-&gt;SetIndices(indices, 6, <a class="code hl_enumvalue" href="namespace_nth.html#a35e71e18ce939b8fa75ed8cad5cc3f78a84a8921b25f505d0d2077aeb5db4bc16">BufferUsage::Static</a>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="comment">// Define vertex layout matching the shader&#39;s input</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="comment">// layout (location = 0) in vec4 aVertex;</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_class" href="class_nth_1_1_vertex_layout.html">VertexLayout</a> layout;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        layout.<a class="code hl_function" href="class_nth_1_1_vertex_layout.html#ae8586b4f0f80675a0c33bf8ca8c68a11">AddAttribute</a>(<a class="code hl_struct" href="struct_nth_1_1_vertex_attribute.html">VertexAttribute</a>(<span class="stringliteral">&quot;aVertex&quot;</span>, <a class="code hl_enumvalue" href="namespace_nth.html#a2cbc17b47e5b46db1b6d2ded11dcbd46a33116adc6690289da9b82ea736864eeb">AttributeType::Float4</a>));</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="comment">// Create and configure VAO</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        geometry-&gt;mVertexArray = make_shared&lt;VertexArray&gt;();</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        geometry-&gt;mVertexArray-&gt;AddVertexBuffer(vertexBuffer, layout);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        geometry-&gt;mVertexArray-&gt;SetIndexBuffer(indexBuffer);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <a class="code hl_function" href="class_nth_1_1_log.html#ae0272636802a7da7ae86032bb33d5b7d">Log::Debug</a>(<span class="stringliteral">&quot;Geometry&quot;</span>, <span class="stringliteral">&quot;Created quad geometry ({}x{})&quot;</span>, width, height);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">return</span> geometry;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_nth_1_1_geometry.html#a127a21d1806709ac2c0c0e5ca33713e7">   58</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_nth_1_1_geometry.html#a127a21d1806709ac2c0c0e5ca33713e7">Geometry::Bind</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">if</span> (mVertexArray) { mVertexArray-&gt;Bind(); }</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="class_nth_1_1_geometry.html#a127a21d1806709ac2c0c0e5ca33713e7">   83</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_nth_1_1_geometry.html#a127a21d1806709ac2c0c0e5ca33713e7">Geometry::Bind</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">if</span> (mVertexArray) { mVertexArray-&gt;Bind(); }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
 </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="class_nth_1_1_geometry.html#ae999e3a1382b7d66399f3dffee07fc9b">   62</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_nth_1_1_geometry.html#ae999e3a1382b7d66399f3dffee07fc9b">Geometry::Destroy</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        mVertexArray-&gt;Destroy();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="class_nth_1_1_geometry.html#ae999e3a1382b7d66399f3dffee07fc9b">   87</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_nth_1_1_geometry.html#ae999e3a1382b7d66399f3dffee07fc9b">Geometry::Destroy</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        mVertexArray-&gt;Destroy();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
 </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_nth_1_1_geometry.html#a117d26852f20ff4ab3ec621962f2f294">   66</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_nth_1_1_geometry.html#a117d26852f20ff4ab3ec621962f2f294">Geometry::Unbind</a>() {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_function" href="class_nth_1_1_vertex_array.html#ab8db068bcc3fc43b49e9f59b7cbe9c60">VertexArray::Unbind</a>();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="foldopen" id="foldopen00091" data-start="{" data-end="}">
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="class_nth_1_1_geometry.html#a117d26852f20ff4ab3ec621962f2f294">   91</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_nth_1_1_geometry.html#a117d26852f20ff4ab3ec621962f2f294">Geometry::Unbind</a>() {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <a class="code hl_function" href="class_nth_1_1_vertex_array.html#ab8db068bcc3fc43b49e9f59b7cbe9c60">VertexArray::Unbind</a>();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    }</div>
 </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="class_nth_1_1_geometry.html#a91d1e5f082658926ce19b1bbf3f5fea2">   70</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_nth_1_1_geometry.html#a91d1e5f082658926ce19b1bbf3f5fea2">Geometry::DrawIndexed</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        N_ASSERT(mVertexArray != <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        N_ASSERT(mVertexArray-&gt;GetIndexBuffer() != <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <a class="code hl_function" href="class_nth_1_1_geometry.html#a127a21d1806709ac2c0c0e5ca33713e7">Bind</a>();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keyword">const</span> <span class="keyword">auto</span> indexCount = mVertexArray-&gt;GetIndexBuffer()-&gt;GetCount();</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <a class="code hl_define" href="_g_l_utils_8hpp.html#a6f1e1a1061e32e80cc502e560beb25e6">GLCall</a>(glDrawElements, GL_TRIANGLES, CAST&lt;GLsizei&gt;(indexCount), GL_UNSIGNED_INT, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="class_nth_1_1_geometry.html#a91d1e5f082658926ce19b1bbf3f5fea2">   95</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_nth_1_1_geometry.html#a91d1e5f082658926ce19b1bbf3f5fea2">Geometry::DrawIndexed</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        N_ASSERT(mVertexArray != <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        N_ASSERT(mVertexArray-&gt;GetIndexBuffer() != <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <a class="code hl_function" href="class_nth_1_1_geometry.html#a127a21d1806709ac2c0c0e5ca33713e7">Bind</a>();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keyword">const</span> <span class="keyword">auto</span> indexCount = mVertexArray-&gt;GetIndexBuffer()-&gt;GetCount();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <a class="code hl_define" href="_g_l_utils_8hpp.html#a6f1e1a1061e32e80cc502e560beb25e6">GLCall</a>(glDrawElements, GL_TRIANGLES, CAST&lt;GLsizei&gt;(indexCount), GL_UNSIGNED_INT, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}  <span class="comment">// namespace Nth</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}  <span class="comment">// namespace Nth</span></div>
 <div class="ttc" id="a_g_l_utils_8hpp_html"><div class="ttname"><a href="_g_l_utils_8hpp.html">GLUtils.hpp</a></div></div>
-<div class="ttc" id="a_g_l_utils_8hpp_html_a6f1e1a1061e32e80cc502e560beb25e6"><div class="ttname"><a href="_g_l_utils_8hpp.html#a6f1e1a1061e32e80cc502e560beb25e6">GLCall</a></div><div class="ttdeci">#define GLCall(func,...)</div><div class="ttdef"><b>Definition</b> <a href="_g_l_utils_8hpp_source.html#l00082">GLUtils.hpp:82</a></div></div>
+<div class="ttc" id="a_g_l_utils_8hpp_html_a6f1e1a1061e32e80cc502e560beb25e6"><div class="ttname"><a href="_g_l_utils_8hpp.html#a6f1e1a1061e32e80cc502e560beb25e6">GLCall</a></div><div class="ttdeci">#define GLCall(func,...)</div><div class="ttdef"><b>Definition</b> <a href="_g_l_utils_8hpp_source.html#l00106">GLUtils.hpp:106</a></div></div>
 <div class="ttc" id="a_geometry_8hpp_html"><div class="ttname"><a href="_geometry_8hpp.html">Geometry.hpp</a></div></div>
 <div class="ttc" id="a_log_8hpp_html"><div class="ttname"><a href="_log_8hpp.html">Log.hpp</a></div></div>
-<div class="ttc" id="aclass_nth_1_1_geometry_html_a117d26852f20ff4ab3ec621962f2f294"><div class="ttname"><a href="class_nth_1_1_geometry.html#a117d26852f20ff4ab3ec621962f2f294">Nth::Geometry::Unbind</a></div><div class="ttdeci">static void Unbind()</div><div class="ttdoc">Unbind the currently bound geometry.</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8cpp_source.html#l00066">Geometry.cpp:66</a></div></div>
-<div class="ttc" id="aclass_nth_1_1_geometry_html_a127a21d1806709ac2c0c0e5ca33713e7"><div class="ttname"><a href="class_nth_1_1_geometry.html#a127a21d1806709ac2c0c0e5ca33713e7">Nth::Geometry::Bind</a></div><div class="ttdeci">void Bind() const</div><div class="ttdoc">Bind this geometry for rendering.</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8cpp_source.html#l00058">Geometry.cpp:58</a></div></div>
-<div class="ttc" id="aclass_nth_1_1_geometry_html_a91d1e5f082658926ce19b1bbf3f5fea2"><div class="ttname"><a href="class_nth_1_1_geometry.html#a91d1e5f082658926ce19b1bbf3f5fea2">Nth::Geometry::DrawIndexed</a></div><div class="ttdeci">void DrawIndexed() const</div><div class="ttdoc">Draw this geometry using indices.</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8cpp_source.html#l00070">Geometry.cpp:70</a></div></div>
-<div class="ttc" id="aclass_nth_1_1_geometry_html_a93f0d04afae1805d5748c38a6bea84cd"><div class="ttname"><a href="class_nth_1_1_geometry.html#a93f0d04afae1805d5748c38a6bea84cd">Nth::Geometry::CreateQuad</a></div><div class="ttdeci">static GeometryHandle CreateQuad(f32 width=1.0f, f32 height=1.0f)</div><div class="ttdoc">Create a quad geometry for sprite rendering.</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8cpp_source.html#l00009">Geometry.cpp:9</a></div></div>
-<div class="ttc" id="aclass_nth_1_1_geometry_html_ae999e3a1382b7d66399f3dffee07fc9b"><div class="ttname"><a href="class_nth_1_1_geometry.html#ae999e3a1382b7d66399f3dffee07fc9b">Nth::Geometry::Destroy</a></div><div class="ttdeci">void Destroy() const</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8cpp_source.html#l00062">Geometry.cpp:62</a></div></div>
-<div class="ttc" id="aclass_nth_1_1_log_html_ae0272636802a7da7ae86032bb33d5b7d"><div class="ttname"><a href="class_nth_1_1_log.html#ae0272636802a7da7ae86032bb33d5b7d">Nth::Log::Debug</a></div><div class="ttdeci">static void Debug(const std::string &amp;subsystem, fmt::format_string&lt; Args... &gt; fmt, Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition</b> <a href="_log_8hpp_source.html#l00025">Log.hpp:25</a></div></div>
-<div class="ttc" id="aclass_nth_1_1_vertex_array_html_ab8db068bcc3fc43b49e9f59b7cbe9c60"><div class="ttname"><a href="class_nth_1_1_vertex_array.html#ab8db068bcc3fc43b49e9f59b7cbe9c60">Nth::VertexArray::Unbind</a></div><div class="ttdeci">static void Unbind()</div><div class="ttdoc">Unbind the currently bound vertex array.</div><div class="ttdef"><b>Definition</b> <a href="_vertex_array_8cpp_source.html#l00072">VertexArray.cpp:72</a></div></div>
-<div class="ttc" id="aclass_nth_1_1_vertex_layout_html"><div class="ttname"><a href="class_nth_1_1_vertex_layout.html">Nth::VertexLayout</a></div><div class="ttdoc">Describes the layout of vertex data.</div><div class="ttdef"><b>Definition</b> <a href="_vertex_array_8hpp_source.html#l00099">VertexArray.hpp:99</a></div></div>
-<div class="ttc" id="aclass_nth_1_1_vertex_layout_html_ae8586b4f0f80675a0c33bf8ca8c68a11"><div class="ttname"><a href="class_nth_1_1_vertex_layout.html#ae8586b4f0f80675a0c33bf8ca8c68a11">Nth::VertexLayout::AddAttribute</a></div><div class="ttdeci">void AddAttribute(const VertexAttribute &amp;attribute)</div><div class="ttdoc">Add an attribute to the layout.</div><div class="ttdef"><b>Definition</b> <a href="_vertex_array_8hpp_source.html#l00104">VertexArray.hpp:104</a></div></div>
-<div class="ttc" id="anamespace_nth_html"><div class="ttname"><a href="namespace_nth.html">Nth</a></div><div class="ttdef"><b>Definition</b> <a href="_audio_engine_8cpp_source.html#l00010">AudioEngine.cpp:10</a></div></div>
+<div class="ttc" id="aclass_nth_1_1_geometry_html_a117d26852f20ff4ab3ec621962f2f294"><div class="ttname"><a href="class_nth_1_1_geometry.html#a117d26852f20ff4ab3ec621962f2f294">Nth::Geometry::Unbind</a></div><div class="ttdeci">static void Unbind()</div><div class="ttdoc">Unbind the currently bound geometry.</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8cpp_source.html#l00091">Geometry.cpp:91</a></div></div>
+<div class="ttc" id="aclass_nth_1_1_geometry_html_a127a21d1806709ac2c0c0e5ca33713e7"><div class="ttname"><a href="class_nth_1_1_geometry.html#a127a21d1806709ac2c0c0e5ca33713e7">Nth::Geometry::Bind</a></div><div class="ttdeci">void Bind() const</div><div class="ttdoc">Bind this geometry for rendering.</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8cpp_source.html#l00083">Geometry.cpp:83</a></div></div>
+<div class="ttc" id="aclass_nth_1_1_geometry_html_a91d1e5f082658926ce19b1bbf3f5fea2"><div class="ttname"><a href="class_nth_1_1_geometry.html#a91d1e5f082658926ce19b1bbf3f5fea2">Nth::Geometry::DrawIndexed</a></div><div class="ttdeci">void DrawIndexed() const</div><div class="ttdoc">Draw this geometry using indices.</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8cpp_source.html#l00095">Geometry.cpp:95</a></div></div>
+<div class="ttc" id="aclass_nth_1_1_geometry_html_a93f0d04afae1805d5748c38a6bea84cd"><div class="ttname"><a href="class_nth_1_1_geometry.html#a93f0d04afae1805d5748c38a6bea84cd">Nth::Geometry::CreateQuad</a></div><div class="ttdeci">static GeometryHandle CreateQuad(f32 width=1.0f, f32 height=1.0f)</div><div class="ttdoc">Create a quad geometry for sprite rendering.</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8cpp_source.html#l00034">Geometry.cpp:34</a></div></div>
+<div class="ttc" id="aclass_nth_1_1_geometry_html_ae999e3a1382b7d66399f3dffee07fc9b"><div class="ttname"><a href="class_nth_1_1_geometry.html#ae999e3a1382b7d66399f3dffee07fc9b">Nth::Geometry::Destroy</a></div><div class="ttdeci">void Destroy() const</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8cpp_source.html#l00087">Geometry.cpp:87</a></div></div>
+<div class="ttc" id="aclass_nth_1_1_log_html_ae0272636802a7da7ae86032bb33d5b7d"><div class="ttname"><a href="class_nth_1_1_log.html#ae0272636802a7da7ae86032bb33d5b7d">Nth::Log::Debug</a></div><div class="ttdeci">static void Debug(const std::string &amp;subsystem, fmt::format_string&lt; Args... &gt; fmt, Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition</b> <a href="_log_8hpp_source.html#l00049">Log.hpp:49</a></div></div>
+<div class="ttc" id="aclass_nth_1_1_vertex_array_html_ab8db068bcc3fc43b49e9f59b7cbe9c60"><div class="ttname"><a href="class_nth_1_1_vertex_array.html#ab8db068bcc3fc43b49e9f59b7cbe9c60">Nth::VertexArray::Unbind</a></div><div class="ttdeci">static void Unbind()</div><div class="ttdoc">Unbind the currently bound vertex array.</div><div class="ttdef"><b>Definition</b> <a href="_vertex_array_8cpp_source.html#l00097">VertexArray.cpp:97</a></div></div>
+<div class="ttc" id="aclass_nth_1_1_vertex_layout_html"><div class="ttname"><a href="class_nth_1_1_vertex_layout.html">Nth::VertexLayout</a></div><div class="ttdoc">Describes the layout of vertex data.</div><div class="ttdef"><b>Definition</b> <a href="_vertex_array_8hpp_source.html#l00123">VertexArray.hpp:123</a></div></div>
+<div class="ttc" id="aclass_nth_1_1_vertex_layout_html_ae8586b4f0f80675a0c33bf8ca8c68a11"><div class="ttname"><a href="class_nth_1_1_vertex_layout.html#ae8586b4f0f80675a0c33bf8ca8c68a11">Nth::VertexLayout::AddAttribute</a></div><div class="ttdeci">void AddAttribute(const VertexAttribute &amp;attribute)</div><div class="ttdoc">Add an attribute to the layout.</div><div class="ttdef"><b>Definition</b> <a href="_vertex_array_8hpp_source.html#l00128">VertexArray.hpp:128</a></div></div>
+<div class="ttc" id="anamespace_nth_html"><div class="ttname"><a href="namespace_nth.html">Nth</a></div><div class="ttdef"><b>Definition</b> <a href="_audio_engine_8cpp_source.html#l00034">AudioEngine.cpp:34</a></div></div>
 <div class="ttc" id="anamespace_nth_html_a2cbc17b47e5b46db1b6d2ded11dcbd46a33116adc6690289da9b82ea736864eeb"><div class="ttname"><a href="namespace_nth.html#a2cbc17b47e5b46db1b6d2ded11dcbd46a33116adc6690289da9b82ea736864eeb">Nth::AttributeType::Float4</a></div><div class="ttdeci">@ Float4</div></div>
 <div class="ttc" id="anamespace_nth_html_a35e71e18ce939b8fa75ed8cad5cc3f78a84a8921b25f505d0d2077aeb5db4bc16"><div class="ttname"><a href="namespace_nth.html#a35e71e18ce939b8fa75ed8cad5cc3f78a84a8921b25f505d0d2077aeb5db4bc16">Nth::BufferUsage::Static</a></div><div class="ttdeci">@ Static</div></div>
-<div class="ttc" id="anamespace_nth_html_afcd248cdcbe5deec6ad538c05f06756e"><div class="ttname"><a href="namespace_nth.html#afcd248cdcbe5deec6ad538c05f06756e">Nth::GeometryHandle</a></div><div class="ttdeci">shared_ptr&lt; class Geometry &gt; GeometryHandle</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8hpp_source.html#l00020">Geometry.hpp:20</a></div></div>
-<div class="ttc" id="astruct_nth_1_1_sprite_vertex_html"><div class="ttname"><a href="struct_nth_1_1_sprite_vertex.html">Nth::SpriteVertex</a></div><div class="ttdoc">Vertex structure for sprite/quad rendering (position + texcoord packed)</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8hpp_source.html#l00012">Geometry.hpp:12</a></div></div>
-<div class="ttc" id="astruct_nth_1_1_vertex_attribute_html"><div class="ttname"><a href="struct_nth_1_1_vertex_attribute.html">Nth::VertexAttribute</a></div><div class="ttdoc">Describes a single vertex attribute (position, color, texcoord, etc.)</div><div class="ttdef"><b>Definition</b> <a href="_vertex_array_8hpp_source.html#l00025">VertexArray.hpp:25</a></div></div>
+<div class="ttc" id="anamespace_nth_html_afcd248cdcbe5deec6ad538c05f06756e"><div class="ttname"><a href="namespace_nth.html#afcd248cdcbe5deec6ad538c05f06756e">Nth::GeometryHandle</a></div><div class="ttdeci">shared_ptr&lt; class Geometry &gt; GeometryHandle</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8hpp_source.html#l00044">Geometry.hpp:44</a></div></div>
+<div class="ttc" id="astruct_nth_1_1_sprite_vertex_html"><div class="ttname"><a href="struct_nth_1_1_sprite_vertex.html">Nth::SpriteVertex</a></div><div class="ttdoc">Vertex structure for sprite/quad rendering (position + texcoord packed)</div><div class="ttdef"><b>Definition</b> <a href="_geometry_8hpp_source.html#l00036">Geometry.hpp:36</a></div></div>
+<div class="ttc" id="astruct_nth_1_1_vertex_attribute_html"><div class="ttname"><a href="struct_nth_1_1_vertex_attribute.html">Nth::VertexAttribute</a></div><div class="ttdoc">Describes a single vertex attribute (position, color, texcoord, etc.)</div><div class="ttdef"><b>Definition</b> <a href="_vertex_array_8hpp_source.html#l00049">VertexArray.hpp:49</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

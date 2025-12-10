@@ -251,7 +251,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p>Base class where all engine systems meet and execute. </p>
 <p>Central hub for the game engine that owns and manages all core systems including the window, rendering, input, audio, scripting, and scene management. Handles the main game loop and communication between the OS, graphics API, and game client code. User games should inherit from this class and override lifecycle methods to implement custom behavior. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00026">26</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00050">50</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aac17c0893351f382d24c605478c33787" name="aac17c0893351f382d24c605478c33787"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aac17c0893351f382d24c605478c33787">&#9670;&#160;</a></span>Game() <span class="overload">[1/2]</span></h2>
@@ -278,7 +278,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Default constructor, creates a game with default window settings. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00037">37</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00061">61</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -332,7 +332,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00043">43</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00067">67</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -390,7 +390,7 @@ Protected Attributes</h2></td></tr>
 <p>Gets the currently active scene. </p>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the active <a class="el" href="class_nth_1_1_scene.html" title="Represents a game scene with lifecycle management and rendering capabilities.">Scene</a> instance </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00183">183</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00207">207</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -420,7 +420,7 @@ Protected Attributes</h2></td></tr>
 <p>Gets the audio engine. </p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="class_nth_1_1_audio_engine.html" title="Manages audio playback and sound resources.">AudioEngine</a> for audio playback </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00201">201</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00225">225</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -450,7 +450,7 @@ Protected Attributes</h2></td></tr>
 <p>Gets the debug manager. </p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="class_nth_1_1_debug_manager.html" title="Manages debug overlays for the engine.">DebugManager</a> instance </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00207">207</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00231">231</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -480,7 +480,7 @@ Protected Attributes</h2></td></tr>
 <p>Checks if the window is in fullscreen mode. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if fullscreen, false if windowed </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00159">159</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00183">183</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -510,7 +510,7 @@ Protected Attributes</h2></td></tr>
 <p>Gets the render context. </p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="class_nth_1_1_render_context.html">RenderContext</a> managing graphics rendering </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00177">177</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00201">201</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -540,7 +540,7 @@ Protected Attributes</h2></td></tr>
 <p>Checks if the game is currently running. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the game loop is active, false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00153">153</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00177">177</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -570,7 +570,7 @@ Protected Attributes</h2></td></tr>
 <p>Gets the script engine. </p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the <a class="el" href="class_nth_1_1_script_engine.html" title="Manages Lua script execution and lifecycle for the game engine.">ScriptEngine</a> for Lua scripting </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00195">195</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00219">219</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -600,7 +600,7 @@ Protected Attributes</h2></td></tr>
 <p>Checks if vertical sync is enabled. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if VSync is enabled, false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00189">189</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00213">213</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -630,7 +630,7 @@ Protected Attributes</h2></td></tr>
 <p>Gets the GLFW window handle. </p>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the GLFWwindow instance </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00165">165</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00189">189</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -677,7 +677,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00146">146</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00170">170</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -707,7 +707,7 @@ Protected Attributes</h2></td></tr>
 <p>Gets the window title. </p>
 <dl class="section return"><dt>Returns</dt><dd>String view of the current window title </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00171">171</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00195">195</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -739,7 +739,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_nth_1_1_project_runner.html#aaf217b2eb0632fd4a64e60557cf27e5a">Nth::ProjectRunner</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00101">101</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00126">126</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -769,7 +769,7 @@ Protected Attributes</h2></td></tr>
 <p>Called when the game is shutting down. </p>
 <p>Override this to perform cleanup tasks such as saving data, releasing resources, or logging final state. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00124">124</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00149">149</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -805,7 +805,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00076">76</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00101">101</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -843,7 +843,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_nth_1_1_project_runner.html#ab8e1559bd21d27674c9d1ae4b5940933">Nth::ProjectRunner</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00068">68</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00093">93</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -879,7 +879,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00072">72</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00097">97</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -909,7 +909,7 @@ Protected Attributes</h2></td></tr>
 <p>Called every frame after OnUpdate, before rendering. </p>
 <p>Override this for operations that need to happen after all game logic has been updated but before rendering (e.g., camera updates, final transforms). </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00120">120</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00145">145</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -945,7 +945,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00086">86</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00111">111</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -981,7 +981,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00078">78</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00103">103</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -1017,7 +1017,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00082">82</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00107">107</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -1064,7 +1064,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00091">91</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00116">116</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -1111,7 +1111,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00095">95</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00120">120</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -1158,7 +1158,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00063">63</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00088">88</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -1195,7 +1195,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <p>Override this to implement per-frame game logic, physics updates, AI behavior, and other time-dependent operations. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00105">105</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00130">130</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -1217,7 +1217,7 @@ Protected Attributes</h2></td></tr>
 <p>Requests the game to quit. </p>
 <p>Sets the running flag to false, which will exit the main loop and trigger cleanup on the next iteration. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00041">41</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00066">66</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -1247,7 +1247,7 @@ Protected Attributes</h2></td></tr>
 <p>Renders the current frame. </p>
 <p>Called internally each frame to render the scene, debug layers, and swap buffers. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00231">231</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00256">256</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -1286,7 +1286,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00059">59</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00084">84</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -1308,7 +1308,7 @@ Protected Attributes</h2></td></tr>
 <p>Starts the main game loop. </p>
 <p>Initializes all engine systems, enters the main loop that handles input, updates, and rendering, then cleans up on exit. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00018">18</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00043">43</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -1336,7 +1336,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00054">54</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00079">79</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -1357,7 +1357,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Toggles between fullscreen and windowed mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00045">45</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8cpp_source.html#l00070">70</a> of file <a class="el" href="_game_8cpp_source.html">Game.cpp</a>.</p>
 
 </div>
 </div>
@@ -1384,7 +1384,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Default window height in pixels. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00032">32</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00056">56</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -1410,7 +1410,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Default window width in pixels. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00029">29</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00053">53</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -1436,7 +1436,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Whether the window is in fullscreen mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00221">221</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00245">245</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -1462,7 +1462,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Current window height in pixels. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00227">227</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00251">251</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -1488,7 +1488,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Whether the game loop is currently running. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00218">218</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00242">242</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -1514,7 +1514,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Window title text. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00215">215</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00239">239</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
@@ -1540,7 +1540,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Current window width in pixels. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00224">224</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_8hpp_source.html#l00248">248</a> of file <a class="el" href="_game_8hpp_source.html">Game.hpp</a>.</p>
 
 </div>
 </div>
