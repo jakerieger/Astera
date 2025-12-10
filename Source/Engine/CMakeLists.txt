@@ -13,22 +13,8 @@ add_library(NthEngine_Objects OBJECT
     ${MINIAUDIO_SOURCES}
     ${GLAD_SOURCES}
     ${STB_SOURCES}
-    ${COMMON_ROOT}/CommonPCH.hpp
-    ${COMMON_ROOT}/CommonPCH.cpp
     ${ENGINE_INCLUDES}
     ${ENGINE_SOURCES}
-)
-
-target_precompile_headers(NthEngine_Objects PRIVATE
-    "$<$<COMPILE_LANGUAGE:CXX>:${COMMON_ROOT}/CommonPCH.hpp>"
-)
-
-set_source_files_properties(
-    ${VENDOR_ROOT}/backends/imgui_impl_glfw.cpp
-    ${VENDOR_ROOT}/backends/imgui_impl_opengl3.cpp
-    ${VENDOR_ROOT}/glad.c
-    PROPERTIES
-    SKIP_PRECOMPILE_HEADERS ON
 )
 
 target_include_directories(NthEngine_Objects PUBLIC
@@ -44,6 +30,9 @@ set_target_properties(NthEngine_Objects PROPERTIES
     POSITION_INDEPENDENT_CODE ON
 )
 
+# Link dependencies to the object library
+target_link_libraries(NthEngine_Objects PUBLIC ${NTHENGINE_LIBS})
+
 # Create shared library from object files
 add_library(NthEngine_Shared SHARED $<TARGET_OBJECTS:NthEngine_Objects>)
 set_target_properties(NthEngine_Shared PROPERTIES OUTPUT_NAME NthEngine)
@@ -52,9 +41,27 @@ set_target_properties(NthEngine_Shared PROPERTIES OUTPUT_NAME NthEngine)
 add_library(NthEngine_Static STATIC $<TARGET_OBJECTS:NthEngine_Objects>)
 set_target_properties(NthEngine_Static PROPERTIES OUTPUT_NAME NthEngine)
 
-# Inherit properties from object library
-target_link_libraries(NthEngine_Shared PUBLIC NthEngine_Objects ${NTHENGINE_LIBS})
-target_link_libraries(NthEngine_Static PUBLIC NthEngine_Objects ${NTHENGINE_LIBS})
+# Inherit include directories and compile definitions, but use INTERFACE linking
+# This breaks the direct dependency chain for exports
+target_include_directories(NthEngine_Shared PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<BUILD_INTERFACE:${COMMON_ROOT}>
+    $<BUILD_INTERFACE:${SOURCE_ROOT}>
+    $<BUILD_INTERFACE:${VENDOR_ROOT}>
+    $<INSTALL_INTERFACE:include/NthEngine>
+)
+
+target_include_directories(NthEngine_Static PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    $<BUILD_INTERFACE:${COMMON_ROOT}>
+    $<BUILD_INTERFACE:${SOURCE_ROOT}>
+    $<BUILD_INTERFACE:${VENDOR_ROOT}>
+    $<INSTALL_INTERFACE:include/NthEngine>
+)
+
+# Link the actual libraries (not the object library) to dependencies
+target_link_libraries(NthEngine_Shared PUBLIC ${NTHENGINE_LIBS})
+target_link_libraries(NthEngine_Static PUBLIC ${NTHENGINE_LIBS})
 
 include(GenerateExportHeader)
 generate_export_header(NthEngine_Shared)

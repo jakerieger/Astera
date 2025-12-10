@@ -1,5 +1,5 @@
 /*
- *  Filename: SpriteRenderer.hpp
+ *  Filename: NthEngine.hpp
  *  This code is part of the Nth Engine core library
  *  Copyright 2025 Jake Rieger
  *
@@ -29,15 +29,13 @@
 #pragma once
 
 #include "EngineCommon.hpp"
-#include "Rendering/Geometry.hpp"
+#include "Game.hpp"
+#include "InputCodes.hpp"
+#include "Coordinates.hpp"
+#include "Content.hpp"
+#include "Color.hpp"
+#include "Math.hpp"
+#include "Log.hpp"
 
-namespace Nth {
-    struct SpriteRenderer {
-        u32 textureId;
-        GeometryHandle geometry;
-
-        ~SpriteRenderer() {
-            geometry.reset();
-        }
-    };
-}  // namespace Nth
+/// @brief Root namespace of all Nth Engine components
+namespace Nth {}

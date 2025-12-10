@@ -28,7 +28,7 @@
 
 #pragma once
 
-#include "CommonPCH.hpp"
+#include "EngineCommon.hpp"
 #include "DebugInterface.hpp"
 
 namespace Nth {

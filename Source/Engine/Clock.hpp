@@ -28,7 +28,7 @@
 
 #pragma once
 
-#include "Common/CommonPCH.hpp"
+#include "EngineCommon.hpp"
 
 #ifdef N_ENGINE_PLATFORM_WINDOWS
     #include <windows.h>

@@ -40,3 +40,6 @@ add_subdirectory(Source/Tools)
 
 # Sandbox test application
 add_subdirectory(Sandbox/Runtime)
+
+# Install configuration
+include(CMake/InstallConfig.cmake)

@@ -28,7 +28,7 @@
 
 #pragma once
 
-#include "Common/CommonPCH.hpp"
+#include "EngineCommon.hpp"
 #include "VertexArray.hpp"
 
 namespace Nth {

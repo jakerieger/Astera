@@ -28,8 +28,8 @@
 
 #pragma once
 
+#include "EngineCommon.hpp"
 #include "AudioEngine.hpp"
-#include "Common/CommonPCH.hpp"
 #include "Clock.hpp"
 #include "Input.hpp"
 #include "Scene.hpp"

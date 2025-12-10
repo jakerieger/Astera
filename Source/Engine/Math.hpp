@@ -28,7 +28,7 @@
 
 #pragma once
 
-#include "Common/CommonPCH.hpp"
+#include "EngineCommon.hpp"
 
 #include <sol/sol.hpp>
 

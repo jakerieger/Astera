@@ -28,9 +28,9 @@
 
 #pragma once
 
-#include "Common/CommonPCH.hpp"
+#include "EngineCommon.hpp"
 
-#include <miniaudio.h>
+#include "Vendor/miniaudio.h"
 
 namespace sol {
     class state;

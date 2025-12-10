@@ -30,7 +30,7 @@
 
 #include <variant>
 
-#include "Common/CommonPCH.hpp"
+#include "EngineCommon.hpp"
 #include "Components/SpriteRenderer.hpp"
 #include "Components/Transform.hpp"
 

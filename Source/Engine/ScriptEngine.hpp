@@ -28,10 +28,10 @@
 
 #pragma once
 
-#include "Common/CommonPCH.hpp"
+#include "EngineCommon.hpp"
 
 #define SOL_ALL_SAFETIES_ON 1
-#include <sol/sol.hpp>
+#include "Vendor/sol/sol.hpp"
 
 #include "Clock.hpp"
 #include "Components/Transform.hpp"

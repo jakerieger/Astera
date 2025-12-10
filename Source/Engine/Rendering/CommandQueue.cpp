@@ -128,7 +128,7 @@ namespace Nth {
         // Add final batch
         if (!currentBatch.instances.empty()) { mBatches.push_back(std::move(currentBatch)); }
 
-        Log::Debug("CommandQueue", "Batched {} sprites into {} draw calls", spriteIndices.size(), mBatches.size());
+        // Log::Debug("CommandQueue", "Batched {} sprites into {} draw calls", spriteIndices.size(), mBatches.size());
     }
 
     void CommandQueue::RenderBatch(const SpriteBatch& batch) const {

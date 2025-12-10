@@ -5,6 +5,12 @@
 #pragma once
 
 #include <fstream>
+#include <optional>
+#include <cstdint>
+#include <vector>
+#include <filesystem>
+#include <string>
+#include <sstream>
 
 namespace Nth::IO {
     inline static std::optional<std::vector<uint8_t>> ReadBytes(const std::filesystem::path& filename) {

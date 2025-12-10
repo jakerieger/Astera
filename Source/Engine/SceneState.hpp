@@ -28,7 +28,7 @@
 
 #pragma once
 
-#include "Common/CommonPCH.hpp"
+#include "EngineCommon.hpp"
 
 #pragma region Components
 #include "Components/Camera.hpp"
@@ -39,7 +39,7 @@
 #include "Components/Collider2D.hpp"
 #pragma endregion
 
-#include <entt/entt.hpp>
+#include "Vendor/entt/entt.hpp"
 
 namespace Nth {
     /// @brief Type alias for entt::entity. Casts to integer types as id value.

@@ -29,7 +29,7 @@
 #pragma once
 
 #include "Clock.hpp"
-#include "Common/CommonPCH.hpp"
+#include "EngineCommon.hpp"
 #include "SceneState.hpp"
 #include "ScriptEngine.hpp"
 #include "Rendering/RenderContext.hpp"

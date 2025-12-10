@@ -28,7 +28,7 @@
 
 #pragma once
 
-#include "Common/CommonPCH.hpp"
+#include "EngineCommon.hpp"
 #include "Rendering/Shader.hpp"
 
 namespace Nth {
