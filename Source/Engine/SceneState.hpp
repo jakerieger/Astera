@@ -59,7 +59,7 @@ namespace Astera {
         SceneState();
         ~SceneState();
 
-        N_CLASS_PREVENT_COPIES(SceneState)
+        ASTERA_CLASS_PREVENT_COPIES(SceneState)
 
         SceneState(SceneState&& other) noexcept;
         SceneState& operator=(SceneState&& other) noexcept;
@@ -76,18 +76,18 @@ namespace Astera {
 
         /// @brief Get number of entities currently in scene
         /// @returns Number of entities
-        N_ND size_t GetEntityCount() const;
+        ASTERA_KEEP size_t GetEntityCount() const;
 
         /// @brief Gets the transform component of the specified entity. All entities are created with a Transform
         /// component attached by default.
         /// @param entity Entity id
         /// @returns Transform component reference
-        N_ND Transform& GetTransform(Entity entity);
+        ASTERA_KEEP Transform& GetTransform(Entity entity);
 
         /// @brief Returns the name of the given entity if it exists
         /// @param entity Entity id
         /// @return Name of entity
-        N_ND const string& GetEntityName(Entity entity) const;
+        ASTERA_KEEP const string& GetEntityName(Entity entity) const;
 
         /// @brief Attaches specified component to specified entity
         /// @tparam Component Component type

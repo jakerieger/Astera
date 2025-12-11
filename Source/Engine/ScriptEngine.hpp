@@ -113,7 +113,7 @@ namespace Astera {
         ScriptEngine()  = default;
         ~ScriptEngine() = default;
 
-        N_CLASS_PREVENT_MOVES_COPIES(ScriptEngine)
+        ASTERA_CLASS_PREVENT_MOVES_COPIES(ScriptEngine)
 
         /// @brief Initializes the script engine and Lua state
         void Initialize();

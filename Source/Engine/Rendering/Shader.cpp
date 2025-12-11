@@ -50,13 +50,13 @@ namespace Astera {
     shared_ptr<Shader> Shader::FromFile(const fs::path& vertexFile, const fs::path& fragFile) {
         auto shader = make_shared<Shader>();
 
-        N_ASSERT(fs::exists(vertexFile) && fs::exists(fragFile));
+        ASTERA_ASSERT(fs::exists(vertexFile) && fs::exists(fragFile));
 
         const string vertexSource = IO::ReadString(vertexFile);
         const string fragSource   = IO::ReadString(fragFile);
 
-        N_ASSERT(!vertexSource.empty());
-        N_ASSERT(!fragSource.empty());
+        ASTERA_ASSERT(!vertexSource.empty());
+        ASTERA_ASSERT(!fragSource.empty());
 
         shader->CompileShaders(vertexSource.c_str(), fragSource.c_str());
 
@@ -64,8 +64,8 @@ namespace Astera {
     }
 
     void Shader::FromMemory(const char* vertexSource, const char* fragSource) {
-        N_ASSERT(strlen(vertexSource) > 0);
-        N_ASSERT(strlen(fragSource) > 0);
+        ASTERA_ASSERT(strlen(vertexSource) > 0);
+        ASTERA_ASSERT(strlen(fragSource) > 0);
 
         CompileShaders(vertexSource, fragSource);
     }
@@ -75,7 +75,7 @@ namespace Astera {
     }
 
     void Shader::Unbind() const {
-        N_UNUSED(this);
+        ASTERA_UNUSED(this);
         GLCall(glUseProgram, 0);
     }
 

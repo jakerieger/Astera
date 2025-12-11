@@ -30,7 +30,7 @@
 
 namespace Astera {
     Clock::Clock() {
-#ifdef N_ENGINE_PLATFORM_WINDOWS
+#ifdef ASTERA_PLATFORM_WINDOWS
         QueryPerformanceFrequency(&mFrequency);
         QueryPerformanceCounter(&mLastTime);
 #else
@@ -51,7 +51,7 @@ namespace Astera {
     }
 
     void Clock::Tick() {
-#ifdef N_ENGINE_PLATFORM_WINDOWS
+#ifdef ASTERA_PLATFORM_WINDOWS
         LARGE_INTEGER currentTime;
         QueryPerformanceCounter(&currentTime);
 
@@ -95,7 +95,7 @@ namespace Astera {
 
     // ReSharper disable once CppMemberFunctionMayBeStatic
     u64 Clock::GetRawCounter() const {  // NOLINT(*-convert-member-functions-to-static)
-#ifdef N_ENGINE_PLATFORM_WINDOWS
+#ifdef ASTERA_PLATFORM_WINDOWS
         LARGE_INTEGER current;
         QueryPerformanceCounter(&current);
         return current.QuadPart;
@@ -107,10 +107,10 @@ namespace Astera {
     }
 
     u64 Clock::GetCounterFrequency() const {
-#ifdef N_ENGINE_PLATFORM_WINDOWS
+#ifdef ASTERA_PLATFORM_WINDOWS
         return mFrequency.QuadPart;
 #else
         return mFrequency;
 #endif
     }
-}  // namespace N
+}  // namespace Astera

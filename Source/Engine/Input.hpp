@@ -43,7 +43,7 @@ namespace Astera {
     /// Also supports Lua scripting integration.
     class InputManager {
     public:
-        N_CLASS_PREVENT_MOVES_COPIES(InputManager)
+        ASTERA_CLASS_PREVENT_MOVES_COPIES(InputManager)
 
         /// @brief Default constructor
         InputManager() = default;
@@ -72,19 +72,19 @@ namespace Astera {
 
         /// @brief Gets the current mouse X position
         /// @return Mouse X coordinate in screen/window space
-        N_ND i32 GetMouseX() const;
+        ASTERA_KEEP i32 GetMouseX() const;
 
         /// @brief Gets the current mouse Y position
         /// @return Mouse Y coordinate in screen/window space
-        N_ND i32 GetMouseY() const;
+        ASTERA_KEEP i32 GetMouseY() const;
 
         /// @brief Gets the mouse movement delta on the X axis since last frame
         /// @return Horizontal mouse movement in pixels
-        N_ND f32 GetMouseDeltaX() const;
+        ASTERA_KEEP f32 GetMouseDeltaX() const;
 
         /// @brief Gets the mouse movement delta on the Y axis since last frame
         /// @return Vertical mouse movement in pixels
-        N_ND f32 GetMouseDeltaY() const;
+        ASTERA_KEEP f32 GetMouseDeltaY() const;
 
         /// @brief Resets the mouse delta values to zero
         ///

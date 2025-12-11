@@ -207,7 +207,7 @@ namespace Astera {
             return;
         }
 
-        N_ASSERT(exists(filename));
+        ASTERA_ASSERT(exists(filename));
 
         try {
             mLua.script_file(filename.string());
@@ -220,7 +220,7 @@ namespace Astera {
             return;
         }
 
-        N_ASSERT(!source.empty());
+        ASTERA_ASSERT(!source.empty());
 
         try {
             mLua.script(source);

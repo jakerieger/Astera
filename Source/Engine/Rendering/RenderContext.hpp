@@ -37,7 +37,7 @@ namespace Astera {
         RenderContext()  = default;
         ~RenderContext() = default;
 
-        N_CLASS_PREVENT_MOVES_COPIES(RenderContext)
+        ASTERA_CLASS_PREVENT_MOVES_COPIES(RenderContext)
 
         bool Initialize(u32 width, u32 height);
         void Shutdown() const;
@@ -47,7 +47,7 @@ namespace Astera {
 
         void Resize(u32 width, u32 height);
 
-        N_ND CommandQueue& GetCommandQueue() {
+        ASTERA_KEEP CommandQueue& GetCommandQueue() {
             return mCommandQueue;
         }
 
@@ -57,7 +57,7 @@ namespace Astera {
             mCommandQueue.Enqueue(std::forward<T>(command));
         }
 
-        N_ND bool GetInitialized() const {
+        ASTERA_KEEP bool GetInitialized() const {
             return mInitialized;
         }
 

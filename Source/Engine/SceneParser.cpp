@@ -153,7 +153,7 @@ namespace Astera {
     }
 
     void SceneParser::StateToDescriptor(const SceneState& state, SceneDescriptor& outDescriptor) {
-        throw N_NOT_IMPLEMENTED;
+        throw ASTERA_NOT_IMPLEMENTED;
     }
 
     void SceneParser::DescriptorToState(const SceneDescriptor& descriptor,
@@ -219,7 +219,7 @@ namespace Astera {
     }
 
     void SceneParser::SerializeDescriptor(const SceneDescriptor& descriptor) {
-        throw N_NOT_IMPLEMENTED;
+        throw ASTERA_NOT_IMPLEMENTED;
     }
 
     void SceneParser::DeserializeDescriptor(const fs::path& filename, SceneDescriptor& outDescriptor) {

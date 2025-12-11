@@ -28,6 +28,10 @@
 
 #pragma once
 
+#ifndef ASTERA_ENGINE_CONTENT_DIR
+    #define ASTERA_ENGINE_CONTENT_DIR ""
+#endif
+
 #include "EngineCommon.hpp"
 
 namespace Astera {
@@ -55,8 +59,12 @@ namespace Astera {
 
         /// @brief Path to the game content root directory
         inline static fs::path sContentRoot;
-        /// @brief Path to the engine content root directory
-        inline static fs::path sEngineContentRoot;
+
+        /// @brief Path to the engine content root directory.
+        ///
+        /// Defaults to the internal engine definition. ASTERA_ENGINE_CONTENT_DIR maps to the installed location when
+        /// linking against Astera in an external project via find_package().
+        inline static fs::path sEngineContentRoot {ASTERA_ENGINE_CONTENT_DIR};
 
     public:
         /// @brief Retrieves the full path to a content file based on its type

@@ -22,7 +22,18 @@ target_include_directories(Astera_Objects PUBLIC
     $<BUILD_INTERFACE:${COMMON_ROOT}>
     $<BUILD_INTERFACE:${SOURCE_ROOT}>
     $<BUILD_INTERFACE:${VENDOR_ROOT}>
+    $<BUILD_INTERFACE:${LUAJIT_INCLUDE_DIRS}>
+    $<BUILD_INTERFACE:${GLFW_INCLUDE_DIRS}>
     $<INSTALL_INTERFACE:include/Astera>
+)
+
+target_compile_definitions(Astera_Objects PUBLIC
+    $<BUILD_INTERFACE:ASTERA_ENGINE_CONTENT_DIR="${CMAKE_SOURCE_DIR}/EngineContent">
+)
+
+target_compile_options(Astera_Objects PRIVATE
+    $<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-Wno-deprecated-declarations>
+    $<$<CXX_COMPILER_ID:MSVC>:/wd4996>
 )
 
 # CRITICAL: Enable PIC for the object library
@@ -48,6 +59,8 @@ target_include_directories(Astera_Shared PUBLIC
     $<BUILD_INTERFACE:${COMMON_ROOT}>
     $<BUILD_INTERFACE:${SOURCE_ROOT}>
     $<BUILD_INTERFACE:${VENDOR_ROOT}>
+    $<BUILD_INTERFACE:${LUAJIT_INCLUDE_DIRS}>
+    $<BUILD_INTERFACE:${GLFW_INCLUDE_DIRS}>
     $<INSTALL_INTERFACE:include/Astera>
 )
 
@@ -56,6 +69,8 @@ target_include_directories(Astera_Static PUBLIC
     $<BUILD_INTERFACE:${COMMON_ROOT}>
     $<BUILD_INTERFACE:${SOURCE_ROOT}>
     $<BUILD_INTERFACE:${VENDOR_ROOT}>
+    $<BUILD_INTERFACE:${LUAJIT_INCLUDE_DIRS}>
+    $<BUILD_INTERFACE:${GLFW_INCLUDE_DIRS}>
     $<INSTALL_INTERFACE:include/Astera>
 )
 

@@ -30,7 +30,7 @@
 
 #include "EngineCommon.hpp"
 
-#ifdef N_ENGINE_PLATFORM_WINDOWS
+#ifdef ASTERA_PLATFORM_WINDOWS
     #include <windows.h>
 #else
     #include <ctime>
@@ -57,30 +57,30 @@ namespace Astera {
 
         /// @brief Gets the precise time elapsed since the last tick
         /// @return Delta time in seconds as a double-precision value
-        N_ND f64 GetDeltaTimePrecise() const;
+        ASTERA_KEEP f64 GetDeltaTimePrecise() const;
 
         /// @brief Gets the time elapsed since the last tick
         /// @return Delta time in seconds as a single-precision value
-        N_ND f32 GetDeltaTime() const;
+        ASTERA_KEEP f32 GetDeltaTime() const;
 
         /// @brief Gets the total time elapsed since clock creation
         /// @return Total elapsed time in seconds
-        N_ND f64 GetTotalTime() const;
+        ASTERA_KEEP f64 GetTotalTime() const;
 
         /// @brief Gets the current frames per second
         /// @return Current FPS (updated at regular intervals, not every frame)
-        N_ND f64 GetFramesPerSecond() const;
+        ASTERA_KEEP f64 GetFramesPerSecond() const;
 
         /// @brief Gets the raw high-resolution counter value
         /// @return Current counter value in platform-specific ticks
-        N_ND u64 GetRawCounter() const;
+        ASTERA_KEEP u64 GetRawCounter() const;
 
         /// @brief Gets the frequency of the high-resolution counter
         /// @return Counter frequency in ticks per second
-        N_ND u64 GetCounterFrequency() const;
+        ASTERA_KEEP u64 GetCounterFrequency() const;
 
     private:
-#ifdef N_ENGINE_PLATFORM_WINDOWS
+#ifdef ASTERA_PLATFORM_WINDOWS
         /// @brief High-resolution counter frequency (Windows)
         LARGE_INTEGER mFrequency;
 

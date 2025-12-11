@@ -48,7 +48,7 @@ namespace Astera {
             scale *= scaleFactor;
         }
 
-        N_ND Mat4 GetMatrix() const {
+        ASTERA_KEEP Mat4 GetMatrix() const {
             auto mat = Mat4(1.0f);
             mat      = glm::translate(mat, glm::vec3(position.x, position.y, 0.0f));
             mat = glm::rotate(mat, glm::radians(rotation.x), glm::vec3(0.0f, 0.0f, 1.0f));  // Z-axis rotation for 2D

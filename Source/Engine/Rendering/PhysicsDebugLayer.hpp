@@ -62,8 +62,8 @@ namespace Astera {
         void SetupBuffers();
         void DrawVertices(const vector<f32>& vertices, GLenum mode) const;
 
-        N_ND f32 ScreenToClipX(f32 x) const;
-        N_ND f32 ScreenToClipY(f32 y) const;
+        ASTERA_KEEP f32 ScreenToClipX(f32 x) const;
+        ASTERA_KEEP f32 ScreenToClipY(f32 y) const;
 
         void DrawLine(f32 x0, f32 y0, f32 x1, f32 y1, const Color& color) const;
         void DrawLine(const Vec2& start, const Vec2& end, const Color& color) const;

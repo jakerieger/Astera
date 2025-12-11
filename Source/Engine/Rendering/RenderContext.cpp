@@ -58,21 +58,21 @@ namespace Astera {
     }
 
     void RenderContext::Shutdown() const {
-        N_UNUSED(this);
+        ASTERA_UNUSED(this);
     }
 
     void RenderContext::BeginFrame() {
-        N_ASSERT(mInitialized);
+        ASTERA_ASSERT(mInitialized);
         Submit(ClearCommand {{0.08f, 0.08f, 0.08f, 1.0f}, true, false});
     }
 
     void RenderContext::EndFrame() {
-        N_ASSERT(mInitialized);
+        ASTERA_ASSERT(mInitialized);
         mCommandQueue.ExecuteQueueBatched();
     }
 
     void RenderContext::Resize(u32 width, u32 height) {
-        N_ASSERT(mInitialized);
+        ASTERA_ASSERT(mInitialized);
         mWidth  = width;
         mHeight = height;
         Submit(SetViewportCommand {0, 0, width, height});

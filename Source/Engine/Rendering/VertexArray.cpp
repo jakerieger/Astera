@@ -54,9 +54,9 @@ namespace Astera {
     }
 
     void VertexArray::AddVertexBuffer(const shared_ptr<VertexBuffer>& buffer, const VertexLayout& layout) {
-        N_ASSERT(mArrayID != 0);
-        N_ASSERT(buffer != nullptr);
-        N_ASSERT(!layout.GetAttributes().empty());
+        ASTERA_ASSERT(mArrayID != 0);
+        ASTERA_ASSERT(buffer != nullptr);
+        ASTERA_ASSERT(!layout.GetAttributes().empty());
 
         Bind();
         buffer->Bind();
@@ -82,8 +82,8 @@ namespace Astera {
     }
 
     void VertexArray::SetIndexBuffer(const shared_ptr<IndexBuffer>& buffer) {
-        N_ASSERT(mArrayID != 0);
-        N_ASSERT(buffer != nullptr);
+        ASTERA_ASSERT(mArrayID != 0);
+        ASTERA_ASSERT(buffer != nullptr);
 
         Bind();
         buffer->Bind();

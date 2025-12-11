@@ -33,13 +33,14 @@ set(ASTERA_LIBS
 include_directories(${LUAJIT_INCLUDE_DIRS})
 link_directories(${LUAJIT_LIBRARY_DIRS})
 
+include(CMake/DetectPlatform.cmake)
 include(${VENDOR_ROOT}/Vendor.cmake)
 
 add_subdirectory(Source/Engine)
 add_subdirectory(Source/Tools)
 
-# Sandbox test application
-add_subdirectory(Sandbox/Runtime)
+# Build demos
+add_subdirectory(Demos)
 
 # Install configuration
 include(CMake/InstallConfig.cmake)

@@ -145,7 +145,7 @@ namespace Astera {
             instances.clear();
         }
 
-        N_ND size_t SpriteCount() const {
+        ASTERA_KEEP size_t SpriteCount() const {
             return instances.size();
         }
     };

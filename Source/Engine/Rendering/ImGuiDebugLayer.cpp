@@ -59,7 +59,7 @@ namespace Astera {
     void ImGuiDebugLayer::OnEvent(const Event& event) {}
 
     void ImGuiDebugLayer::InitImGui(GLFWwindow* window) const {
-        N_UNUSED(this);
+        ASTERA_UNUSED(this);
 
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
@@ -74,7 +74,7 @@ namespace Astera {
     }
 
     void ImGuiDebugLayer::ShutdownImGui() const {
-        N_UNUSED(this);
+        ASTERA_UNUSED(this);
         ImGui_ImplOpenGL3_Shutdown();
         ImGui_ImplGlfw_Shutdown();
         ImGui::DestroyContext();

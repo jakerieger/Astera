@@ -43,7 +43,7 @@ namespace Astera {
         IBuffer();
         virtual ~IBuffer();
 
-        N_CLASS_PREVENT_COPIES(IBuffer)
+        ASTERA_CLASS_PREVENT_COPIES(IBuffer)
 
         IBuffer(IBuffer&& other) noexcept;
         IBuffer& operator=(IBuffer&& other) noexcept;
@@ -66,11 +66,11 @@ namespace Astera {
         /// @brief Unbind the currently bound vertex buffer
         virtual void Unbind() = 0;
 
-        N_ND GLuint GetID() const {
+        ASTERA_KEEP GLuint GetID() const {
             return mBufferID;
         }
 
-        N_ND size_t GetSize() const {
+        ASTERA_KEEP size_t GetSize() const {
             return mSize;
         }
 
@@ -98,7 +98,7 @@ namespace Astera {
 
         void SetIndices(const u32* indices, size_t count, BufferUsage usage);
 
-        N_ND size_t GetCount() const {
+        ASTERA_KEEP size_t GetCount() const {
             return mCount;
         }
 

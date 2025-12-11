@@ -43,7 +43,7 @@ namespace Astera {
         Scene() = default;
         ~Scene();
 
-        N_CLASS_PREVENT_MOVES_COPIES(Scene)
+        ASTERA_CLASS_PREVENT_MOVES_COPIES(Scene)
 
         /// @brief Called when the scene is first initialized
         /// @param scriptEngine Reference to the script engine for executing scene scripts
@@ -78,7 +78,7 @@ namespace Astera {
 
         /// @brief Gets the current state of the scene
         /// @return Reference to the scene state object
-        N_ND SceneState& GetState() {
+        ASTERA_KEEP SceneState& GetState() {
             return mState;
         }
 

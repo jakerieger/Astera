@@ -32,6 +32,7 @@ install(DIRECTORY ${ENGINE_ROOT}/
     FILES_MATCHING
     PATTERN "*.hpp"
     PATTERN "*.h"
+    PATTERN "*.inl"
 )
 
 # Install Common headers (excluding precompiled header)
@@ -41,8 +42,7 @@ install(DIRECTORY ${COMMON_ROOT}/
     FILES_MATCHING
     PATTERN "*.hpp"
     PATTERN "*.h"
-    PATTERN "CommonPCH.hpp" EXCLUDE
-    PATTERN "CommonPCH.cpp" EXCLUDE
+    PATTERN "*.inl"
 )
 
 # Install necessary vendor headers
@@ -52,6 +52,7 @@ install(DIRECTORY ${VENDOR_ROOT}/
     FILES_MATCHING
     PATTERN "*.hpp"
     PATTERN "*.h"
+    PATTERN "*.inl"
 )
 
 # ----------------------------------------------------------------------------
@@ -67,9 +68,9 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/EngineContent/
 # ----------------------------------------------------------------------------
 # CMake Package Configuration
 # ----------------------------------------------------------------------------
+# Export targets without namespace - we'll add aliases in the config file
 install(EXPORT AsteraTargets
     FILE AsteraTargets.cmake
-    NAMESPACE Astera::
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Astera
     COMPONENT cmake_config
 )

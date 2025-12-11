@@ -59,7 +59,7 @@ namespace Astera {
         DebugManager() = default;
         ~DebugManager();
 
-        N_CLASS_PREVENT_MOVES_COPIES(DebugManager)
+        ASTERA_CLASS_PREVENT_MOVES_COPIES(DebugManager)
 
         /// @brief Attaches a debug overlay to the manager
         /// @param name Unique identifier for the overlay

@@ -49,7 +49,7 @@ namespace Astera {
         Geometry()  = default;
         ~Geometry() = default;
 
-        N_CLASS_PREVENT_MOVES_COPIES(Geometry)
+        ASTERA_CLASS_PREVENT_MOVES_COPIES(Geometry)
 
         /// @brief Create a quad geometry for sprite rendering
         /// @param width Width of the quad
@@ -65,15 +65,15 @@ namespace Astera {
         /// @brief Unbind the currently bound geometry
         static void Unbind();
 
-        N_ND const shared_ptr<VertexArray>& GetVertexArray() const {
+        ASTERA_KEEP const shared_ptr<VertexArray>& GetVertexArray() const {
             return mVertexArray;
         }
 
         /// @brief Get the number of indices in this geometry
         /// @return Index count
-        N_ND u32 GetIndexCount() const {
-            N_ASSERT(mVertexArray != nullptr);
-            N_ASSERT(mVertexArray->GetIndexBuffer() != nullptr);
+        ASTERA_KEEP u32 GetIndexCount() const {
+            ASTERA_ASSERT(mVertexArray != nullptr);
+            ASTERA_ASSERT(mVertexArray->GetIndexBuffer() != nullptr);
             return CAST<u32>(mVertexArray->GetIndexBuffer()->GetCount());
         }
 

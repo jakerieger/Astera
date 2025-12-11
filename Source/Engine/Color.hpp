@@ -110,57 +110,57 @@ namespace Astera {
         /// @brief Creates a new color with modified alpha channel
         /// @param a New alpha value [0.0, 1.0]
         /// @return New color with modified alpha
-        N_ND Color WithAlpha(f32 a) const;
+        ASTERA_KEEP Color WithAlpha(f32 a) const;
 
         /// @brief Creates a new color with modified blue channel
         /// @param b New blue value [0.0, 1.0]
         /// @return New color with modified blue
-        N_ND Color WithBlue(f32 b) const;
+        ASTERA_KEEP Color WithBlue(f32 b) const;
 
         /// @brief Creates a new color with modified green channel
         /// @param g New green value [0.0, 1.0]
         /// @return New color with modified green
-        N_ND Color WithGreen(f32 g) const;
+        ASTERA_KEEP Color WithGreen(f32 g) const;
 
         /// @brief Creates a new color with modified red channel
         /// @param r New red value [0.0, 1.0]
         /// @return New color with modified red
-        N_ND Color WithRed(f32 r) const;
+        ASTERA_KEEP Color WithRed(f32 r) const;
 
         // Modifiers
 
         /// @brief Adjusts the brightness of the color
         /// @param factor Brightness multiplier (1.0 = no change, >1.0 brighter, <1.0 darker)
         /// @return New color with adjusted brightness
-        N_ND Color Brightness(f32 factor) const;
+        ASTERA_KEEP Color Brightness(f32 factor) const;
 
         /// @brief Converts the color to grayscale
         /// @return Grayscale version of the color
-        N_ND Color Greyscale() const;
+        ASTERA_KEEP Color Greyscale() const;
 
         /// @brief Increases the saturation of the color
         /// @param factor Saturation factor (1.0 = no change, >1.0 more saturated)
         /// @return New color with increased saturation
-        N_ND Color Saturate(f32 factor) const;
+        ASTERA_KEEP Color Saturate(f32 factor) const;
 
         /// @brief Decreases the saturation of the color
         /// @param factor Desaturation factor (1.0 = no change, >1.0 more desaturated)
         /// @return New color with decreased saturation
-        N_ND Color Desaturate(f32 factor) const;
+        ASTERA_KEEP Color Desaturate(f32 factor) const;
 
         // Conversions
 
         /// @brief Converts the color to a hexadecimal string
         /// @return Hex color string (e.g., "#FF5733")
-        N_ND string ToString() const;
+        ASTERA_KEEP string ToString() const;
 
         /// @brief Converts the color to a 32-bit ARGB packed integer
         /// @return 32-bit color value in ARGB format (0xAARRGGBB)
-        N_ND u32 ToU32() const;
+        ASTERA_KEEP u32 ToU32() const;
 
         /// @brief Converts the color to a 32-bit ABGR packed integer
         /// @return 32-bit color value in ABGR format (0xAABBGGRR)
-        N_ND u32 ToU32_ABGR() const;
+        ASTERA_KEEP u32 ToU32_ABGR() const;
 
         /// @brief Writes the color components to a float array
         /// @param color Output float array (must have space for 4 floats: RGBA)
@@ -176,7 +176,7 @@ namespace Astera {
         /// @tparam T Target type to convert to
         /// @return Converted color value
         template<typename T>
-        N_ND T To() const {
+        ASTERA_KEEP T To() const {
             return T {};
         }
 
@@ -184,23 +184,23 @@ namespace Astera {
 
         /// @brief Gets the red component
         /// @return Red value [0.0, 1.0]
-        N_ND f32 R() const;
+        ASTERA_KEEP f32 R() const;
 
         /// @brief Gets the green component
         /// @return Green value [0.0, 1.0]
-        N_ND f32 G() const;
+        ASTERA_KEEP f32 G() const;
 
         /// @brief Gets the blue component
         /// @return Blue value [0.0, 1.0]
-        N_ND f32 B() const;
+        ASTERA_KEEP f32 B() const;
 
         /// @brief Gets the alpha component
         /// @return Alpha value [0.0, 1.0]
-        N_ND f32 A() const;
+        ASTERA_KEEP f32 A() const;
 
         /// @brief Calculates the perceived luminance of the color
         /// @return Luminance value [0.0, 1.0] using relative luminance formula
-        N_ND f32 Luminance() const;
+        ASTERA_KEEP f32 Luminance() const;
 
         // Static methods
 
@@ -300,7 +300,7 @@ namespace Astera {
     /// @brief Specialization to convert Color to 32-bit ARGB packed integer
     /// @return 32-bit color value in ARGB format (0xAARRGGBB)
     template<>
-    N_ND inline u32 Color::To() const {
+    ASTERA_KEEP inline u32 Color::To() const {
         const auto redByte   = CAST<u8>(FloatToU32(mRed));
         const auto greenByte = CAST<u8>(FloatToU32(mGreen));
         const auto blueByte  = CAST<u8>(FloatToU32(mBlue));
@@ -311,7 +311,7 @@ namespace Astera {
     /// @brief Specialization to convert Color to hexadecimal string
     /// @return Hex color string (e.g., "#FF5733")
     template<>
-    N_ND inline string Color::To() const {
+    ASTERA_KEEP inline string Color::To() const {
         const u32 r = U32ToFloat(mRed + 0.5f);
         const u32 g = U32ToFloat(mGreen + 0.5f);
         const u32 b = U32ToFloat(mBlue + 0.5f);
@@ -324,7 +324,7 @@ namespace Astera {
     /// @brief Specialization to convert Color to ImGui's ImVec4 format
     /// @return ImVec4 containing RGBA components
     template<>
-    N_ND inline ImVec4 Color::To() const {
+    ASTERA_KEEP inline ImVec4 Color::To() const {
         return ImVec4 {mRed, mGreen, mBlue, mAlpha};
     }
 
@@ -386,8 +386,8 @@ namespace Astera {
     }  // namespace Colors
 }  // namespace Astera
 
-#ifndef N_COLOR_HASH_SPECIALIZATION
-    #define N_COLOR_HASH_SPECIALIZATION
+#ifndef ASTERA_COLOR_HASH_SPECIALIZATION
+    #define ASTERA_COLOR_HASH_SPECIALIZATION
 /// @brief std::hash specialization for Color to allow usage in unordered containers
 ///
 /// Enables Color to be used as a key in std::unordered_map, std::unordered_set, etc.

@@ -32,17 +32,17 @@
 
 #pragma once
 
-#include <iterator>
-#include <ranges>
-#include <filesystem>
-#include <utility>
-#include <string_view>
-#include <source_location>
 #include <charconv>
-#include <system_error>
 #include <exception>
+#include <filesystem>
+#include <iterator>
 #include <optional>
 #include <ranges>
+#include <ranges>
+#include <source_location>
+#include <string_view>
+#include <system_error>
+#include <utility>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -56,11 +56,11 @@
 #include "Vendor/glad.h"
 #include <GLFW/glfw3.h>
 
-#if defined(N_ENGINE_PLATFORM_WINDOWS)
+#if defined(ASTERA_PLATFORM_WINDOWS)
     #define GLFW_EXPOSE_NATIVE_WIN32
-#elif defined(N_ENGINE_PLATFORM_LINUX_X11) || defined(N_ENGINE_PLATFORM_LINUX_WAYLAND)
+#elif defined(ASTERA_PLATFORM_LINUX)
     #define GLFW_EXPOSE_NATIVE_X11
-#elif defined(N_ENGINE_PLATFORM_MACOS)
+#elif defined(ASTERA_PLATFORM_MACOS)
     #define GLFW_EXPOSE_NATIVE_COCOA
 #endif
 #include <GLFW/glfw3native.h>
@@ -134,11 +134,11 @@ namespace Astera {
     };
 
 #if defined(__GNUC__) || defined(__clang__)
-    #define N_NOT_IMPLEMENTED NotImplemented(__PRETTY_FUNCTION__, __FILE__, __LINE__)
+    #define ASTERA_NOT_IMPLEMENTED NotImplemented(__PRETTY_FUNCTION__, __FILE__, __LINE__)
 #elif defined(_MSC_VER)
-    #define N_NOT_IMPLEMENTED NotImplemented(__FUNCSIG__, __FILE__, __LINE__)
+    #define ASTERA_NOT_IMPLEMENTED NotImplemented(__FUNCSIG__, __FILE__, __LINE__)
 #else
-    #define N_NOT_IMPLEMENTED NotImplemented(__func__, __FILE__, __LINE__)
+    #define ASTERA_NOT_IMPLEMENTED NotImplemented(__func__, __FILE__, __LINE__)
 #endif
 
     /// @brief Returns the size of an iterable
@@ -152,11 +152,11 @@ namespace Astera {
         auto [ptr, ec] = std::from_chars(str.data(), str.data() + str.size(), result);
 
         if (ec == std::errc()) {
-            // Success - also check if entire string was consumed
+            // Success - also check if the entire string was consumed
             if (ptr == str.data() + str.size()) {
                 return result;
             } else {
-                // Partial parse - trailing characters exist
+                // Partial parse: trailing characters exist
                 throw std::invalid_argument("Trailing characters in string");
             }
         } else if (ec == std::errc::invalid_argument) {

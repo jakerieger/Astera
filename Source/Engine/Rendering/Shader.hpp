@@ -60,7 +60,7 @@ namespace Astera {
         void SetUniform(const char* name, const Vec4& val);
         void SetUniform(const char* name, const Mat4& val);
 
-        N_ND GLuint GetProgramID() const {
+        ASTERA_KEEP GLuint GetProgramID() const {
             return mProgram;
         }
 

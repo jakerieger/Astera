@@ -85,7 +85,7 @@ namespace Astera {
 
         /// @brief Checks if the audio engine has been successfully initialized
         /// @return True if initialized, false otherwise
-        N_ND bool IsInitialized() const {
+        ASTERA_KEEP bool IsInitialized() const {
             return mInitialized;
         }
 

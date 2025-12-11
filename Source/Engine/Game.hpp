@@ -55,7 +55,7 @@ namespace Astera {
         /// @brief Default window height in pixels
         static constexpr u32 kDefaultHeight {600};
 
-        N_CLASS_PREVENT_MOVES_COPIES(Game)
+        ASTERA_CLASS_PREVENT_MOVES_COPIES(Game)
 
         /// @brief Default constructor, creates a game with default window settings
         Game() : mActiveScene(make_unique<Scene>()) {}
@@ -174,61 +174,61 @@ namespace Astera {
 
         /// @brief Checks if the game is currently running
         /// @return True if the game loop is active, false otherwise
-        N_ND bool GetRunning() const {
+        ASTERA_KEEP bool GetRunning() const {
             return mRunning;
         }
 
         /// @brief Checks if the window is in fullscreen mode
         /// @return True if fullscreen, false if windowed
-        N_ND bool GetFullscreen() const {
+        ASTERA_KEEP bool GetFullscreen() const {
             return mFullscreen;
         }
 
         /// @brief Gets the GLFW window handle
         /// @return Pointer to the GLFWwindow instance
-        N_ND GLFWwindow* GetWindowHandle() {
+        ASTERA_KEEP GLFWwindow* GetWindowHandle() {
             return mWindow;
         }
 
         /// @brief Gets the window title
         /// @return String view of the current window title
-        N_ND std::string_view GetWindowTitle() const {
+        ASTERA_KEEP std::string_view GetWindowTitle() const {
             return mTitle;
         }
 
         /// @brief Gets the render context
         /// @return Reference to the RenderContext managing graphics rendering
-        N_ND RenderContext& GetRenderContext() {
+        ASTERA_KEEP RenderContext& GetRenderContext() {
             return mRenderContext;
         }
 
         /// @brief Gets the currently active scene
         /// @return Pointer to the active Scene instance
-        N_ND Scene* GetActiveScene() const {
+        ASTERA_KEEP Scene* GetActiveScene() const {
             return mActiveScene.get();
         }
 
         /// @brief Checks if vertical sync is enabled
         /// @return True if VSync is enabled, false otherwise
-        N_ND bool GetVsyncEnabled() const {
+        ASTERA_KEEP bool GetVsyncEnabled() const {
             return mVsync;
         }
 
         /// @brief Gets the script engine
         /// @return Reference to the ScriptEngine for Lua scripting
-        N_ND ScriptEngine& GetScriptEngine() {
+        ASTERA_KEEP ScriptEngine& GetScriptEngine() {
             return mScriptEngine;
         }
 
         /// @brief Gets the audio engine
         /// @return Reference to the AudioEngine for audio playback
-        N_ND AudioEngine& GetAudioEngine() {
+        ASTERA_KEEP AudioEngine& GetAudioEngine() {
             return mAudioEngine;
         }
 
         /// @brief Gets the debug manager
         /// @return Reference to the DebugManager instance
-        N_ND DebugManager& GetDebugManager() {
+        ASTERA_KEEP DebugManager& GetDebugManager() {
             return mDebugManager;
         }
 
@@ -347,13 +347,14 @@ namespace Astera {
         unique_ptr<PhysicsDebugLayer> mPhysicsDebugLayer;
     };
 
-#if defined(N_ENGINE_PLATFORM_WINDOWS) && defined(NDEBUG)
+#if defined(ASTERA_PLATFORM_WINDOWS) && defined(NDEBUG)
     /// @brief Platform-specific entry point macro for Windows release builds
-    /// Uses WinMain for GUI applications without console window
-    #define N_ENTRYPOINT int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, int nCmdShow)
+    /// Uses WinMain for GUI applications without a console window
+    #define ASTERA_ENTRYPOINT                                                                                          \
+        int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, int nCmdShow)
 #else
     /// @brief Standard entry point macro for all other configurations
     /// Uses standard main function with command-line arguments
-    #define N_ENTRYPOINT int main(int argc, char* argv[])
+    #define ASTERA_ENTRYPOINT int main(int argc, char* argv[])
 #endif
 }  // namespace Astera

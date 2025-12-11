@@ -38,7 +38,7 @@ namespace Astera {
         CommandQueue()  = default;
         ~CommandQueue() = default;
 
-        N_CLASS_PREVENT_MOVES_COPIES(CommandQueue)
+        ASTERA_CLASS_PREVENT_MOVES_COPIES(CommandQueue)
 
         /// @brief Add a command to the queue
         /// @tparam T Command type (must be one of the types in RenderCommand variant)
@@ -58,12 +58,12 @@ namespace Astera {
         void Clear();
 
         /// @brief Get the number of commands in the queue
-        N_ND size_t Size() const {
+        ASTERA_KEEP size_t Size() const {
             return mCommands.size();
         }
 
         /// @brief Check if the queue is empty
-        N_ND bool IsEmpty() const {
+        ASTERA_KEEP bool IsEmpty() const {
             return mCommands.empty();
         }
 

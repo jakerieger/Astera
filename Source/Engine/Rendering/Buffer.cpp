@@ -61,15 +61,15 @@ namespace Astera {
 
 #pragma region VertexBuffer
     void VertexBuffer::SetData(const void* data, size_t size, BufferUsage usage) {
-        N_ASSERT(mBufferID != 0);
+        ASTERA_ASSERT(mBufferID != 0);
         Bind();
         GLCall(glBufferData, GL_ARRAY_BUFFER, CAST<GLsizeiptr>(size), data, CAST<GLenum>(usage));
         mSize = size;
     }
 
     void VertexBuffer::UpdateData(const void* data, size_t size, size_t offset) {
-        N_ASSERT(mBufferID != 0);
-        N_ASSERT(offset + size <= mSize);
+        ASTERA_ASSERT(mBufferID != 0);
+        ASTERA_ASSERT(offset + size <= mSize);
         Bind();
         GLCall(glBufferSubData, GL_ARRAY_BUFFER, CAST<GLintptr>(offset), CAST<GLsizeiptr>(size), data);
     }
@@ -85,7 +85,7 @@ namespace Astera {
 
 #pragma region IndexBuffer
     void IndexBuffer::SetData(const void* data, size_t size, BufferUsage usage) {
-        N_ASSERT(mBufferID != 0);
+        ASTERA_ASSERT(mBufferID != 0);
         Bind();
         GLCall(glBufferData, GL_ELEMENT_ARRAY_BUFFER, CAST<GLsizeiptr>(size), data, CAST<GLenum>(usage));
         mSize = size;
@@ -93,15 +93,15 @@ namespace Astera {
     }
 
     void IndexBuffer::UpdateData(const void* data, size_t size, size_t offset) {
-        N_ASSERT(mBufferID != 0);
-        N_ASSERT(offset + size <= mSize);
+        ASTERA_ASSERT(mBufferID != 0);
+        ASTERA_ASSERT(offset + size <= mSize);
         Bind();
         GLCall(glBufferSubData, GL_ELEMENT_ARRAY_BUFFER, CAST<GLintptr>(offset), CAST<GLsizeiptr>(size), data);
     }
 
     void IndexBuffer::SetIndices(const u32* indices, size_t count, BufferUsage usage) {
-        N_ASSERT(mBufferID != 0);
-        N_ASSERT(indices != nullptr);
+        ASTERA_ASSERT(mBufferID != 0);
+        ASTERA_ASSERT(indices != nullptr);
 
         mCount            = count;
         const size_t size = count * sizeof(u32);

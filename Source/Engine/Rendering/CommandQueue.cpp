@@ -134,8 +134,8 @@ namespace Astera {
     void CommandQueue::RenderBatch(const SpriteBatch& batch) const {
         if (batch.instances.empty()) return;
 
-        N_ASSERT(mBatchResourcesInitialized);
-        N_ASSERT(batch.SpriteCount() <= kMaxSpritesPerBatch);
+        ASTERA_ASSERT(mBatchResourcesInitialized);
+        ASTERA_ASSERT(batch.SpriteCount() <= kMaxSpritesPerBatch);
 
         // Upload instance data
         mInstanceVBO->Bind();
@@ -143,7 +143,7 @@ namespace Astera {
 
         // Bind shader
         const auto shader = ShaderManager::GetShader(Shaders::SpriteInstanced);
-        N_ASSERT(shader);
+        ASTERA_ASSERT(shader);
         shader->Bind();
 
         // Bind texture
@@ -264,7 +264,7 @@ namespace Astera {
 
     void CommandExecutor::operator()(const DrawSpriteCommand& cmd) const {
         const auto spriteShader = ShaderManager::GetShader(Shaders::Sprite);
-        N_ASSERT(spriteShader);
+        ASTERA_ASSERT(spriteShader);
         spriteShader->Bind();
 
         GLCall(glActiveTexture, GL_TEXTURE0);
@@ -325,8 +325,8 @@ namespace Astera {
     }
 
     void CommandExecutor::operator()(const DrawIndexedCommand& cmd) const {
-        N_ASSERT(cmd.vao != nullptr);
-        N_ASSERT(cmd.vao->GetIndexBuffer() != nullptr);
+        ASTERA_ASSERT(cmd.vao != nullptr);
+        ASTERA_ASSERT(cmd.vao->GetIndexBuffer() != nullptr);
 
         cmd.vao->Bind();
 
@@ -336,9 +336,9 @@ namespace Astera {
     }
 
     void CommandExecutor::operator()(const DrawIndexedInstancedCommand& cmd) const {
-        N_ASSERT(cmd.vao != nullptr);
-        N_ASSERT(cmd.vao->GetIndexBuffer() != nullptr);
-        N_ASSERT(cmd.instanceCount > 0);
+        ASTERA_ASSERT(cmd.vao != nullptr);
+        ASTERA_ASSERT(cmd.vao->GetIndexBuffer() != nullptr);
+        ASTERA_ASSERT(cmd.instanceCount > 0);
 
         cmd.vao->Bind();
 
@@ -353,8 +353,8 @@ namespace Astera {
     }
 
     void CommandExecutor::operator()(const DrawArraysCommand& cmd) const {
-        N_ASSERT(cmd.vao != nullptr);
-        N_ASSERT(cmd.vertexCount > 0);
+        ASTERA_ASSERT(cmd.vao != nullptr);
+        ASTERA_ASSERT(cmd.vertexCount > 0);
 
         cmd.vao->Bind();
 
@@ -362,28 +362,28 @@ namespace Astera {
     }
 
     void CommandExecutor::operator()(const UpdateVertexBufferCommand& cmd) const {
-        N_ASSERT(cmd.buffer != nullptr);
-        N_ASSERT(!cmd.data.empty());
+        ASTERA_ASSERT(cmd.buffer != nullptr);
+        ASTERA_ASSERT(!cmd.data.empty());
 
         cmd.buffer->Bind();
         cmd.buffer->UpdateData(cmd.data.data(), cmd.data.size(), cmd.offset);
     }
 
     void CommandExecutor::operator()(const UpdateIndexBufferCommand& cmd) const {
-        N_ASSERT(cmd.buffer != nullptr);
-        N_ASSERT(!cmd.indices.empty());
+        ASTERA_ASSERT(cmd.buffer != nullptr);
+        ASTERA_ASSERT(!cmd.indices.empty());
 
         cmd.buffer->Bind();
         cmd.buffer->UpdateData(cmd.indices.data(), cmd.indices.size() * sizeof(u32), cmd.offset);
     }
 
     void CommandExecutor::operator()(const BindVertexArrayCommand& cmd) const {
-        N_ASSERT(cmd.vao != nullptr);
+        ASTERA_ASSERT(cmd.vao != nullptr);
         cmd.vao->Bind();
     }
 
     void CommandExecutor::operator()(const UnbindVertexArrayCommand& cmd) const {
-        N_UNUSED(cmd);
+        ASTERA_UNUSED(cmd);
         VertexArray::Unbind();
     }
 }  // namespace Astera

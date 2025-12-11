@@ -110,7 +110,7 @@ namespace Astera {
     }
 
     void Game::OnMouseButton(u32 button) {
-        N_UNUSED(button);
+        ASTERA_UNUSED(button);
         // TODO: Implement
     }
 
@@ -119,8 +119,8 @@ namespace Astera {
     }
 
     void Game::OnMouseScroll(f64 dX, f64 dY) {
-        N_UNUSED(dX);
-        N_UNUSED(dY);
+        ASTERA_UNUSED(dX);
+        ASTERA_UNUSED(dY);
         // TODO: Implement
     }
 
@@ -152,11 +152,6 @@ namespace Astera {
     }
 
     bool Game::Initialize() {
-        // Enforce X11 on Wayland systems for debugging support (RenderDoc doens't support Wayland)
-#if defined(N_ENGINE_PLATFORM_LINUX_WAYLAND) || defined(N_ENGINE_PLATFORM_LINUX_X11)
-        glfwInitHint(GLFW_PLATFORM, GLFW_PLATFORM_X11);
-#endif
-
         if (!glfwInit()) {
             Log::Critical("Game", "Failed to initialize GLFW");
             return false;
@@ -292,8 +287,8 @@ namespace Astera {
     }
 
     void Game::GLFWKeyCallback(GLFWwindow* mWindow, i32 key, i32 scancode, i32 action, i32 mods) {
-        N_UNUSED(scancode);
-        N_UNUSED(mods);
+        ASTERA_UNUSED(scancode);
+        ASTERA_UNUSED(mods);
 
         auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
         if (game) {
@@ -304,7 +299,7 @@ namespace Astera {
     }
 
     void Game::GLFWMouseButtonCallback(GLFWwindow* mWindow, i32 button, i32 action, i32 mods) {
-        N_UNUSED(mods);
+        ASTERA_UNUSED(mods);
 
         auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
         if (game) {

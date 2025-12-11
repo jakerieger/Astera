@@ -55,7 +55,7 @@ namespace Astera {
             : name(std::move(name)), type(type), normalized(normalized) {}
 
         /// @brief Get the component count for this attribute type
-        N_ND u32 GetComponentCount() const {
+        ASTERA_KEEP u32 GetComponentCount() const {
             switch (type) {
                 case AttributeType::Float:
                 case AttributeType::Int:
@@ -75,7 +75,7 @@ namespace Astera {
         }
 
         /// @brief Get the size in bytes for this attribute type
-        N_ND u32 GetSize() const {
+        ASTERA_KEEP u32 GetSize() const {
             switch (type) {
                 case AttributeType::Float:
                     return sizeof(f32);
@@ -100,7 +100,7 @@ namespace Astera {
         }
 
         /// @brief Get the OpenGL type for this attribute
-        N_ND GLenum GetGLType() const {
+        ASTERA_KEEP GLenum GetGLType() const {
             switch (type) {
                 case AttributeType::Float:
                 case AttributeType::Float2:
@@ -130,11 +130,11 @@ namespace Astera {
             mStride += attribute.GetSize();
         }
 
-        N_ND const vector<VertexAttribute>& GetAttributes() const {
+        ASTERA_KEEP const vector<VertexAttribute>& GetAttributes() const {
             return mAttributes;
         }
 
-        N_ND u32 GetStride() const {
+        ASTERA_KEEP u32 GetStride() const {
             return mStride;
         }
 
@@ -149,7 +149,7 @@ namespace Astera {
         VertexArray();
         ~VertexArray();
 
-        N_CLASS_PREVENT_COPIES(VertexArray)
+        ASTERA_CLASS_PREVENT_COPIES(VertexArray)
 
         VertexArray(VertexArray&& other) noexcept;
         VertexArray& operator=(VertexArray&& other) noexcept;
@@ -169,15 +169,15 @@ namespace Astera {
         /// @brief Unbind the currently bound vertex array
         static void Unbind();
 
-        N_ND const vector<shared_ptr<VertexBuffer>>& GetVertexBuffers() const {
+        ASTERA_KEEP const vector<shared_ptr<VertexBuffer>>& GetVertexBuffers() const {
             return mVertexBuffers;
         }
 
-        N_ND const shared_ptr<IndexBuffer>& GetIndexBuffer() const {
+        ASTERA_KEEP const shared_ptr<IndexBuffer>& GetIndexBuffer() const {
             return mIndexBuffer;
         }
 
-        N_ND GLuint GetID() const {
+        ASTERA_KEEP GLuint GetID() const {
             return mArrayID;
         }
 

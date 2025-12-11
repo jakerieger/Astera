@@ -39,7 +39,7 @@ namespace Astera {
     }
 
     Entity SceneState::CreateEntity(const string& name) {
-        N_ASSERT(!name.empty());
+        ASTERA_ASSERT(!name.empty());
         const auto entity = mRegistry.create();
         mRegistry.emplace<Transform>(entity);
 

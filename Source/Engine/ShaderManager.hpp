@@ -53,7 +53,7 @@ namespace Astera {
         /// @brief Retrieves a shader by name from the cache
         /// @param name The name identifier of the shader to retrieve
         /// @return Shared pointer to the requested shader, or nullptr if not found
-        N_ND static shared_ptr<Shader> GetShader(std::string_view name);
+        ASTERA_KEEP static shared_ptr<Shader> GetShader(std::string_view name);
 
     private:
         /// @brief Cache mapping shader names to their compiled shader objects

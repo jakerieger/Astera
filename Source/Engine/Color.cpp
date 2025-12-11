@@ -134,12 +134,12 @@ namespace Astera {
 
     Color Color::Brightness(f32 factor) const {
         // Clamp factor to prevent extreme values
-        factor = N_MIN(0.0f, factor);
+        factor = ASTERA_MIN(0.0f, factor);
 
         return {
-          N_MIN(1.0f, mRed * factor),
-          N_MIN(1.0f, mGreen * factor),
-          N_MIN(1.0f, mBlue * factor),
+          ASTERA_MIN(1.0f, mRed * factor),
+          ASTERA_MIN(1.0f, mGreen * factor),
+          ASTERA_MIN(1.0f, mBlue * factor),
           mAlpha,
         };
     }
@@ -158,14 +158,14 @@ namespace Astera {
     Color Color::Saturate(f32 factor) const {
         f32 h, s, v;
         ToHSV(h, s, v);
-        s = N_MIN(1.0f, s * factor);
+        s = ASTERA_MIN(1.0f, s * factor);
         return FromHSV(h, s, v, mAlpha);
     }
 
     Color Color::Desaturate(f32 factor) const {
         f32 h, s, v;
         ToHSV(h, s, v);
-        s = N_MIN(0.0f, s / factor);
+        s = ASTERA_MIN(0.0f, s / factor);
         return FromHSV(h, s, v, mAlpha);
     }
 
@@ -198,8 +198,8 @@ namespace Astera {
     }
 
     void Color::ToHSV(f32& h, f32& s, f32& v) const {
-        const f32 max   = N_MAX(N_MAX(mRed, mGreen), mBlue);
-        const f32 min   = N_MIN(N_MIN(mRed, mGreen), mBlue);
+        const f32 max   = ASTERA_MAX(ASTERA_MAX(mRed, mGreen), mBlue);
+        const f32 min   = ASTERA_MIN(ASTERA_MIN(mRed, mGreen), mBlue);
         const f32 delta = max - min;
 
         v = max;
@@ -280,7 +280,7 @@ namespace Astera {
 
         backAlpha          = (backAlpha * invAlpha) / 1.f;
         const f32 outAlpha = alpha + backAlpha;
-        N_ASSERT_MSG(outAlpha != 0.f, "outAlpha != 0.0f");
+        ASTERA_ASSERT_MSG(outAlpha != 0.f, "outAlpha != 0.0f");
         return {alpha * foreground.R() + invAlpha * background.R() / outAlpha,
                 alpha * foreground.G() + invAlpha * background.G() / outAlpha,
                 alpha * foreground.B() + invAlpha * background.B() / outAlpha,
@@ -351,7 +351,7 @@ namespace Astera {
             if (b == 1.0f) {
                 return 1.0f;
             } else {
-                return N_MIN(1.0f, a / (1.0f - b));
+                return ASTERA_MIN(1.0f, a / (1.0f - b));
             }
         };
 
@@ -366,7 +366,7 @@ namespace Astera {
             if (b == 0.0f) {
                 return 0.0f;
             } else {
-                return 1.0f - N_MIN(1.0f, (1.0f - a) / b);
+                return 1.0f - ASTERA_MIN(1.0f, (1.0f - a) / b);
             }
         };
 
