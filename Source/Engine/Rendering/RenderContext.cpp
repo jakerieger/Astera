@@ -51,14 +51,16 @@ namespace Astera {
         GLCall(glEnable, GL_BLEND);
         GLCall(glBlendFunc, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+        mCommandQueue.InitializeBatchResources();
         mCommandQueue.Reserve(1000);
         mInitialized = true;
 
         return true;
     }
 
-    void RenderContext::Shutdown() const {
-        ASTERA_UNUSED(this);
+    void RenderContext::Shutdown() {
+        mCommandQueue.Reset();
+        mInitialized = false;
     }
 
     void RenderContext::BeginFrame() {

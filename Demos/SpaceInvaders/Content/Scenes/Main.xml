@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Scene name="Main">
+    <Entities>
+        <Entity id="0" name="Player">
+            <Components>
+                <Transform>
+                    <Position x="640" y="100"/>
+                    <Rotation x="0" y="0"/>
+                    <Scale x="64" y="64"/>
+                </Transform>
+                <SpriteRenderer>
+                    <Texture>ship.png</Texture>
+                </SpriteRenderer>
+                <Behavior>
+                    <Script id="0">PlayerController.lua</Script>
+                </Behavior>
+            </Components>
+        </Entity>
+        <Entity id="1" name="Enemy_1">
+            <Components>
+                <Transform>
+                    <Position x="640" y="620"/>
+                    <Rotation x="0" y="0"/>
+                    <Scale x="64" y="64"/>
+                </Transform>
+                <SpriteRenderer>
+                    <Texture>alien.png</Texture>
+                </SpriteRenderer>
+                <Behavior>
+                    <Script id="1">EnemyController.lua</Script>
+                </Behavior>
+            </Components>
+        </Entity>
+    </Entities>
+</Scene>

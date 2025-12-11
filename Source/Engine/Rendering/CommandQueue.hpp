@@ -73,7 +73,7 @@ namespace Astera {
         }
 
     private:
-        friend class Game;
+        friend class RenderContext;
 
         /// @brief Execute a single command using visitor pattern
         static void ExecuteCommand(const RenderCommand& command);
@@ -86,6 +86,9 @@ namespace Astera {
 
         /// @brief Initialize batch rendering resources
         void InitializeBatchResources();
+
+        /// @brief Resets command queue back to uninitialized state
+        void Reset();
 
         vector<RenderCommand> mCommands;
 

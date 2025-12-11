@@ -40,7 +40,7 @@ namespace Astera {
         ASTERA_CLASS_PREVENT_MOVES_COPIES(RenderContext)
 
         bool Initialize(u32 width, u32 height);
-        void Shutdown() const;
+        void Shutdown();
 
         void BeginFrame();
         void EndFrame();

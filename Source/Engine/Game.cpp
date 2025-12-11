@@ -189,7 +189,6 @@ namespace Astera {
             Log::Critical("Game", "Failed to initialize render context");
             return false;
         }
-        mRenderContext.GetCommandQueue().InitializeBatchResources();
 
         TextureManager::Initialize();
         ShaderManager::Initialize();

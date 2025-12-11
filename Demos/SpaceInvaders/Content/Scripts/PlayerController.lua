@@ -5,14 +5,18 @@
 ---Called at entity initialization
 ---@param this Entity
 function OnAwake(this)
-
+    Log:Debug("Test message from PlayerController.lua")
 end
 
 ---Called every frame, before rendering
 ---@param this Entity
 ---@param clock Clock
 function OnUpdate(this, clock)
-
+    if Input:GetKeyDown(KeyCode.Space) then
+        if AudioPlayer:IsInitialized() then
+            AudioPlayer:PlaySound(1)
+        end
+    end
 end
 
 ---Called every frame, after rendering

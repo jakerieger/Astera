@@ -120,7 +120,7 @@ message(STATUS "========================================")
 message(STATUS "")
 
 # ----------------------------------------------------------------------------
-# Optional: CPack Configuration for Package Generation
+# CPack Configuration for Package Generation
 # ----------------------------------------------------------------------------
 set(CPACK_PACKAGE_NAME "Astera")
 set(CPACK_PACKAGE_VENDOR "Jake Rieger")
@@ -128,10 +128,10 @@ set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Astera - Simple 2D game engine")
 set(CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
 set(CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
 set(CPACK_PACKAGE_VERSION_PATCH ${PROJECT_VERSION_PATCH})
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
-set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE")
+set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Jake Rieger <contact.jakerieger@gmail.com>")
 
-# Configure package generators based on platform
 if (WIN32)
     set(CPACK_GENERATOR "ZIP;NSIS")
 elseif (APPLE)

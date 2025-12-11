@@ -246,6 +246,16 @@ namespace Astera {
         Log::Debug("CommandQueue", "Sprite batching initialized (max {} sprites per batch)", kMaxSpritesPerBatch);
     }
 
+    void CommandQueue::Reset() {
+        Clear();
+        mBatches.clear();
+        mBatchVAO.reset();
+        mQuadVBO.reset();
+        mQuadIBO.reset();
+        mInstanceVBO.reset();
+        mBatchResourcesInitialized = false;
+    }
+
     // ============================================================================
     // CommandExecutor Implementation
     // ============================================================================

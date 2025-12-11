@@ -10,7 +10,17 @@ public:
         auto& debug = GetDebugManager();
         debug.SetOverlayEnabled("ImGuiDebugLayer", false);
         debug.SetOverlayEnabled("PhysicsDebugLayer", false);
+
+        GetActiveScene()->Load(Content::Get<ContentType::Scene>("Main.xml"), GetScriptEngine());
+        GetAudioEngine().LoadSound(Content::Get<ContentType::Audio>("shoot.wav"));
+
         Game::OnAwake();
+    }
+
+    void OnKeyDown(u32 keyCode) override {
+        using namespace Input;
+
+        if (keyCode == Keys::Escape) { Quit(); }
     }
 };
 
