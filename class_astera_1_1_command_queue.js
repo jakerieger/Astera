@@ -9,5 +9,5 @@ var class_astera_1_1_command_queue =
     [ "IsEmpty", "class_astera_1_1_command_queue.html#a76e3b9e1e3fa9c5dab0b9d0f4685c759", null ],
     [ "Reserve", "class_astera_1_1_command_queue.html#a5825bef41388e69cdc74f5f805221947", null ],
     [ "Size", "class_astera_1_1_command_queue.html#a5d00397b4a2f61bc61c203b1737cde30", null ],
-    [ "Game", "class_astera_1_1_command_queue.html#aa2fab026580d6f14280c2ffb8063a314", null ]
+    [ "RenderContext", "class_astera_1_1_command_queue.html#adbc71e71bb875e994e20b698201b22a5", null ]
 ];

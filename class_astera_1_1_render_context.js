@@ -9,6 +9,6 @@ var class_astera_1_1_render_context =
     [ "GetViewportDimensions", "class_astera_1_1_render_context.html#a3996332d3618b514f8d03034cd9f24ee", null ],
     [ "Initialize", "class_astera_1_1_render_context.html#a949952e1ad6a3e0205f84bf63818e7db", null ],
     [ "Resize", "class_astera_1_1_render_context.html#a6155bed7a0798e9915ad377679875fc4", null ],
-    [ "Shutdown", "class_astera_1_1_render_context.html#a2172f0aab039629b1e8cf5ee9bcb452c", null ],
+    [ "Shutdown", "class_astera_1_1_render_context.html#a6dff966153ce2005dd888045aacfb4e9", null ],
     [ "Submit", "class_astera_1_1_render_context.html#a5820031bf2cfaab1b5f68458220cf476", null ]
 ];

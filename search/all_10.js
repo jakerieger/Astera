@@ -11,7 +11,7 @@ var searchData=
   ['registerwithlua_8',['registerwithlua',['../struct_astera_1_1_lua_registry.html#a2e025e4a225eccaf31a847a86c92f36f',1,'Astera::LuaRegistry::RegisterWithLua()'],['../struct_astera_1_1_lua_registerable.html#aa7a4f2a7cecba42474c866326a9b1695',1,'Astera::LuaRegisterable::RegisterWithLua()']]],
   ['render_9',['render',['../class_astera_1_1_game.html#af905e019f1b320c37b3293fa695ec4dc',1,'Astera::Game::Render()'],['../class_astera_1_1_debug_manager.html#af5cf53596292a8552973b6857f3a5b3d',1,'Astera::DebugManager::Render()'],['../class_astera_1_1_scene.html#ae447f28e90e60dea17c012c718f1f5a7',1,'Astera::Scene::Render()']]],
   ['rendercommand_10',['RenderCommand',['../namespace_astera.html#a57eb6764cff93f16f560ba79ce90ad98',1,'Astera']]],
-  ['rendercontext_11',['rendercontext',['../class_astera_1_1_render_context.html',1,'Astera::RenderContext'],['../class_astera_1_1_render_context.html#a02318e110a24e8c0e306766f0a6ffca0',1,'Astera::RenderContext::RenderContext()']]],
+  ['rendercontext_11',['rendercontext',['../class_astera_1_1_render_context.html',1,'Astera::RenderContext'],['../class_astera_1_1_render_context.html#a02318e110a24e8c0e306766f0a6ffca0',1,'Astera::RenderContext::RenderContext()'],['../class_astera_1_1_command_queue.html#adbc71e71bb875e994e20b698201b22a5',1,'Astera::CommandQueue::RenderContext']]],
   ['rendercontext_2ecpp_12',['RenderContext.cpp',['../_render_context_8cpp.html',1,'']]],
   ['rendercontext_2ehpp_13',['RenderContext.hpp',['../_render_context_8hpp.html',1,'']]],
   ['reserve_14',['Reserve',['../class_astera_1_1_command_queue.html#a5825bef41388e69cdc74f5f805221947',1,'Astera::CommandQueue']]],
