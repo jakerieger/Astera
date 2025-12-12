@@ -6,6 +6,7 @@ var class_astera_1_1_game =
     [ "GetActiveScene", "class_astera_1_1_game.html#a375fb0db8689f5136fe31262fe3ef698", null ],
     [ "GetAudioEngine", "class_astera_1_1_game.html#a8b2851193e4b579bd471b6312314ef9a", null ],
     [ "GetDebugManager", "class_astera_1_1_game.html#a8162f708f6d42bd7d601ae5b5e65ad63", null ],
+    [ "GetFrameAllocator", "class_astera_1_1_game.html#a53902538d292f696c04e3c677babb1c6", null ],
     [ "GetFullscreen", "class_astera_1_1_game.html#a4db5287a8fb13ea583d3e82f939e32e3", null ],
     [ "GetRenderContext", "class_astera_1_1_game.html#a817ac746863e201d8fbac5f3f02486a2", null ],
     [ "GetRunning", "class_astera_1_1_game.html#a93d078915fd41ce94a1e4564c314c934", null ],

@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['log_0',['Log',['../class_astera_1_1_log.html',1,'Astera']]],
-  ['luaregisterable_1',['LuaRegisterable',['../struct_astera_1_1_lua_registerable.html',1,'Astera']]],
-  ['luaregistry_2',['LuaRegistry',['../struct_astera_1_1_lua_registry.html',1,'Astera']]],
-  ['luatyperegistration_3',['LuaTypeRegistration',['../struct_astera_1_1_lua_type_registration.html',1,'Astera']]],
-  ['luatypetraits_4',['LuaTypeTraits',['../struct_astera_1_1_lua_type_traits.html',1,'Astera']]],
-  ['luatypetraits_3c_20behaviorentity_20_3e_5',['LuaTypeTraits&lt; BehaviorEntity &gt;',['../struct_astera_1_1_lua_type_traits_3_01_behavior_entity_01_4.html',1,'Astera']]],
-  ['luatypetraits_3c_20clock_20_3e_6',['LuaTypeTraits&lt; Clock &gt;',['../struct_astera_1_1_lua_type_traits_3_01_clock_01_4.html',1,'Astera']]],
-  ['luatypetraits_3c_20scenestate_20_3e_7',['LuaTypeTraits&lt; SceneState &gt;',['../struct_astera_1_1_lua_type_traits_3_01_scene_state_01_4.html',1,'Astera']]],
-  ['luatypetraits_3c_20transform_20_3e_8',['LuaTypeTraits&lt; Transform &gt;',['../struct_astera_1_1_lua_type_traits_3_01_transform_01_4.html',1,'Astera']]],
-  ['luatypetraits_3c_20vec2_20_3e_9',['LuaTypeTraits&lt; Vec2 &gt;',['../struct_astera_1_1_lua_type_traits_3_01_vec2_01_4.html',1,'Astera']]]
+  ['ibuffer_0',['IBuffer',['../class_astera_1_1_i_buffer.html',1,'Astera']]],
+  ['idebugoverlay_1',['IDebugOverlay',['../class_astera_1_1_i_debug_overlay.html',1,'Astera']]],
+  ['imguidebuglayer_2',['ImGuiDebugLayer',['../class_astera_1_1_im_gui_debug_layer.html',1,'Astera']]],
+  ['indexbuffer_3',['IndexBuffer',['../class_astera_1_1_index_buffer.html',1,'Astera']]],
+  ['inputmanager_4',['InputManager',['../class_astera_1_1_input_manager.html',1,'Astera']]]
 ];

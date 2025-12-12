@@ -6,7 +6,7 @@ var searchData=
   ['callupdatebehavior_3',['CallUpdateBehavior',['../class_astera_1_1_script_engine.html#a4e0ecd9788569b71ac61e61b7f2d2f70',1,'Astera::ScriptEngine']]],
   ['ceil_4',['Ceil',['../class_astera_1_1_math.html#aa464008b625caad0fd184a9f79a6299b',1,'Astera::Math']]],
   ['clamp_5',['Clamp',['../class_astera_1_1_math.html#a83f1fde18ffeda51d6f7a2df1247c4a8',1,'Astera::Math']]],
-  ['clear_6',['clear',['../struct_astera_1_1_sprite_batch.html#a557dbda7b1a5e8a3bd2cdc2e8df11dc0',1,'Astera::SpriteBatch::Clear()'],['../class_astera_1_1_command_queue.html#acdf74d6d00de281d444e09f593a0728e',1,'Astera::CommandQueue::Clear()']]],
+  ['clear_6',['clear',['../struct_astera_1_1_sprite_batch.html#a557dbda7b1a5e8a3bd2cdc2e8df11dc0',1,'Astera::SpriteBatch::Clear()'],['../class_astera_1_1_command_queue.html#acdf74d6d00de281d444e09f593a0728e',1,'Astera::CommandQueue::Clear()'],['../class_astera_1_1_resource_manager.html#ae18211c24b5e9d05a6f9ef47da3ae9a0',1,'Astera::ResourceManager::Clear()']]],
   ['clearforces_7',['ClearForces',['../struct_astera_1_1_rigidbody2_d.html#aa026c28fa9cc43e7489a6574c40f8343',1,'Astera::Rigidbody2D']]],
   ['clock_8',['Clock',['../class_astera_1_1_clock.html#ae3534f344b6fa2bfd0a3f57da52b70da',1,'Astera::Clock']]],
   ['color_9',['color',['../class_astera_1_1_color.html#ab64eadadcf770daa096396b4931180ec',1,'Astera::Color::Color(const string &amp;hex)'],['../class_astera_1_1_color.html#ad3a824263a520d17ec52e31e4923c6ce',1,'Astera::Color::Color(Color &amp;&amp;other) noexcept'],['../class_astera_1_1_color.html#a5021aab87e3f0f8aee7b05375b818523',1,'Astera::Color::Color(const Color &amp;other)'],['../class_astera_1_1_color.html#a1ddbb70069eb9ea272568a1067b8088e',1,'Astera::Color::Color(const f32 *color)'],['../class_astera_1_1_color.html#a7d7a0ed7e7731e3899d576bde0e9af5b',1,'Astera::Color::Color(u8 r, u8 g, u8 b, u8 a=255)'],['../class_astera_1_1_color.html#a380c292f1ee28f5cb391067810707089',1,'Astera::Color::Color(u32 color)'],['../class_astera_1_1_color.html#ad83fe316c768af46bf4bec047a1cd2b3',1,'Astera::Color::Color(f32 v, f32 a=1.0f)'],['../class_astera_1_1_color.html#a3facfba6315b7ed8c3e1a4cb787797c0',1,'Astera::Color::Color(f32 r, f32 g, f32 b, f32 a=1.0f)'],['../class_astera_1_1_color.html#a433f8abc662e59f0dfdf320fc450983c',1,'Astera::Color::Color()=default']]],
@@ -14,9 +14,10 @@ var searchData=
   ['colordodge_11',['ColorDodge',['../class_astera_1_1_color.html#a4daa9bf120b277d6bb41fcef239db9f4',1,'Astera::Color']]],
   ['commandqueue_12',['CommandQueue',['../class_astera_1_1_command_queue.html#a4afe981bd38aa1e6b878fcbb8a907cb5',1,'Astera::CommandQueue']]],
   ['cos_13',['Cos',['../class_astera_1_1_math.html#a50ddd9f079df7a501c18c15e73cec677',1,'Astera::Math']]],
-  ['createentity_14',['CreateEntity',['../class_astera_1_1_scene_state.html#a69cd0b23c22a0a0f3b483a83b710114d',1,'Astera::SceneState']]],
-  ['createindexbufferupdate_15',['CreateIndexBufferUpdate',['../namespace_astera_1_1_command_helpers.html#ae88a30808b47f05ec75f7ddf79c4b6af',1,'Astera::CommandHelpers']]],
-  ['createquad_16',['CreateQuad',['../class_astera_1_1_geometry.html#a97006950280a3c2443f13983db432843',1,'Astera::Geometry']]],
-  ['createvertexbufferupdate_17',['CreateVertexBufferUpdate',['../namespace_astera_1_1_command_helpers.html#ad91672e00eba5ff2475303c7896b09ca',1,'Astera::CommandHelpers']]],
-  ['critical_18',['Critical',['../class_astera_1_1_log.html#a48a9ad4a5326cc0038b847126ad9c480',1,'Astera::Log']]]
+  ['create_14',['Create',['../struct_project_subcommand.html#a1f49a9ad500903d957256b4374529433',1,'ProjectSubcommand']]],
+  ['createentity_15',['CreateEntity',['../class_astera_1_1_scene_state.html#a69cd0b23c22a0a0f3b483a83b710114d',1,'Astera::SceneState']]],
+  ['createindexbufferupdate_16',['CreateIndexBufferUpdate',['../namespace_astera_1_1_command_helpers.html#ae88a30808b47f05ec75f7ddf79c4b6af',1,'Astera::CommandHelpers']]],
+  ['createquad_17',['CreateQuad',['../class_astera_1_1_geometry.html#a97006950280a3c2443f13983db432843',1,'Astera::Geometry']]],
+  ['createvertexbufferupdate_18',['CreateVertexBufferUpdate',['../namespace_astera_1_1_command_helpers.html#ad91672e00eba5ff2475303c7896b09ca',1,'Astera::CommandHelpers']]],
+  ['critical_19',['Critical',['../class_astera_1_1_log.html#a48a9ad4a5326cc0038b847126ad9c480',1,'Astera::Log']]]
 ];

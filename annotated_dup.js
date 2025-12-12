@@ -1,6 +1,8 @@
 var annotated_dup =
 [
     [ "Astera", "namespace_astera.html", [
+      [ "ArenaAllocator", "class_astera_1_1_arena_allocator.html", "class_astera_1_1_arena_allocator" ],
+      [ "AssetManager", "class_astera_1_1_asset_manager.html", "class_astera_1_1_asset_manager" ],
       [ "AudioEngine", "class_astera_1_1_audio_engine.html", "class_astera_1_1_audio_engine" ],
       [ "Behavior", "struct_astera_1_1_behavior.html", "struct_astera_1_1_behavior" ],
       [ "BehaviorDescriptor", "struct_astera_1_1_behavior_descriptor.html", "struct_astera_1_1_behavior_descriptor" ],
@@ -23,6 +25,7 @@ var annotated_dup =
       [ "DrawIndexedInstancedCommand", "struct_astera_1_1_draw_indexed_instanced_command.html", "struct_astera_1_1_draw_indexed_instanced_command" ],
       [ "DrawSpriteCommand", "struct_astera_1_1_draw_sprite_command.html", "struct_astera_1_1_draw_sprite_command" ],
       [ "EntityDescriptor", "struct_astera_1_1_entity_descriptor.html", "struct_astera_1_1_entity_descriptor" ],
+      [ "FrameAllocator", "class_astera_1_1_frame_allocator.html", "class_astera_1_1_frame_allocator" ],
       [ "Game", "class_astera_1_1_game.html", "class_astera_1_1_game" ],
       [ "Geometry", "class_astera_1_1_geometry.html", "class_astera_1_1_geometry" ],
       [ "IBuffer", "class_astera_1_1_i_buffer.html", "class_astera_1_1_i_buffer" ],
@@ -46,6 +49,12 @@ var annotated_dup =
       [ "PhysicsDebugLayer", "class_astera_1_1_physics_debug_layer.html", "class_astera_1_1_physics_debug_layer" ],
       [ "PhysicsEngine", "class_astera_1_1_physics_engine.html", null ],
       [ "RenderContext", "class_astera_1_1_render_context.html", "class_astera_1_1_render_context" ],
+      [ "Resource", "class_astera_1_1_resource.html", "class_astera_1_1_resource" ],
+      [ "ResourceBase", "class_astera_1_1_resource_base.html", "class_astera_1_1_resource_base" ],
+      [ "ResourceHandle", "class_astera_1_1_resource_handle.html", "class_astera_1_1_resource_handle" ],
+      [ "ResourceLoader", "class_astera_1_1_resource_loader.html", "class_astera_1_1_resource_loader" ],
+      [ "ResourceLoaderBase", "class_astera_1_1_resource_loader_base.html", "class_astera_1_1_resource_loader_base" ],
+      [ "ResourceManager", "class_astera_1_1_resource_manager.html", "class_astera_1_1_resource_manager" ],
       [ "Rigidbody2D", "struct_astera_1_1_rigidbody2_d.html", "struct_astera_1_1_rigidbody2_d" ],
       [ "Rigidbody2DDescriptor", "struct_astera_1_1_rigidbody2_d_descriptor.html", "struct_astera_1_1_rigidbody2_d_descriptor" ],
       [ "Scene", "class_astera_1_1_scene.html", "class_astera_1_1_scene" ],
@@ -76,5 +85,7 @@ var annotated_dup =
     ] ],
     [ "std", null, [
       [ "hash< Astera::Color >", "structstd_1_1hash_3_01_astera_1_1_color_01_4.html", "structstd_1_1hash_3_01_astera_1_1_color_01_4" ]
-    ] ]
+    ] ],
+    [ "AssetSubcommand", "struct_asset_subcommand.html", null ],
+    [ "ProjectSubcommand", "struct_project_subcommand.html", null ]
 ];

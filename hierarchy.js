@@ -1,5 +1,8 @@
 var hierarchy =
 [
+    [ "Astera::ArenaAllocator", "class_astera_1_1_arena_allocator.html", null ],
+    [ "Astera::AssetManager", "class_astera_1_1_asset_manager.html", null ],
+    [ "AssetSubcommand", "struct_asset_subcommand.html", null ],
     [ "Astera::AudioEngine", "class_astera_1_1_audio_engine.html", null ],
     [ "Astera::Behavior", "struct_astera_1_1_behavior.html", null ],
     [ "Astera::BehaviorDescriptor", "struct_astera_1_1_behavior_descriptor.html", null ],
@@ -25,6 +28,7 @@ var hierarchy =
     [ "std::exception", null, [
       [ "Astera::NotImplemented", "class_astera_1_1_not_implemented.html", null ]
     ] ],
+    [ "Astera::FrameAllocator", "class_astera_1_1_frame_allocator.html", null ],
     [ "Astera::Game", "class_astera_1_1_game.html", null ],
     [ "Astera::Geometry", "class_astera_1_1_geometry.html", null ],
     [ "std::hash< Astera::Color >", "structstd_1_1hash_3_01_astera_1_1_color_01_4.html", null ],
@@ -50,7 +54,16 @@ var hierarchy =
     [ "Astera::LuaTypeTraits< Vec2 >", "struct_astera_1_1_lua_type_traits_3_01_vec2_01_4.html", null ],
     [ "Astera::Math", "class_astera_1_1_math.html", null ],
     [ "Astera::PhysicsEngine", "class_astera_1_1_physics_engine.html", null ],
+    [ "ProjectSubcommand", "struct_project_subcommand.html", null ],
     [ "Astera::RenderContext", "class_astera_1_1_render_context.html", null ],
+    [ "Astera::ResourceBase", "class_astera_1_1_resource_base.html", [
+      [ "Astera::Resource< T >", "class_astera_1_1_resource.html", null ]
+    ] ],
+    [ "Astera::ResourceHandle< T >", "class_astera_1_1_resource_handle.html", null ],
+    [ "Astera::ResourceLoaderBase", "class_astera_1_1_resource_loader_base.html", [
+      [ "Astera::ResourceLoader< T >", "class_astera_1_1_resource_loader.html", null ]
+    ] ],
+    [ "Astera::ResourceManager", "class_astera_1_1_resource_manager.html", null ],
     [ "Astera::Rigidbody2D", "struct_astera_1_1_rigidbody2_d.html", null ],
     [ "Astera::Rigidbody2DDescriptor", "struct_astera_1_1_rigidbody2_d_descriptor.html", null ],
     [ "std::runtime_error", null, [

@@ -15,6 +15,6 @@ var searchData=
   ['commandqueue_2ecpp_12',['CommandQueue.cpp',['../_command_queue_8cpp.html',1,'']]],
   ['commandqueue_2ehpp_13',['CommandQueue.hpp',['../_command_queue_8hpp.html',1,'']]],
   ['content_2ehpp_14',['Content.hpp',['../_content_8hpp.html',1,'']]],
-  ['coordinates_2ehpp_15',['Coordinates.hpp',['../_coordinates_8hpp.html',1,'']]],
+  ['coordinates_2einl_15',['Coordinates.inl',['../_coordinates_8inl.html',1,'']]],
   ['coordinates_2elua_16',['Coordinates.lua',['../_coordinates_8lua.html',1,'']]]
 ];

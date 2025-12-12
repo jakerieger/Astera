@@ -2,7 +2,7 @@ var searchData=
 [
   ['saturate_0',['Saturate',['../class_astera_1_1_color.html#ab44f7baa5128a8b9c9b0b84d8ee54234',1,'Astera::Color']]],
   ['scale_1',['Scale',['../struct_astera_1_1_transform.html#ae821dbc0b13e3bdfa4307d57bbfb2836',1,'Astera::Transform']]],
-  ['scene_2',['Scene',['../class_astera_1_1_scene.html#a5518acfa8fa5483ad0df5deb0caa1647',1,'Astera::Scene']]],
+  ['scene_2',['Scene',['../class_astera_1_1_scene.html#af545656e9e7f6d0567d3a9744171af62',1,'Astera::Scene']]],
   ['scenestate_3',['scenestate',['../class_astera_1_1_scene_state.html#afdb90bb83deae6272729867214863ac2',1,'Astera::SceneState::SceneState()'],['../class_astera_1_1_scene_state.html#a908ccc53de43ae774455f43c7aa34c8f',1,'Astera::SceneState::SceneState(SceneState &amp;&amp;other) noexcept']]],
   ['screen_4',['Screen',['../class_astera_1_1_color.html#ac582440b70b8bf52ba40cae09dfdd069',1,'Astera::Color']]],
   ['scriptengine_5',['ScriptEngine',['../class_astera_1_1_script_engine.html#ad81261436f8ba13fb2e8c716a95baf8d',1,'Astera::ScriptEngine']]],
