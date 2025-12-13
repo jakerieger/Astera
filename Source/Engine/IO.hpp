@@ -1,5 +1,5 @@
 /*
- *  Filename: AssetManager.hpp
+ *  Filename: IO.hpp
  *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
@@ -28,26 +28,14 @@
 
 #pragma once
 
-#include "Asset.hpp"
 #include "EngineCommon.hpp"
 
 namespace Astera {
-    class AssetManager {
-        friend class Game;
+    class IO {
+        IO() = delete;
 
     public:
-        AssetManager() = default;
-        ASTERA_CLASS_PREVENT_MOVES_COPIES(AssetManager)
-
-        static Result<vector<u8>> GetAssetData(AssetID id);
-        static void Reload();
-        static void SetWorkingDirectory(const fs::path& path);
-
-    private:
-        static bool sInitialized;
-        static fs::path sWorkingDirectory;
-        static unordered_map<AssetID, fs::path> sAssetPaths;
-
-        static bool Initialize();
+        static Result<vector<u8>> ReadBytes(const fs::path& filename);
+        static Result<string> ReadText(const fs::path& filename);
     };
 }  // namespace Astera

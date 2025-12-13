@@ -19,7 +19,6 @@ add_library(Astera_Objects OBJECT
 
 target_include_directories(Astera_Objects PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-    $<BUILD_INTERFACE:${COMMON_ROOT}>
     $<BUILD_INTERFACE:${SOURCE_ROOT}>
     $<BUILD_INTERFACE:${VENDOR_ROOT}>
     $<BUILD_INTERFACE:${LUAJIT_INCLUDE_DIRS}>
@@ -56,7 +55,6 @@ set_target_properties(Astera_Static PROPERTIES OUTPUT_NAME Astera)
 # This breaks the direct dependency chain for exports
 target_include_directories(Astera_Shared PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-    $<BUILD_INTERFACE:${COMMON_ROOT}>
     $<BUILD_INTERFACE:${SOURCE_ROOT}>
     $<BUILD_INTERFACE:${VENDOR_ROOT}>
     $<BUILD_INTERFACE:${LUAJIT_INCLUDE_DIRS}>
@@ -66,7 +64,6 @@ target_include_directories(Astera_Shared PUBLIC
 
 target_include_directories(Astera_Static PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-    $<BUILD_INTERFACE:${COMMON_ROOT}>
     $<BUILD_INTERFACE:${SOURCE_ROOT}>
     $<BUILD_INTERFACE:${VENDOR_ROOT}>
     $<BUILD_INTERFACE:${LUAJIT_INCLUDE_DIRS}>

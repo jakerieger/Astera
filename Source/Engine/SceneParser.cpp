@@ -27,22 +27,27 @@
  */
 
 #include "SceneParser.hpp"
+
+#include "BinaryWriter.hpp"
 #include "Content.hpp"
 #include "Log.hpp"
 #include "SceneDescriptor.hpp"
 #include "SceneState.hpp"
 #include "TextureManager.hpp"
 #include "ScriptEngine.hpp"
+#include "IO.hpp"
 #include "Components/Behavior.hpp"
 #include "Components/Rigidbody2D.hpp"
 
 #include <pugixml.hpp>
 
 namespace Astera {
-    static Rigidbody2DDescriptor ParseRigidbodyComponent(const pugi::xml_node& rigidbodyNode) {
+    static Rigidbody2DDescriptor ParseRigidbodyComponentXML(const pugi::xml_node& rigidbodyNode) {
         Rigidbody2DDescriptor rigidbody {};
 
-        if (const auto node = rigidbodyNode.child("BodyType")) { rigidbody.type = node.child_value(); }
+        if (const auto node = rigidbodyNode.child("BodyType")) {
+            rigidbody.type = node.child_value();
+        }
         if (const auto node = rigidbodyNode.child("Velocity")) {
             rigidbody.velocity.x = node.attribute("x").as_float();
             rigidbody.velocity.y = node.attribute("y").as_float();
@@ -61,19 +66,27 @@ namespace Astera {
         if (const auto node = rigidbodyNode.child("AngularAcceleration")) {
             rigidbody.angularAcceleration = StringToF32(node.child_value());
         }
-        if (const auto node = rigidbodyNode.child("Torque")) { rigidbody.torque = StringToF32(node.child_value()); }
-        if (const auto node = rigidbodyNode.child("Mass")) { rigidbody.mass = StringToF32(node.child_value()); }
+        if (const auto node = rigidbodyNode.child("Torque")) {
+            rigidbody.torque = StringToF32(node.child_value());
+        }
+        if (const auto node = rigidbodyNode.child("Mass")) {
+            rigidbody.mass = StringToF32(node.child_value());
+        }
         if (const auto node = rigidbodyNode.child("InverseMass")) {
             rigidbody.inverseMass = StringToF32(node.child_value());
         }
-        if (const auto node = rigidbodyNode.child("Inertia")) { rigidbody.inertia = StringToF32(node.child_value()); }
+        if (const auto node = rigidbodyNode.child("Inertia")) {
+            rigidbody.inertia = StringToF32(node.child_value());
+        }
         if (const auto node = rigidbodyNode.child("InverseInertia")) {
             rigidbody.inverseInertia = StringToF32(node.child_value());
         }
         if (const auto node = rigidbodyNode.child("Restitution")) {
             rigidbody.restitution = StringToF32(node.child_value());
         }
-        if (const auto node = rigidbodyNode.child("Friction")) { rigidbody.friction = StringToF32(node.child_value()); }
+        if (const auto node = rigidbodyNode.child("Friction")) {
+            rigidbody.friction = StringToF32(node.child_value());
+        }
         if (const auto node = rigidbodyNode.child("LinearDamping")) {
             rigidbody.linearDamping = StringToF32(node.child_value());
         }
@@ -90,7 +103,7 @@ namespace Astera {
         return rigidbody;
     }
 
-    static TransformDescriptor ParseTransformComponent(const pugi::xml_node& transformNode) {
+    static TransformDescriptor ParseTransformComponentXML(const pugi::xml_node& transformNode) {
         TransformDescriptor transform {};
 
         if (const auto node = transformNode.child("Position")) {
@@ -111,15 +124,17 @@ namespace Astera {
         return transform;
     }
 
-    static SpriteRendererDescriptor ParseSpriteRendererComponent(const pugi::xml_node& spriteNode) {
+    static SpriteRendererDescriptor ParseSpriteRendererComponentXML(const pugi::xml_node& spriteNode) {
         SpriteRendererDescriptor renderer {};
 
-        if (const auto node = spriteNode.child("Texture")) { renderer.texture = node.child_value(); }
+        if (const auto node = spriteNode.child("Texture")) {
+            renderer.texture = node.child_value();
+        }
 
         return renderer;
     }
 
-    static BehaviorDescriptor ParseBehaviorComponent(const pugi::xml_node& behaviorNode) {
+    static BehaviorDescriptor ParseBehaviorComponentXML(const pugi::xml_node& behaviorNode) {
         BehaviorDescriptor behavior {};
 
         if (const auto scriptNode = behaviorNode.child("Script")) {
@@ -130,26 +145,32 @@ namespace Astera {
         return behavior;
     }
 
-    static void ParseEntity(const pugi::xml_node& entityNode, EntityDescriptor& entity) {
+    static void ParseEntityXML(const pugi::xml_node& entityNode, EntityDescriptor& entity) {
         entity.id   = entityNode.attribute("id").as_int();
         entity.name = entityNode.attribute("name").as_string();
 
         const auto componentsNode = entityNode.child("Components");
-        if (!componentsNode) { throw std::runtime_error("Entity is missing Transform component."); }
+        if (!componentsNode) {
+            throw std::runtime_error("Entity is missing Transform component.");
+        }
 
         // Parse Transform component
-        if (const auto node = componentsNode.child("Transform")) { entity.transform = ParseTransformComponent(node); }
+        if (const auto node = componentsNode.child("Transform")) {
+            entity.transform = ParseTransformComponentXML(node);
+        }
 
         // Parse SpriteRenderer component
         if (const auto node = componentsNode.child("SpriteRenderer")) {
-            entity.spriteRenderer = ParseSpriteRendererComponent(node);
+            entity.spriteRenderer = ParseSpriteRendererComponentXML(node);
         }
 
         if (const auto node = componentsNode.child("Rigidbody2D")) {
-            entity.rigidbody2D = ParseRigidbodyComponent(node);
+            entity.rigidbody2D = ParseRigidbodyComponentXML(node);
         }
 
-        if (const auto node = componentsNode.child("Behavior")) { entity.behavior = ParseBehaviorComponent(node); }
+        if (const auto node = componentsNode.child("Behavior")) {
+            entity.behavior = ParseBehaviorComponentXML(node);
+        }
     }
 
     void SceneParser::StateToDescriptor(const SceneState& state, SceneDescriptor& outDescriptor) {
@@ -174,9 +195,12 @@ namespace Astera {
 
             if (entity.behavior.has_value()) {
                 // Load script
-                const auto scriptPath   = Content::Get<ContentType::Script>(entity.behavior->script);
-                const auto scriptSource = IO::ReadString(scriptPath);
-                scriptEngine.LoadScript(scriptSource, entity.behavior->id);
+                const auto scriptPath       = Content::Get<ContentType::Script>(entity.behavior->script);
+                const auto readScriptResult = IO::ReadText(scriptPath);
+                if (!readScriptResult.has_value()) {
+                    Log::Error("SceneParser", "Failed to read script file: {}", readScriptResult.error());
+                }
+                scriptEngine.LoadScript(*readScriptResult, entity.behavior->id);
 
                 auto& [id, script] = outState.AddComponent<Behavior>(newEntity);
                 id                 = entity.behavior->id;
@@ -218,18 +242,77 @@ namespace Astera {
         }
     }
 
-    void SceneParser::SerializeDescriptor(const SceneDescriptor& descriptor) {
+    void SceneParser::SerializeDescriptorXML(const SceneDescriptor& descriptor, const fs::path& filename) {
         throw ASTERA_NOT_IMPLEMENTED;
     }
 
-    void SceneParser::DeserializeDescriptor(const fs::path& filename, SceneDescriptor& outDescriptor) {
+    // [Header]
+    // - Magic Number (4 bytes): "SCNE" - for file validation
+    // - Version (4 bytes): Format version for compatibility
+    // - Scene Name Length (4 bytes)
+    // - Scene Name (variable)
+    //
+    // [Entity Count] (4 bytes)
+    //
+    // [For each Entity]
+    //   - Entity ID (4 bytes)
+    //   - Name Length (4 bytes)
+    //   - Name (variable)
+    //   - Component Count (4 bytes)
+    //
+    //   [For each Component]
+    //     - Component Type ID (4 bytes) - enum/hash identifying component type
+    //     - Component Data Size (4 bytes) - size of following data block
+    //     - Component Data (variable)
+    void SceneParser::SerializeDescriptorBytes(const SceneDescriptor& descriptor, const fs::path& filename) {
+        const Header header {.sceneNameLength = CAST<u32>(descriptor.name.length()),
+                             .sceneName       = descriptor.name.c_str()};
+
+        BinaryWriter writer(2_KB);
+        writer.WriteBytes(header.magic, sizeof(header.magic));
+        writer.WriteUInt32(header.version);
+        writer.WriteUInt32(header.sceneNameLength);
+        writer.WriteString(descriptor.name);
+        writer.WriteUInt32(descriptor.entities.size());
+
+        for (const auto& entity : descriptor.entities) {
+            writer.WriteUInt32(entity.id);
+            writer.WriteUInt32(CAST<u32>(entity.name.length()));
+            writer.WriteString(entity.name);
+
+            u32 componentCount = 1;  // transform is always present
+            if (entity.spriteRenderer.has_value()) {
+                componentCount++;
+            }
+            if (entity.rigidbody2D.has_value()) {
+                componentCount++;
+            }
+            if (entity.behavior.has_value()) {
+                componentCount++;
+            }
+
+            writer.WriteUInt32(componentCount);
+
+            // TODO: Write components
+        }
+
+        if (!writer.SaveToFile(filename)) {
+            throw std::runtime_error("Failed to save scene descriptor to file");
+        }
+    }
+
+    void SceneParser::DeserializeDescriptorXML(const fs::path& filename, SceneDescriptor& outDescriptor) {
         pugi::xml_document doc;
         const pugi::xml_parse_result result = doc.load_file(filename.string().c_str());
 
-        if (!result) { throw std::runtime_error(fmt::format("XML parsing error: {}", result.description())); }
+        if (!result) {
+            throw std::runtime_error(fmt::format("XML parsing error: {}", result.description()));
+        }
 
         const auto sceneNode = doc.child("Scene");
-        if (!sceneNode) { throw std::runtime_error("No scene node found"); }
+        if (!sceneNode) {
+            throw std::runtime_error("No scene node found");
+        }
 
         // Parse scene name
         outDescriptor.name = sceneNode.attribute("name").as_string();
@@ -239,32 +322,13 @@ namespace Astera {
             for (auto entityNode : entitiesNode.children("Entity")) {
                 EntityDescriptor entity {};
                 entity.id = entityNode.attribute("id").as_int();
-                ParseEntity(entityNode, entity);
+                ParseEntityXML(entityNode, entity);
                 outDescriptor.entities.push_back(entity);
             }
         }
     }
 
-    void SceneParser::DeserializeDescriptor(const string& source, SceneDescriptor& outDescriptor) {
-        pugi::xml_document doc;
-        const pugi::xml_parse_result result = doc.load_string(source.c_str());
-
-        if (!result) { throw std::runtime_error(fmt::format("XML parsing error: {}", result.description())); }
-
-        const auto sceneNode = doc.child("Scene");
-        if (!sceneNode) { throw std::runtime_error("No scene node found"); }
-
-        // Parse scene name
-        outDescriptor.name = sceneNode.attribute("name").as_string();
-
-        // Parse entities
-        if (const auto entitiesNode = sceneNode.child("Entities")) {
-            for (pugi::xml_node entityNode : entitiesNode.children("Entity")) {
-                EntityDescriptor entity {};
-                entity.id = entityNode.attribute("id").as_int();
-                ParseEntity(entityNode, entity);
-                outDescriptor.entities.push_back(entity);
-            }
-        }
+    void SceneParser::DeserializeDescriptorBytes(const vector<u8>& bytes, SceneDescriptor& outDescriptor) {
+        throw ASTERA_NOT_IMPLEMENTED;
     }
 }  // namespace Astera

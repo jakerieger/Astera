@@ -1,10 +1,14 @@
+#include "AssetManager.hpp"
+
 #include <AsteraCore.hpp>
 
 using namespace Astera;
 
 class SpaceInvadersDemo final : public Game {
 public:
-    SpaceInvadersDemo() : Game("Space Invaders [Astera Demo]", 1280, 720) {}
+    SpaceInvadersDemo() : Game("Space Invaders [Demo]", 1280, 720) {
+        AssetManager::SetWorkingDirectory(fs::current_path() / "Content");
+    }
 
     void OnAwake() override {
         auto& debug = GetDebugManager();
@@ -12,14 +16,15 @@ public:
         debug.SetOverlayEnabled("PhysicsDebugLayer", false);
 
         GetActiveScene()->Load(Content::Get<ContentType::Scene>("Main.xml"), GetScriptEngine());
-        GetAudioEngine().LoadSound(Content::Get<ContentType::Audio>("shoot.wav"));
 
         Game::OnAwake();
     }
 
     void OnKeyDown(u32 keyCode) override {
         using namespace Input;
-        if (keyCode == Keys::Escape) { Quit(); }
+        if (keyCode == Keys::Escape) {
+            Quit();
+        }
     }
 };
 

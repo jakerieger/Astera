@@ -27,6 +27,7 @@
  */
 
 #include "Shader.hpp"
+#include "IO.hpp"
 
 namespace Astera {
     Shader::~Shader() = default;
@@ -36,14 +37,18 @@ namespace Astera {
     }
 
     Shader& Shader::operator=(const Shader& other) {
-        if (this != &other) { mProgram = other.mProgram; }
+        if (this != &other) {
+            mProgram = other.mProgram;
+        }
         return *this;
     }
 
     Shader::Shader(Shader&& other) noexcept : mProgram(std::exchange(other.mProgram, 0)) {}
 
     Shader& Shader::operator=(Shader&& other) noexcept {
-        if (this != &other) { mProgram = std::exchange(other.mProgram, 0); }
+        if (this != &other) {
+            mProgram = std::exchange(other.mProgram, 0);
+        }
         return *this;
     }
 
@@ -52,8 +57,8 @@ namespace Astera {
 
         ASTERA_ASSERT(fs::exists(vertexFile) && fs::exists(fragFile));
 
-        const string vertexSource = IO::ReadString(vertexFile);
-        const string fragSource   = IO::ReadString(fragFile);
+        const string vertexSource = IO::ReadText(vertexFile).value_or("");
+        const string fragSource   = IO::ReadText(fragFile).value_or("");
 
         ASTERA_ASSERT(!vertexSource.empty());
         ASTERA_ASSERT(!fragSource.empty());

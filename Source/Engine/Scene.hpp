@@ -42,6 +42,7 @@ namespace Astera {
 
     public:
         explicit Scene(RenderContext& renderContext) : mResourceManager(renderContext) {}
+
         ~Scene();
 
         ASTERA_CLASS_PREVENT_MOVES_COPIES(Scene)
@@ -67,15 +68,15 @@ namespace Astera {
         /// @param context Render context reference
         void Render(RenderContext& context);
 
-        /// @brief Loads a scene from a file
+        /// @brief Loads a scene from a descriptor file
         /// @param filename Path to the scene file to load
         /// @param engine Script engine reference
         void Load(const fs::path& filename, ScriptEngine& engine);
 
-        /// @brief Loads a scene from a string source
-        /// @param source String containing the scene data
+        /// @brief Loads a scene from bytes
+        /// @param bytes Vector containing the scene data
         /// @param engine Script engine reference
-        void Load(const string& source, ScriptEngine& engine);
+        void Load(const vector<u8>& bytes, ScriptEngine& engine);
 
         /// @brief Gets the current state of the scene
         /// @return Reference to the scene state object

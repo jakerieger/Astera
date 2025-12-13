@@ -52,6 +52,7 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 
 #include <fmt/format.h>
+#include <tl/expected.hpp>
 
 #include <glad.h>
 #include <GLFW/glfw3.h>
@@ -65,8 +66,7 @@
 #endif
 #include <GLFW/glfw3native.h>
 
-#include "Common/Macros.hpp"
-#include "Common/IO.hpp"
+#include "Macros.hpp"
 #include "Memory.hpp"
 
 #define CAST static_cast
@@ -115,6 +115,12 @@ namespace Astera {
     using Quat = glm::quat;
 
     namespace fs = std::filesystem;
+
+    using tl::expected;
+    using tl::unexpected;
+
+    template<typename T>
+    using Result = expected<T, string>;
 
     // Forward declarations
     class Game;

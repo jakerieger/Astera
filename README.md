@@ -216,6 +216,7 @@ active development. Features and APIs may change as the project evolves.
 - Asset pipeline requires manual organization
 - Limited documentation coverage
 - Scene format may change in future versions
+- Mix of asserts and exceptions, consistent error handling is a work-in-progress
 
 ## Contributing
 

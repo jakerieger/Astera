@@ -83,19 +83,22 @@ namespace Astera {
         mResourceManager.Clear();
 
         SceneDescriptor descriptor;
-        SceneParser::DeserializeDescriptor(filename, descriptor);
+        SceneParser::DeserializeDescriptorXML(filename, descriptor);
         SceneParser::DescriptorToState(descriptor, mState, engine);
+
+        // test code, remove later
+        SceneParser::SerializeDescriptorBytes(descriptor, filename.parent_path() / "test.scene");
 
         Log::Debug("Scene", "Loaded scene: `{}`", descriptor.name);
         Awake(engine);
     }
 
-    void Scene::Load(const string& source, ScriptEngine& engine) {
+    void Scene::Load(const vector<u8>& bytes, ScriptEngine& engine) {
         mState.Reset();
         mResourceManager.Clear();
 
         SceneDescriptor descriptor;
-        SceneParser::DeserializeDescriptor(source, descriptor);
+        SceneParser::DeserializeDescriptorBytes(bytes, descriptor);
         SceneParser::DescriptorToState(descriptor, mState, engine);
 
         Log::Debug("Scene", "Loaded scene: `{}`", descriptor.name);

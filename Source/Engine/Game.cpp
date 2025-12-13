@@ -34,6 +34,7 @@
 #include "ScriptTypeRegistry.hpp"
 #include "Input.hpp"
 #include "Math.hpp"
+#include "AssetManager.hpp"
 #include "Rendering/ImGuiDebugLayer.hpp"
 
 #include <stb_image.h>
@@ -43,7 +44,8 @@ namespace Astera {
 
     void Game::Run() {
         mRunning = Initialize();
-        if (!mRunning) return;
+        if (!mRunning)
+            return;
         OnAwake();
         {
             // Main loop
@@ -127,7 +129,8 @@ namespace Astera {
     }
 
     void Game::OnAwake() {
-        if (mActiveScene) mActiveScene->Awake(GetScriptEngine());
+        if (mActiveScene)
+            mActiveScene->Awake(GetScriptEngine());
     }
 
     void Game::OnUpdate(const Clock& clock) {
@@ -146,11 +149,13 @@ namespace Astera {
     }
 
     void Game::OnLateUpdate() {
-        if (mActiveScene) mActiveScene->LateUpdate(GetScriptEngine());
+        if (mActiveScene)
+            mActiveScene->LateUpdate(GetScriptEngine());
     }
 
     void Game::OnDestroyed() {
-        if (mActiveScene) mActiveScene->Destroyed(GetScriptEngine());
+        if (mActiveScene)
+            mActiveScene->Destroyed(GetScriptEngine());
     }
 
     bool Game::Initialize() {
@@ -182,8 +187,10 @@ namespace Astera {
         glfwSetCursorPosCallback(mWindow, GLFWMouseCursorCallback);
         glfwSetScrollCallback(mWindow, GLFWMouseScrollCallback);
 
-        if (mVsync) glfwSwapInterval(1);
-        else glfwSwapInterval(0);
+        if (mVsync)
+            glfwSwapInterval(1);
+        else
+            glfwSwapInterval(0);
 
         if (!mRenderContext.Initialize(mWidth, mHeight)) {
             glfwDestroyWindow(mWindow);
@@ -196,6 +203,18 @@ namespace Astera {
         ShaderManager::Initialize();
         mAudioEngine.Initialize();
         InitializeScriptEngine();
+
+        // Asset manager
+        if (!AssetManager::Initialize()) {
+            Log::Critical("Game", "Failed to initialize asset manager");
+            glfwDestroyWindow(mWindow);
+            glfwTerminate();
+            mRenderContext.Shutdown();
+            TextureManager::Shutdown();
+            ShaderManager::Shutdown();
+            mAudioEngine.Shutdown();
+            return false;
+        }
 
         // Debug layers
         mImGuiDebugLayer = make_unique<ImGuiDebugLayer>(GetWindowHandle());
@@ -225,7 +244,8 @@ namespace Astera {
         mAudioEngine.Shutdown();
         mActiveScene.reset();
         mRenderContext.Shutdown();
-        if (mWindow) glfwDestroyWindow(mWindow);
+        if (mWindow)
+            glfwDestroyWindow(mWindow);
         glfwTerminate();
 
         Log::Shutdown();
@@ -233,7 +253,8 @@ namespace Astera {
 
     bool Game::InitializeScriptEngine() {
         mScriptEngine.Initialize();
-        if (!mScriptEngine.IsInitialized()) return false;
+        if (!mScriptEngine.IsInitialized())
+            return false;
 
         // Register globals
         auto& lua                   = mScriptEngine.GetLuaState();
@@ -258,7 +279,9 @@ namespace Astera {
         mRenderContext.BeginFrame();
         {
             // Submit drawing commands here
-            if (mActiveScene) { mActiveScene->Render(GetRenderContext()); }
+            if (mActiveScene) {
+                mActiveScene->Render(GetRenderContext());
+            }
         }
         mRenderContext.EndFrame();
 
@@ -297,8 +320,10 @@ namespace Astera {
         auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
         if (game) {
             game->OnKey(key);
-            if (action == GLFW_PRESS) game->OnKeyDown(key);
-            else if (action == GLFW_RELEASE) game->OnKeyUp(key);
+            if (action == GLFW_PRESS)
+                game->OnKeyDown(key);
+            else if (action == GLFW_RELEASE)
+                game->OnKeyUp(key);
         }
     }
 
@@ -308,18 +333,24 @@ namespace Astera {
         auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
         if (game) {
             game->OnMouseButton(button);
-            if (action == GLFW_PRESS) game->OnMouseButtonDown(button);
-            else if (action == GLFW_RELEASE) game->OnMouseButtonUp(button);
+            if (action == GLFW_PRESS)
+                game->OnMouseButtonDown(button);
+            else if (action == GLFW_RELEASE)
+                game->OnMouseButtonUp(button);
         }
     }
 
     void Game::GLFWMouseCursorCallback(GLFWwindow* mWindow, f64 xpos, f64 ypos) {
         auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
-        if (game) { game->OnMouseMove(xpos, ypos); }
+        if (game) {
+            game->OnMouseMove(xpos, ypos);
+        }
     }
 
     void Game::GLFWMouseScrollCallback(GLFWwindow* mWindow, f64 xoffset, f64 yoffset) {
         auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
-        if (game) { game->OnMouseScroll(xoffset, yoffset); }
+        if (game) {
+            game->OnMouseScroll(xoffset, yoffset);
+        }
     }
 }  // namespace Astera

@@ -1,5 +1,5 @@
 /*
- *  Filename: IO.hpp
+ *  Filename: IO.cpp
  *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
@@ -26,35 +26,38 @@
  *  of the possibility of such damages.
  */
 
-#pragma once
-
+#include "IO.hpp"
 #include <fstream>
-#include <optional>
-#include <cstdint>
-#include <vector>
-#include <filesystem>
-#include <string>
-#include <sstream>
 
-namespace Astera::IO {
-    inline static std::optional<std::vector<uint8_t>> ReadBytes(const std::filesystem::path& filename) {
-        if (!exists(filename)) { return {}; }
+namespace Astera {
+    Result<vector<u8>> IO::ReadBytes(const fs::path& filename) {
+        if (!exists(filename)) {
+            return unexpected(fmt::format("File does not exist: {}", filename.string()));
+        }
+
         std::ifstream file(filename, std::ios::binary | std::ios::ate);
-        if (!file.is_open()) { return {}; }
+        if (!file.is_open()) {
+            return unexpected(fmt::format("Failed to open file: {}", filename.string()));
+        }
+
         const std::streamsize fileSize = file.tellg();
-        std::vector<uint8_t> bytes(fileSize);
+        vector<u8> bytes(fileSize);
         file.seekg(0, std::ios::beg);
-        if (!file.read(reinterpret_cast<char*>(bytes.data()), fileSize)) { return {}; }
+        if (!file.read(RCAST<char*>(bytes.data()), fileSize)) {
+            return unexpected("Failed to read file");
+        }
         file.close();
 
         return bytes;
     }
 
-    inline static std::string ReadString(const std::filesystem::path& filename) {
-        if (!exists(filename)) { return {}; }
+    Result<string> IO::ReadText(const fs::path& filename) {
+        if (!exists(filename)) {
+            return unexpected(fmt::format("File does not exist: {}", filename.string()));
+        }
         const std::ifstream file(filename);
         std::stringstream buffer;
         buffer << file.rdbuf();
         return buffer.str();
     }
-}  // namespace Astera::IO
+}  // namespace Astera

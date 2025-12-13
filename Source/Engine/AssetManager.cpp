@@ -27,5 +27,82 @@
  */
 
 #include "AssetManager.hpp"
+#include "IO.hpp"
+#include "Log.hpp"
 
-namespace Astera {}  // namespace Astera
+#include <pugixml.hpp>
+
+namespace Astera {
+    Result<vector<u8>> AssetManager::GetAssetData(AssetID id) {
+        if (!sInitialized) {
+            Initialize();
+        }
+
+        if (!sAssetPaths.contains(id)) {
+            return unexpected(fmt::format("Asset with given ID `{}` not found", id));
+        }
+
+        const auto assetPath = sAssetPaths[id];
+        if (!exists(assetPath)) {
+            return unexpected(fmt::format("Asset `{}` does not exist", assetPath.string()));
+        }
+
+        auto readResult = IO::ReadBytes(assetPath);
+        if (readResult.has_value()) {
+            return *readResult;
+        } else {
+            return unexpected(fmt::format("Failed to read asset `{}`", assetPath.string()));
+        }
+    }
+
+    bool AssetManager::Initialize() {
+        if (!exists(sWorkingDirectory)) {
+            Log::Error("AssetManager", "Working directory does not exist");
+            return false;
+        }
+
+        // Iterate over working directory looking for ".asset" files
+        for (const auto& entry : fs::recursive_directory_iterator(sWorkingDirectory)) {
+            if (entry.is_regular_file() && entry.path().extension() == ".asset") {
+                const auto extLen = string(".asset").size();
+                auto srcFilename =
+                  entry.path().filename().string().substr(0, entry.path().filename().string().size() - extLen);
+                const auto assetPath = entry.path().parent_path() / srcFilename;
+                if (!exists(assetPath)) {
+                    Log::Error("AssetManager", "Asset file `{}` does not exist", assetPath.string());
+                    continue;
+                }
+
+                // Read asset ID from descriptor
+                pugi::xml_document doc;
+                doc.load_file(entry.path().string().c_str());
+                const AssetID id = doc.child("Asset").attribute("id").as_ullong();
+
+                sAssetPaths[id] = assetPath;
+
+                Log::Info("AssetManager",
+                          "Found asset `{}` with ID {} and type {}",
+                          assetPath.string(),
+                          id,
+                          (u32)AssetTypeFromID(id));
+            }
+        }
+
+        sInitialized = true;
+        return true;
+    }
+
+    void AssetManager::Reload() {
+        sInitialized = false;
+        sAssetPaths.clear();
+        Initialize();
+    }
+
+    void AssetManager::SetWorkingDirectory(const fs::path& path) {
+        sWorkingDirectory = path;
+    }
+
+    bool AssetManager::sInitialized = false;
+    fs::path AssetManager::sWorkingDirectory {};
+    unordered_map<AssetID, fs::path> AssetManager::sAssetPaths {};
+}  // namespace Astera

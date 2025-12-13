@@ -36,7 +36,7 @@ namespace Astera {
     class SceneState;
     class ScriptEngine;
 
-    /// @brief Utility class for converting between scene states and descriptors, and handling serialization
+    /// @brief Utility class for converting between scene states and descriptors and handling serialization
     class SceneParser {
     public:
         /// @brief Converts a scene state to a scene descriptor
@@ -51,18 +51,34 @@ namespace Astera {
         static void
         DescriptorToState(const SceneDescriptor& descriptor, SceneState& outState, ScriptEngine& scriptEngine);
 
-        /// @brief Serializes a scene descriptor to disk
+        /// @brief Serializes a scene descriptor to XML
         /// @param descriptor The descriptor to serialize
-        static void SerializeDescriptor(const SceneDescriptor& descriptor);
+        /// @param filename Output file to save to
+        static void SerializeDescriptorXML(const SceneDescriptor& descriptor, const fs::path& filename);
+
+        /// @brief Serializes a scene descriptor to binary data (.scene)
+        /// @param descriptor The descriptor to serialize
+        /// @param filename Output file to save to
+        static void SerializeDescriptorBytes(const SceneDescriptor& descriptor, const fs::path& filename);
 
         /// @brief Deserializes a scene descriptor from a file
         /// @param filename Path to the file containing the serialized descriptor
         /// @param outDescriptor The descriptor to populate with deserialized data
-        static void DeserializeDescriptor(const fs::path& filename, SceneDescriptor& outDescriptor);
+        static void DeserializeDescriptorXML(const fs::path& filename, SceneDescriptor& outDescriptor);
 
         /// @brief Deserializes a scene descriptor from a string source
-        /// @param source String containing the serialized descriptor data
+        /// @param bytes Vector containing the serialized descriptor data
         /// @param outDescriptor The descriptor to populate with deserialized data
-        static void DeserializeDescriptor(const string& source, SceneDescriptor& outDescriptor);
+        static void DeserializeDescriptorBytes(const vector<u8>& bytes, SceneDescriptor& outDescriptor);
+
+    private:
+        enum class ComponentType : u32 { Transform = 0, SpriteRenderer = 1, Rigidbody2D = 2, Behavior = 3 };
+
+        struct Header {
+            const u8 magic[4] = {'S', 'C', 'N', 'E'};
+            const u32 version = 1;
+            const u32 sceneNameLength;
+            const char* sceneName;
+        };
     };
 }  // namespace Astera
