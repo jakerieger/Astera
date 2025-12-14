@@ -20,7 +20,7 @@ public:
         Game::OnAwake();
     }
 
-    void OnKeyDown(u32 keyCode) override {
+    void OnKeyDown(const u32 keyCode) override {
         using namespace Input;
         if (keyCode == Keys::Escape) {
             Quit();
