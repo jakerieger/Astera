@@ -40,19 +40,19 @@ building a complete project, Astera provides the tools you need.
 
 ### Building
 
-Clone the repository:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/jakerieger/Astera.git
 cd Astera
 ```
 
-Install library dependencies:
+2. Install library dependencies:
 
 **Linux:**
 
 ```bash
-sudo apt install libglew-dev libglfw3-dev libglm-dev lua5.1 liblua5.1-0-dev
+sudo apt install libfmt-dev libspdlog-dev libpugixml-dev libcli11-dev libglfw3-dev libluajit-5.1-dev
 ```
 
 **Windows:**
@@ -69,7 +69,7 @@ cd vcpkg
 ./vcpkg install pkgconf fmt spdlog pugixml cli11 glfw3 luajit --triplet x64-windows
 ```
 
-Build using CMake:
+3. Build using CMake:
 
 ```bash
 mkdir build
