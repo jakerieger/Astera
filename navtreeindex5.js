@@ -1,6 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"functions_func_d.html":[2,3,1,3],
 "functions_func_e.html":[2,3,1,4],
 "functions_func_f.html":[2,3,1,5],
 "functions_func_g.html":[2,3,1,6],
@@ -249,5 +248,6 @@ var NAVTREEINDEX5 =
 "struct_astera_1_1_draw_indexed_instanced_command.html#ae0b3f513217d224d19e9eb9c909e0cd3":[0,0,0,27,0],
 "struct_astera_1_1_draw_sprite_command.html":[2,0,0,23],
 "struct_astera_1_1_draw_sprite_command.html":[0,0,0,28],
-"struct_astera_1_1_draw_sprite_command.html#a0dba0d511ccc5bb3218d975cd20f89bf":[0,0,0,28,1]
+"struct_astera_1_1_draw_sprite_command.html#a0dba0d511ccc5bb3218d975cd20f89bf":[0,0,0,28,1],
+"struct_astera_1_1_draw_sprite_command.html#a0dba0d511ccc5bb3218d975cd20f89bf":[2,0,0,23,1]
 };
