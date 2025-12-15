@@ -12,7 +12,7 @@ end
 ---@param this Entity
 ---@param clock Clock
 function OnUpdate(this, clock)
-
+    this.transform:Translate(ImVec2(100, 0))
 end
 
 ---Called every frame, after rendering

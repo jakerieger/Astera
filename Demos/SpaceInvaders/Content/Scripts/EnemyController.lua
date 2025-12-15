@@ -8,11 +8,32 @@ function OnAwake(this)
     Log:Debug("Test message from EnemyController.lua")
 end
 
+local speed = 200
+local deltaX = speed
+
+--- Check if current position is within specified bounds
+---@param current number
+---@param leftBound number
+---@param rightBound number
+---@return boolean
+function CheckOOB(current, leftBound, rightBound)
+    return (current < leftBound) or (current > rightBound)
+end
+
 ---Called every frame, before rendering
 ---@param this Entity
 ---@param clock Clock
 function OnUpdate(this, clock)
-    this.transform:Translate(ImVec2(1, 0))
+    local transform = this.transform
+    local xBounds = 200
+    local centerX = Game:GetScreenSize().x / 2
+    local currentPosX = transform.position.x
+
+    if CheckOOB(currentPosX, (centerX - xBounds), (centerX + xBounds)) then
+        deltaX = -deltaX
+    end
+
+    transform:Translate(Vec2(deltaX * clock:GetDeltaTime(), 0))
 end
 
 ---Called every frame, after rendering

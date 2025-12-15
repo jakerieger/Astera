@@ -14,15 +14,19 @@ target_include_directories(Demo-SpaceInvaders PRIVATE
     ${COMMON_ROOT}
 )
 
-add_custom_command(
-    TARGET Demo-SpaceInvaders POST_BUILD
+add_custom_target(SpaceInvaders_CopyContent ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_CURRENT_SOURCE_DIR}/../Content
-    $<TARGET_FILE_DIR:Demo-SpaceInvaders>/Content
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Content
+    COMMENT "Copying Sandbox content directory to build output"
 )
 
-add_custom_command(TARGET Demo-SpaceInvaders POST_BUILD
+add_custom_target(SpaceInvaders_CopyEngineContent ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_SOURCE_DIR}/EngineContent
-    $<TARGET_FILE_DIR:Demo-SpaceInvaders>/Content/EngineContent
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Content/EngineContent
+    COMMENT "Copying Engine content directory to build output"
 )
+
+add_dependencies(SpaceInvaders_CopyEngineContent SpaceInvaders_CopyContent)
+add_dependencies(Demo-SpaceInvaders SpaceInvaders_CopyEngineContent)
