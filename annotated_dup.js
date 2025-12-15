@@ -1,9 +1,11 @@
 var annotated_dup =
 [
     [ "Astera", "namespace_astera.html", [
+      [ "ActionMap", "struct_astera_1_1_action_map.html", "struct_astera_1_1_action_map" ],
       [ "ArenaAllocator", "class_astera_1_1_arena_allocator.html", "class_astera_1_1_arena_allocator" ],
       [ "AssetManager", "class_astera_1_1_asset_manager.html", "class_astera_1_1_asset_manager" ],
       [ "AudioEngine", "class_astera_1_1_audio_engine.html", "class_astera_1_1_audio_engine" ],
+      [ "AxisMap", "struct_astera_1_1_axis_map.html", "struct_astera_1_1_axis_map" ],
       [ "Behavior", "struct_astera_1_1_behavior.html", "struct_astera_1_1_behavior" ],
       [ "BehaviorDescriptor", "struct_astera_1_1_behavior_descriptor.html", "struct_astera_1_1_behavior_descriptor" ],
       [ "BehaviorEntity", "struct_astera_1_1_behavior_entity.html", "struct_astera_1_1_behavior_entity" ],
@@ -25,6 +27,7 @@ var annotated_dup =
       [ "DrawIndexedCommand", "struct_astera_1_1_draw_indexed_command.html", "struct_astera_1_1_draw_indexed_command" ],
       [ "DrawIndexedInstancedCommand", "struct_astera_1_1_draw_indexed_instanced_command.html", "struct_astera_1_1_draw_indexed_instanced_command" ],
       [ "DrawSpriteCommand", "struct_astera_1_1_draw_sprite_command.html", "struct_astera_1_1_draw_sprite_command" ],
+      [ "EngineConfig", "struct_astera_1_1_engine_config.html", null ],
       [ "EntityDescriptor", "struct_astera_1_1_entity_descriptor.html", "struct_astera_1_1_entity_descriptor" ],
       [ "FrameAllocator", "class_astera_1_1_frame_allocator.html", "class_astera_1_1_frame_allocator" ],
       [ "Game", "class_astera_1_1_game.html", "class_astera_1_1_game" ],
@@ -34,6 +37,7 @@ var annotated_dup =
       [ "ImGuiDebugLayer", "class_astera_1_1_im_gui_debug_layer.html", "class_astera_1_1_im_gui_debug_layer" ],
       [ "IndexBuffer", "class_astera_1_1_index_buffer.html", "class_astera_1_1_index_buffer" ],
       [ "InputManager", "class_astera_1_1_input_manager.html", "class_astera_1_1_input_manager" ],
+      [ "InputMap", "struct_astera_1_1_input_map.html", "struct_astera_1_1_input_map" ],
       [ "IO", "class_astera_1_1_i_o.html", null ],
       [ "JobSystem", "class_astera_1_1_job_system.html", "class_astera_1_1_job_system" ],
       [ "Log", "class_astera_1_1_log.html", "class_astera_1_1_log" ],

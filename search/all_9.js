@@ -7,5 +7,6 @@ var searchData=
   ['jobsperworker_4',['jobsPerWorker',['../struct_astera_1_1_job_system_1_1_statistics.html#aa97e909fa62101e4756e8b54cf74a07b',1,'Astera::JobSystem::Statistics']]],
   ['jobsystem_5',['jobsystem',['../class_astera_1_1_job_system.html',1,'Astera::JobSystem'],['../class_astera_1_1_job_system.html#a83f6b573cd784a13dcda84b04984b5a9',1,'Astera::JobSystem::JobSystem()']]],
   ['jobsystem_2ecpp_6',['JobSystem.cpp',['../_job_system_8cpp.html',1,'']]],
-  ['jobsystem_2ehpp_7',['JobSystem.hpp',['../_job_system_8hpp.html',1,'']]]
+  ['jobsystem_2ehpp_7',['JobSystem.hpp',['../_job_system_8hpp.html',1,'']]],
+  ['joystickaxis_8',['joystickAxis',['../struct_astera_1_1_axis_map.html#a2b47b72a369faa21096a089fa26abf65',1,'Astera::AxisMap']]]
 ];

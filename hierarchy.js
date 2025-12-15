@@ -1,9 +1,11 @@
 var hierarchy =
 [
+    [ "Astera::ActionMap", "struct_astera_1_1_action_map.html", null ],
     [ "Astera::ArenaAllocator", "class_astera_1_1_arena_allocator.html", null ],
     [ "Astera::AssetManager", "class_astera_1_1_asset_manager.html", null ],
     [ "AssetSubcommand", "struct_asset_subcommand.html", null ],
     [ "Astera::AudioEngine", "class_astera_1_1_audio_engine.html", null ],
+    [ "Astera::AxisMap", "struct_astera_1_1_axis_map.html", null ],
     [ "Astera::Behavior", "struct_astera_1_1_behavior.html", null ],
     [ "Astera::BehaviorDescriptor", "struct_astera_1_1_behavior_descriptor.html", null ],
     [ "Astera::BehaviorEntity", "struct_astera_1_1_behavior_entity.html", null ],
@@ -25,6 +27,7 @@ var hierarchy =
     [ "Astera::DrawIndexedCommand", "struct_astera_1_1_draw_indexed_command.html", null ],
     [ "Astera::DrawIndexedInstancedCommand", "struct_astera_1_1_draw_indexed_instanced_command.html", null ],
     [ "Astera::DrawSpriteCommand", "struct_astera_1_1_draw_sprite_command.html", null ],
+    [ "Astera::EngineConfig", "struct_astera_1_1_engine_config.html", null ],
     [ "Astera::EntityDescriptor", "struct_astera_1_1_entity_descriptor.html", null ],
     [ "std::exception", null, [
       [ "Astera::NotImplemented", "class_astera_1_1_not_implemented.html", null ]
@@ -41,6 +44,7 @@ var hierarchy =
       [ "Astera::PhysicsDebugLayer", "class_astera_1_1_physics_debug_layer.html", null ]
     ] ],
     [ "Astera::InputManager", "class_astera_1_1_input_manager.html", null ],
+    [ "Astera::InputMap", "struct_astera_1_1_input_map.html", null ],
     [ "Astera::IO", "class_astera_1_1_i_o.html", null ],
     [ "Astera::JobSystem::JobCounter", "struct_astera_1_1_job_system_1_1_job_counter.html", null ],
     [ "Astera::JobSystem", "class_astera_1_1_job_system.html", null ],

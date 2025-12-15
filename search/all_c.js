@@ -1,7 +1,7 @@
 var searchData=
 [
   ['macros_2ehpp_0',['Macros.hpp',['../_macros_8hpp.html',1,'']]],
-  ['main_1',['main',['../_g_l_s_lto_c_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp'],['../_astera_c_l_i_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp']]],
+  ['main_1',['main',['../_astera_c_l_i_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp'],['../_g_l_s_lto_c_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp']]],
   ['main_2ecpp_2',['main.cpp',['../_astera_c_l_i_2main_8cpp.html',1,'(Global Namespace)'],['../_g_l_s_lto_c_2main_8cpp.html',1,'(Global Namespace)']]],
   ['mass_3',['mass',['../struct_astera_1_1_rigidbody2_d.html#a533caa174af342b14aa9c2e91c443211',1,'Astera::Rigidbody2D::mass'],['../struct_astera_1_1_rigidbody2_d_descriptor.html#ad2c6ee869abb36a49259a01b43959f0d',1,'Astera::Rigidbody2DDescriptor::mass']]],
   ['mat3_4',['Mat3',['../namespace_astera.html#aa9241995679ee52c1d21a4d3b3483e1a',1,'Astera']]],
@@ -17,12 +17,15 @@ var searchData=
   ['mfullscreen_14',['mFullscreen',['../class_astera_1_1_game.html#a32ee10d4d88ca6e6e3258e8e60255ce9',1,'Astera::Game']]],
   ['mheight_15',['mHeight',['../class_astera_1_1_window.html#ad420161a6f960eba92414021a1cb2362',1,'Astera::Window']]],
   ['min_16',['Min',['../class_astera_1_1_math.html#a5aa900ab3a0f2d63117ee94334fd5c26',1,'Astera::Math']]],
-  ['minputmanager_17',['mInputManager',['../class_astera_1_1_window.html#a95227b6446edd7c51b2ae1cd4b8bf1a0',1,'Astera::Window']]],
-  ['mrunning_18',['mRunning',['../class_astera_1_1_window.html#ae830f37f4d0afc393d4116ec53032bb8',1,'Astera::Window']]],
-  ['msize_19',['mSize',['../class_astera_1_1_i_buffer.html#a059bc104cc812e5636e91814c9a2dc1e',1,'Astera::IBuffer']]],
-  ['mtitle_20',['mTitle',['../class_astera_1_1_window.html#a6fb99c60884b5f7921fefb0750b4f140',1,'Astera::Window']]],
-  ['multiply_21',['Multiply',['../class_astera_1_1_color.html#ad0e0de86411283b7b253e4fe6cc09795',1,'Astera::Color']]],
-  ['mvsync_22',['mVsync',['../class_astera_1_1_window.html#a32fd60f6d0120c8eb182a1dca3d111f4',1,'Astera::Window']]],
-  ['mwidth_23',['mWidth',['../class_astera_1_1_window.html#a47030e7a56b0262246a30366f8d69e41',1,'Astera::Window']]],
-  ['mwindow_24',['mWindow',['../class_astera_1_1_window.html#a5068773b727ad6262a64c7fcb09c4048',1,'Astera::Window']]]
+  ['mini_5fcase_5fsensitive_17',['MINI_CASE_SENSITIVE',['../_engine_config_8hpp.html#aeca8f939c0ec92f4562e9b6eb44e1dfe',1,'EngineConfig.hpp']]],
+  ['minputmanager_18',['mInputManager',['../class_astera_1_1_window.html#a95227b6446edd7c51b2ae1cd4b8bf1a0',1,'Astera::Window']]],
+  ['mouseaxis_19',['mouseAxis',['../struct_astera_1_1_axis_map.html#a57dabfc55b0f7ee546692b609636f5cb',1,'Astera::AxisMap']]],
+  ['mousebuttons_20',['mouseButtons',['../struct_astera_1_1_action_map.html#a240f3a6631ee1386b0f030948c05e2bb',1,'Astera::ActionMap']]],
+  ['mrunning_21',['mRunning',['../class_astera_1_1_window.html#ae830f37f4d0afc393d4116ec53032bb8',1,'Astera::Window']]],
+  ['msize_22',['mSize',['../class_astera_1_1_i_buffer.html#a059bc104cc812e5636e91814c9a2dc1e',1,'Astera::IBuffer']]],
+  ['mtitle_23',['mTitle',['../class_astera_1_1_window.html#a6fb99c60884b5f7921fefb0750b4f140',1,'Astera::Window']]],
+  ['multiply_24',['Multiply',['../class_astera_1_1_color.html#ad0e0de86411283b7b253e4fe6cc09795',1,'Astera::Color']]],
+  ['mvsync_25',['mVsync',['../class_astera_1_1_window.html#a32fd60f6d0120c8eb182a1dca3d111f4',1,'Astera::Window']]],
+  ['mwidth_26',['mWidth',['../class_astera_1_1_window.html#a47030e7a56b0262246a30366f8d69e41',1,'Astera::Window']]],
+  ['mwindow_27',['mWindow',['../class_astera_1_1_window.html#a5068773b727ad6262a64c7fcb09c4048',1,'Astera::Window']]]
 ];
