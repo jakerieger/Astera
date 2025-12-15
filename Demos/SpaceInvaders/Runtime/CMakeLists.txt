@@ -14,6 +14,13 @@ target_include_directories(Demo-SpaceInvaders PRIVATE
     ${COMMON_ROOT}
 )
 
+add_custom_target(SpaceInvaders_CopyConfig ALL
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Config
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Config
+    COMMENT "Copying Sandbox config directory to build output"
+)
+
 add_custom_target(SpaceInvaders_CopyContent ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory
     ${CMAKE_CURRENT_SOURCE_DIR}/../Content
@@ -30,3 +37,4 @@ add_custom_target(SpaceInvaders_CopyEngineContent ALL
 
 add_dependencies(SpaceInvaders_CopyEngineContent SpaceInvaders_CopyContent)
 add_dependencies(Demo-SpaceInvaders SpaceInvaders_CopyEngineContent)
+add_dependencies(Demo-SpaceInvaders SpaceInvaders_CopyConfig)

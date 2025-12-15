@@ -124,6 +124,12 @@ end
 function InputManager:GetMouseDeltaY()
 end
 
+--- Get action mapping
+---@param action string Action name
+---@return boolean
+function InputManager:GetAction(action)
+end
+
 ---@type InputManager Global input manager instance
 Input = {}
 

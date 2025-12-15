@@ -32,6 +32,24 @@
 #include <sol/sol.hpp>
 
 namespace Astera {
+    bool InputManager::GetAction(const string& action) {
+        if (!mInputMap.has_value() || !mInputMap->actions.contains(action)) {
+            return false;
+        }
+
+        const auto map     = mInputMap->actions.at(action);
+        const bool keyDown = std::ranges::any_of(map.keys, [this](u32 key) { return GetKeyDown((i32)key); });
+        const bool mouseDown =
+          std::ranges::any_of(map.mouseButtons, [this](u32 button) { return GetMouseButtonDown((i32)button); });
+
+        return keyDown || mouseDown;
+    }
+
+    f32 InputManager::GetAxis(const string& axis) {
+        ASTERA_UNUSED(this);
+        throw ASTERA_NOT_IMPLEMENTED;
+    }
+
     bool InputManager::GetKeyDown(i32 key) {
         return mKeyStates[key].pressed;
     }
@@ -159,33 +177,40 @@ namespace Astera {
                                          "GetMouseDeltaX",
                                          &InputManager::GetMouseDeltaX,
                                          "GetMouseDeltaY",
-                                         &InputManager::GetMouseDeltaY);
+                                         &InputManager::GetMouseDeltaY,
+                                         "GetAction",
+                                         &InputManager::GetAction);
         state["Input"] = this;
     }
 
     void InputManager::UpdateKeyState(const u16 key, const bool pressed) {
-        if (!mEnabled) return;
+        if (!mEnabled)
+            return;
 
         mKeyStates[key].pressed  = pressed;
         mKeyStates[key].released = !pressed;
     }
 
     void InputManager::UpdateMouseButtonState(const u16 button, const bool pressed) {
-        if (!mEnabled) return;
+        if (!mEnabled)
+            return;
 
         mMouseStates[button].pressed  = pressed;
         mMouseStates[button].released = !pressed;
     }
 
     void InputManager::UpdateMousePosition(const f64 x, const f64 y) {
-        if (!mEnabled) return;
+        if (!mEnabled)
+            return;
 
         mMouseDeltaX = CAST<f32>(x);
         mMouseDeltaY = CAST<f32>(y);
 
         constexpr f32 deadZone = 2.5f;  // Might need to tweak this, also frame-rate dependent :(
-        if (std::abs(mMouseDeltaX) < deadZone) mMouseDeltaX = 0.0f;
-        if (std::abs(mMouseDeltaY) < deadZone) mMouseDeltaY = 0.0f;
+        if (std::abs(mMouseDeltaX) < deadZone)
+            mMouseDeltaX = 0.0f;
+        if (std::abs(mMouseDeltaY) < deadZone)
+            mMouseDeltaY = 0.0f;
 
         mMouseX += x;
         mMouseY += y;

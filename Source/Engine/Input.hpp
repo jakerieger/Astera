@@ -29,6 +29,7 @@
 #pragma once
 
 #include "EngineCommon.hpp"
+#include "EngineConfig.hpp"
 
 namespace sol {
     class state;
@@ -49,6 +50,10 @@ namespace Astera {
         InputManager() = default;
 
         // Getters
+
+        bool GetAction(const string& action);
+
+        f32 GetAxis(const string& axis);
 
         /// @brief Checks if a keyboard key is currently pressed
         /// @param key Key code to check (platform-specific key constant)
@@ -85,6 +90,10 @@ namespace Astera {
         /// @brief Gets the mouse movement delta on the Y axis since last frame
         /// @return Vertical mouse movement in pixels
         ASTERA_KEEP f32 GetMouseDeltaY() const;
+
+        void SetInputMap(const InputMap& inputMap) {
+            mInputMap = inputMap;
+        }
 
         /// @brief Resets the mouse delta values to zero
         ///
@@ -128,6 +137,8 @@ namespace Astera {
             /// @brief True if the key/button was just released
             bool released = false;
         };
+
+        std::optional<InputMap> mInputMap {std::nullopt};
 
         /// @brief Map of keyboard key codes to their current states
         unordered_map<i32, KeyState> mKeyStates;

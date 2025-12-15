@@ -94,6 +94,12 @@ namespace Astera {
         // Initialize script engine
         InitializeScriptEngine();
 
+        const auto inputMapPath = fs::current_path() / "Config" / "InputMap.ini";
+        InputMap inputMap;
+        if (inputMap.Load(inputMapPath)) {
+            mInputManager.SetInputMap(inputMap);
+        }
+
         // Asset manager
         if (!AssetManager::Initialize()) {
             Log::Critical("Game", "Failed to initialize asset manager");
@@ -166,15 +172,12 @@ namespace Astera {
     }
 
     void Game::OnDestroyed() {
-        if (mActiveScene)
-            mActiveScene->Destroyed(GetScriptEngine());
-
-        UnloadContent();
-
         if (mActiveScene) {
             mActiveScene->Destroyed(GetScriptEngine());
             mActiveScene.reset();
         }
+
+        UnloadContent();
 
         mDebugManager.DetachOverlays();
         mImGuiDebugLayer.reset();

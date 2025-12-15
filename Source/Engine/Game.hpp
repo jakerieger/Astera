@@ -30,6 +30,7 @@
 
 #include "EngineCommon.hpp"
 #include "AudioEngine.hpp"
+#include "EngineConfig.hpp"
 #include "FrameAllocator.hpp"
 #include "Scene.hpp"
 #include "ScriptEngine.hpp"
