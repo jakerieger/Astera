@@ -63,13 +63,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_arena_allocator_8cpp.html",
-"_macros_8hpp.html#aaf5639338b4bf749b0bd95aec9b92e77",
-"class_astera_1_1_binary_writer.html#a8d2fdb30f36e3ba635d9456cf2253fc0",
-"class_astera_1_1_game.html#a817ac746863e201d8fbac5f3f02486a2",
-"class_astera_1_1_render_target.html#ae3dc706953eec6886b51063528d67279",
-"class_astera_1_1_window.html#a32fd60f6d0120c8eb182a1dca3d111f4",
-"struct_astera_1_1_behavior.html",
-"struct_astera_1_1_rigidbody2_d_descriptor.html#af2f246bdaf2da28bce2ab7c2910cc343"
+"_macros_8hpp.html#a8d5879a8a84e6037cc801ec195d39d55",
+"class_astera_1_1_binary_writer.html#a5ecc93b3ccb459082c7e7b3598ecaf88",
+"class_astera_1_1_game.html#a3e6963621fd6fd6df822a114accf8107",
+"class_astera_1_1_render_target.html#a4bc5a876873ecbd4d27daa56753c854c",
+"class_astera_1_1_window.html",
+"namespace_astera_1_1_input_1_1_mouse_buttons.html",
+"struct_astera_1_1_rigidbody2_d_descriptor.html#aa4b464c70d029190d43a3e57055f0763"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

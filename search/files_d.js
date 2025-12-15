@@ -15,6 +15,8 @@ var searchData=
   ['shader_2ehpp_12',['Shader.hpp',['../_shader_8hpp.html',1,'']]],
   ['shadermanager_2ecpp_13',['ShaderManager.cpp',['../_shader_manager_8cpp.html',1,'']]],
   ['shadermanager_2ehpp_14',['ShaderManager.hpp',['../_shader_manager_8hpp.html',1,'']]],
-  ['spriterenderer_2ecpp_15',['SpriteRenderer.cpp',['../_sprite_renderer_8cpp.html',1,'']]],
-  ['spriterenderer_2ehpp_16',['SpriteRenderer.hpp',['../_sprite_renderer_8hpp.html',1,'']]]
+  ['sprite_2einc_15',['Sprite.inc',['../_sprite_8inc.html',1,'']]],
+  ['spriteinstanced_2einc_16',['SpriteInstanced.inc',['../_sprite_instanced_8inc.html',1,'']]],
+  ['spriterenderer_2ecpp_17',['SpriteRenderer.cpp',['../_sprite_renderer_8cpp.html',1,'']]],
+  ['spriterenderer_2ehpp_18',['SpriteRenderer.hpp',['../_sprite_renderer_8hpp.html',1,'']]]
 ];

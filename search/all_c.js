@@ -1,8 +1,8 @@
 var searchData=
 [
   ['macros_2ehpp_0',['Macros.hpp',['../_macros_8hpp.html',1,'']]],
-  ['main_1',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
-  ['main_2ecpp_2',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['main_1',['main',['../_g_l_s_lto_c_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp'],['../_astera_c_l_i_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp']]],
+  ['main_2ecpp_2',['main.cpp',['../_astera_c_l_i_2main_8cpp.html',1,'(Global Namespace)'],['../_g_l_s_lto_c_2main_8cpp.html',1,'(Global Namespace)']]],
   ['mass_3',['mass',['../struct_astera_1_1_rigidbody2_d.html#a533caa174af342b14aa9c2e91c443211',1,'Astera::Rigidbody2D::mass'],['../struct_astera_1_1_rigidbody2_d_descriptor.html#ad2c6ee869abb36a49259a01b43959f0d',1,'Astera::Rigidbody2DDescriptor::mass']]],
   ['mat3_4',['Mat3',['../namespace_astera.html#aa9241995679ee52c1d21a4d3b3483e1a',1,'Astera']]],
   ['mat4_5',['Mat4',['../namespace_astera.html#a7027406a136a3233ea643b26b70b4ab3',1,'Astera']]],
