@@ -2,10 +2,10 @@
 --- Created by Astera
 ---
 
----Called at entity initialization
+--- Called at entity initialization
 ---@param this Entity
 function OnAwake(this)
-    Log:Debug("Test message from EnemyController.lua")
+    Log:Debug(string.format("OnAwake() called for '%s'", this.name))
 end
 
 local speed = 200
@@ -20,7 +20,7 @@ function CheckOOB(current, leftBound, rightBound)
     return (current < leftBound) or (current > rightBound)
 end
 
----Called every frame, before rendering
+--- Called every frame, before rendering
 ---@param this Entity
 ---@param clock Clock
 function OnUpdate(this, clock)
@@ -36,14 +36,14 @@ function OnUpdate(this, clock)
     transform:Translate(Vec2(deltaX * clock:GetDeltaTime(), 0))
 end
 
----Called every frame, after rendering
+--- Called every frame, after rendering
 ---@param this Entity
 function OnLateUpdate(this)
 
 end
 
----Called at entity destruction
+--- Called at entity destruction
 ---@param this Entity
 function OnDestroyed(this)
-
+    Log:Debug(string.format("OnDestroyed() called for '%s'", this.name))
 end
