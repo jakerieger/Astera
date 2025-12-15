@@ -170,7 +170,7 @@ namespace Astera {
         /// @brief Saves the buffer to a file
         /// @param filename Path to the output file
         /// @return True if successful, false otherwise
-        bool SaveToFile(const fs::path& filename) const;
+        bool SaveToFile(const Path& filename) const;
 
         // Endianness control
 

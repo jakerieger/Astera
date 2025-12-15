@@ -35,7 +35,7 @@ namespace Astera {
         IO() = delete;
 
     public:
-        static Result<vector<u8>> ReadBytes(const fs::path& filename);
-        static Result<string> ReadText(const fs::path& filename);
+        static Result<vector<u8>> ReadBytes(const Path& filename);
+        static Result<string> ReadText(const Path& filename);
     };
 }  // namespace Astera

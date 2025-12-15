@@ -70,7 +70,7 @@ namespace Astera {
         Log::Info("AudioEngine", "Engine shutdown");
     }
 
-    SoundID AudioEngine::LoadSound(const fs::path& filename) {
+    SoundID AudioEngine::LoadSound(const Path& filename) {
         if (!mInitialized) { Initialize(); }
 
         if (!exists(filename)) {

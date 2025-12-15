@@ -52,7 +52,7 @@ namespace Astera {
         return *this;
     }
 
-    shared_ptr<Shader> Shader::FromFile(const fs::path& vertexFile, const fs::path& fragFile) {
+    shared_ptr<Shader> Shader::FromFile(const Path& vertexFile, const Path& fragFile) {
         auto shader = make_shared<Shader>();
 
         ASTERA_ASSERT(fs::exists(vertexFile) && fs::exists(fragFile));

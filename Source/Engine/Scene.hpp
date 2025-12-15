@@ -71,7 +71,7 @@ namespace Astera {
         /// @brief Loads a scene from a descriptor file
         /// @param filename Path to the scene file to load
         /// @param engine Script engine reference
-        void Load(const fs::path& filename, ScriptEngine& engine);
+        void Load(const Path& filename, ScriptEngine& engine);
 
         /// @brief Loads a scene from bytes
         /// @param bytes Vector containing the scene data

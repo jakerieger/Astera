@@ -206,7 +206,7 @@ namespace Astera {
         }
     }
 
-    void ScriptEngine::ExecuteFile(const fs::path& filename) {
+    void ScriptEngine::ExecuteFile(const Path& filename) {
         if (!mInitialized) {
             PrintUninitializedError();
             return;

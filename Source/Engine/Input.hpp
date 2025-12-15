@@ -92,6 +92,7 @@ namespace Astera {
         void ResetMouseDeltas();
 
     private:
+        friend class Window;
         friend class Game;
 
         /// @brief Registers input functions as Lua global functions

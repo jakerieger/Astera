@@ -41,12 +41,12 @@ namespace Astera {
 
         static Result<vector<u8>> GetAssetData(AssetID id);
         static void Reload();
-        static void SetWorkingDirectory(const fs::path& path);
+        static void SetWorkingDirectory(const Path& path);
 
     private:
         static bool sInitialized;
-        static fs::path sWorkingDirectory;
-        static unordered_map<AssetID, fs::path> sAssetPaths;
+        static Path sWorkingDirectory;
+        static unordered_map<AssetID, Path> sAssetPaths;
 
         static bool Initialize();
     };

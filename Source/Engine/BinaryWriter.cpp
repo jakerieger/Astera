@@ -150,7 +150,7 @@ namespace Astera {
         mWritePos = 0;
     }
 
-    bool BinaryWriter::SaveToFile(const fs::path& filename) const {
+    bool BinaryWriter::SaveToFile(const Path& filename) const {
         std::ofstream file(filename, std::ios::binary);
         if (!file) {
             return false;

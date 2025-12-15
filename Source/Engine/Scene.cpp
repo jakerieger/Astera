@@ -78,7 +78,7 @@ namespace Astera {
         }
     }
 
-    void Scene::Load(const fs::path& filename, ScriptEngine& engine) {
+    void Scene::Load(const Path& filename, ScriptEngine& engine) {
         mState.Reset();
         mResourceManager.Clear();
 

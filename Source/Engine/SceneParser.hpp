@@ -55,17 +55,17 @@ namespace Astera {
         /// @brief Serializes a scene descriptor to XML
         /// @param descriptor The descriptor to serialize
         /// @param filename Output file to save to
-        static void SerializeDescriptorXML(const SceneDescriptor& descriptor, const fs::path& filename);
+        static void SerializeDescriptorXML(const SceneDescriptor& descriptor, const Path& filename);
 
         /// @brief Serializes a scene descriptor to binary data (.scene)
         /// @param descriptor The descriptor to serialize
         /// @param filename Output file to save to
-        static void SerializeDescriptorBytes(const SceneDescriptor& descriptor, const fs::path& filename);
+        static void SerializeDescriptorBytes(const SceneDescriptor& descriptor, const Path& filename);
 
         /// @brief Deserializes a scene descriptor from a file
         /// @param filename Path to the file containing the serialized descriptor
         /// @param outDescriptor The descriptor to populate with deserialized data
-        static void DeserializeDescriptorXML(const fs::path& filename, SceneDescriptor& outDescriptor);
+        static void DeserializeDescriptorXML(const Path& filename, SceneDescriptor& outDescriptor);
 
         /// @brief Deserializes a scene descriptor from a string source
         /// @param bytes Vector containing the serialized descriptor data

@@ -167,6 +167,7 @@ namespace Astera {
                GL_UNSIGNED_INT,
                nullptr,
                CAST<GLsizei>(batch.SpriteCount()));
+        CommandExecutor::gDrawCalls++;
 
         shader->Unbind();
     }
@@ -350,6 +351,7 @@ namespace Astera {
     void CommandExecutor::operator()(const DrawIndexedCommand& cmd) const {
         ASTERA_ASSERT(cmd.vao != nullptr);
         ASTERA_ASSERT(cmd.vao->GetIndexBuffer() != nullptr);
+        ++gDrawCalls;
 
         cmd.vao->Bind();
 
@@ -362,6 +364,7 @@ namespace Astera {
         ASTERA_ASSERT(cmd.vao != nullptr);
         ASTERA_ASSERT(cmd.vao->GetIndexBuffer() != nullptr);
         ASTERA_ASSERT(cmd.instanceCount > 0);
+        ++gDrawCalls;
 
         cmd.vao->Bind();
 
@@ -378,6 +381,7 @@ namespace Astera {
     void CommandExecutor::operator()(const DrawArraysCommand& cmd) const {
         ASTERA_ASSERT(cmd.vao != nullptr);
         ASTERA_ASSERT(cmd.vertexCount > 0);
+        ++gDrawCalls;
 
         cmd.vao->Bind();
 

@@ -10,14 +10,8 @@ public:
         AssetManager::SetWorkingDirectory(fs::current_path() / "Content");
     }
 
-    void OnAwake() override {
-        auto& debug = GetDebugManager();
-        debug.SetOverlayEnabled("ImGuiDebugLayer", true);
-        debug.SetOverlayEnabled("PhysicsDebugLayer", false);
-
+    void LoadContent() override {
         GetActiveScene()->Load(Content::Get<ContentType::Scene>("Main.xml"), GetScriptEngine());
-
-        Game::OnAwake();
     }
 
     void OnKeyDown(const u32 keyCode) override {

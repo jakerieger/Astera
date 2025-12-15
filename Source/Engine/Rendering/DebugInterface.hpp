@@ -90,6 +90,12 @@ namespace Astera {
         /// @param event The event to handle
         void HandleEvent(const Event& event) const;
 
+        template<typename T>
+            requires std::is_base_of_v<IDebugOverlay, T>
+        T* GetOverlay(const string& name) {
+            return DCAST<T*>(mOverlays.find(name)->second.overlay);
+        }
+
     private:
         /// @brief Internal structure holding overlay state
         struct Overlay {

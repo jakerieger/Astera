@@ -43,34 +43,10 @@
 namespace Astera {
     using Astera::Log;
 
-    void Game::Run() {
-        mRunning = Initialize();
-        if (!mRunning)
-            return;
-        OnAwake();
-        {
-            // Main loop
-            // ReSharper disable once CppDFAConstantConditions
-            while (mRunning && !glfwWindowShouldClose(mWindow)) {
-                mClock.Tick();
-                OnUpdate(mClock);
-
-                Render();
-
-                OnLateUpdate();
-                glfwPollEvents();
-
-                mFrameAllocator.NextFrame();
-            }
-
-            mRunning = false;
-        }
-        OnDestroyed();
-        Shutdown();
-    }
+    Game::~Game() = default;
 
     void Game::Quit() {
-        mRunning = false;
+        Close();  // Call Window::Close() to exit the main loop
     }
 
     void Game::ToggleFullscreen() {
@@ -82,60 +58,88 @@ namespace Astera {
         }
     }
 
-    void Game::SetTitle(const string& title) {
-        mTitle = title;
-        glfwSetWindowTitle(mWindow, title.c_str());
-    }
-
-    void Game::Resize(u32 width, u32 height) const {
-        glfwSetWindowSize(mWindow, (i32)width, (i32)height);
-    }
-
     void Game::OnResize(u32 width, u32 height) {
-        mWidth  = width;
-        mHeight = height;
-    }
-
-    void Game::OnKeyDown(u32 keyCode) {
-        mInputManager.UpdateKeyState(keyCode, true);
-    }
-
-    void Game::OnKeyUp(u32 keyCode) {
-        mInputManager.UpdateKeyState(keyCode, false);
-    }
-
-    void Game::OnKey(u32 keyCode) {}
-
-    void Game::OnMouseButtonDown(u32 button) {
-        mInputManager.UpdateMouseButtonState(button, true);
-    }
-
-    void Game::OnMouseButtonUp(u32 button) {
-        mInputManager.UpdateMouseButtonState(button, false);
-    }
-
-    void Game::OnMouseButton(u32 button) {
-        ASTERA_UNUSED(button);
-        // TODO: Implement
-    }
-
-    void Game::OnMouseMove(f64 dX, f64 dY) {
-        mInputManager.UpdateMousePosition(dX, dY);
-    }
-
-    void Game::OnMouseScroll(f64 dX, f64 dY) {
-        ASTERA_UNUSED(dX);
-        ASTERA_UNUSED(dY);
-        // TODO: Implement
+        if (mMainRenderTarget) {
+            mMainRenderTarget->Resize(width, height);
+        }
     }
 
     void Game::OnAwake() {
+        Log::Info("Game", "Initializing game systems...");
+
+        // Get window dimensions from Window base class
+        u32 width, height;
+        GetSize(width, height);
+
+        // Create main render target
+        mMainRenderTarget = make_unique<RenderTarget>(RenderTargetConfig {.type          = RenderTargetType::Window,
+                                                                          .width         = width,
+                                                                          .height        = height,
+                                                                          .enableDepth   = true,
+                                                                          .enableStencil = false});
+
+        if (!mMainRenderTarget->Initialize()) {
+            Log::Critical("Game", "Failed to initialize main render target");
+            Close();
+            return;
+        }
+
+        // Initialize asset managers
+        TextureManager::Initialize();
+        ShaderManager::Initialize();
+
+        // Initialize audio engine
+        mAudioEngine.Initialize();
+
+        // Initialize script engine
+        InitializeScriptEngine();
+
+        // Asset manager
+        if (!AssetManager::Initialize()) {
+            Log::Critical("Game", "Failed to initialize asset manager");
+            Close();
+            return;
+        }
+
+        // Debug layers
+        mImGuiDebugLayer = make_unique<ImGuiDebugLayer>(GetHandle());
+        mDebugManager.AttachOverlay("ImGuiDebugLayer", mImGuiDebugLayer.get());
+
+        mPhysicsDebugLayer = make_unique<PhysicsDebugLayer>(width, height);
+        mDebugManager.AttachOverlay("PhysicsDebugLayer", mPhysicsDebugLayer.get());
+
+        // Create the initial scene
+        mActiveScene = make_unique<Scene>(GetRenderContext());
+
+        // Initialize job system
+        gJobSystem = make_unique<JobSystem>();
+        gJobSystem->Initialize();
+
+        Log::Debug(
+          "Game",
+          "Successfully initialized game instance:\n-- Dimensions: {}x{}\n-- V-Sync: {}\n-- Worker Threads: {}",
+          width,
+          height,
+          mVsync ? "On" : "Off",
+          gJobSystem->GetWorkerCount());
+
+        // Call user's OnAwake if they have overridden it
         if (mActiveScene)
             mActiveScene->Awake(GetScriptEngine());
+
+        LoadContent();
     }
 
     void Game::OnUpdate(const Clock& clock) {
         mDebugManager.Update(clock.GetDeltaTime());
+        // update debug ui
+        mImGuiDebugLayer->UpdateFrameRate((f32)clock.GetFramesPerSecond());
+        const auto fT = (1.f / clock.GetFramesPerSecond()) * 1000.f;
+        mImGuiDebugLayer->UpdateFrameTime((f32)fT);
+        // silly hack, will calculate once threading is actually implemented
+        mImGuiDebugLayer->UpdateMainThreadTime((f32)fT / 2.f);
+        mImGuiDebugLayer->UpdateRenderThreadTime((f32)fT / 2.f);
+        mImGuiDebugLayer->UpdateEntities(mActiveScene->GetState().GetEntityCount());
 
         if (mActiveScene) {
             mActiveScene->Update(clock, GetScriptEngine());
@@ -147,9 +151,16 @@ namespace Astera {
             }
             mPhysicsDebugLayer->UpdateTransforms(transforms);
         }
+
+        // Advance frame allocator
+        mFrameAllocator.NextFrame();
     }
 
     void Game::OnLateUpdate() {
+        // Render the frame
+        Render();
+
+        // Call user's LateUpdate
         if (mActiveScene)
             mActiveScene->LateUpdate(GetScriptEngine());
     }
@@ -157,110 +168,51 @@ namespace Astera {
     void Game::OnDestroyed() {
         if (mActiveScene)
             mActiveScene->Destroyed(GetScriptEngine());
-    }
 
-    bool Game::Initialize() {
-        if (!glfwInit()) {
-            Log::Critical("Game", "Failed to initialize GLFW");
-            return false;
+        UnloadContent();
+
+        if (mActiveScene) {
+            mActiveScene->Destroyed(GetScriptEngine());
+            mActiveScene.reset();
         }
 
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-#ifdef __APPLE__
-        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-#endif
-
-        mWindow = glfwCreateWindow((i32)mWidth, (i32)mHeight, mTitle.c_str(), nullptr, nullptr);
-        if (!mWindow) {
-            glfwTerminate();
-            Log::Critical("Game", "Failed to create GLFW mWindow");
-            return false;
-        }
-
-        glfwMakeContextCurrent(mWindow);
-        glfwSetWindowUserPointer(mWindow, this);
-
-        glfwSetFramebufferSizeCallback(mWindow, GLFWResizeCallback);
-        glfwSetKeyCallback(mWindow, GLFWKeyCallback);
-        glfwSetMouseButtonCallback(mWindow, GLFWMouseButtonCallback);
-        glfwSetCursorPosCallback(mWindow, GLFWMouseCursorCallback);
-        glfwSetScrollCallback(mWindow, GLFWMouseScrollCallback);
-
-        if (mVsync)
-            glfwSwapInterval(1);
-        else
-            glfwSwapInterval(0);
-
-        if (!mRenderContext.Initialize(mWidth, mHeight)) {
-            glfwDestroyWindow(mWindow);
-            glfwTerminate();
-            Log::Critical("Game", "Failed to initialize render context");
-            return false;
-        }
-
-        TextureManager::Initialize();
-        ShaderManager::Initialize();
-        mAudioEngine.Initialize();
-        InitializeScriptEngine();
-
-        // Asset manager
-        if (!AssetManager::Initialize()) {
-            Log::Critical("Game", "Failed to initialize asset manager");
-            glfwDestroyWindow(mWindow);
-            glfwTerminate();
-            mRenderContext.Shutdown();
-            TextureManager::Shutdown();
-            ShaderManager::Shutdown();
-            mAudioEngine.Shutdown();
-            return false;
-        }
-
-        // Debug layers
-        mImGuiDebugLayer = make_unique<ImGuiDebugLayer>(GetWindowHandle());
-        mDebugManager.AttachOverlay("ImGuiDebugLayer", mImGuiDebugLayer.get());
-
-        mPhysicsDebugLayer = make_unique<PhysicsDebugLayer>(mWidth, mHeight);
-        mDebugManager.AttachOverlay("PhysicsDebugLayer", mPhysicsDebugLayer.get());
-
-        // Create the initial scene
-        mActiveScene = make_unique<Scene>(GetRenderContext());
-
-        gJobSystem = make_unique<JobSystem>();
-        gJobSystem->Initialize();
-
-        Log::Debug(
-          "Game",
-          "Successfully initialized game instance:\n-- Dimensions: {}x{}\n-- V-Sync: {}\n-- Worker Threads: {}",
-          mWidth,
-          mHeight,
-          mVsync ? "On" : "Off",
-          gJobSystem->GetWorkerCount());
-
-        return true;
-    }
-
-    void Game::Shutdown() {
         mDebugManager.DetachOverlays();
         mImGuiDebugLayer.reset();
         mPhysicsDebugLayer.reset();
+
         TextureManager::Shutdown();
         ShaderManager::Shutdown();
         mAudioEngine.Shutdown();
-        mActiveScene.reset();
-        mRenderContext.Shutdown();
+
+        if (mMainRenderTarget) {
+            mMainRenderTarget->Shutdown();
+            mMainRenderTarget.reset();
+        }
 
         if (gJobSystem) {
             gJobSystem->Shutdown();
             gJobSystem.reset();
         }
 
-        if (mWindow)
-            glfwDestroyWindow(mWindow);
-        glfwTerminate();
-
         Log::Shutdown();
+    }
+
+    void Game::Render() {
+        mMainRenderTarget->Bind();
+        mMainRenderTarget->GetContext().BeginFrame();
+        {
+            // Submit drawing commands here
+            if (mActiveScene) {
+                mActiveScene->Render(GetRenderContext());
+            }
+        }
+        mMainRenderTarget->GetContext().EndFrame();
+        mImGuiDebugLayer->UpdateDrawCalls(CommandExecutor::gDrawCalls);
+
+        mDebugManager.Render();
+        glfwSwapBuffers(GetHandle());
+
+        CommandExecutor::gDrawCalls = 0;
     }
 
     bool Game::InitializeScriptEngine() {
@@ -272,7 +224,11 @@ namespace Astera {
         auto& lua                   = mScriptEngine.GetLuaState();
         auto gameGlobal             = lua.new_usertype<Game>("Game");
         gameGlobal["Quit"]          = [this] { Quit(); };
-        gameGlobal["GetScreenSize"] = [this]() -> Vec2 { return {mWidth, mHeight}; };
+        gameGlobal["GetScreenSize"] = [this]() -> Vec2 {
+            u32 w, h;
+            GetSize(w, h);
+            return {CAST<f32>(w), CAST<f32>(h)};
+        };
 
         lua["Scene"] = &mActiveScene->GetState();
 
@@ -280,89 +236,10 @@ namespace Astera {
         Log::RegisterLuaGlobals(lua);
         Math::RegisterLuaGlobals(lua);
         Coordinates::RegisterLuaGlobals(lua);
-        mInputManager.RegisterLuaGlobals(lua);
+        GetInputManager().RegisterLuaGlobals(lua);  // Use Window's InputManager
         mAudioEngine.RegisterLuaGlobals(lua);
         ScriptTypeRegistry::RegisterTypes(mScriptEngine);
 
         return true;
-    }
-
-    void Game::Render() {
-        mRenderContext.BeginFrame();
-        {
-            // Submit drawing commands here
-            if (mActiveScene) {
-                mActiveScene->Render(GetRenderContext());
-            }
-        }
-        mRenderContext.EndFrame();
-
-        mDebugManager.Render();
-        glfwSwapBuffers(mWindow);
-    }
-
-    void Game::SetWindowIcon(const fs::path& filename) const {
-        i32 width, height, channels;
-        u8* pixels = stbi_load(filename.string().c_str(), &width, &height, &channels, 4);  // Force RGBA
-
-        if (pixels) {
-            GLFWimage icon;
-            icon.width  = width;
-            icon.height = height;
-            icon.pixels = pixels;
-            glfwSetWindowIcon(mWindow, 1, &icon);
-            stbi_image_free(pixels);
-        } else {
-            Log::Error("Game", "Failed to load window icon: {}", filename.string());
-        }
-    }
-
-    void Game::GLFWResizeCallback(GLFWwindow* mWindow, i32 width, i32 height) {
-        auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
-        if (game) {
-            game->GetRenderContext().Resize(width, height);
-            game->OnResize(width, height);
-        }
-    }
-
-    void Game::GLFWKeyCallback(GLFWwindow* mWindow, i32 key, i32 scancode, i32 action, i32 mods) {
-        ASTERA_UNUSED(scancode);
-        ASTERA_UNUSED(mods);
-
-        auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
-        if (game) {
-            game->OnKey(key);
-            if (action == GLFW_PRESS)
-                game->OnKeyDown(key);
-            else if (action == GLFW_RELEASE)
-                game->OnKeyUp(key);
-        }
-    }
-
-    void Game::GLFWMouseButtonCallback(GLFWwindow* mWindow, i32 button, i32 action, i32 mods) {
-        ASTERA_UNUSED(mods);
-
-        auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
-        if (game) {
-            game->OnMouseButton(button);
-            if (action == GLFW_PRESS)
-                game->OnMouseButtonDown(button);
-            else if (action == GLFW_RELEASE)
-                game->OnMouseButtonUp(button);
-        }
-    }
-
-    void Game::GLFWMouseCursorCallback(GLFWwindow* mWindow, f64 xpos, f64 ypos) {
-        auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
-        if (game) {
-            game->OnMouseMove(xpos, ypos);
-        }
-    }
-
-    void Game::GLFWMouseScrollCallback(GLFWwindow* mWindow, f64 xoffset, f64 yoffset) {
-        auto* game = CAST<Game*>(glfwGetWindowUserPointer(mWindow));
-        if (game) {
-            game->OnMouseScroll(xoffset, yoffset);
-        }
     }
 }  // namespace Astera

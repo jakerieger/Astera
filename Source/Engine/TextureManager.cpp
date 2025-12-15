@@ -55,7 +55,7 @@ namespace Astera {
         return sCache.find(name)->second;
     }
 
-    TextureID TextureManager::Load(const fs::path& filename) {
+    TextureID TextureManager::Load(const Path& filename) {
         u32 id;
         glGenTextures(1, &id);
 

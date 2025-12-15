@@ -31,6 +31,7 @@
 #include "Color.hpp"
 #include "../Macros.hpp"
 #include "Log.hpp"
+#include "Math.hpp"
 
 #include <imgui.h>
 #include <backends/imgui_impl_opengl3.h>
@@ -53,7 +54,7 @@ namespace Astera {
         ImGui::NewFrame();
 
         if (mPerfOverlay)
-            DrawPerformanceOverlay();
+            DrawFrameStats();
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -83,7 +84,7 @@ namespace Astera {
         ImGui::DestroyContext();
     }
 
-    void ImGuiDebugLayer::DrawPerformanceOverlay() {
+    void ImGuiDebugLayer::DrawFrameStats() {
         ImGui::SetNextWindowPos({0, 0});
         ImGui::Begin("Performance",
                      nullptr,
@@ -92,14 +93,14 @@ namespace Astera {
 
         ImGui::Text("Frame Stats");
         ImGui::Separator();
-        ImGui::TextColored(Colors::Green.To<ImVec4>(), "Frame Rate     %.1f FPS", ImGui::GetIO().Framerate);
         ImGui::TextColored(Colors::Green.To<ImVec4>(),
-                           "Frame Time     %.6f ms",
-                           (1.f / ImGui::GetIO().Framerate) * 1000.f);
-        ImGui::TextColored(Colors::Magenta.To<ImVec4>(), "Main Thread    0 ms");
-        ImGui::TextColored(Colors::Magenta.To<ImVec4>(), "Render Thread  0 ms");
-        ImGui::TextColored(Colors::Cyan.To<ImVec4>(), "Draw Calls     0");
-        ImGui::TextColored(Colors::Cyan.To<ImVec4>(), "Entities       0");
+                           "Frame Rate     %u FPS",
+                           (u32)Math::Round(mFrameStats.frameRate));
+        ImGui::TextColored(Colors::Green.To<ImVec4>(), "Frame Time     %.2f ms", mFrameStats.frameTime);
+        ImGui::TextColored(Colors::Magenta.To<ImVec4>(), "Main Thread    %.2f ms", mFrameStats.mainThreadTime);
+        ImGui::TextColored(Colors::Magenta.To<ImVec4>(), "Render Thread  %.2f ms", mFrameStats.renderThreadTime);
+        ImGui::TextColored(Colors::Cyan.To<ImVec4>(), "Draw Calls     %u", mFrameStats.drawCalls);
+        ImGui::TextColored(Colors::Cyan.To<ImVec4>(), "Entities       %u", mFrameStats.entities);
 
         ImGui::End();
     }

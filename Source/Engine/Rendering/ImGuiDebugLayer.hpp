@@ -45,12 +45,45 @@ namespace Astera {
             mPerfOverlay = show;
         }
 
+        void UpdateFrameRate(f32 rate) {
+            mFrameStats.frameRate = rate;
+        }
+
+        void UpdateFrameTime(f32 time) {
+            mFrameStats.frameTime = time;
+        }
+
+        void UpdateMainThreadTime(f32 time) {
+            mFrameStats.mainThreadTime = time;
+        }
+
+        void UpdateRenderThreadTime(f32 time) {
+            mFrameStats.renderThreadTime = time;
+        }
+
+        void UpdateDrawCalls(u32 drawCalls) {
+            mFrameStats.drawCalls = drawCalls;
+        }
+
+        void UpdateEntities(u32 entities) {
+            mFrameStats.entities = entities;
+        }
+
     private:
         void InitImGui(GLFWwindow* window) const;
         void ShutdownImGui() const;
 
         bool mPerfOverlay {true};
 
-        static void DrawPerformanceOverlay();
+        struct FrameStats {
+            f32 frameRate {0.f};
+            f32 frameTime {0.f};
+            f32 mainThreadTime {0.f};
+            f32 renderThreadTime {0.f};
+            u32 drawCalls {0};
+            u32 entities {0};
+        } mFrameStats;
+
+        void DrawFrameStats();
     };
 }  // namespace Astera

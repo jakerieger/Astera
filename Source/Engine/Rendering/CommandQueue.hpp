@@ -118,5 +118,7 @@ namespace Astera {
         void operator()(const UpdateIndexBufferCommand& cmd) const;
         void operator()(const BindVertexArrayCommand& cmd) const;
         void operator()(const UnbindVertexArrayCommand& cmd) const;
+
+        inline static u32 gDrawCalls {0};
     };
 }  // namespace Astera

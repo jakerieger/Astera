@@ -51,7 +51,7 @@ namespace Astera {
         /// @brief Loads a texture from a file and adds it to the cache
         /// @param filename Path to the texture file to load
         /// @return The texture ID for the loaded texture
-        static TextureID Load(const fs::path& filename);
+        static TextureID Load(const Path& filename);
 
     private:
         /// @brief Cache mapping texture names to their texture IDs

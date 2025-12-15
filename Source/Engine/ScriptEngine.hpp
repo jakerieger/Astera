@@ -153,7 +153,7 @@ namespace Astera {
 
         /// @brief Executes a Lua script file
         /// @param filename Path to the Lua file to execute
-        void ExecuteFile(const fs::path& filename);
+        void ExecuteFile(const Path& filename);
 
         /// @brief Executes Lua source code
         /// @param source The Lua source code to execute

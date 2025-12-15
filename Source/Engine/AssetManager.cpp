@@ -98,11 +98,11 @@ namespace Astera {
         Initialize();
     }
 
-    void AssetManager::SetWorkingDirectory(const fs::path& path) {
+    void AssetManager::SetWorkingDirectory(const Path& path) {
         sWorkingDirectory = path;
     }
 
     bool AssetManager::sInitialized = false;
-    fs::path AssetManager::sWorkingDirectory {};
-    unordered_map<AssetID, fs::path> AssetManager::sAssetPaths {};
+    Path AssetManager::sWorkingDirectory {};
+    unordered_map<AssetID, Path> AssetManager::sAssetPaths {};
 }  // namespace Astera

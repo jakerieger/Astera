@@ -242,7 +242,7 @@ namespace Astera {
         }
     }
 
-    void SceneParser::SerializeDescriptorXML(const SceneDescriptor& descriptor, const fs::path& filename) {
+    void SceneParser::SerializeDescriptorXML(const SceneDescriptor& descriptor, const Path& filename) {
         throw ASTERA_NOT_IMPLEMENTED;
     }
 
@@ -294,7 +294,7 @@ namespace Astera {
     //     - Component Type ID (4 bytes) - enum/hash identifying component type
     //     - Component Data Size (4 bytes) - size of following data block
     //     - Component Data (variable)
-    void SceneParser::SerializeDescriptorBytes(const SceneDescriptor& descriptor, const fs::path& filename) {
+    void SceneParser::SerializeDescriptorBytes(const SceneDescriptor& descriptor, const Path& filename) {
         const Header header {.sceneNameLength = CAST<u32>(descriptor.name.length()),
                              .sceneName       = descriptor.name.c_str()};
 
@@ -314,7 +314,7 @@ namespace Astera {
         }
     }
 
-    void SceneParser::DeserializeDescriptorXML(const fs::path& filename, SceneDescriptor& outDescriptor) {
+    void SceneParser::DeserializeDescriptorXML(const Path& filename, SceneDescriptor& outDescriptor) {
         pugi::xml_document doc;
         const pugi::xml_parse_result result = doc.load_file(filename.string().c_str());
 

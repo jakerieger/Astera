@@ -59,7 +59,7 @@ namespace Astera {
         /// @brief Loads a sound file from disk
         /// @param filename Path to the sound file to load
         /// @return Unique sound ID for the loaded sound, or kInvalidSoundID on failure
-        SoundID LoadSound(const fs::path& filename);
+        SoundID LoadSound(const Path& filename);
 
         /// @brief Plays a previously loaded sound
         /// @param id The sound ID to play

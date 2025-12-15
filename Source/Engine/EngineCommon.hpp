@@ -115,6 +115,7 @@ namespace Astera {
     using Quat = glm::quat;
 
     namespace fs = std::filesystem;
+    using Path   = fs::path;
 
     using tl::expected;
     using tl::unexpected;

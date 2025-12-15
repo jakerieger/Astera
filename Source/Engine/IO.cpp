@@ -30,7 +30,7 @@
 #include <fstream>
 
 namespace Astera {
-    Result<vector<u8>> IO::ReadBytes(const fs::path& filename) {
+    Result<vector<u8>> IO::ReadBytes(const Path& filename) {
         if (!exists(filename)) {
             return unexpected(fmt::format("File does not exist: {}", filename.string()));
         }
@@ -51,7 +51,7 @@ namespace Astera {
         return bytes;
     }
 
-    Result<string> IO::ReadText(const fs::path& filename) {
+    Result<string> IO::ReadText(const Path& filename) {
         if (!exists(filename)) {
             return unexpected(fmt::format("File does not exist: {}", filename.string()));
         }

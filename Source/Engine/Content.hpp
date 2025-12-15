@@ -58,13 +58,13 @@ namespace Astera {
         static constexpr std::string_view kAudioRoot = "Audio";
 
         /// @brief Path to the game content root directory
-        inline static fs::path sContentRoot;
+        inline static Path sContentRoot;
 
         /// @brief Path to the engine content root directory.
         ///
         /// Defaults to the internal engine definition. ASTERA_ENGINE_CONTENT_DIR maps to the installed location when
         /// linking against Astera in an external project via find_package().
-        inline static fs::path sEngineContentRoot {ASTERA_ENGINE_CONTENT_DIR};
+        inline static Path sEngineContentRoot {ASTERA_ENGINE_CONTENT_DIR};
 
     public:
         /// @brief Retrieves the full path to a content file based on its type
@@ -74,8 +74,8 @@ namespace Astera {
         /// @return The full filesystem path to the requested content file
         /// @throws std::invalid_argument if an invalid content type is specified
         template<ContentType type, bool engine = false>
-        inline static fs::path Get(const string& filename) {
-            fs::path contentPath = sContentRoot;
+        inline static Path Get(const string& filename) {
+            Path contentPath = sContentRoot;
             if constexpr (engine) { contentPath = sEngineContentRoot; }
 
             if constexpr (type == ContentType::Audio) {
@@ -95,13 +95,13 @@ namespace Astera {
 
         /// @brief Sets the game content root path
         /// @param path The filesystem path to set as the content root
-        inline static void SetContentPath(const fs::path& path) {
+        inline static void SetContentPath(const Path& path) {
             sContentRoot = path;
         }
 
         /// @brief Sets the engine content root path
         /// @param path The filesystem path to set as the engine content root
-        inline static void SetEngineContentPath(const fs::path& path) {
+        inline static void SetEngineContentPath(const Path& path) {
             sEngineContentRoot = path;
         }
 
