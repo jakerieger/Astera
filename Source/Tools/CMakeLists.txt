@@ -1,3 +1,4 @@
 add_subdirectory(AsteraBin)
 add_subdirectory(AsteraCLI)
 add_subdirectory(AsteraPak)
+add_subdirectory(GLSLtoC)

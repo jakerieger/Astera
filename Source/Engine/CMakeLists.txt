@@ -1,3 +1,5 @@
+set(SHADER_INC_DIR ${ENGINE_ROOT}/Shaders/Include)
+
 file(GLOB ENGINE_SOURCES
     *.cpp
     **/*.cpp
@@ -6,6 +8,7 @@ file(GLOB ENGINE_SOURCES
 file(GLOB ENGINE_INCLUDES
     *.hpp
     **/*.hpp
+    ${SHADER_INC_DIR}/*.inc
 )
 
 add_library(Astera_Objects OBJECT

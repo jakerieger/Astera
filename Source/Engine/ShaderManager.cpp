@@ -30,6 +30,11 @@
 #include "Content.hpp"
 #include "Log.hpp"
 
+#pragma region Shaders
+#include "Shaders/Include/Sprite.inc"
+#include "Shaders/Include/SpriteInstanced.inc"
+#pragma endregion
+
 namespace Astera {
     unordered_map<string, shared_ptr<Shader>> ShaderManager::sCache;
     shared_ptr<ShaderManager> ShaderManager::sManager;
@@ -38,13 +43,8 @@ namespace Astera {
         sManager = make_shared<ShaderManager>();
 
         // Load internal shaders
-        const auto spriteVert          = Content::Get<ContentType::Shader, true>("Sprite.vert");
-        const auto spriteFrag          = Content::Get<ContentType::Shader, true>("Sprite.frag");
-        sCache[Shaders::Sprite.data()] = Shader::FromFile(spriteVert, spriteFrag);
-
-        const auto spriteInstVert               = Content::Get<ContentType::Shader, true>("SpriteInstanced.vert");
-        const auto spriteInstFrag               = Content::Get<ContentType::Shader, true>("SpriteInstanced.frag");
-        sCache[Shaders::SpriteInstanced.data()] = Shader::FromFile(spriteInstVert, spriteInstFrag);
+        sCache[Shaders::Sprite.data()]          = Shader::FromMemory(kSpriteVertex, kSpriteFragment);
+        sCache[Shaders::SpriteInstanced.data()] = Shader::FromMemory(kSpriteInstancedVertex, kSpriteInstancedFragment);
 
         Log::Debug("ShaderManager", "Loaded engine shaders");
     }
@@ -69,7 +69,8 @@ namespace Astera {
     }
 
     shared_ptr<ShaderManager> ShaderManager::GetManager() {
-        if (!sManager) Initialize();
+        if (!sManager)
+            Initialize();
         return sManager;
     }
 }  // namespace Astera

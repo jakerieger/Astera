@@ -20,6 +20,16 @@ public:
             Quit();
         }
     }
+
+    void OnKey(u32 keyCode) override {
+        using namespace Input;
+        if (keyCode == Keys::Space) {
+            auto nameSuffix = Math::RandomInt(0, std::numeric_limits<i32>::max());
+            const auto name = fmt::format("Entity_{}", nameSuffix);
+            // spawn new entity
+            GetActiveScene()->GetState().CreateEntity(name);
+        }
+    }
 };
 
 ASTERA_RUN_GAME(SpaceInvadersDemo)

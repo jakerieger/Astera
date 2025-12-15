@@ -1,5 +1,5 @@
 /*
- *  Filename: Shader.hpp
+ *  Filename: EngineConfig.hpp
  *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
@@ -27,49 +27,3 @@
  */
 
 #pragma once
-
-#include "EngineCommon.hpp"
-#include "GLUtils.hpp"
-#include "Log.hpp"
-
-namespace Astera {
-    class Shader {
-        friend class ShaderManager;
-
-    public:
-        Shader() = default;
-        ~Shader();
-
-        Shader(const Shader& other);
-        Shader& operator=(const Shader& other);
-
-        Shader(Shader&& other) noexcept;
-        Shader& operator=(Shader&& other) noexcept;
-
-        static shared_ptr<Shader> FromFile(const Path& vertexFile, const Path& fragFile);
-        static shared_ptr<Shader> FromMemory(const char* vertexSource, const char* fragSource);
-
-        void Bind();
-        void Unbind() const;
-
-        void SetUniform(const char* name, bool val);
-        void SetUniform(const char* name, i32 val);
-        void SetUniform(const char* name, f32 val);
-        void SetUniform(const char* name, const Vec2& val);
-        void SetUniform(const char* name, const Vec3& val);
-        void SetUniform(const char* name, const Vec4& val);
-        void SetUniform(const char* name, const Mat4& val);
-
-        ASTERA_KEEP GLuint GetProgramID() const {
-            return mProgram;
-        }
-
-    private:
-        GLuint mProgram {0};
-
-        void CompileShaders(const char* vertexSource, const char* fragSource);
-        void Destroy();
-
-        inline void VerifyLocation(i32 location, const char* name);
-    };
-}  // namespace Astera

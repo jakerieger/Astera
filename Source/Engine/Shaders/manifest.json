@@ -1,0 +1,17 @@
+{
+  "shaders": {
+    "rendering": [
+      {
+        "name": "Sprite",
+        "vertex": "GLSL/Sprite.vert",
+        "fragment": "GLSL/Sprite.frag"
+      },
+      {
+        "name": "SpriteInstanced",
+        "vertex": "GLSL/SpriteInstanced.vert",
+        "fragment": "GLSL/SpriteInstanced.frag"
+      }
+    ],
+    "compute": []
+  }
+}

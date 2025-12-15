@@ -68,11 +68,13 @@ namespace Astera {
         return shader;
     }
 
-    void Shader::FromMemory(const char* vertexSource, const char* fragSource) {
-        ASTERA_ASSERT(strlen(vertexSource) > 0);
-        ASTERA_ASSERT(strlen(fragSource) > 0);
+    shared_ptr<Shader> Shader::FromMemory(const char* vertexSource, const char* fragSource) {
+        ASTERA_ASSERT(vertexSource);
+        ASTERA_ASSERT(fragSource);
 
-        CompileShaders(vertexSource, fragSource);
+        auto shader = make_shared<Shader>();
+        shader->CompileShaders(vertexSource, fragSource);
+        return shader;
     }
 
     void Shader::Bind() {
