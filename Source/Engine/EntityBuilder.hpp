@@ -1,5 +1,5 @@
 /*
- *  Filename: Camera.hpp
+ *  Filename: EntityBuilder.hpp
  *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
@@ -29,9 +29,44 @@
 #pragma once
 
 #include "EngineCommon.hpp"
+#include "SceneState.hpp"
 
 namespace Astera {
-    struct Camera {
-        u32 value;
+    class EntityBuilder {
+        SceneState* mState;
+        Entity mEntity;
+
+        explicit EntityBuilder(SceneState* state) : mState(state), mEntity() {}
+
+    public:
+        ASTERA_CLASS_PREVENT_COPIES(EntityBuilder)
+
+        EntityBuilder(EntityBuilder&& other) noexcept
+            : mState(std::exchange(other.mState, nullptr)), mEntity(std::move(other.mEntity)) {};
+
+        EntityBuilder& operator=(EntityBuilder&& other) noexcept {
+            if (this != &other) {
+                mState  = std::exchange(other.mState, nullptr);
+                mEntity = std::move(other.mEntity);
+            }
+            return *this;
+        }
+
+        static EntityBuilder Create(SceneState* state, const string& name) {
+            EntityBuilder builder(state);
+            builder.mEntity = state->CreateEntity(name);
+            return std::move(builder);
+        }
+
+        ASTERA_KEEP Entity Build() const {
+            return mEntity;
+        }
+
+        EntityBuilder& SetTransform(const Vec2& pos, const Vec2& rot, const Vec2& scale);
+        EntityBuilder& AddBehavior(u64 id, const string& script);
+        EntityBuilder& AddSpriteRenderer(u32 textureId, const GeometryHandle& geometry);
+        EntityBuilder& AddRigidbody2D();
+        EntityBuilder& AddCollider2D();
+        EntityBuilder& AddCamera();
     };
 }  // namespace Astera

@@ -28,6 +28,10 @@
 
 #pragma once
 
+#include "EngineCommon.hpp"
+
 namespace Astera {
-    struct Collider2D {};
+    struct Collider2D {
+        u32 value;
+    };
 }  // namespace Astera

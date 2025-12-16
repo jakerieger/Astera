@@ -1,5 +1,5 @@
 /*
- *  Filename: Camera.hpp
+ *  Filename: EntityBuilder.cpp
  *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
@@ -26,12 +26,43 @@
  *  of the possibility of such damages.
  */
 
-#pragma once
-
-#include "EngineCommon.hpp"
+#include "EntityBuilder.hpp"
 
 namespace Astera {
-    struct Camera {
-        u32 value;
-    };
+    EntityBuilder& EntityBuilder::SetTransform(const Vec2& pos, const Vec2& rot, const Vec2& scale) {
+        auto& transform    = mState->GetTransform(mEntity);
+        transform.position = pos;
+        transform.rotation = rot;
+        transform.scale    = scale;
+        return *this;
+    }
+
+    EntityBuilder& EntityBuilder::AddBehavior(u64 id, const string& script) {
+        auto& behavior  = mState->AddComponent<Behavior>(mEntity);
+        behavior.id     = id;
+        behavior.script = script;
+        return *this;
+    }
+
+    EntityBuilder& EntityBuilder::AddSpriteRenderer(u32 textureId, const GeometryHandle& geometry) {
+        auto& sprite     = mState->AddComponent<SpriteRenderer>(mEntity);
+        sprite.textureId = textureId;
+        sprite.geometry  = geometry;
+        return *this;
+    }
+
+    EntityBuilder& EntityBuilder::AddRigidbody2D() {
+        auto& rigidbody = mState->AddComponent<Rigidbody2D>(mEntity);
+        return *this;
+    }
+
+    EntityBuilder& EntityBuilder::AddCollider2D() {
+        auto& collider = mState->AddComponent<Collider2D>(mEntity);
+        return *this;
+    }
+
+    EntityBuilder& EntityBuilder::AddCamera() {
+        auto& camera = mState->AddComponent<Camera>(mEntity);
+        return *this;
+    }
 }  // namespace Astera

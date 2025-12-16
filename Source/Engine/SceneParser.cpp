@@ -27,7 +27,6 @@
  */
 
 #include "SceneParser.hpp"
-
 #include "BinaryWriter.hpp"
 #include "Content.hpp"
 #include "Log.hpp"
@@ -36,6 +35,7 @@
 #include "TextureManager.hpp"
 #include "ScriptEngine.hpp"
 #include "IO.hpp"
+#include "EntityBuilder.hpp"
 #include "Components/Behavior.hpp"
 #include "Components/Rigidbody2D.hpp"
 

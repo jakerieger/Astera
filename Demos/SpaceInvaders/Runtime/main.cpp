@@ -1,4 +1,5 @@
 #include "AssetManager.hpp"
+#include "EntityBuilder.hpp"
 
 #include <AsteraCore.hpp>
 
@@ -11,7 +12,8 @@ public:
     }
 
     void LoadContent() override {
-        GetActiveScene()->Load(Content::Get<ContentType::Scene>("Main.xml"), GetScriptEngine());
+        auto* scene = GetActiveScene();
+        scene->Load(Content::Get<ContentType::Scene>("Main.xml"), GetScriptEngine());
     }
 
     void OnKeyDown(const u32 keyCode) override {

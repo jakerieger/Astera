@@ -84,6 +84,10 @@ namespace Astera {
             return mState;
         }
 
+        SceneState* GetStatePtr() {
+            return &mState;
+        }
+
         /// @brief Gets the scene asset manager
         /// @return Reference to the asset manager
         ASTERA_KEEP ResourceManager& GetResourceManager() {
