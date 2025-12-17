@@ -63,7 +63,7 @@ namespace Astera {
             else if (channels == 4)
                 format = GL_RGBA;
 
-            GLCall(glBindTexture, GL_TEXTURE_2D, id);
+            GLCall(glBindTexture, GL_TEXTURE_2D, texId);
             GLCall(glTexImage2D, GL_TEXTURE_2D, 0, CAST<int>(format), w, h, 0, format, GL_UNSIGNED_BYTE, data);
             GLCall(glGenerateMipmap, GL_TEXTURE_2D);
 

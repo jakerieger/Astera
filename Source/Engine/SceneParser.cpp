@@ -57,40 +57,40 @@ namespace Astera {
             rigidbody.force.y = node.attribute("y").as_float();
         }
         if (const auto node = rigidbodyNode.child("AngularVelocity")) {
-            rigidbody.angularVelocity = StringToF32Or(node.child_value(), 0);
+            rigidbody.angularVelocity = StringConvert::StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("AngularAcceleration")) {
-            rigidbody.angularAcceleration = StringToF32Or(node.child_value(), 0);
+            rigidbody.angularAcceleration = StringConvert::StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("Torque")) {
-            rigidbody.torque = StringToF32Or(node.child_value(), 0);
+            rigidbody.torque = StringConvert::StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("Mass")) {
-            rigidbody.mass = StringToF32Or(node.child_value(), 0);
+            rigidbody.mass = StringConvert::StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("InverseMass")) {
-            rigidbody.inverseMass = StringToF32Or(node.child_value(), 0);
+            rigidbody.inverseMass = StringConvert::StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("Inertia")) {
-            rigidbody.inertia = StringToF32Or(node.child_value(), 0);
+            rigidbody.inertia = StringConvert::StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("InverseInertia")) {
-            rigidbody.inverseInertia = StringToF32Or(node.child_value(), 0);
+            rigidbody.inverseInertia = StringConvert::StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("Restitution")) {
-            rigidbody.restitution = StringToF32Or(node.child_value(), 0);
+            rigidbody.restitution = StringConvert::StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("Friction")) {
-            rigidbody.friction = StringToF32Or(node.child_value(), 0);
+            rigidbody.friction = StringConvert::StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("LinearDamping")) {
-            rigidbody.linearDamping = StringToF32Or(node.child_value(), 0);
+            rigidbody.linearDamping = StringConvert::StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("AngularDamping")) {
-            rigidbody.angularDamping = StringToF32Or(node.child_value(), 0);
+            rigidbody.angularDamping = StringConvert::StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("GravityScale")) {
-            rigidbody.gravityScale = StringToF32Or(node.child_value(), 0);
+            rigidbody.gravityScale = StringConvert::StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("LockRotation")) {
             rigidbody.lockRotation = ASTERA_STREQ(node.child_value(), "true") ? true : false;
@@ -124,7 +124,7 @@ namespace Astera {
         SpriteRendererDescriptor renderer {};
 
         if (const auto node = spriteNode.child("Texture")) {
-            renderer.texture = StringToU64Or(node.child_value(), 0);
+            renderer.texture = StringConvert::StringToU64Or(node.child_value(), 0);
         }
 
         return renderer;
@@ -134,7 +134,7 @@ namespace Astera {
         BehaviorDescriptor behavior {};
 
         if (const auto node = behaviorNode.child("Script")) {
-            behavior.script = StringToU64Or(node.child_value(), 0);
+            behavior.script = StringConvert::StringToU64Or(node.child_value(), 0);
         }
 
         return behavior;

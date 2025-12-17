@@ -29,7 +29,6 @@
 #pragma once
 
 #include "EngineCommon.hpp"
-#include "Components/SpriteRenderer.hpp"
 #include "Rendering/VertexArray.hpp"
 
 #include <variant>
@@ -44,8 +43,8 @@ namespace Astera {
 
     /// @brief Command to draw a sprite/quad
     struct DrawSpriteCommand {
-        SpriteRenderer spriteRenderer;
-        Transform transform;
+        const struct SpriteRenderer* spriteRenderer;
+        const struct Transform* transform;
         Vec2 screenDimensions;
         Vec4 tintColor {1.0f, 1.0f, 1.0f, 1.0f};
     };

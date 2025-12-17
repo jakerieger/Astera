@@ -51,6 +51,8 @@ namespace Astera {
         }
         scriptEngine.LoadScript(*scriptSource, descriptor.script);
 
+         // TODO: Compile to, load from, and cache Lua byyecode
+
         // Update entity
         auto& state     = mScene->GetState();
         auto& behavior  = state.AddComponent<Behavior>(mEntity);
@@ -61,12 +63,13 @@ namespace Astera {
 
     EntityBuilder& EntityBuilder::AddSpriteRenderer(const SpriteRendererDescriptor& descriptor) {
         // Load texture
-        const auto loadResult = mScene->GetResourceManager().LoadResource<TextureSprite>(descriptor.texture);
+        auto& resourceManager = mScene->GetResourceManager();
+        const auto loadResult = resourceManager.LoadResource<TextureSprite>(descriptor.texture);
         if (!loadResult) {
             throw std::runtime_error("Could not load texture sprite");
         }
         const ResourceHandle<TextureSprite> spriteHandle =
-          mScene->GetResourceManager().FetchResource<TextureSprite>(descriptor.texture);
+          resourceManager.FetchResource<TextureSprite>(descriptor.texture);
 
         if (!spriteHandle->IsValid()) {
             throw std::runtime_error("Could not load texture sprite - handle invalid");

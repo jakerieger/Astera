@@ -60,4 +60,24 @@ namespace Astera {
         buffer << file.rdbuf();
         return buffer.str();
     }
+
+    bool IO::WriteBytes(const Path& filename, const vector<u8>& bytes) {
+        std::ofstream file(filename, std::ios::binary | std::ios::ate);
+        if (!file.is_open()) {
+            return false;
+        }
+        file << bytes.data();
+        file.close();
+        return true;
+    }
+
+    bool IO::WriteText(const Path& filename, const string& text) {
+        std::ofstream file(filename, std::ios::ate);
+        if (!file.is_open()) {
+            return false;
+        }
+        file << text.c_str();
+        file.close();
+        return true;
+    }
 }  // namespace Astera

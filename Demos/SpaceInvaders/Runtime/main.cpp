@@ -1,7 +1,6 @@
-#include "AssetManager.hpp"
-#include "EntityBuilder.hpp"
-
 #include <AsteraCore.hpp>
+#include <ScriptCompiler.hpp>
+#include <IO.hpp>
 
 using namespace Astera;
 
@@ -12,8 +11,9 @@ public:
     }
 
     void LoadContent() override {
-        auto* scene = GetActiveScene();
-        scene->Load(Content::Get<ContentType::Scene>("Main.xml"), GetScriptEngine());
+        const Path sceneFile = Content::Get<ContentType::Scene>("Main.xml");
+        auto* scene          = GetActiveScene();
+        scene->LoadXML(sceneFile, GetScriptEngine());
     }
 
     void OnKeyDown(const u32 keyCode) override {

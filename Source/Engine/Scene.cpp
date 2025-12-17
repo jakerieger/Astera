@@ -74,11 +74,11 @@ namespace Astera {
 
         const auto iter = mState.View<Transform, SpriteRenderer>().each();
         for (auto [entity, transform, sprite] : iter) {
-            context.Submit(DrawSpriteCommand {sprite, transform, {screenWidth, screenHeight}, {1, 1, 1, 1}});
+            context.Submit(DrawSpriteCommand {&sprite, &transform, {screenWidth, screenHeight}, {1, 1, 1, 1}});
         }
     }
 
-    void Scene::Load(const Path& filename, ScriptEngine& engine) {
+    void Scene::LoadXML(const Path& filename, ScriptEngine& engine) {
         mState.Reset();
         mResourceManager.Clear();
 
@@ -90,7 +90,7 @@ namespace Astera {
         Awake(engine);
     }
 
-    void Scene::Load(const vector<u8>& bytes, ScriptEngine& engine) {
+    void Scene::LoadBytes(const vector<u8>& bytes, ScriptEngine& engine) {
         mState.Reset();
         mResourceManager.Clear();
 

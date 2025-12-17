@@ -54,7 +54,7 @@ namespace Astera {
         ImGui::NewFrame();
 
         if (mPerfOverlay)
-            DrawFrameStats();
+            DrawStats();
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -84,7 +84,31 @@ namespace Astera {
         ImGui::DestroyContext();
     }
 
-    void ImGuiDebugLayer::DrawFrameStats() {
+    static f32 CalcBytesOOM(u64 value, string& suffix) {
+        if (value <= 1_KB) {
+            suffix = "B";
+            return f32(value);
+        }
+
+        if (value <= 1_MB) {
+            suffix = "KB";
+            return f32(value) / 1_KB;
+        }
+
+        if (value <= 1_GB) {
+            suffix = "MB";
+            return f32(value) / 1_MB;
+        }
+
+        if (value <= 1_TB) {
+            suffix = "GB";
+            return f32(value) / 1_GB;
+        }
+
+        return f32(value);
+    }
+
+    void ImGuiDebugLayer::DrawStats() const {
         ImGui::SetNextWindowPos({0, 0});
         ImGui::Begin("Performance",
                      nullptr,
@@ -100,7 +124,30 @@ namespace Astera {
         ImGui::TextColored(Colors::Magenta.To<ImVec4>(), "Main Thread    %.2f ms", mFrameStats.mainThreadTime);
         ImGui::TextColored(Colors::Magenta.To<ImVec4>(), "Render Thread  %.2f ms", mFrameStats.renderThreadTime);
         ImGui::TextColored(Colors::Cyan.To<ImVec4>(), "Draw Calls     %u", mFrameStats.drawCalls);
-        ImGui::TextColored(Colors::Cyan.To<ImVec4>(), "Entities       %u", mFrameStats.entities);
+
+        ImGui::Dummy({0, 20.f});
+        ImGui::Text("Scene Stats");
+        ImGui::Separator();
+        ImGui::TextColored(Colors::Cyan.To<ImVec4>(), "Entities                   %u", mSceneStats.entities);
+
+        string allocatedSuffix, freeSuffix, usedSuffix;
+        const f32 allocatedOOM = CalcBytesOOM(mSceneStats.resourcePoolAllocatedBytes, allocatedSuffix);
+        const f32 freeOOM =
+          CalcBytesOOM(mSceneStats.resourcePoolAllocatedBytes - mSceneStats.resourcePoolUsedBytes, freeSuffix);
+        const f32 usedOOM = CalcBytesOOM(mSceneStats.resourcePoolUsedBytes, usedSuffix);
+
+        ImGui::TextColored(Colors::Yellow.To<ImVec4>(),
+                           "Resource Pool (Allocated)  %.1f %s",
+                           allocatedOOM,
+                           allocatedSuffix.c_str());
+        ImGui::TextColored(Colors::Yellow.To<ImVec4>(),
+                           "Resource Pool (Free)       %.1f %s",
+                           freeOOM,
+                           freeSuffix.c_str());
+        ImGui::TextColored(Colors::Yellow.To<ImVec4>(),
+                           "Resource Pool (Used)       %.1f %s",
+                           usedOOM,
+                           usedSuffix.c_str());
 
         ImGui::End();
     }

@@ -1,5 +1,5 @@
 /*
- *  Filename: SpriteRenderer.cpp
+ *  Filename: ScriptCompiler.hpp
  *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
@@ -26,6 +26,24 @@
  *  of the possibility of such damages.
  */
 
-#include "SpriteRenderer.hpp"
+#pragma once
 
-namespace Astera {}  // namespace N
+#include "EngineCommon.hpp"
+
+extern "C" {
+#include <lua.h>
+}
+
+namespace Astera {
+    class ScriptCompiler {
+    public:
+        static Result<vector<u8>> Compile(const string& source, const string& chunkName);
+
+    private:
+        struct BytecodeWriterState {
+            vector<u8>* bytecode;
+        };
+
+        static i32 BytecodeWriter(lua_State* L, const void* p, size_t size, void* ud);
+    };
+}  // namespace Astera

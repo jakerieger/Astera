@@ -66,7 +66,15 @@ namespace Astera {
         }
 
         void UpdateEntities(u32 entities) {
-            mFrameStats.entities = entities;
+            mSceneStats.entities = entities;
+        }
+
+        void UpdateResourcePoolAllocatedBytes(u64 allocatedBytes) {
+            mSceneStats.resourcePoolAllocatedBytes = allocatedBytes;
+        }
+
+        void UpdateResourcePoolUsedBytes(u64 usedBytes) {
+            mSceneStats.resourcePoolUsedBytes = usedBytes;
         }
 
     private:
@@ -81,9 +89,14 @@ namespace Astera {
             f32 mainThreadTime {0.f};
             f32 renderThreadTime {0.f};
             u32 drawCalls {0};
-            u32 entities {0};
         } mFrameStats;
 
-        void DrawFrameStats();
+        void DrawStats() const;
+
+        struct SceneStats {
+            u32 entities {0};
+            u64 resourcePoolAllocatedBytes {0};
+            u64 resourcePoolUsedBytes {0};
+        } mSceneStats;
     };
 }  // namespace Astera

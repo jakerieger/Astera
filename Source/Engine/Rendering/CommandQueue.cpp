@@ -34,6 +34,9 @@
 #include "ShaderManager.hpp"
 #include "Rendering/GLUtils.hpp"
 
+#include "Components/Transform.hpp"
+#include "Components/SpriteRenderer.hpp"
+
 namespace Astera {
     void CommandQueue::ExecuteQueue() {
         CommandExecutor executor;
@@ -98,7 +101,7 @@ namespace Astera {
         std::ranges::stable_sort(spriteIndices, [this](size_t a, size_t b) {
             const auto& cmdA = std::get<DrawSpriteCommand>(mCommands[a]);
             const auto& cmdB = std::get<DrawSpriteCommand>(mCommands[b]);
-            return cmdA.spriteRenderer.sprite->GetID() < cmdB.spriteRenderer.sprite->GetID();
+            return cmdA.spriteRenderer->sprite->GetID() < cmdB.spriteRenderer->sprite->GetID();
         });
 
         // Build batches
@@ -110,7 +113,7 @@ namespace Astera {
             const auto& cmd = std::get<DrawSpriteCommand>(mCommands[idx]);
 
             // Start new batch if texture changes or batch is full
-            if (cmd.spriteRenderer.sprite->GetID() != currentTexture ||
+            if (cmd.spriteRenderer->sprite->GetID() != currentTexture ||
                 currentBatch.SpriteCount() >= kMaxSpritesPerBatch) {
                 if (!currentBatch.instances.empty()) {
                     mBatches.push_back(std::move(currentBatch));
@@ -118,12 +121,12 @@ namespace Astera {
                     currentBatch.quadVAO = mBatchVAO;
                 }
 
-                currentTexture         = cmd.spriteRenderer.sprite->GetID();
+                currentTexture         = cmd.spriteRenderer->sprite->GetID();
                 currentBatch.textureId = currentTexture;
             }
 
             // Calculate MVP transform for this sprite
-            const Mat4 model      = cmd.transform.GetMatrix();
+            const Mat4 model      = cmd.transform->GetMatrix();
             const Mat4 projection = Coordinates::CreateScreenProjection(cmd.screenDimensions.x, cmd.screenDimensions.y);
             const Mat4 mvp        = projection * model;
 
@@ -292,17 +295,17 @@ namespace Astera {
         ASTERA_ASSERT(spriteShader);
         spriteShader->Bind();
 
-        cmd.spriteRenderer.sprite->Bind(0);
+        cmd.spriteRenderer->sprite->Bind(0);
         spriteShader->SetUniform("uSprite", 0);
 
-        const Mat4 model      = cmd.transform.GetMatrix();
+        const Mat4 model      = cmd.transform->GetMatrix();
         const Mat4 projection = Coordinates::CreateScreenProjection(cmd.screenDimensions.x, cmd.screenDimensions.y);
         const Mat4 mvp        = projection * model;
         spriteShader->SetUniform("uMVP", mvp);
 
         const auto drawCmd = DrawIndexedCommand {
-          .vao           = cmd.spriteRenderer.geometry->GetVertexArray(),
-          .indexCount    = CAST<u32>(cmd.spriteRenderer.geometry->GetVertexArray()->GetIndexBuffer()->GetCount()),
+          .vao           = cmd.spriteRenderer->geometry->GetVertexArray(),
+          .indexCount    = CAST<u32>(cmd.spriteRenderer->geometry->GetVertexArray()->GetIndexBuffer()->GetCount()),
           .primitiveType = GL_TRIANGLES,
           .indexOffset   = 0};
 

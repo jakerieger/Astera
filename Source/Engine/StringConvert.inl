@@ -122,216 +122,221 @@ namespace Astera {
 
     }  // namespace detail
 
-    // ============================================================================
-    // String to Number Conversions
-    // ============================================================================
+    namespace StringConvert {
+        // ============================================================================
+        // String to Number Conversions
+        // ============================================================================
 
-    /// @brief Parse string to i32
-    /// @param str Input string (may have leading/trailing whitespace)
-    /// @param base Numeric base (2-36, default 10)
-    /// @return Result containing the value or error message
-    ASTERA_KEEP inline Result<i32> StringToI32(std::string_view str, int base = 10) noexcept {
-        return detail::ParseInteger<i32>(str, base);
-    }
+        /// @brief Parse string to i32
+        /// @param str Input string (may have leading/trailing whitespace)
+        /// @param base Numeric base (2-36, default 10)
+        /// @return Result containing the value or error message
+        ASTERA_KEEP inline Result<i32> StringToI32(std::string_view str, int base = 10) noexcept {
+            return detail::ParseInteger<i32>(str, base);
+        }
 
-    /// @brief Parse string to u32
-    /// @param str Input string (may have leading/trailing whitespace)
-    /// @param base Numeric base (2-36, default 10)
-    /// @return Result containing the value or error message
-    ASTERA_KEEP inline Result<u32> StringToU32(std::string_view str, int base = 10) noexcept {
-        return detail::ParseInteger<u32>(str, base);
-    }
+        /// @brief Parse string to u32
+        /// @param str Input string (may have leading/trailing whitespace)
+        /// @param base Numeric base (2-36, default 10)
+        /// @return Result containing the value or error message
+        ASTERA_KEEP inline Result<u32> StringToU32(std::string_view str, int base = 10) noexcept {
+            return detail::ParseInteger<u32>(str, base);
+        }
 
-    /// @brief Parse string to i64
-    /// @param str Input string (may have leading/trailing whitespace)
-    /// @param base Numeric base (2-36, default 10)
-    /// @return Result containing the value or error message
-    ASTERA_KEEP inline Result<i64> StringToI64(std::string_view str, int base = 10) noexcept {
-        return detail::ParseInteger<i64>(str, base);
-    }
+        /// @brief Parse string to i64
+        /// @param str Input string (may have leading/trailing whitespace)
+        /// @param base Numeric base (2-36, default 10)
+        /// @return Result containing the value or error message
+        ASTERA_KEEP inline Result<i64> StringToI64(std::string_view str, int base = 10) noexcept {
+            return detail::ParseInteger<i64>(str, base);
+        }
 
-    /// @brief Parse string to u64
-    /// @param str Input string (may have leading/trailing whitespace)
-    /// @param base Numeric base (2-36, default 10)
-    /// @return Result containing the value or error message
-    ASTERA_KEEP inline Result<u64> StringToU64(std::string_view str, int base = 10) noexcept {
-        return detail::ParseInteger<u64>(str, base);
-    }
+        /// @brief Parse string to u64
+        /// @param str Input string (may have leading/trailing whitespace)
+        /// @param base Numeric base (2-36, default 10)
+        /// @return Result containing the value or error message
+        ASTERA_KEEP inline Result<u64> StringToU64(std::string_view str, int base = 10) noexcept {
+            return detail::ParseInteger<u64>(str, base);
+        }
 
-    /// @brief Parse string to f32
-    /// @param str Input string (may have leading/trailing whitespace)
-    /// @param fmt Format specifier (general, scientific, fixed, hex)
-    /// @return Result containing the value or error message
-    ASTERA_KEEP inline Result<f32> StringToF32(std::string_view str,
-                                               std::chars_format fmt = std::chars_format::general) noexcept {
-        return detail::ParseFloat<f32>(str, fmt);
-    }
+        /// @brief Parse string to f32
+        /// @param str Input string (may have leading/trailing whitespace)
+        /// @param fmt Format specifier (general, scientific, fixed, hex)
+        /// @return Result containing the value or error message
+        ASTERA_KEEP inline Result<f32> StringToF32(std::string_view str,
+                                                   std::chars_format fmt = std::chars_format::general) noexcept {
+            return detail::ParseFloat<f32>(str, fmt);
+        }
 
-    /// @brief Parse string to f64
-    /// @param str Input string (may have leading/trailing whitespace)
-    /// @param fmt Format specifier (general, scientific, fixed, hex)
-    /// @return Result containing the value or error message
-    ASTERA_KEEP inline Result<f64> StringToF64(std::string_view str,
-                                               std::chars_format fmt = std::chars_format::general) noexcept {
-        return detail::ParseFloat<f64>(str, fmt);
-    }
+        /// @brief Parse string to f64
+        /// @param str Input string (may have leading/trailing whitespace)
+        /// @param fmt Format specifier (general, scientific, fixed, hex)
+        /// @return Result containing the value or error message
+        ASTERA_KEEP inline Result<f64> StringToF64(std::string_view str,
+                                                   std::chars_format fmt = std::chars_format::general) noexcept {
+            return detail::ParseFloat<f64>(str, fmt);
+        }
 
-    // ============================================================================
-    // Number to String Conversions
-    // ============================================================================
+        // ============================================================================
+        // Number to String Conversions
+        // ============================================================================
 
-    /// @brief Convert i32 to string
-    /// @param value The value to convert
-    /// @param base Numeric base (2-36, default 10)
-    /// @return String representation
-    ASTERA_KEEP inline string ToString(i32 value, int base = 10) {
-        std::array<char, detail::MaxCharsSize<i32>()> buffer;
-        auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, base);
-        return string(buffer.data(), ptr);
-    }
+        /// @brief Convert i32 to string
+        /// @param value The value to convert
+        /// @param base Numeric base (2-36, default 10)
+        /// @return String representation
+        ASTERA_KEEP inline string ToString(i32 value, int base = 10) {
+            std::array<char, detail::MaxCharsSize<i32>()> buffer;
+            auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, base);
+            return string(buffer.data(), ptr);
+        }
 
-    /// @brief Convert u32 to string
-    /// @param value The value to convert
-    /// @param base Numeric base (2-36, default 10)
-    /// @return String representation
-    ASTERA_KEEP inline string ToString(u32 value, int base = 10) {
-        std::array<char, detail::MaxCharsSize<u32>()> buffer;
-        auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, base);
-        return string(buffer.data(), ptr);
-    }
+        /// @brief Convert u32 to string
+        /// @param value The value to convert
+        /// @param base Numeric base (2-36, default 10)
+        /// @return String representation
+        ASTERA_KEEP inline string ToString(u32 value, int base = 10) {
+            std::array<char, detail::MaxCharsSize<u32>()> buffer;
+            auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, base);
+            return string(buffer.data(), ptr);
+        }
 
-    /// @brief Convert i64 to string
-    /// @param value The value to convert
-    /// @param base Numeric base (2-36, default 10)
-    /// @return String representation
-    ASTERA_KEEP inline string ToString(i64 value, int base = 10) {
-        std::array<char, detail::MaxCharsSize<i64>()> buffer;
-        auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, base);
-        return string(buffer.data(), ptr);
-    }
+        /// @brief Convert i64 to string
+        /// @param value The value to convert
+        /// @param base Numeric base (2-36, default 10)
+        /// @return String representation
+        ASTERA_KEEP inline string ToString(i64 value, int base = 10) {
+            std::array<char, detail::MaxCharsSize<i64>()> buffer;
+            auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, base);
+            return string(buffer.data(), ptr);
+        }
 
-    /// @brief Convert u64 to string
-    /// @param value The value to convert
-    /// @param base Numeric base (2-36, default 10)
-    /// @return String representation
-    ASTERA_KEEP inline string ToString(u64 value, int base = 10) {
-        std::array<char, detail::MaxCharsSize<u64>()> buffer;
-        auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, base);
-        return string(buffer.data(), ptr);
-    }
+        /// @brief Convert u64 to string
+        /// @param value The value to convert
+        /// @param base Numeric base (2-36, default 10)
+        /// @return String representation
+        ASTERA_KEEP inline string ToString(u64 value, int base = 10) {
+            std::array<char, detail::MaxCharsSize<u64>()> buffer;
+            auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, base);
+            return string(buffer.data(), ptr);
+        }
 
-    /// @brief Convert f32 to string
-    /// @param value The value to convert
-    /// @param fmt Format specifier (general, scientific, fixed, hex)
-    /// @return String representation
-    ASTERA_KEEP inline string ToString(f32 value, std::chars_format fmt = std::chars_format::general) {
-        std::array<char, detail::MaxCharsSize<f32>()> buffer;
-        auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, fmt);
-        return string(buffer.data(), ptr);
-    }
+        /// @brief Convert f32 to string
+        /// @param value The value to convert
+        /// @param fmt Format specifier (general, scientific, fixed, hex)
+        /// @return String representation
+        ASTERA_KEEP inline string ToString(f32 value, std::chars_format fmt = std::chars_format::general) {
+            std::array<char, detail::MaxCharsSize<f32>()> buffer;
+            auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, fmt);
+            return string(buffer.data(), ptr);
+        }
 
-    /// @brief Convert f32 to string with precision
-    /// @param value The value to convert
-    /// @param precision Number of digits
-    /// @param fmt Format specifier
-    /// @return String representation
-    ASTERA_KEEP inline string ToString(f32 value, int precision, std::chars_format fmt = std::chars_format::general) {
-        std::array<char, detail::MaxCharsSize<f32>()> buffer;
-        auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, fmt, precision);
-        return string(buffer.data(), ptr);
-    }
+        /// @brief Convert f32 to string with precision
+        /// @param value The value to convert
+        /// @param precision Number of digits
+        /// @param fmt Format specifier
+        /// @return String representation
+        ASTERA_KEEP inline string
+        ToString(f32 value, int precision, std::chars_format fmt = std::chars_format::general) {
+            std::array<char, detail::MaxCharsSize<f32>()> buffer;
+            auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, fmt, precision);
+            return string(buffer.data(), ptr);
+        }
 
-    /// @brief Convert f64 to string
-    /// @param value The value to convert
-    /// @param fmt Format specifier (general, scientific, fixed, hex)
-    /// @return String representation
-    ASTERA_KEEP inline string ToString(f64 value, std::chars_format fmt = std::chars_format::general) {
-        std::array<char, detail::MaxCharsSize<f64>()> buffer;
-        auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, fmt);
-        return string(buffer.data(), ptr);
-    }
+        /// @brief Convert f64 to string
+        /// @param value The value to convert
+        /// @param fmt Format specifier (general, scientific, fixed, hex)
+        /// @return String representation
+        ASTERA_KEEP inline string ToString(f64 value, std::chars_format fmt = std::chars_format::general) {
+            std::array<char, detail::MaxCharsSize<f64>()> buffer;
+            auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, fmt);
+            return string(buffer.data(), ptr);
+        }
 
-    /// @brief Convert f64 to string with precision
-    /// @param value The value to convert
-    /// @param precision Number of digits
-    /// @param fmt Format specifier
-    /// @return String representation
-    ASTERA_KEEP inline string ToString(f64 value, int precision, std::chars_format fmt = std::chars_format::general) {
-        std::array<char, detail::MaxCharsSize<f64>()> buffer;
-        auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, fmt, precision);
-        return string(buffer.data(), ptr);
-    }
+        /// @brief Convert f64 to string with precision
+        /// @param value The value to convert
+        /// @param precision Number of digits
+        /// @param fmt Format specifier
+        /// @return String representation
+        ASTERA_KEEP inline string
+        ToString(f64 value, int precision, std::chars_format fmt = std::chars_format::general) {
+            std::array<char, detail::MaxCharsSize<f64>()> buffer;
+            auto [ptr, ec] = std::to_chars(buffer.data(), buffer.data() + buffer.size(), value, fmt, precision);
+            return string(buffer.data(), ptr);
+        }
 
-    // ============================================================================
-    // Convenience Functions (with default values)
-    // ============================================================================
+        // ============================================================================
+        // Convenience Functions (with default values)
+        // ============================================================================
 
-    /// @brief Parse string to i32, returning default on failure
-    ASTERA_KEEP inline i32 StringToI32Or(std::string_view str, i32 defaultValue, int base = 10) noexcept {
-        return StringToI32(str, base).value_or(defaultValue);
-    }
+        /// @brief Parse string to i32, returning default on failure
+        ASTERA_KEEP inline i32 StringToI32Or(std::string_view str, i32 defaultValue, int base = 10) noexcept {
+            return StringToI32(str, base).value_or(defaultValue);
+        }
 
-    /// @brief Parse string to u32, returning default on failure
-    ASTERA_KEEP inline u32 StringToU32Or(std::string_view str, u32 defaultValue, int base = 10) noexcept {
-        return StringToU32(str, base).value_or(defaultValue);
-    }
+        /// @brief Parse string to u32, returning default on failure
+        ASTERA_KEEP inline u32 StringToU32Or(std::string_view str, u32 defaultValue, int base = 10) noexcept {
+            return StringToU32(str, base).value_or(defaultValue);
+        }
 
-    /// @brief Parse string to i64, returning default on failure
-    ASTERA_KEEP inline i64 StringToI64Or(std::string_view str, i64 defaultValue, int base = 10) noexcept {
-        return StringToI64(str, base).value_or(defaultValue);
-    }
+        /// @brief Parse string to i64, returning default on failure
+        ASTERA_KEEP inline i64 StringToI64Or(std::string_view str, i64 defaultValue, int base = 10) noexcept {
+            return StringToI64(str, base).value_or(defaultValue);
+        }
 
-    /// @brief Parse string to u64, returning default on failure
-    ASTERA_KEEP inline u64 StringToU64Or(std::string_view str, u64 defaultValue, int base = 10) noexcept {
-        return StringToU64(str, base).value_or(defaultValue);
-    }
+        /// @brief Parse string to u64, returning default on failure
+        ASTERA_KEEP inline u64 StringToU64Or(std::string_view str, u64 defaultValue, int base = 10) noexcept {
+            return StringToU64(str, base).value_or(defaultValue);
+        }
 
-    /// @brief Parse string to f32, returning default on failure
-    ASTERA_KEEP inline f32
-    StringToF32Or(std::string_view str, f32 defaultValue, std::chars_format fmt = std::chars_format::general) noexcept {
-        return StringToF32(str, fmt).value_or(defaultValue);
-    }
+        /// @brief Parse string to f32, returning default on failure
+        ASTERA_KEEP inline f32 StringToF32Or(std::string_view str,
+                                             f32 defaultValue,
+                                             std::chars_format fmt = std::chars_format::general) noexcept {
+            return StringToF32(str, fmt).value_or(defaultValue);
+        }
 
-    /// @brief Parse string to f64, returning default on failure
-    ASTERA_KEEP inline f64
-    StringToF64Or(std::string_view str, f64 defaultValue, std::chars_format fmt = std::chars_format::general) noexcept {
-        return StringToF64(str, fmt).value_or(defaultValue);
-    }
+        /// @brief Parse string to f64, returning default on failure
+        ASTERA_KEEP inline f64 StringToF64Or(std::string_view str,
+                                             f64 defaultValue,
+                                             std::chars_format fmt = std::chars_format::general) noexcept {
+            return StringToF64(str, fmt).value_or(defaultValue);
+        }
 
-    // ============================================================================
-    // Validation Helpers
-    // ============================================================================
+        // ============================================================================
+        // Validation Helpers
+        // ============================================================================
 
-    /// @brief Check if string is a valid i32 representation
-    ASTERA_KEEP inline bool IsValidI32(std::string_view str, int base = 10) noexcept {
-        return StringToI32(str, base).has_value();
-    }
+        /// @brief Check if string is a valid i32 representation
+        ASTERA_KEEP inline bool IsValidI32(std::string_view str, int base = 10) noexcept {
+            return StringToI32(str, base).has_value();
+        }
 
-    /// @brief Check if string is a valid u32 representation
-    ASTERA_KEEP inline bool IsValidU32(std::string_view str, int base = 10) noexcept {
-        return StringToU32(str, base).has_value();
-    }
+        /// @brief Check if string is a valid u32 representation
+        ASTERA_KEEP inline bool IsValidU32(std::string_view str, int base = 10) noexcept {
+            return StringToU32(str, base).has_value();
+        }
 
-    /// @brief Check if string is a valid i64 representation
-    ASTERA_KEEP inline bool IsValidI64(std::string_view str, int base = 10) noexcept {
-        return StringToI64(str, base).has_value();
-    }
+        /// @brief Check if string is a valid i64 representation
+        ASTERA_KEEP inline bool IsValidI64(std::string_view str, int base = 10) noexcept {
+            return StringToI64(str, base).has_value();
+        }
 
-    /// @brief Check if string is a valid u64 representation
-    ASTERA_KEEP inline bool IsValidU64(std::string_view str, int base = 10) noexcept {
-        return StringToU64(str, base).has_value();
-    }
+        /// @brief Check if string is a valid u64 representation
+        ASTERA_KEEP inline bool IsValidU64(std::string_view str, int base = 10) noexcept {
+            return StringToU64(str, base).has_value();
+        }
 
-    /// @brief Check if string is a valid f32 representation
-    ASTERA_KEEP inline bool IsValidF32(std::string_view str,
-                                       std::chars_format fmt = std::chars_format::general) noexcept {
-        return StringToF32(str, fmt).has_value();
-    }
+        /// @brief Check if string is a valid f32 representation
+        ASTERA_KEEP inline bool IsValidF32(std::string_view str,
+                                           std::chars_format fmt = std::chars_format::general) noexcept {
+            return StringToF32(str, fmt).has_value();
+        }
 
-    /// @brief Check if string is a valid f64 representation
-    ASTERA_KEEP inline bool IsValidF64(std::string_view str,
-                                       std::chars_format fmt = std::chars_format::general) noexcept {
-        return StringToF64(str, fmt).has_value();
-    }
-
+        /// @brief Check if string is a valid f64 representation
+        ASTERA_KEEP inline bool IsValidF64(std::string_view str,
+                                           std::chars_format fmt = std::chars_format::general) noexcept {
+            return StringToF64(str, fmt).has_value();
+        }
+    };  // namespace StringConvert
 }  // namespace Astera

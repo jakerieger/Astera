@@ -147,6 +147,10 @@ namespace Astera {
         mImGuiDebugLayer->UpdateRenderThreadTime((f32)fT / 2.f);
         mImGuiDebugLayer->UpdateEntities(mActiveScene->GetState().GetEntityCount());
 
+        auto& resMgr = mActiveScene->GetResourceManager();
+        mImGuiDebugLayer->UpdateResourcePoolAllocatedBytes(resMgr.GetAllocator().GetSize());
+        mImGuiDebugLayer->UpdateResourcePoolUsedBytes(resMgr.GetAllocator().GetUsedMemory());
+
         if (mActiveScene) {
             mActiveScene->Update(clock, GetScriptEngine());
 

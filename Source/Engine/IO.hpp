@@ -37,5 +37,8 @@ namespace Astera {
     public:
         static Result<vector<u8>> ReadBytes(const Path& filename);
         static Result<string> ReadText(const Path& filename);
+
+        static bool WriteBytes(const Path& filename, const vector<u8>& bytes);
+        static bool WriteText(const Path& filename, const string& text);
     };
 }  // namespace Astera
