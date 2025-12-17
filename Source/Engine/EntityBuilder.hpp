@@ -70,5 +70,6 @@ namespace Astera {
         EntityBuilder& AddRigidbody2D(const Rigidbody2DDescriptor& descriptor);
         EntityBuilder& AddCollider2D(const Collider2DDescriptor& descriptor);
         EntityBuilder& AddCamera(const CameraDescriptor& descriptor);
+        EntityBuilder& AddSoundSource(const SoundSourceDescriptor& descriptor);
     };
 }  // namespace Astera

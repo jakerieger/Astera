@@ -32,6 +32,8 @@
 #include "Content.hpp"
 #include "Log.hpp"
 #include "ScriptEngine.hpp"
+#include "Sound.hpp"
+#include "Components/SoundSource.hpp"
 
 namespace Astera {
     EntityBuilder& EntityBuilder::SetTransform(const TransformDescriptor& descriptor) {
@@ -51,7 +53,7 @@ namespace Astera {
         }
         scriptEngine.LoadScript(*scriptSource, descriptor.script);
 
-         // TODO: Compile to, load from, and cache Lua byyecode
+        // TODO: Compile to, load from, and cache Lua byyecode
 
         // Update entity
         auto& state     = mScene->GetState();
@@ -92,6 +94,25 @@ namespace Astera {
     }
 
     EntityBuilder& EntityBuilder::AddCamera(const CameraDescriptor& descriptor) {
+        return *this;
+    }
+
+    EntityBuilder& EntityBuilder::AddSoundSource(const SoundSourceDescriptor& descriptor) {
+        auto& resMgr      = mScene->GetResourceManager();
+        const auto result = resMgr.LoadResource<Sound>(descriptor.sound);
+        if (!result) {
+            throw std::runtime_error("Could not load sound");
+        }
+
+        const ResourceHandle<Sound> soundHandle = resMgr.FetchResource<Sound>(descriptor.sound);
+        if (!soundHandle.IsValid()) {
+            throw std::runtime_error("Could not load sound. Resource handle invalid.");
+        }
+
+        auto& sound  = mScene->GetState().AddComponent<SoundSource>(mEntity);
+        sound.sound  = soundHandle;
+        sound.volume = descriptor.volume;
+
         return *this;
     }
 }  // namespace Astera

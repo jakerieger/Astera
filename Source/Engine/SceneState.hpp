@@ -37,6 +37,7 @@
 #include "Components/Behavior.hpp"
 #include "Components/Rigidbody2D.hpp"
 #include "Components/Collider2D.hpp"
+#include "Components/SoundSource.hpp"
 #pragma endregion
 
 #include "Vendor/entt/entt.hpp"
@@ -50,7 +51,8 @@ namespace Astera {
     template<typename T>
     concept ValidComponent =
       std::is_same_v<T, Transform> || std::is_same_v<T, SpriteRenderer> || std::is_same_v<T, Camera> ||
-      std::is_same_v<T, Behavior> || std::is_same_v<T, Rigidbody2D> || std::is_same_v<T, Collider2D>;
+      std::is_same_v<T, Behavior> || std::is_same_v<T, Rigidbody2D> || std::is_same_v<T, Collider2D> ||
+      std::is_same_v<T, SoundSource>;
 
     /// @brief Holds the current state of the scene such as entities, components, and scene-specific components like
     /// cameras and audio

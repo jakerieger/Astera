@@ -1,5 +1,5 @@
 /*
- *  Filename: Asset.hpp
+ *  Filename: Sound.hpp
  *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
@@ -31,29 +31,22 @@
 #include "EngineCommon.hpp"
 
 namespace Astera {
-    /// @brief Type alias for asset IDs. IDs use the highest 8-bits to store the asset type and the lower 56 bits as the
-    /// unique identifier
-    using AssetID = u64;
+    class Sound {
+    public:
+        ~Sound() {
+            delete[] mData;
+            mData = nullptr;
+        }
 
-    /// @brief Single 8-bit identifier used to distinguish asset data types
-    enum class AssetType : u8 {
-        Audio          = 0,
-        BinaryData     = 1,
-        ParticleSystem = 2,
-        Scene          = 3,
-        Script         = 4,
-        Shader         = 5,
-        Sprite         = 6,
-        SpriteSheet    = 7,
-        TextData       = 8,
+    private:
+        friend class SoundLoader;
+
+        u8* mData;
+        size_t mDataSize;
+
+        explicit Sound(const u8* data, size_t size) : mDataSize(size) {
+            mData = new u8[size];
+            std::memcpy(mData, data, mDataSize);
+        }
     };
-
-    inline constexpr u64 kAssetIdBitmask     = 0x00FFFFFFFFFFFFFF;
-    inline constexpr AssetID kInvalidAssetID = 0;
-
-    /// @brief Get the asset type from its ID
-    /// @param id Asset ID
-    inline AssetType AssetTypeFromID(u64 id) {
-        return CAST<AssetType>(id & 0xFF);  // Mask the last 8 bits
-    }
 }  // namespace Astera

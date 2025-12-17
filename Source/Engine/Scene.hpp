@@ -34,6 +34,7 @@
 #include "ScriptEngine.hpp"
 #include "ResourceManager.hpp"
 #include "TextureLoader.hpp"
+#include "SoundLoader.hpp"
 #include "Rendering/RenderContext.hpp"
 
 namespace Astera {
@@ -43,7 +44,7 @@ namespace Astera {
 
     public:
         explicit Scene(RenderContext& renderContext) : mResourceManager(renderContext) {
-            mResourceManager.RegisterLoaders<TextureLoaderSprite>();
+            mResourceManager.RegisterLoaders<TextureLoaderSprite, SoundLoader>();
         }
 
         ~Scene();

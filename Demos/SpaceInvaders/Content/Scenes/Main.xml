@@ -31,5 +31,19 @@
                 </Behavior>
             </Components>
         </Entity>
+        <Entity id="2" name="AudioManager">
+            <Components>
+                <Transform>
+                    <Position x="0" y="0"/>
+                    <Rotation x="0" y="0"/>
+                    <Scale x="0" y="0"/>
+                </Transform>
+                <SoundSource>
+                    <Name>Shoot</Name>
+                    <Source>14921076903767314432</Source>
+                    <Volume>1.0</Volume>
+                </SoundSource>
+            </Components>
+        </Entity>
     </Entities>
 </Scene>

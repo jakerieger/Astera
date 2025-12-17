@@ -32,6 +32,12 @@
 #include "EngineCommon.hpp"
 
 namespace Astera {
+    struct SoundSourceDescriptor {
+        string name;
+        AssetID sound;
+        f32 volume;
+    };
+
     struct CameraDescriptor {};
 
     struct Collider2DDescriptor {};
@@ -77,6 +83,9 @@ namespace Astera {
         optional<SpriteRendererDescriptor> spriteRenderer {};
         optional<BehaviorDescriptor> behavior {};
         optional<Rigidbody2DDescriptor> rigidbody2D {};
+        optional<Collider2DDescriptor> collider2D {};
+        optional<CameraDescriptor> camera {};
+        optional<SoundSourceDescriptor> soundSource {};
     };
 
     struct SceneDescriptor {

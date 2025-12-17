@@ -38,6 +38,24 @@
 #include <pugixml.hpp>
 
 namespace Astera {
+    static SoundSourceDescriptor ParseSoundSourceComponentXML(const pugi::xml_node& soundSourceNode) {
+        SoundSourceDescriptor sound {};
+
+        if (const auto node = soundSourceNode.child("Name")) {
+            sound.name = node.child_value();
+        }
+
+        if (const auto node = soundSourceNode.child("Source")) {
+            sound.sound = StringConvert::StringToU64Or(node.child_value(), kInvalidAssetID);
+        }
+
+        if (const auto node = soundSourceNode.child("Volume")) {
+            sound.volume = StringConvert::StringToF32Or(node.child_value(), 0.f);
+        }
+
+        return sound;
+    }
+
     static Rigidbody2DDescriptor ParseRigidbodyComponentXML(const pugi::xml_node& rigidbodyNode) {
         Rigidbody2DDescriptor rigidbody {};
 
@@ -166,6 +184,18 @@ namespace Astera {
         if (const auto node = componentsNode.child("Behavior")) {
             entity.behavior = ParseBehaviorComponentXML(node);
         }
+
+        if (const auto node = componentsNode.child("Collider2D")) {
+            entity.collider2D = {};  // TODO
+        }
+
+        if (const auto node = componentsNode.child("Camera")) {
+            entity.camera = {};  // TODO
+        }
+
+        if (const auto node = componentsNode.child("SoundSource")) {
+            entity.soundSource = ParseSoundSourceComponentXML(node);
+        }
     }
 
     void SceneParser::StateToDescriptor(const SceneState& state, SceneDescriptor& outDescriptor) {
@@ -187,6 +217,18 @@ namespace Astera {
 
             if (entity.rigidbody2D.has_value()) {
                 builder.AddRigidbody2D(*entity.rigidbody2D);
+            }
+
+            if (entity.collider2D.has_value()) {
+                builder.AddCollider2D(*entity.collider2D);
+            }
+
+            if (entity.camera.has_value()) {
+                builder.AddCamera(*entity.camera);
+            }
+
+            if (entity.soundSource.has_value()) {
+                builder.AddSoundSource(*entity.soundSource);
             }
 
             const auto newEntity = builder.Build();
