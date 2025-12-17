@@ -31,18 +31,22 @@
 #include "ResourceManager.hpp"
 #include "Sound.hpp"
 
+#include <sndfile.hh>
+
 namespace Astera {
     class SoundLoader final : public ResourceLoader<Sound> {
         Sound LoadImpl(RenderContext& context, ArenaAllocator& allocator, const u64 id) override {
-            const auto bytes = AssetManager::GetAssetData(id);
-            if (!bytes.has_value()) {
-                throw std::runtime_error(fmt::format("Failed to get sound asset: {}", bytes.error()));
+            const auto assetPath = AssetManager::GetAssetPath(id);
+            if (!assetPath.has_value()) {
+                throw std::runtime_error(fmt::format("Failed to get sound asset: {}", assetPath.error()));
             }
 
-            auto* arenaData = (u8*)allocator.Allocate(bytes->size(), alignof(u8));
-            std::memcpy(arenaData, bytes->data(), bytes->size());
+            SndfileHandle sndfileHandle(assetPath->string());
+            const i64 bufferSize = sndfileHandle.frames() * sndfileHandle.channels();
+            auto* buffer         = (f32*)allocator.Allocate(bufferSize, alignof(f32));
+            sndfileHandle.readf(buffer, sndfileHandle.frames());
 
-            return Sound {arenaData, bytes->size()};
+            return Sound {buffer, size_t(bufferSize)};
         }
     };
 }  // namespace Astera

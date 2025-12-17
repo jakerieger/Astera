@@ -21,6 +21,7 @@ find_package(OpenSSL REQUIRED)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LUAJIT REQUIRED luajit)
+pkg_check_modules(SNDFILE REQUIRED sndfile)
 
 if (MSVC)
     find_package(glfw3 REQUIRED)
@@ -34,9 +35,10 @@ set(ASTERA_LIBS
     spdlog::spdlog
     pugixml
     ${LUAJIT_LIBRARIES}
+    ${SNDFILE_LIBRARIES}
 )
 
-include_directories(${LUAJIT_INCLUDE_DIRS})
+include_directories(${LUAJIT_INCLUDE_DIRS} ${SNDFILE_INCLUDE_DIRS})
 link_directories(${LUAJIT_LIBRARY_DIRS})
 
 include(CMake/DetectPlatform.cmake)

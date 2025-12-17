@@ -41,6 +41,8 @@ namespace Astera {
 
         static Result<vector<u8>> GetAssetData(AssetID id);
         static Result<string> GetAssetText(AssetID id);
+        static Result<Path> GetAssetPath(AssetID id);
+
         static void Reload();
         static void SetWorkingDirectory(const Path& path);
 

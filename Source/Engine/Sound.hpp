@@ -37,16 +37,16 @@ namespace Astera {
             mData = nullptr;
         }
 
-        const u8* GetData() const {
+        const f32* GetData() const {
             return mData;
         }
 
     private:
         friend class SoundLoader;
 
-        const u8* mData;
+        const f32* mData;
         size_t mDataSize;
 
-        explicit Sound(const u8* data, size_t size) : mData(data), mDataSize(size) {}
+        explicit Sound(const f32* data, size_t size) : mData(data), mDataSize(size) {}
     };
 }  // namespace Astera

@@ -77,6 +77,14 @@ namespace Astera {
         }
     }
 
+    Result<Path> AssetManager::GetAssetPath(AssetID id) {
+        if (!sAssetPaths.contains(id)) {
+            return unexpected(fmt::format("Asset `{}` not found", id));
+        }
+
+        return sAssetPaths[id];
+    }
+
     bool AssetManager::Initialize() {
         if (!exists(sWorkingDirectory)) {
             Log::Error("AssetManager", "Working directory does not exist");
