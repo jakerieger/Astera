@@ -28,9 +28,14 @@
 
 #pragma once
 
+#include "Asset.hpp"
 #include "EngineCommon.hpp"
 
 namespace Astera {
+    struct CameraDescriptor {};
+
+    struct Collider2DDescriptor {};
+
     struct Rigidbody2DDescriptor {
         string type;  // "Static", "Dynamic", or "Kinematic"
         Vec2 velocity;
@@ -58,12 +63,11 @@ namespace Astera {
     };
 
     struct SpriteRendererDescriptor {
-        string texture;
+        AssetID texture;
     };
 
     struct BehaviorDescriptor {
-        u64 id;
-        string script;
+        AssetID script;
     };
 
     struct EntityDescriptor {

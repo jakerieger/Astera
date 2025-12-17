@@ -28,16 +28,12 @@
 
 #include "SceneParser.hpp"
 #include "BinaryWriter.hpp"
-#include "Content.hpp"
 #include "Log.hpp"
 #include "SceneDescriptor.hpp"
 #include "SceneState.hpp"
-#include "TextureManager.hpp"
 #include "ScriptEngine.hpp"
-#include "IO.hpp"
 #include "EntityBuilder.hpp"
-#include "Components/Behavior.hpp"
-#include "Components/Rigidbody2D.hpp"
+#include "StringConvert.inl"
 
 #include <pugixml.hpp>
 
@@ -61,43 +57,43 @@ namespace Astera {
             rigidbody.force.y = node.attribute("y").as_float();
         }
         if (const auto node = rigidbodyNode.child("AngularVelocity")) {
-            rigidbody.angularVelocity = StringToF32(node.child_value());
+            rigidbody.angularVelocity = StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("AngularAcceleration")) {
-            rigidbody.angularAcceleration = StringToF32(node.child_value());
+            rigidbody.angularAcceleration = StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("Torque")) {
-            rigidbody.torque = StringToF32(node.child_value());
+            rigidbody.torque = StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("Mass")) {
-            rigidbody.mass = StringToF32(node.child_value());
+            rigidbody.mass = StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("InverseMass")) {
-            rigidbody.inverseMass = StringToF32(node.child_value());
+            rigidbody.inverseMass = StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("Inertia")) {
-            rigidbody.inertia = StringToF32(node.child_value());
+            rigidbody.inertia = StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("InverseInertia")) {
-            rigidbody.inverseInertia = StringToF32(node.child_value());
+            rigidbody.inverseInertia = StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("Restitution")) {
-            rigidbody.restitution = StringToF32(node.child_value());
+            rigidbody.restitution = StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("Friction")) {
-            rigidbody.friction = StringToF32(node.child_value());
+            rigidbody.friction = StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("LinearDamping")) {
-            rigidbody.linearDamping = StringToF32(node.child_value());
+            rigidbody.linearDamping = StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("AngularDamping")) {
-            rigidbody.angularDamping = StringToF32(node.child_value());
+            rigidbody.angularDamping = StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("GravityScale")) {
-            rigidbody.gravityScale = StringToF32(node.child_value());
+            rigidbody.gravityScale = StringToF32Or(node.child_value(), 0);
         }
         if (const auto node = rigidbodyNode.child("LockRotation")) {
-            rigidbody.lockRotation = (strcmp(node.child_value(), "true") == 0) ? true : false;
+            rigidbody.lockRotation = ASTERA_STREQ(node.child_value(), "true") ? true : false;
         }
 
         return rigidbody;
@@ -128,7 +124,7 @@ namespace Astera {
         SpriteRendererDescriptor renderer {};
 
         if (const auto node = spriteNode.child("Texture")) {
-            renderer.texture = node.child_value();
+            renderer.texture = StringToU64Or(node.child_value(), 0);
         }
 
         return renderer;
@@ -137,9 +133,8 @@ namespace Astera {
     static BehaviorDescriptor ParseBehaviorComponentXML(const pugi::xml_node& behaviorNode) {
         BehaviorDescriptor behavior {};
 
-        if (const auto scriptNode = behaviorNode.child("Script")) {
-            behavior.id     = scriptNode.attribute("id").as_int();
-            behavior.script = scriptNode.child_value();
+        if (const auto node = behaviorNode.child("Script")) {
+            behavior.script = StringToU64Or(node.child_value(), 0);
         }
 
         return behavior;
@@ -177,68 +172,25 @@ namespace Astera {
         throw ASTERA_NOT_IMPLEMENTED;
     }
 
-    void SceneParser::DescriptorToState(const SceneDescriptor& descriptor,
-                                        SceneState& outState,
-                                        ScriptEngine& scriptEngine) {
+    void SceneParser::DescriptorToScene(const SceneDescriptor& descriptor, Scene* scene, ScriptEngine& scriptEngine) {
         for (const auto& entity : descriptor.entities) {
-            const auto newEntity              = outState.CreateEntity(entity.name);
-            auto& [position, rotation, scale] = outState.GetTransform(newEntity);
-            position                          = entity.transform.position;
-            rotation                          = entity.transform.rotation;
-            scale                             = entity.transform.scale;
+            auto builder = EntityBuilder::Create(scene, entity.name);
+            builder.SetTransform(entity.transform);
 
             if (entity.spriteRenderer.has_value()) {
-                auto& [textureId, geometry] = outState.AddComponent<SpriteRenderer>(newEntity);
-                geometry                    = Geometry::CreateQuad();
-                textureId = TextureManager::Load(Content::Get<ContentType::Sprite>(entity.spriteRenderer->texture));
+                builder.AddSpriteRenderer(*entity.spriteRenderer);
             }
 
             if (entity.behavior.has_value()) {
-                // Load script
-                const auto scriptPath       = Content::Get<ContentType::Script>(entity.behavior->script);
-                const auto readScriptResult = IO::ReadText(scriptPath);
-                if (!readScriptResult.has_value()) {
-                    Log::Error("SceneParser", "Failed to read script file: {}", readScriptResult.error());
-                }
-                scriptEngine.LoadScript(*readScriptResult, entity.behavior->id);
-
-                auto& [id, script] = outState.AddComponent<Behavior>(newEntity);
-                id                 = entity.behavior->id;
-                script             = entity.behavior->script;
+                builder.AddBehavior(*entity.behavior, scriptEngine);
             }
 
             if (entity.rigidbody2D.has_value()) {
-                auto desc = *entity.rigidbody2D;
-                // Load rigidbody
-                auto& rigidbody = outState.AddComponent<Rigidbody2D>(newEntity);
-                if (desc.type == "Static") {
-                    rigidbody.type = BodyType::Static;
-                } else if (desc.type == "Dynamic") {
-                    rigidbody.type = BodyType::Dynamic;
-                } else if (desc.type == "Kinematic") {
-                    rigidbody.type = BodyType::Kinematic;
-                } else {
-                    Log::Error("SceneParser", "BodyType incorrect for Rigidbody2D component: {}", desc.type);
-                    return;
-                }
-
-                rigidbody.velocity            = desc.velocity;
-                rigidbody.acceleration        = desc.acceleration;
-                rigidbody.force               = desc.force;
-                rigidbody.angularVelocity     = desc.angularVelocity;
-                rigidbody.angularAcceleration = desc.angularAcceleration;
-                rigidbody.torque              = desc.torque;
-                rigidbody.mass                = desc.mass;
-                rigidbody.inverseMass         = desc.inverseMass;
-                rigidbody.inertia             = desc.inertia;
-                rigidbody.inverseInertia      = desc.inverseInertia;
-                rigidbody.restitution         = desc.restitution;
-                rigidbody.friction            = desc.friction;
-                rigidbody.linearDamping       = desc.linearDamping;
-                rigidbody.angularDamping      = desc.angularDamping;
-                rigidbody.gravityScale        = desc.gravityScale;
-                rigidbody.lockRotation        = desc.lockRotation;
+                builder.AddRigidbody2D(*entity.rigidbody2D);
             }
+
+            const auto newEntity = builder.Build();
+            Log::Info("SceneParser", "Loaded entity '{} (ID: {})' to scene state", entity.name, (u32)newEntity);
         }
     }
 
@@ -257,7 +209,7 @@ namespace Astera {
         if (entity.spriteRenderer.has_value()) {
             componentCount++;
             writer.WriteUInt32(u32(ComponentType::SpriteRenderer));
-            writer.WriteString(entity.spriteRenderer->texture);
+            writer.WriteUInt64(entity.spriteRenderer->texture);
         }
         if (entity.rigidbody2D.has_value()) {
             componentCount++;
@@ -267,9 +219,7 @@ namespace Astera {
         if (entity.behavior.has_value()) {
             componentCount++;
             writer.WriteUInt32(u32(ComponentType::Behavior));
-            writer.WriteUInt32(8 + CAST<u32>(entity.behavior->script.size()));
-            writer.WriteUInt32(entity.behavior->id);
-            writer.WriteString(entity.behavior->script);
+            writer.WriteUInt64(entity.behavior->script);
         }
 
         // update count

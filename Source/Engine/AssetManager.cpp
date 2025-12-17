@@ -55,6 +55,28 @@ namespace Astera {
         }
     }
 
+    Result<string> AssetManager::GetAssetText(AssetID id) {
+        if (!sInitialized) {
+            Initialize();
+        }
+
+        if (!sAssetPaths.contains(id)) {
+            return unexpected(fmt::format("Asset with given ID `{}` not found", id));
+        }
+
+        const auto assetPath = sAssetPaths[id];
+        if (!exists(assetPath)) {
+            return unexpected(fmt::format("Asset `{}` does not exist", assetPath.string()));
+        }
+
+        auto readResult = IO::ReadText(assetPath);
+        if (readResult.has_value()) {
+            return *readResult;
+        } else {
+            return unexpected(fmt::format("Failed to read asset `{}`", assetPath.string()));
+        }
+    }
+
     bool AssetManager::Initialize() {
         if (!exists(sWorkingDirectory)) {
             Log::Error("AssetManager", "Working directory does not exist");

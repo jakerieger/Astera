@@ -40,6 +40,7 @@ namespace Astera {
         ASTERA_CLASS_PREVENT_MOVES_COPIES(AssetManager)
 
         static Result<vector<u8>> GetAssetData(AssetID id);
+        static Result<string> GetAssetText(AssetID id);
         static void Reload();
         static void SetWorkingDirectory(const Path& path);
 

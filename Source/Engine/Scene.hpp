@@ -32,7 +32,8 @@
 #include "EngineCommon.hpp"
 #include "SceneState.hpp"
 #include "ScriptEngine.hpp"
-#include "ResourceManager.inl"
+#include "ResourceManager.hpp"
+#include "TextureLoader.hpp"
 #include "Rendering/RenderContext.hpp"
 
 namespace Astera {
@@ -41,7 +42,9 @@ namespace Astera {
         friend class Game;
 
     public:
-        explicit Scene(RenderContext& renderContext) : mResourceManager(renderContext) {}
+        explicit Scene(RenderContext& renderContext) : mResourceManager(renderContext) {
+            mResourceManager.RegisterLoaders<TextureLoaderSprite>();
+        }
 
         ~Scene();
 

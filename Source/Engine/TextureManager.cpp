@@ -57,17 +57,22 @@ namespace Astera {
 
     TextureID TextureManager::Load(const Path& filename) {
         u32 id;
-        glGenTextures(1, &id);
+        GLCall(glGenTextures, 1, &id);
 
         int w, h, channels;
         stbi_set_flip_vertically_on_load(true);  // For OpenGL
         const auto data = stbi_load(filename.string().c_str(), &w, &h, &channels, 0);
-        if (!data) { Log::Error("TextureManager", "Failed to load image: `{}`", filename.string()); }
+        if (!data) {
+            Log::Error("TextureManager", "Failed to load image: `{}`", filename.string());
+        }
 
         GLenum format = GL_RGBA;
-        if (channels == 1) format = GL_RED;
-        else if (channels == 3) format = GL_RGB;
-        else if (channels == 4) format = GL_RGBA;
+        if (channels == 1)
+            format = GL_RED;
+        else if (channels == 3)
+            format = GL_RGB;
+        else if (channels == 4)
+            format = GL_RGBA;
 
         GLCall(glBindTexture, GL_TEXTURE_2D, id);
         GLCall(glTexImage2D, GL_TEXTURE_2D, 0, CAST<int>(format), w, h, 0, format, GL_UNSIGNED_BYTE, data);
@@ -87,7 +92,8 @@ namespace Astera {
     }
 
     shared_ptr<TextureManager> TextureManager::GetManager() {
-        if (!sManager) Initialize();
+        if (!sManager)
+            Initialize();
         return sManager;
     }
 }  // namespace Astera

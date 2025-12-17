@@ -28,41 +28,67 @@
 
 #include "EntityBuilder.hpp"
 
+#include "AssetManager.hpp"
+#include "Content.hpp"
+#include "Log.hpp"
+#include "ScriptEngine.hpp"
+
 namespace Astera {
-    EntityBuilder& EntityBuilder::SetTransform(const Vec2& pos, const Vec2& rot, const Vec2& scale) {
-        auto& transform    = mState->GetTransform(mEntity);
-        transform.position = pos;
-        transform.rotation = rot;
-        transform.scale    = scale;
+    EntityBuilder& EntityBuilder::SetTransform(const TransformDescriptor& descriptor) {
+        auto& state        = mScene->GetState();
+        auto& transform    = state.GetTransform(mEntity);
+        transform.position = descriptor.position;
+        transform.rotation = descriptor.rotation;
+        transform.scale    = descriptor.scale;
         return *this;
     }
 
-    EntityBuilder& EntityBuilder::AddBehavior(u64 id, const string& script) {
-        auto& behavior  = mState->AddComponent<Behavior>(mEntity);
-        behavior.id     = id;
-        behavior.script = script;
+    EntityBuilder& EntityBuilder::AddBehavior(const BehaviorDescriptor& descriptor, ScriptEngine& scriptEngine) {
+        // Load script
+        const auto scriptSource = AssetManager::GetAssetText(descriptor.script);
+        if (!scriptSource.has_value()) {
+            throw std::runtime_error("Could not load script data");
+        }
+        scriptEngine.LoadScript(*scriptSource, descriptor.script);
+
+        // Update entity
+        auto& state     = mScene->GetState();
+        auto& behavior  = state.AddComponent<Behavior>(mEntity);
+        behavior.script = descriptor.script;
+
         return *this;
     }
 
-    EntityBuilder& EntityBuilder::AddSpriteRenderer(u32 textureId, const GeometryHandle& geometry) {
-        auto& sprite     = mState->AddComponent<SpriteRenderer>(mEntity);
-        sprite.textureId = textureId;
-        sprite.geometry  = geometry;
+    EntityBuilder& EntityBuilder::AddSpriteRenderer(const SpriteRendererDescriptor& descriptor) {
+        // Load texture
+        const auto loadResult = mScene->GetResourceManager().LoadResource<TextureSprite>(descriptor.texture);
+        if (!loadResult) {
+            throw std::runtime_error("Could not load texture sprite");
+        }
+        const ResourceHandle<TextureSprite> spriteHandle =
+          mScene->GetResourceManager().FetchResource<TextureSprite>(descriptor.texture);
+
+        if (!spriteHandle->IsValid()) {
+            throw std::runtime_error("Could not load texture sprite - handle invalid");
+        }
+
+        // Update entity
+        auto& sprite    = mScene->GetState().AddComponent<SpriteRenderer>(mEntity);
+        sprite.geometry = Geometry::CreateQuad();
+        sprite.sprite   = spriteHandle;
+
         return *this;
     }
 
-    EntityBuilder& EntityBuilder::AddRigidbody2D() {
-        auto& rigidbody = mState->AddComponent<Rigidbody2D>(mEntity);
+    EntityBuilder& EntityBuilder::AddRigidbody2D(const Rigidbody2DDescriptor& descriptor) {
         return *this;
     }
 
-    EntityBuilder& EntityBuilder::AddCollider2D() {
-        auto& collider = mState->AddComponent<Collider2D>(mEntity);
+    EntityBuilder& EntityBuilder::AddCollider2D(const Collider2DDescriptor& descriptor) {
         return *this;
     }
 
-    EntityBuilder& EntityBuilder::AddCamera() {
-        auto& camera = mState->AddComponent<Camera>(mEntity);
+    EntityBuilder& EntityBuilder::AddCamera(const CameraDescriptor& descriptor) {
         return *this;
     }
 }  // namespace Astera

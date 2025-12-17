@@ -32,7 +32,6 @@
 
 namespace Astera {
     struct Behavior {
-        u64 id;
-        string script;
+        u64 script;
     };
 }  // namespace Astera

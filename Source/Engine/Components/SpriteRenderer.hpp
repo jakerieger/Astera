@@ -29,15 +29,13 @@
 #pragma once
 
 #include "EngineCommon.hpp"
+#include "ResourceManager.hpp"
+#include "Texture.hpp"
 #include "Rendering/Geometry.hpp"
 
 namespace Astera {
     struct SpriteRenderer {
-        u32 textureId;
+        ResourceHandle<TextureSprite> sprite;
         GeometryHandle geometry;
-
-        ~SpriteRenderer() {
-            geometry.reset();
-        }
     };
 }  // namespace Astera

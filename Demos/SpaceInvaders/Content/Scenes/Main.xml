@@ -9,10 +9,10 @@
                     <Scale x="64" y="64"/>
                 </Transform>
                 <SpriteRenderer>
-                    <Texture>ship.png</Texture>
+                    <Texture>6860950636013074438</Texture>
                 </SpriteRenderer>
                 <Behavior>
-                    <Script id="0">PlayerController.lua</Script>
+                    <Script>15570255065037794052</Script>
                 </Behavior>
             </Components>
         </Entity>
@@ -24,10 +24,10 @@
                     <Scale x="64" y="64"/>
                 </Transform>
                 <SpriteRenderer>
-                    <Texture>alien.png</Texture>
+                    <Texture>11207581524906267654</Texture>
                 </SpriteRenderer>
                 <Behavior>
-                    <Script id="1">EnemyController.lua</Script>
+                    <Script>8193335908457902340</Script>
                 </Behavior>
             </Components>
         </Entity>

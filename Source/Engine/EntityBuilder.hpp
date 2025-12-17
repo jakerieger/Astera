@@ -29,32 +29,34 @@
 #pragma once
 
 #include "EngineCommon.hpp"
-#include "SceneState.hpp"
+#include "SceneDescriptor.hpp"
+#include "Scene.hpp"
 
 namespace Astera {
     class EntityBuilder {
-        SceneState* mState;
+        Scene* mScene;
         Entity mEntity;
 
-        explicit EntityBuilder(SceneState* state) : mState(state), mEntity() {}
+        explicit EntityBuilder(Scene* state) : mScene(state), mEntity() {}
 
     public:
         ASTERA_CLASS_PREVENT_COPIES(EntityBuilder)
 
         EntityBuilder(EntityBuilder&& other) noexcept
-            : mState(std::exchange(other.mState, nullptr)), mEntity(std::move(other.mEntity)) {};
+            : mScene(std::exchange(other.mScene, nullptr)), mEntity(std::exchange(other.mEntity, {})) {};
 
         EntityBuilder& operator=(EntityBuilder&& other) noexcept {
             if (this != &other) {
-                mState  = std::exchange(other.mState, nullptr);
-                mEntity = std::move(other.mEntity);
+                mScene  = std::exchange(other.mScene, nullptr);
+                mEntity = std::exchange(other.mEntity, {});
             }
             return *this;
         }
 
-        static EntityBuilder Create(SceneState* state, const string& name) {
-            EntityBuilder builder(state);
-            builder.mEntity = state->CreateEntity(name);
+        static EntityBuilder Create(Scene* scene, const string& name) {
+            EntityBuilder builder(scene);
+            auto& state     = scene->GetState();
+            builder.mEntity = state.CreateEntity(name);
             return std::move(builder);
         }
 
@@ -62,11 +64,11 @@ namespace Astera {
             return mEntity;
         }
 
-        EntityBuilder& SetTransform(const Vec2& pos, const Vec2& rot, const Vec2& scale);
-        EntityBuilder& AddBehavior(u64 id, const string& script);
-        EntityBuilder& AddSpriteRenderer(u32 textureId, const GeometryHandle& geometry);
-        EntityBuilder& AddRigidbody2D();
-        EntityBuilder& AddCollider2D();
-        EntityBuilder& AddCamera();
+        EntityBuilder& SetTransform(const TransformDescriptor& descriptor);
+        EntityBuilder& AddBehavior(const BehaviorDescriptor& descriptor, class ScriptEngine& scriptEngine);
+        EntityBuilder& AddSpriteRenderer(const SpriteRendererDescriptor& descriptor);
+        EntityBuilder& AddRigidbody2D(const Rigidbody2DDescriptor& descriptor);
+        EntityBuilder& AddCollider2D(const Collider2DDescriptor& descriptor);
+        EntityBuilder& AddCamera(const CameraDescriptor& descriptor);
     };
 }  // namespace Astera

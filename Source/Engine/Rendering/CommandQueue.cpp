@@ -98,7 +98,7 @@ namespace Astera {
         std::ranges::stable_sort(spriteIndices, [this](size_t a, size_t b) {
             const auto& cmdA = std::get<DrawSpriteCommand>(mCommands[a]);
             const auto& cmdB = std::get<DrawSpriteCommand>(mCommands[b]);
-            return cmdA.sprite.textureId < cmdB.sprite.textureId;
+            return cmdA.spriteRenderer.sprite->GetID() < cmdB.spriteRenderer.sprite->GetID();
         });
 
         // Build batches
@@ -110,14 +110,15 @@ namespace Astera {
             const auto& cmd = std::get<DrawSpriteCommand>(mCommands[idx]);
 
             // Start new batch if texture changes or batch is full
-            if (cmd.sprite.textureId != currentTexture || currentBatch.SpriteCount() >= kMaxSpritesPerBatch) {
+            if (cmd.spriteRenderer.sprite->GetID() != currentTexture ||
+                currentBatch.SpriteCount() >= kMaxSpritesPerBatch) {
                 if (!currentBatch.instances.empty()) {
                     mBatches.push_back(std::move(currentBatch));
                     currentBatch         = SpriteBatch();
                     currentBatch.quadVAO = mBatchVAO;
                 }
 
-                currentTexture         = cmd.sprite.textureId;
+                currentTexture         = cmd.spriteRenderer.sprite->GetID();
                 currentBatch.textureId = currentTexture;
             }
 
@@ -291,8 +292,7 @@ namespace Astera {
         ASTERA_ASSERT(spriteShader);
         spriteShader->Bind();
 
-        GLCall(glActiveTexture, GL_TEXTURE0);
-        GLCall(glBindTexture, GL_TEXTURE_2D, cmd.sprite.textureId);
+        cmd.spriteRenderer.sprite->Bind(0);
         spriteShader->SetUniform("uSprite", 0);
 
         const Mat4 model      = cmd.transform.GetMatrix();
@@ -301,8 +301,8 @@ namespace Astera {
         spriteShader->SetUniform("uMVP", mvp);
 
         const auto drawCmd = DrawIndexedCommand {
-          .vao           = cmd.sprite.geometry->GetVertexArray(),
-          .indexCount    = CAST<u32>(cmd.sprite.geometry->GetVertexArray()->GetIndexBuffer()->GetCount()),
+          .vao           = cmd.spriteRenderer.geometry->GetVertexArray(),
+          .indexCount    = CAST<u32>(cmd.spriteRenderer.geometry->GetVertexArray()->GetIndexBuffer()->GetCount()),
           .primitiveType = GL_TRIANGLES,
           .indexOffset   = 0};
 

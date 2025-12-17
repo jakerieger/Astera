@@ -28,11 +28,11 @@
 
 #pragma once
 
-#include <variant>
-
 #include "EngineCommon.hpp"
 #include "Components/SpriteRenderer.hpp"
-#include "Components/Transform.hpp"
+#include "Rendering/VertexArray.hpp"
+
+#include <variant>
 
 namespace Astera {
     /// @brief Command to clear the framebuffer
@@ -44,7 +44,7 @@ namespace Astera {
 
     /// @brief Command to draw a sprite/quad
     struct DrawSpriteCommand {
-        SpriteRenderer sprite;
+        SpriteRenderer spriteRenderer;
         Transform transform;
         Vec2 screenDimensions;
         Vec4 tintColor {1.0f, 1.0f, 1.0f, 1.0f};
@@ -131,6 +131,7 @@ namespace Astera {
         Vec4 tintColor;  ///< Color tint (for future use)
 
         SpriteInstanceData() = default;
+
         SpriteInstanceData(const Mat4& transform, const Vec4& tintColor = Vec4(1.0f))
             : transform(transform), tintColor(tintColor) {}
     };

@@ -1,5 +1,5 @@
 /*
- *  Filename: ResourceManager.inl
+ *  Filename: ResourceManager.hpp
  *  This code is part of the Astera core library
  *  Copyright 2025 Jake Rieger
  *
@@ -64,7 +64,8 @@ namespace Astera {
 
         ResourceBase* Load(RenderContext& context, ArenaAllocator& allocator, const u64 id) override {
             void* memory = allocator.Allocate(sizeof(Resource<T>), alignof(Resource<T>));
-            if (!memory) return nullptr;
+            if (!memory)
+                return nullptr;
             return new (memory) Resource<T>(LoadImpl(context, id));
         }
 
@@ -124,10 +125,14 @@ namespace Astera {
         template<typename T>
         ResourceHandle<T> FetchResource(const u64 id) {
             const auto it = mResources.find(id);
-            if (it == mResources.end()) { return ResourceHandle<T> {}; }
+            if (it == mResources.end()) {
+                return ResourceHandle<T> {};
+            }
 
             Resource<T>* typedResource = DCAST<Resource<T>*>(it->second);
-            if (!typedResource) { return {}; }
+            if (!typedResource) {
+                return {};
+            }
 
             return ResourceHandle<T>(this, id, &typedResource->data);
         }
@@ -169,7 +174,7 @@ namespace Astera {
             return mData;
         }
 
-        [[nodiscard]] bool Valid() const {
+        ASTERA_KEEP bool IsValid() const {
             return (mManager != nullptr) && (mData != nullptr) && (mId != 0);
         }
     };

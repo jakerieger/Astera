@@ -40,7 +40,7 @@ namespace Astera {
         const auto iter = mState.View<Transform, Behavior>().each();
         for (auto [entity, transform, behavior] : iter) {
             BehaviorEntity behaviorEntity((u32)entity, mState.GetEntityName(entity), &transform);
-            engine.CallAwakeBehavior(behavior.id, behaviorEntity);
+            engine.CallAwakeBehavior(behavior.script, behaviorEntity);
         }
     }
 
@@ -48,7 +48,7 @@ namespace Astera {
         const auto iter = mState.View<Transform, Behavior>().each();
         for (auto [entity, transform, behavior] : iter) {
             BehaviorEntity behaviorEntity((u32)entity, mState.GetEntityName(entity), &transform);
-            engine.CallUpdateBehavior(behavior.id, behaviorEntity, clock);
+            engine.CallUpdateBehavior(behavior.script, behaviorEntity, clock);
         }
     }
 
@@ -56,7 +56,7 @@ namespace Astera {
         const auto iter = mState.View<Transform, Behavior>().each();
         for (auto [entity, transform, behavior] : iter) {
             BehaviorEntity behaviorEntity((u32)entity, mState.GetEntityName(entity), &transform);
-            engine.CallLateUpdateBehavior(behavior.id, behaviorEntity);
+            engine.CallLateUpdateBehavior(behavior.script, behaviorEntity);
         }
     }
 
@@ -64,7 +64,7 @@ namespace Astera {
         const auto iter = mState.View<Transform, Behavior>().each();
         for (auto [entity, transform, behavior] : iter) {
             BehaviorEntity behaviorEntity((u32)entity, mState.GetEntityName(entity), &transform);
-            engine.CallDestroyedBehavior(behavior.id, behaviorEntity);
+            engine.CallDestroyedBehavior(behavior.script, behaviorEntity);
         }
     }
 
@@ -84,10 +84,7 @@ namespace Astera {
 
         SceneDescriptor descriptor;
         SceneParser::DeserializeDescriptorXML(filename, descriptor);
-        SceneParser::DescriptorToState(descriptor, mState, engine);
-
-        // TODO: test code, remove later
-        SceneParser::SerializeDescriptorBytes(descriptor, filename.parent_path() / "test.scene");
+        SceneParser::DescriptorToScene(descriptor, this, engine);
 
         Log::Debug("Scene", "Loaded scene: `{}`", descriptor.name);
         Awake(engine);
@@ -99,7 +96,7 @@ namespace Astera {
 
         SceneDescriptor descriptor;
         SceneParser::DeserializeDescriptorBytes(bytes, descriptor);
-        SceneParser::DescriptorToState(descriptor, mState, engine);
+        SceneParser::DescriptorToScene(descriptor, this, engine);
 
         Log::Debug("Scene", "Loaded scene: `{}`", descriptor.name);
         Awake(engine);

@@ -34,6 +34,7 @@
 
 namespace Astera {
     struct SceneDescriptor;
+    class Scene;
     class SceneState;
     class ScriptEngine;
 
@@ -47,10 +48,9 @@ namespace Astera {
 
         /// @brief Converts a scene descriptor to a scene state
         /// @param descriptor The descriptor to convert from
-        /// @param outState The scene state to populate with descriptor data
+        /// @param scene The scene to populate with descriptor data
         /// @param scriptEngine Reference to the script engine for initializing scripts
-        static void
-        DescriptorToState(const SceneDescriptor& descriptor, SceneState& outState, ScriptEngine& scriptEngine);
+        static void DescriptorToScene(const SceneDescriptor& descriptor, Scene* scene, ScriptEngine& scriptEngine);
 
         /// @brief Serializes a scene descriptor to XML
         /// @param descriptor The descriptor to serialize
