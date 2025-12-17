@@ -33,13 +33,16 @@
 
 namespace Astera {
     class SoundLoader final : public ResourceLoader<Sound> {
-        Sound LoadImpl(RenderContext& context, const u64 id) override {
+        Sound LoadImpl(RenderContext& context, ArenaAllocator& allocator, const u64 id) override {
             const auto bytes = AssetManager::GetAssetData(id);
             if (!bytes.has_value()) {
                 throw std::runtime_error(fmt::format("Failed to get sound asset: {}", bytes.error()));
             }
 
-            return Sound {bytes->data(), bytes->size()};
+            auto* arenaData = (u8*)allocator.Allocate(bytes->size(), alignof(u8));
+            std::memcpy(arenaData, bytes->data(), bytes->size());
+
+            return Sound {arenaData, bytes->size()};
         }
     };
 }  // namespace Astera

@@ -38,7 +38,7 @@
 
 namespace Astera {
     class TextureLoaderSprite final : public ResourceLoader<TextureSprite> {
-        TextureSprite LoadImpl(RenderContext& context, const u64 id) override {
+        TextureSprite LoadImpl(RenderContext& context, ArenaAllocator& allocator, const u64 id) override {
             u32 texId;
             GLCall(glGenTextures, 1, &texId);
 
@@ -72,9 +72,8 @@ namespace Astera {
             GLCall(glTexParameteri, GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
             GLCall(glTexParameteri, GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-            TextureSprite sprite {texId, data, size_t(w * h * channels)};
             stbi_image_free(data);
-            return sprite;
+            return TextureSprite(texId, w, h, channels);
         }
     };
 }  // namespace Astera

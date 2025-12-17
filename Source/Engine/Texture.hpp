@@ -62,16 +62,11 @@ namespace Astera {
             }
         }
 
-        TextureSprite(TextureSprite&& other) noexcept
-            : mId(std::exchange(other.mId, kInvalidTextureID)), mData(std::exchange(other.mData, nullptr)),
-              mDataSize(std::exchange(other.mDataSize, 0)) {}
+        TextureSprite(TextureSprite&& other) noexcept : mId(std::exchange(other.mId, kInvalidTextureID)) {}
 
         TextureSprite& operator=(TextureSprite&& other) noexcept {
             if (this != &other) {
-                delete[] mData;
-                mId       = std::exchange(other.mId, kInvalidTextureID);
-                mData     = std::exchange(other.mData, nullptr);
-                mDataSize = std::exchange(other.mDataSize, 0);
+                mId = std::exchange(other.mId, kInvalidTextureID);
             }
             return *this;
         }
@@ -79,35 +74,35 @@ namespace Astera {
         ASTERA_CLASS_PREVENT_COPIES(TextureSprite)
 
         ~TextureSprite() {
-            delete[] mData;
-            mData = nullptr;
-        }
-
-        u8* GetData() const {
-            return mData;
-        }
-
-        size_t GetDataSize() const {
-            return mDataSize;
+            GLCall(glDeleteTextures, 1, &mId);
         }
 
         bool IsValid() const {
-            return mId != kInvalidTextureID && mData != nullptr && mDataSize > 0;
+            return mId != kInvalidTextureID;
         }
 
         GLuint GetID() const {
             return mId;
         }
 
+        i32 GetWidth() const {
+            return mWidth;
+        }
+
+        i32 GetHeight() const {
+            return mHeight;
+        }
+
+        i32 GetChannels() const {
+            return mChannels;
+        }
+
     private:
         GLuint mId;
-        u8* mData;
-        size_t mDataSize;
+        i32 mWidth, mHeight;
+        i32 mChannels;
 
-        explicit TextureSprite(GLuint id, const u8* data, size_t size) : mId(id), mDataSize(size) {
-            // Copy memory into class instance
-            mData = new u8[mDataSize];
-            std::memcpy(mData, data, mDataSize);
-        }
+        explicit TextureSprite(GLuint id, i32 width, i32 height, i32 channels)
+            : mId(id), mWidth(width), mHeight(height), mChannels(channels) {}
     };
 }  // namespace Astera

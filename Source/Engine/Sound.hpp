@@ -34,19 +34,19 @@ namespace Astera {
     class Sound {
     public:
         ~Sound() {
-            delete[] mData;
             mData = nullptr;
+        }
+
+        const u8* GetData() const {
+            return mData;
         }
 
     private:
         friend class SoundLoader;
 
-        u8* mData;
+        const u8* mData;
         size_t mDataSize;
 
-        explicit Sound(const u8* data, size_t size) : mDataSize(size) {
-            mData = new u8[size];
-            std::memcpy(mData, data, mDataSize);
-        }
+        explicit Sound(const u8* data, size_t size) : mData(data), mDataSize(size) {}
     };
 }  // namespace Astera

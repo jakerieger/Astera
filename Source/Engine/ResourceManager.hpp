@@ -66,11 +66,11 @@ namespace Astera {
             void* memory = allocator.Allocate(sizeof(Resource<T>), alignof(Resource<T>));
             if (!memory)
                 return nullptr;
-            return new (memory) Resource<T>(LoadImpl(context, id));
+            return new (memory) Resource<T>(LoadImpl(context, allocator, id));
         }
 
     private:
-        virtual T LoadImpl(RenderContext& context, const u64 id) = 0;
+        virtual T LoadImpl(RenderContext& context, ArenaAllocator& allocator, const u64 id) = 0;
     };
 
     template<typename T>
