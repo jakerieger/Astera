@@ -6,5 +6,6 @@ var searchData=
   ['parseinteger_3',['ParseInteger',['../namespace_astera_1_1detail.html#ab2ef825050db5caf3527361866ca7109',1,'Astera::detail']]],
   ['physicsdebuglayer_4',['PhysicsDebugLayer',['../class_astera_1_1_physics_debug_layer.html#a58a594e5fefa93ea614cb4b9f5165abd',1,'Astera::PhysicsDebugLayer']]],
   ['playsound_5',['PlaySound',['../class_astera_1_1_audio_engine.html#a3592b1bef250d74d3389ede062748d84',1,'Astera::AudioEngine']]],
-  ['pow_6',['Pow',['../class_astera_1_1_math.html#adf4f783ad6208e9a94855e13dc5ed910',1,'Astera::Math']]]
+  ['plugin_6',['plugin',['../class_astera_1_1_plugin.html#ad07a96a9437d487b35993c534175e6ce',1,'Astera::Plugin::Plugin()=default'],['../class_astera_1_1_plugin.html#ae7135074fadc644cc6bdf1a7d740fb16',1,'Astera::Plugin::Plugin(Plugin &amp;&amp;other) noexcept']]],
+  ['pow_7',['Pow',['../class_astera_1_1_math.html#adf4f783ad6208e9a94855e13dc5ed910',1,'Astera::Math']]]
 ];

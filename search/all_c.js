@@ -20,13 +20,14 @@ var searchData=
   ['min_17',['Min',['../class_astera_1_1_math.html#a5aa900ab3a0f2d63117ee94334fd5c26',1,'Astera::Math']]],
   ['mini_5fcase_5fsensitive_18',['MINI_CASE_SENSITIVE',['../_engine_config_8hpp.html#aeca8f939c0ec92f4562e9b6eb44e1dfe',1,'EngineConfig.hpp']]],
   ['minputmanager_19',['mInputManager',['../class_astera_1_1_window.html#a95227b6446edd7c51b2ae1cd4b8bf1a0',1,'Astera::Window']]],
-  ['mouseaxis_20',['mouseAxis',['../struct_astera_1_1_axis_map.html#a57dabfc55b0f7ee546692b609636f5cb',1,'Astera::AxisMap']]],
-  ['mousebuttons_21',['mouseButtons',['../struct_astera_1_1_action_map.html#a240f3a6631ee1386b0f030948c05e2bb',1,'Astera::ActionMap']]],
-  ['mrunning_22',['mRunning',['../class_astera_1_1_window.html#ae830f37f4d0afc393d4116ec53032bb8',1,'Astera::Window']]],
-  ['msize_23',['mSize',['../class_astera_1_1_i_buffer.html#a059bc104cc812e5636e91814c9a2dc1e',1,'Astera::IBuffer']]],
-  ['mtitle_24',['mTitle',['../class_astera_1_1_window.html#a6fb99c60884b5f7921fefb0750b4f140',1,'Astera::Window']]],
-  ['multiply_25',['Multiply',['../class_astera_1_1_color.html#ad0e0de86411283b7b253e4fe6cc09795',1,'Astera::Color']]],
-  ['mvsync_26',['mVsync',['../class_astera_1_1_window.html#a32fd60f6d0120c8eb182a1dca3d111f4',1,'Astera::Window']]],
-  ['mwidth_27',['mWidth',['../class_astera_1_1_window.html#a47030e7a56b0262246a30366f8d69e41',1,'Astera::Window']]],
-  ['mwindow_28',['mWindow',['../class_astera_1_1_window.html#a5068773b727ad6262a64c7fcb09c4048',1,'Astera::Window']]]
+  ['mname_20',['mName',['../class_astera_1_1_i_engine_plugin.html#a31db88e66a167bf35b54f9874b5fa12f',1,'Astera::IEnginePlugin']]],
+  ['mouseaxis_21',['mouseAxis',['../struct_astera_1_1_axis_map.html#a57dabfc55b0f7ee546692b609636f5cb',1,'Astera::AxisMap']]],
+  ['mousebuttons_22',['mouseButtons',['../struct_astera_1_1_action_map.html#a240f3a6631ee1386b0f030948c05e2bb',1,'Astera::ActionMap']]],
+  ['mrunning_23',['mRunning',['../class_astera_1_1_window.html#ae830f37f4d0afc393d4116ec53032bb8',1,'Astera::Window']]],
+  ['msize_24',['mSize',['../class_astera_1_1_i_buffer.html#a059bc104cc812e5636e91814c9a2dc1e',1,'Astera::IBuffer']]],
+  ['mtitle_25',['mTitle',['../class_astera_1_1_window.html#a6fb99c60884b5f7921fefb0750b4f140',1,'Astera::Window']]],
+  ['multiply_26',['Multiply',['../class_astera_1_1_color.html#ad0e0de86411283b7b253e4fe6cc09795',1,'Astera::Color']]],
+  ['mvsync_27',['mVsync',['../class_astera_1_1_window.html#a32fd60f6d0120c8eb182a1dca3d111f4',1,'Astera::Window']]],
+  ['mwidth_28',['mWidth',['../class_astera_1_1_window.html#a47030e7a56b0262246a30366f8d69e41',1,'Astera::Window']]],
+  ['mwindow_29',['mWindow',['../class_astera_1_1_window.html#a5068773b727ad6262a64c7fcb09c4048',1,'Astera::Window']]]
 ];

@@ -226,6 +226,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astera_1_1_i_debug_overlay.html">IDebugOverlay</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for debug overlay implementations.  <a href="class_astera_1_1_i_debug_overlay.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astera_1_1_i_engine_plugin.html">IEnginePlugin</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astera_1_1_im_gui_debug_layer.html">ImGuiDebugLayer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astera_1_1_index_buffer.html">IndexBuffer</a></td></tr>
@@ -276,6 +278,10 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astera_1_1_physics_debug_layer.html">PhysicsDebugLayer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astera_1_1_physics_engine.html">PhysicsEngine</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astera_1_1_plugin.html">Plugin</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astera_1_1_plugin_manager.html">PluginManager</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_astera_1_1_render_context.html">RenderContext</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -392,6 +398,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
 Concepts</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="concept_astera_1_1_valid_plugin.html">ValidPlugin</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="concept_astera_1_1_valid_component.html">ValidComponent</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures only valid components are passed to the ECS. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -451,6 +459,22 @@ Typedefs</h2></td></tr>
 <tr class="memitem:acd1a44433b72def744c95631c5ee03b9" id="r_acd1a44433b72def744c95631c5ee03b9"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typename</a> T &gt; </td></tr>
 <tr class="memitem:acd1a44433b72def744c95631c5ee03b9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">using</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_astera.html#acd1a44433b72def744c95631c5ee03b9">Result</a> = expected&lt; T, string &gt;</td></tr>
 <tr class="separator:acd1a44433b72def744c95631c5ee03b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa263e69b32b803e82d7cd8884bb582f" id="r_afa263e69b32b803e82d7cd8884bb582f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_astera.html#afa263e69b32b803e82d7cd8884bb582f">OnEngineStartFunc</a>) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td></tr>
+<tr class="separator:afa263e69b32b803e82d7cd8884bb582f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae97950455b9a7255c05cd76029feb47e" id="r_ae97950455b9a7255c05cd76029feb47e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_astera.html#ae97950455b9a7255c05cd76029feb47e">OnEngineStopFunc</a>) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td></tr>
+<tr class="separator:ae97950455b9a7255c05cd76029feb47e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76d22e580c17c7ac1171c6aae52b4d9b" id="r_a76d22e580c17c7ac1171c6aae52b4d9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_astera.html#a76d22e580c17c7ac1171c6aae52b4d9b">OnSceneAwakeFunc</a>) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td></tr>
+<tr class="separator:a76d22e580c17c7ac1171c6aae52b4d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb8ab87ccf3c54a9ef9fc0146c6fb2f8" id="r_adb8ab87ccf3c54a9ef9fc0146c6fb2f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_astera.html#adb8ab87ccf3c54a9ef9fc0146c6fb2f8">OnSceneUpdateFunc</a>) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td></tr>
+<tr class="separator:adb8ab87ccf3c54a9ef9fc0146c6fb2f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33939652e1e789499d5da0df91186a60" id="r_a33939652e1e789499d5da0df91186a60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_astera.html#a33939652e1e789499d5da0df91186a60">OnSceneRenderFunc</a>) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td></tr>
+<tr class="separator:a33939652e1e789499d5da0df91186a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a504361e3f1e9f8a8fa4a431caf708019" id="r_a504361e3f1e9f8a8fa4a431caf708019"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_astera.html#a504361e3f1e9f8a8fa4a431caf708019">OnSceneLateUpdateFunc</a>) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td></tr>
+<tr class="separator:a504361e3f1e9f8a8fa4a431caf708019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53e33d02d45255c1047441f6ab71ac08" id="r_a53e33d02d45255c1047441f6ab71ac08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_astera.html#a53e33d02d45255c1047441f6ab71ac08">OnSceneDestroyedFunc</a>) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td></tr>
+<tr class="separator:a53e33d02d45255c1047441f6ab71ac08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e0a2f710a55e964a25df0a2948077a9" id="r_a2e0a2f710a55e964a25df0a2948077a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="class_astera_1_1_i_engine_plugin.html">IEnginePlugin</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_astera.html#a2e0a2f710a55e964a25df0a2948077a9">CreatePluginFunc</a>) ()</td></tr>
+<tr class="separator:a2e0a2f710a55e964a25df0a2948077a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57eb6764cff93f16f560ba79ce90ad98" id="r_a57eb6764cff93f16f560ba79ce90ad98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">using</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_astera.html#a57eb6764cff93f16f560ba79ce90ad98">RenderCommand</a> = std::variant&lt; <a class="el" href="struct_astera_1_1_clear_command.html">ClearCommand</a>, <a class="el" href="struct_astera_1_1_draw_sprite_command.html">DrawSpriteCommand</a>, <a class="el" href="struct_astera_1_1_set_viewport_command.html">SetViewportCommand</a>, <a class="el" href="struct_astera_1_1_bind_shader_command.html">BindShaderCommand</a>, <a class="el" href="struct_astera_1_1_set_uniform_command.html">SetUniformCommand</a>, <a class="el" href="struct_astera_1_1_draw_indexed_command.html">DrawIndexedCommand</a>, <a class="el" href="struct_astera_1_1_draw_indexed_instanced_command.html">DrawIndexedInstancedCommand</a>, <a class="el" href="struct_astera_1_1_draw_arrays_command.html">DrawArraysCommand</a>, <a class="el" href="struct_astera_1_1_update_vertex_buffer_command.html">UpdateVertexBufferCommand</a>, <a class="el" href="struct_astera_1_1_update_index_buffer_command.html">UpdateIndexBufferCommand</a>, <a class="el" href="struct_astera_1_1_bind_vertex_array_command.html">BindVertexArrayCommand</a>, <a class="el" href="struct_astera_1_1_unbind_vertex_array_command.html">UnbindVertexArrayCommand</a> &gt;</td></tr>
 <tr class="memdesc:a57eb6764cff93f16f560ba79ce90ad98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variant type that can hold any command.  <br /></td></tr>
 <tr class="separator:a57eb6764cff93f16f560ba79ce90ad98"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -620,6 +644,22 @@ Variables</h2></td></tr>
 <p>Type alias for asset IDs. IDs use the highest 8-bits to store the asset type and the lower 56 bits as the unique identifier. </p>
 
 <p class="definition">Definition at line <a class="el" href="_asset_8hpp_source.html#l00036">36</a> of file <a class="el" href="_asset_8hpp_source.html">Asset.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2e0a2f710a55e964a25df0a2948077a9" name="a2e0a2f710a55e964a25df0a2948077a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e0a2f710a55e964a25df0a2948077a9">&#9670;&#160;</a></span>CreatePluginFunc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="class_astera_1_1_i_engine_plugin.html">IEnginePlugin</a> *(* Astera::CreatePluginFunc) ()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_engine_plugin_interface_8hpp_source.html#l00040">40</a> of file <a class="el" href="_engine_plugin_interface_8hpp_source.html">EnginePluginInterface.hpp</a>.</p>
 
 </div>
 </div>
@@ -814,6 +854,118 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_engine_common_8hpp_source.html#l00110">110</a> of file <a class="el" href="_engine_common_8hpp_source.html">EngineCommon.hpp</a>.</p>
+
+</div>
+</div>
+<a id="afa263e69b32b803e82d7cd8884bb582f" name="afa263e69b32b803e82d7cd8884bb582f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa263e69b32b803e82d7cd8884bb582f">&#9670;&#160;</a></span>OnEngineStartFunc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(* Astera::OnEngineStartFunc) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_engine_plugin_interface_8hpp_source.html#l00033">33</a> of file <a class="el" href="_engine_plugin_interface_8hpp_source.html">EnginePluginInterface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae97950455b9a7255c05cd76029feb47e" name="ae97950455b9a7255c05cd76029feb47e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae97950455b9a7255c05cd76029feb47e">&#9670;&#160;</a></span>OnEngineStopFunc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(* Astera::OnEngineStopFunc) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_engine_plugin_interface_8hpp_source.html#l00034">34</a> of file <a class="el" href="_engine_plugin_interface_8hpp_source.html">EnginePluginInterface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a76d22e580c17c7ac1171c6aae52b4d9b" name="a76d22e580c17c7ac1171c6aae52b4d9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76d22e580c17c7ac1171c6aae52b4d9b">&#9670;&#160;</a></span>OnSceneAwakeFunc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(* Astera::OnSceneAwakeFunc) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_engine_plugin_interface_8hpp_source.html#l00035">35</a> of file <a class="el" href="_engine_plugin_interface_8hpp_source.html">EnginePluginInterface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a53e33d02d45255c1047441f6ab71ac08" name="a53e33d02d45255c1047441f6ab71ac08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53e33d02d45255c1047441f6ab71ac08">&#9670;&#160;</a></span>OnSceneDestroyedFunc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(* Astera::OnSceneDestroyedFunc) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_engine_plugin_interface_8hpp_source.html#l00039">39</a> of file <a class="el" href="_engine_plugin_interface_8hpp_source.html">EnginePluginInterface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a504361e3f1e9f8a8fa4a431caf708019" name="a504361e3f1e9f8a8fa4a431caf708019"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a504361e3f1e9f8a8fa4a431caf708019">&#9670;&#160;</a></span>OnSceneLateUpdateFunc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(* Astera::OnSceneLateUpdateFunc) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_engine_plugin_interface_8hpp_source.html#l00038">38</a> of file <a class="el" href="_engine_plugin_interface_8hpp_source.html">EnginePluginInterface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a33939652e1e789499d5da0df91186a60" name="a33939652e1e789499d5da0df91186a60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33939652e1e789499d5da0df91186a60">&#9670;&#160;</a></span>OnSceneRenderFunc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(* Astera::OnSceneRenderFunc) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_engine_plugin_interface_8hpp_source.html#l00037">37</a> of file <a class="el" href="_engine_plugin_interface_8hpp_source.html">EnginePluginInterface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="adb8ab87ccf3c54a9ef9fc0146c6fb2f8" name="adb8ab87ccf3c54a9ef9fc0146c6fb2f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb8ab87ccf3c54a9ef9fc0146c6fb2f8">&#9670;&#160;</a></span>OnSceneUpdateFunc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">typedef</a> <a class="el" href="_engine_common_8hpp.html#aee24d8236281595b79ebc82dbbcf0f89">void</a>(* Astera::OnSceneUpdateFunc) (<a class="el" href="class_astera_1_1_game.html">Game</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_engine_plugin_interface_8hpp_source.html#l00036">36</a> of file <a class="el" href="_engine_plugin_interface_8hpp_source.html">EnginePluginInterface.hpp</a>.</p>
 
 </div>
 </div>

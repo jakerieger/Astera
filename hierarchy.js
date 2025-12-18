@@ -46,6 +46,7 @@ var hierarchy =
       [ "Astera::ImGuiDebugLayer", "class_astera_1_1_im_gui_debug_layer.html", null ],
       [ "Astera::PhysicsDebugLayer", "class_astera_1_1_physics_debug_layer.html", null ]
     ] ],
+    [ "Astera::IEnginePlugin", "class_astera_1_1_i_engine_plugin.html", null ],
     [ "Astera::InputManager", "class_astera_1_1_input_manager.html", null ],
     [ "Astera::InputMap", "struct_astera_1_1_input_map.html", null ],
     [ "Astera::IO", "class_astera_1_1_i_o.html", null ],
@@ -64,6 +65,8 @@ var hierarchy =
     [ "Astera::LuaTypeTraits< Vec2 >", "struct_astera_1_1_lua_type_traits_3_01_vec2_01_4.html", null ],
     [ "Astera::Math", "class_astera_1_1_math.html", null ],
     [ "Astera::PhysicsEngine", "class_astera_1_1_physics_engine.html", null ],
+    [ "Astera::Plugin", "class_astera_1_1_plugin.html", null ],
+    [ "Astera::PluginManager", "class_astera_1_1_plugin_manager.html", null ],
     [ "AsteraCLI::ProjectSubcommand", "struct_astera_c_l_i_1_1_project_subcommand.html", null ],
     [ "Astera::RenderContext", "class_astera_1_1_render_context.html", null ],
     [ "Astera::RenderTarget", "class_astera_1_1_render_target.html", null ],

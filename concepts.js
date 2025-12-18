@@ -1,6 +1,7 @@
 var concepts =
 [
     [ "Astera", "namespace_astera.html", [
+      [ "ValidPlugin", "concept_astera_1_1_valid_plugin.html", null ],
       [ "ValidComponent", "concept_astera_1_1_valid_component.html", null ],
       [ "IsTexture", "concept_astera_1_1_is_texture.html", null ]
     ] ]
