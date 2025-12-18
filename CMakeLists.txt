@@ -10,6 +10,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 set(SOURCE_ROOT ${CMAKE_SOURCE_DIR}/Source)
 set(ENGINE_ROOT ${SOURCE_ROOT}/Engine)
+set(SHARED_ROOT ${SOURCE_ROOT}/Shared)
 set(VENDOR_ROOT ${SOURCE_ROOT}/Vendor)
 
 # Find system-wide dependencies. Windows can use vcpkg.

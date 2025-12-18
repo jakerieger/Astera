@@ -10,6 +10,8 @@
 #include <Engine/ScriptCompiler.hpp>
 #include <Engine/IO.hpp>
 
+#include "Templates/PluginTemplates.hpp"
+
 namespace AsteraCLI {
     using std::filesystem::path;
 
@@ -156,6 +158,55 @@ namespace AsteraCLI {
                    bytecodeFile.filename().string().c_str());
         }
     };
+
+    struct PluginSubcommand {
+        inline static std::string arg;
+
+        static void Create() {
+            // 1. Create plugin project folder
+            const path projectDir = std::filesystem::current_path() / arg;
+            if (exists(projectDir)) {
+                printf("Directory is not empty. This will overwrite all contents in the directory. Continue (y/n)? ");
+                const int input = getchar();
+                if (input == 'y' || input == 'Y') {
+                    std::filesystem::remove_all(projectDir);
+                    std::filesystem::create_directories(projectDir);
+                } else {
+                    return;
+                }
+            } else {
+                std::filesystem::create_directories(projectDir);
+            }
+
+            // 2. Create project files
+            auto WriteFile = [](const path& filename, const std::string& contents) {
+                std::ofstream file(filename);
+                file << contents;
+                file.close();
+            };
+
+            const path cmakelists_txtPath = projectDir / "CMakeLists.txt";
+            std::string upper;
+            upper.resize(arg.size());
+            std::ranges::transform(arg, upper.begin(), ::toupper);
+            const auto exports       = upper + "_EXPORTS";
+            const auto cmakeContents = PluginTemplates::Make_CMakeLists_TXT(arg, exports);
+            WriteFile(cmakelists_txtPath, cmakeContents);
+
+            const auto pluginAPI             = upper + "_API";
+            const path pluginexports_hppPath = projectDir / "PluginExport.hpp";
+            const auto pluginExportsContents = PluginTemplates::Make_PluginExport_HPP(exports, pluginAPI);
+            WriteFile(pluginexports_hppPath, pluginExportsContents);
+
+            const path plugin_hppPath    = projectDir / fmt::format("{}.hpp", arg);
+            const auto pluginHppContents = PluginTemplates::Make_Plugin_HPP(arg, pluginAPI);
+            WriteFile(plugin_hppPath, pluginHppContents);
+
+            const path plugin_cppPath    = projectDir / fmt::format("{}.cpp", arg);
+            const auto pluginCppContents = PluginTemplates::Make_Plugin_CPP(arg, pluginAPI);
+            WriteFile(plugin_cppPath, pluginCppContents);
+        }
+    };
 }  // namespace AsteraCLI
 
 int main(int argc, char* argv[]) {
@@ -204,6 +255,16 @@ int main(int argc, char* argv[]) {
         CLI::App* compileScript = asset->add_subcommand("compile-script", "Compile the given Lua script");
         compileScript->add_option("script", AssetSubcommand::arg, "Script to compile the given Lua script")->required();
         compileScript->callback([&]() { AssetSubcommand::CompileScript(); });
+    }
+
+    // Plugin subcommand
+    {
+        CLI::App* plugin = app.add_subcommand("plugin", "Manage engine plugins");
+        app.require_subcommand(1);
+
+        CLI::App* createPlugin = plugin->add_subcommand("create", "Creates a new plugin project");
+        createPlugin->add_option("name", PluginSubcommand::arg, "Plugin name")->required();
+        createPlugin->callback([&]() { PluginSubcommand::Create(); });
     }
 
     CLI11_PARSE(app, argc, argv);

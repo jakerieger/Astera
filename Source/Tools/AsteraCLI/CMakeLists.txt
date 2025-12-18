@@ -1,4 +1,7 @@
 add_executable(astera-cli
+    ${SHARED_ROOT}/MacroExpander.hpp
+    Templates/PluginTemplates.hpp
+    Templates/ProjectFileTemplates.hpp
     main.cpp
 )
 
@@ -12,6 +15,7 @@ target_link_libraries(astera-cli PRIVATE
 
 target_include_directories(astera-cli PRIVATE
     ${SOURCE_ROOT}
+    ${SHARED_ROOT}
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${OPENSSL_INCLUDE_DIR}
 )
