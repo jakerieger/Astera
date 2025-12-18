@@ -60,7 +60,6 @@ var annotated_dup =
       [ "PhysicsDebugLayer", "class_astera_1_1_physics_debug_layer.html", "class_astera_1_1_physics_debug_layer" ],
       [ "PhysicsEngine", "class_astera_1_1_physics_engine.html", null ],
       [ "Plugin", "class_astera_1_1_plugin.html", "class_astera_1_1_plugin" ],
-      [ "PluginManager", "class_astera_1_1_plugin_manager.html", null ],
       [ "RenderContext", "class_astera_1_1_render_context.html", "class_astera_1_1_render_context" ],
       [ "RenderTarget", "class_astera_1_1_render_target.html", "class_astera_1_1_render_target" ],
       [ "RenderTargetConfig", "struct_astera_1_1_render_target_config.html", "struct_astera_1_1_render_target_config" ],

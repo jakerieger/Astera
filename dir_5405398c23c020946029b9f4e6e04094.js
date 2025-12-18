@@ -44,8 +44,6 @@ var dir_5405398c23c020946029b9f4e6e04094 =
     [ "Math.cpp", "_math_8cpp.html", null ],
     [ "Math.hpp", "_math_8hpp.html", "_math_8hpp" ],
     [ "Memory.hpp", "_memory_8hpp.html", "_memory_8hpp" ],
-    [ "PluginManager.cpp", "_plugin_manager_8cpp.html", null ],
-    [ "PluginManager.hpp", "_plugin_manager_8hpp.html", "_plugin_manager_8hpp" ],
     [ "ResourceManager.hpp", "_resource_manager_8hpp.html", "_resource_manager_8hpp" ],
     [ "Scene.cpp", "_scene_8cpp.html", null ],
     [ "Scene.hpp", "_scene_8hpp.html", "_scene_8hpp" ],
