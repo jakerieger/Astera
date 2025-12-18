@@ -45,7 +45,13 @@ cd Astera
 **Linux:**
 
 ```bash
-sudo apt install libfmt-dev libspdlog-dev libpugixml-dev libcli11-dev libglfw3-dev libluajit-5.1-dev
+sudo apt install libfmt-dev \
+  libspdlog-dev \
+  libpugixml-dev \
+  libcli11-dev \
+  libglfw3-dev \
+  libluajit-5.1-dev \
+  libsndfile1-dev
 ```
 
 **Windows:**
@@ -59,7 +65,15 @@ In the project root run this:
 git clone https://github.com/microsoft/vcpkg.git
 cd vcpkg
 ./bootstrap-vcpkg.sh
-./vcpkg install pkgconf fmt spdlog pugixml cli11 glfw3 luajit --triplet x64-windows
+./vcpkg install pkgconf \
+    fmt \
+    spdlog \
+    pugixml \
+    cli11 \
+    glfw3 \
+    luajit \
+    libsndfile \
+    --triplet x64-windows
 ```
 
 3. Build using CMake:
