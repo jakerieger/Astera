@@ -112,12 +112,6 @@ namespace Astera {
             return mAudioEngine;
         }
 
-        /// @brief Gets the debug manager
-        /// @return Reference to the DebugManager instance
-        ASTERA_KEEP DebugManager& GetDebugManager() {
-            return mDebugManager;
-        }
-
         /// @brief Gets the frame allocator
         /// @return Reference to the frame allocator instance
         ASTERA_KEEP FrameAllocator& GetFrameAllocator() {
@@ -174,6 +168,14 @@ namespace Astera {
         /// @brief Whether the window is in fullscreen mode
         bool mFullscreen {false};
 
+        ImGuiDebugLayer* GetUIDebugLayer() const {
+            return mImGuiDebugLayer.get();
+        }
+
+        PhysicsDebugLayer* GetPhysicsDebugLayer() const {
+            return mPhysicsDebugLayer.get();
+        }
+
     private:
         /// @brief Initializes the Lua script engine and registers bindings
         /// @return True if initialization succeeded, false otherwise
@@ -190,9 +192,6 @@ namespace Astera {
         unique_ptr<RenderTarget> mMainRenderTarget;
 
         // Internal systems
-
-        /// @brief Debug rendering manager
-        DebugManager mDebugManager;
 
         /// @brief Lua script execution engine
         ScriptEngine mScriptEngine;

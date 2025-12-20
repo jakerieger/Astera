@@ -121,11 +121,8 @@ namespace Astera {
     }
 
     void Game::LoadDebugLayers(u32 width, u32 height) {
-        mImGuiDebugLayer = make_unique<ImGuiDebugLayer>(GetHandle());
-        mDebugManager.AttachOverlay("ImGuiDebugLayer", mImGuiDebugLayer.get());
-
+        mImGuiDebugLayer   = make_unique<ImGuiDebugLayer>(GetHandle());
         mPhysicsDebugLayer = make_unique<PhysicsDebugLayer>(width, height);
-        mDebugManager.AttachOverlay("PhysicsDebugLayer", mPhysicsDebugLayer.get());
     }
 
     void Game::OnAwake() {
@@ -206,7 +203,6 @@ namespace Astera {
     }
 
     void Game::OnUpdate(const Clock& clock) {
-        mDebugManager.Update(clock.GetDeltaTime());
         // update debug ui
         mImGuiDebugLayer->UpdateFrameRate((f32)clock.GetFramesPerSecond());
         const auto fT = (1.f / clock.GetFramesPerSecond()) * 1000.f;
@@ -264,7 +260,6 @@ namespace Astera {
 
         UnloadContent();
 
-        mDebugManager.DetachOverlays();
         mImGuiDebugLayer.reset();
         mPhysicsDebugLayer.reset();
 
@@ -301,7 +296,9 @@ namespace Astera {
         }
 
         mImGuiDebugLayer->UpdateDrawCalls(CommandExecutor::gDrawCalls);
-        mDebugManager.Render();
+        mImGuiDebugLayer->OnRender();
+        mPhysicsDebugLayer->OnRender();
+
         glfwSwapBuffers(GetHandle());
 
         CommandExecutor::gDrawCalls = 0;
